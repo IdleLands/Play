@@ -31,7 +31,7 @@
     "lodash": "^4.11.2",
     "ng2-bootstrap": "^1.0.17",
     "ng2-fontawesome": "0.0.4",
-    "ng2-pnotify": "0.0.1",
+    "ng2-pnotify": "0.0.2",
     "ng2-storage": "0.0.2",
     "phaser": "^2.5.0",
     "primus": "^5.2.2",
