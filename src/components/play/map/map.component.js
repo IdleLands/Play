@@ -48,7 +48,7 @@ class Game {
   }
 
   setObjectData(mapName, map) {
-    if(!map.data.layers[2]) return;
+    if(!map || !map.data.layers[2]) return;
     _.each(map.data.layers[2].objects, object => {
       object.properties = {
         realtype:           object.type,
@@ -107,6 +107,7 @@ class Game {
   }
 
   createMap() {
+    if(!this.game.cache.checkTilemapKey(this.mapName)) return;
     this.setObjectData(this.mapName, this.game.cache.getTilemapData(this.mapName));
     const map = this.game.add.tilemap(this.mapName);
     map.addTilesetImage('tiles', 'tiles');
@@ -142,9 +143,14 @@ class Game {
   }
 
   update() {
-    if(!this.game.cache.checkTilemapKey(this.mapName)) {
+    if(this._currentMapName !== this.mapName) {
+      this.game.state.restart();
       this.createMap();
+      this.itemText = '';
     }
+
+    this._currentMapName = this.mapName;
+
     this.player.x = this.playerData.x*16;
     this.player.y = this.playerData.y*16;
 
