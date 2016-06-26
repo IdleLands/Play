@@ -18,7 +18,7 @@ export class Auth {
     this.router = router;
     this.storage = storage.local;
     this.user = this.storage.profile;
-    this.sc = socketCluster;
+    this.primus = socketCluster;
 
     this.lock = new Auth0Lock('eeZLr1IQYWDYgxUtEAAiibI4617kIfT9', 'idlelands.auth0.com');
   }
@@ -45,7 +45,7 @@ export class Auth {
     this.storage.profile = null;
     this.storage.idToken = null;
     this.zoneImpl.run(() => this.user = null);
-    this.sc.disconnect();
+    this.primus.disconnect();
     this.router.navigate(['/']);
   }
 }

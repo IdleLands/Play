@@ -19,25 +19,25 @@ export class PlayComponent {
   }
 
   constructor(socketCluster, router, storage) {
-    this.sc = socketCluster;
+    this.primus = socketCluster;
     this.router = router;
     this.storage = storage.local;
 
-    this.needsCreate = !this.sc.doesUserExistForThisId;
+    this.needsCreate = !this.primus.doesUserExistForThisId;
   }
 
   ngOnInit() {
-    this.subscription = this.sc.hasRealUser.subscribe(res => {
+    this.subscription = this.primus.hasRealUser.subscribe(res => {
       this.needsCreate = !res;
       if(this.needsCreate) return;
 
-      this.sc.registerPlayer({ userId: this.storage.profile.user_id, token: this.storage.idToken }, () => {
+      this.primus.registerPlayer({ userId: this.storage.profile.user_id, token: this.storage.idToken }, () => {
         if(_.includes(window.location.href, '/play/(')) return;
         this.router.navigate(['/play/overview']);
       });
     });
 
-    this.sc.checkIfExists();
+    this.primus.checkIfExists();
   }
 
   ngOnDestroy() {

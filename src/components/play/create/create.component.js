@@ -29,7 +29,7 @@ export class CreateComponent {
     return [[Router], [FormBuilder], [PrimusWrapper], [StorageService]];
   }
 
-  constructor(router, formBuilder, socketCluster, storage) {
+  constructor(router, formBuilder, primus, storage) {
     this.router = router;
     this.storage = storage.local;
 
@@ -48,7 +48,15 @@ export class CreateComponent {
     this.classes = classes;
     this.genders = genders;
 
-    this.sc = socketCluster;
+    this.primus = primus;
+    this.subscription = this.primus.hasRealUser.subscribe(res => {
+      if(!res) return;
+      this.router.navigate(['/play/overview']);
+    });
+  }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
   }
 
   formValid() {
@@ -56,7 +64,7 @@ export class CreateComponent {
   }
 
   createCharacter() {
-    this.sc.registerPlayer({
+    this.primus.registerPlayer({
       name: this.name.value,
       profession: this.profession,
       gender: this.gender,

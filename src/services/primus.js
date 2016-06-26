@@ -1,5 +1,4 @@
 
-import { EventEmitter } from '@angular/core';
 import Primus from '../../primus.gen';
 import { StorageService } from 'ng2-storage';
 import { PNotifyService } from 'ng2-pnotify';
@@ -16,7 +15,7 @@ export class PrimusWrapper {
   }
 
   constructor(storage, pnotify) {
-    this.hasRealUser = new EventEmitter();
+    this.hasRealUser = new BehaviorSubject(false);
     this.storage = storage.local;
     this.pnotify = pnotify;
     this.initSocket();
@@ -97,7 +96,7 @@ export class PrimusWrapper {
   registerPlayer(opts, doNext = () => {}) {
     this.emit('plugin:player:login', opts, res => {
       if(!res.ok) return;
-      doNext();
+      doNext(res);
       this._cachedOpts = opts;
     });
   }

@@ -5,12 +5,12 @@
   "repository": "https://github.com/seiyria/deck.zone",
   "license": "MIT",
   "scripts": {
-    "build:app": "webpack -p --progress && cp src/index.html dist/index.html && echo 'idle.land' >> dist/CNAME",
+    "build:app": "webpack -p --progress && cp src/index.html dist/index.html && echo 'idle.land' > dist/CNAME",
     "test:lint": "eslint \"src/**/*.js\"",
     "test:ava": "ava --require babel-register",
     "test": "npm run test:lint && npm run test:ava && npm run test:lang",
     "start": "webpack-dev-server --open --content-base src/ --inline --hot",
-    "deploy": "npm run build:app && firebase deploy"
+    "deploy": "npm run build:app && gulp deploy"
   },
   "dependencies": {
     "@angular/common": "^2.0.0-rc.3",
@@ -57,6 +57,8 @@
     "file-loader": "^0.8.5",
     "firebase-tools": "^3.0.2",
     "glob": "^7.0.3",
+    "gulp": "^3.9.1",
+    "gulp-gh-pages": "^0.5.4",
     "html-loader": "^0.4.3",
     "json-loader": "^0.5.3",
     "less": "^2.6.1",
