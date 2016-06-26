@@ -1,0 +1,31 @@
+<nav class="navbar navbar-static-top navbar-light bg-faded m-b-1" *ngIf="!hideSelf()">
+  <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#navbar-header" aria-controls="navbar-header">
+    ☰
+  </button>
+  <div class="collapse navbar-toggleable-xs" id="navbar-header">
+    <a class="navbar-brand" [routerLink]="['/']">IdleLands</a>
+
+    <ul class="nav navbar-nav pull-xs-right">
+      <li class="nav-item" *ngIf="!storage.idToken">
+        <a class="nav-link" (click)="login()">
+          Login
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="storage.idToken">
+        <a class="nav-link" (click)="logout()">
+          Logout
+        </a>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav" *ngIf="storage.idToken && auth.authenticated()">
+
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/play']">
+          Play
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</nav>

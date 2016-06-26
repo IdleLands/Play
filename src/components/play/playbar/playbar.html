@@ -1,0 +1,29 @@
+<nav class="navbar navbar-static-top navbar-light bg-faded m-b-1">
+  <div class="collapse navbar-toggleable-xs">
+    <a class="navbar-brand" [routerLink]="['/play']">IdleLands</a>
+
+    <ul class="nav navbar-nav pull-xs-right">
+      <li class="nav-item">
+        <a class="nav-link" (click)="logout()">
+          Logout
+        </a>
+      </li>
+    </ul>
+
+    <ul class="nav navbar-nav" *ngIf="!hideTabs">
+
+      <li class="nav-item" [class.active]="hasActiveRoute('overview')">
+        <a class="nav-link" [routerLink]="['/play/overview']">
+          Overview
+        </a>
+      </li>
+
+      <li class="nav-item" [class.active]="hasActiveRoute('map')">
+        <a class="nav-link" [routerLink]="['/play/map']">
+          Map
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</nav>

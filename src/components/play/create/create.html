@@ -1,0 +1,71 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-12">
+      <h2 class="text-sm-center">Create New Character</h2>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form class="m-t-1" [ngFormModel]="form" name="character"
+            (ngSubmit)="createCharacter(form.value)">
+
+        <div class="form-group row" [class.has-danger]="!name.valid && name.touched">
+          <label for="name" class="col-sm-2 form-control-label">Character Name</label>
+          <div class="col-sm-6">
+            <input type="text"
+                   class="form-control"
+                   id="name"
+                   placeholder="Character Name"
+                   [ngFormControl]="name"
+                   minlength="2"
+                   maxlength="20"
+                   required>
+          </div>
+          <div class="col-sm-4 text-xs-left text-danger">
+            <p *ngIf="!name.valid">Name is invalid.</p>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 form-control-label">Profession</label>
+          <div class="col-sm-10">
+            <div class="radio" *ngFor="let prof of classes">
+              <label class="create-label">
+                <input type="radio"
+                       name="profession"
+                       (click)="profession = prof.name"
+                       [checked]="profession === prof.name">
+                {{prof.name}} - {{prof.description}}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 form-control-label">Gender</label>
+          <div class="col-sm-10">
+            <div class="radio" *ngFor="let gend of genders">
+              <label class="create-label">
+                <input type="radio"
+                       name="gender"
+                       (click)="gender = gend.value"
+                       [checked]="gender === gend.value">
+                {{gend.name}}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-sm-offset-2">
+            <button class="btn btn-primary" type="submit" [disabled]="!formValid()">Create Character</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+</div>
