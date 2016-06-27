@@ -42,10 +42,26 @@ export class PrimusWrapper {
     if(this.socket) return;
     this.socket = Primus.connect(`${settings.protocol}://${settings.hostname}:${settings.port}`);
 
-    this.socket.on('reconnect', () => {
+    this.socket.on('error', e => console.error('Socket error', e));
+
+    this.socket.on('close', () => {
+      // no connection
+    });
+
+    this.socket.on('reconnect scheduled', () => {}); // connecting
+
+    this.socket.on('open', () => {
+      if(!this._reconnecting || !this._cachedOpts) return;
+      this.registerPlayer(this._cachedOpts, () => this._reconnecting = false, true);
+      // connection
+    });
+
+    this.socket.on('reconnected', () => {
       if(!this._cachedOpts || this._reconnecting) return;
       this._reconnecting = true;
-      this.registerPlayer(this._cachedOpts, () => this._reconnecting = false, true);
+      this.socket.end();
+      this.socket = null;
+      this.initSocket();
     });
 
     this.socket.on('data', data => {
@@ -141,7 +157,7 @@ export class PrimusWrapper {
 
   disconnect() {
     if(!this.socket) return;
-    this.socket.emit('plugin:player:logout', {});
+    this.emit('plugin:player:logout', {});
   }
 
   registerPlayer(opts, doNext = () => {}, force = false) {
