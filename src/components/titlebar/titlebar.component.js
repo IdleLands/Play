@@ -5,6 +5,7 @@ import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { StorageService } from 'ng2-storage';
 import { Auth } from '../../services/auth';
 import template from './titlebar.html';
+import './titlebar.less';
 
 @Component({
   selector: 'titlebar',
