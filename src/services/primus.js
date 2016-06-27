@@ -145,10 +145,12 @@ export class PrimusWrapper {
   }
 
   registerPlayer(opts, doNext = () => {}) {
+    if(this.hasRealUser.getValue() && this._cachedOpts) return;
     this.emit('plugin:player:login', opts, res => {
       if(!res.ok) return;
       doNext(res);
       this._cachedOpts = opts;
+      this.hasRealUser.next(true);
     });
   }
 }
