@@ -71,7 +71,7 @@ export class PrimusWrapper {
       if(!this.outstandingCallbacks[data.event]) return;
       this.outstandingCallbacks[data.event](data);
       this.outstandingCallbacks[data.event] = null;
-    });
+    });gi
   }
 
   handleUserListUpdate(data) {
