@@ -1,4 +1,6 @@
 
+import _ from 'lodash';
+
 import Primus from '../../primus.gen';
 import { StorageService } from 'ng2-storage';
 import { PNotifyService } from 'ng2-pnotify';
@@ -21,22 +23,19 @@ export class PrimusWrapper {
     this.initSocket();
     this.outstandingCallbacks = {};
 
-    this._adventureLog = [];
-
     this._contentUpdates = {
+      onlineUsers: new BehaviorSubject([]),
+      chatMessage: new BehaviorSubject({}),
       adventureLog: new BehaviorSubject([]),
       player: new BehaviorSubject({})
     };
 
     this.contentUpdates = {
+      onlineUsers: this._contentUpdates.onlineUsers.asObservable(),
+      chatMessage: this._contentUpdates.chatMessage.asObservable(),
       adventureLog: this._contentUpdates.adventureLog.asObservable(),
       player: this._contentUpdates.player.asObservable()
     };
-  }
-
-  handleContentUpdate(content) {
-    if(!content.update) return;
-    this._contentUpdates[content.update].next(content.data);
   }
 
   initSocket() {
@@ -50,14 +49,65 @@ export class PrimusWrapper {
     });
 
     this.socket.on('data', data => {
+
+      if(data.playerListOperation) return this.handleUserListUpdate(data);
+
+      // chat messages are handled differently
+      if(data.route && data.channel && data.text) return this.handleChatMessage(data);
+
+      // data updates are handled differently
       if(data.update) return this.handleContentUpdate(data);
-      if(data.event === 'adventurelog') return this.handleMessage(data);
+
+      // adventure log is handled differently
+      if(data.event === 'adventurelog') return this.handleAdventureLog(data);
+
+      // no event means something is probably wrong
       if(!data.event) console.error('No event specified', data);
+
+      // pnotify notifications
       if(data.notify) this.handleNotification(data);
+
+      // generic event ping-pong
       if(!this.outstandingCallbacks[data.event]) return;
       this.outstandingCallbacks[data.event](data);
       this.outstandingCallbacks[data.event] = null;
     });
+  }
+
+  handleUserListUpdate(data) {
+    const operations = {
+      add: () => {
+        let userList = this._contentUpdates.onlineUsers.getValue();
+        userList.push(data.data);
+        userList = _.sortBy(userList, 'name');
+        this._contentUpdates.onlineUsers.next(userList);
+      },
+      del: () => {
+        let userList = this._contentUpdates.onlineUsers.getValue();
+        userList = _.reject(userList, p => p.name === data.data);
+        this._contentUpdates.onlineUsers.next(userList);
+      },
+      set: () => {
+        this._contentUpdates.onlineUsers.next(data.data);
+      },
+      update: () => {
+        const userList = this._contentUpdates.onlineUsers.getValue();
+        const player = _.find(userList, { name: data.data.name });
+        _.extend(player, data.data);
+        this._contentUpdates.onlineUsers.next(userList);
+      }
+    };
+    operations[data.playerListOperation]();
+  }
+
+  handleChatMessage(message) {
+    message.timestamp = Date.now();
+    this._contentUpdates.chatMessage.next(message);
+  }
+
+  handleContentUpdate(content) {
+    if(!content.update) return;
+    this._contentUpdates[content.update].next(content.data);
   }
 
   handleNotification(object) {
@@ -65,11 +115,12 @@ export class PrimusWrapper {
     this.pnotify.pnotify(object);
   }
 
-  handleMessage(object) {
+  handleAdventureLog(object) {
     object.timestamp = Date.now();
-    this._adventureLog.unshift(object);
-    if(this._adventureLog.length > 100) this._adventureLog.length = 100;
-    this._contentUpdates.adventureLog.next(this._adventureLog);
+    const adventureLog = this._contentUpdates.adventureLog.getValue();
+    adventureLog.unshift(object);
+    if(adventureLog.length > 100) adventureLog.length = 100;
+    this._contentUpdates.adventureLog.next(adventureLog);
   }
 
   emit(event, data, callback) {

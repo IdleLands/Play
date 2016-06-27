@@ -172,7 +172,6 @@ export class MapComponent {
     this.http = http;
 
     this.playerData = primus._contentUpdates.player.getValue();
-    this.playerSubscription = primus.contentUpdates.player.subscribe(data => this.setPlayerData(data));
   }
 
   loadMap(mapName, mapPath) {
@@ -203,6 +202,10 @@ export class MapComponent {
     } else {
       this._gameObj.cacheMap(mapName, mapData);
     }
+  }
+
+  ngOnInit() {
+    this.playerSubscription = this.primus.contentUpdates.player.subscribe(data => this.setPlayerData(data));
   }
 
   ngOnDestroy() {

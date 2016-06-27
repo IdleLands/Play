@@ -24,6 +24,12 @@
         </a>
       </li>
 
+      <li class="nav-item" [class.active]="hasActiveRoute('chat')">
+        <a class="nav-link" [routerLink]="['/play/chat']">
+          Chat
+        </a>
+      </li>
+
     </ul>
   </div>
 </nav>

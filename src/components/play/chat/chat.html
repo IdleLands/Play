@@ -1,0 +1,39 @@
+
+<div class="container-fluid chat-container no-padding">
+
+  <div class="col-md-3 chat-nav no-padding">
+    <ul class="nav nav-pills nav-stacked">
+      <li class="nav-item" *ngFor="let channel of channels">
+        <a class="nav-link"
+           (click)="changeChannel(channel)"
+           [class.active]="activeChannel === channel">{{channel}} <span class="label label-pill label-info" *ngIf="chatData[channel].unread > 0">{{chatData[channel].unread}}</span></a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-md-6 chat-io no-padding">
+
+    <div class="chat-output">
+      <chatoutput [messages]="activeChannelMessages"></chatoutput>
+    </div>
+
+    <div class="chat-input">
+      <div class="col-md-10 no-padding">
+        <input type="text" class="form-control" [(ngModel)]="chatMessage" placeholder="Send a message to {{activeChannel}}..." (keyup.enter)="sendMessage(chatMessage)"/>
+      </div>
+      <div class="col-md-2 no-padding">
+        <button class="btn btn-primary" (click)="sendMessage(chatMessage)">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3 chat-users no-padding">
+    <div class="card card-block user-card" *ngFor="let user of onlineUsers">
+      <h6 class="card-title">{{ user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></h6>
+      <p class="card-text">
+        <small>Level {{ user.level }} {{ user.professionName }}</small>
+      </p>
+    </div>
+  </div>
+
+</div>

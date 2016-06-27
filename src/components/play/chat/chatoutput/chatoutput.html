@@ -1,0 +1,15 @@
+<div class="message" *ngFor="let message of allMessages">
+  <div class="author-row">
+    <strong class="author">{{ message.playerName }}</strong>
+    <small class="timestamp text-muted">{{ message.timestamp | date:'medium' }}</small>
+  </div>
+  <div class="message-row">
+    {{ message.text }}
+  </div>
+</div>
+
+<div class="scroll-to-bottom-container">
+  <button class="btn btn-info scroll-to-bottom" *ngIf="showScrollButton" (click)="scrollToBottom()">
+    ↓ Scroll Down
+  </button>
+</div>

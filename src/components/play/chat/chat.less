@@ -1,0 +1,55 @@
+
+.chat-container {
+  margin-top: -1rem;
+}
+
+.chat-nav {
+
+  overflow: scroll;
+
+  min-height: calc(~"100vh - 55px");
+  height: calc(~"100vh - 55px");
+  max-height: calc(~"100vh - 55px");
+
+  .nav-link {
+    border-radius: 0;
+  }
+}
+
+.chat-io {
+
+  .chat-input {
+    input.form-control {
+      border-radius: 0;
+      border-top: none;
+    }
+    button {
+      width: 100%;
+      border-radius: 0;
+    }
+  }
+}
+
+.chat-users {
+
+  overflow: scroll;
+
+  min-height: calc(~"100vh - 55px");
+  height: calc(~"100vh - 55px");
+  max-height: calc(~"100vh - 55px");
+
+  .user-card {
+    border-radius: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 0;
+
+    &:not(:first-child) {
+      border-top: none;
+    }
+
+    .card-title {
+      margin-bottom: 0;
+    }
+  }
+}
