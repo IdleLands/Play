@@ -2,6 +2,9 @@
 import 'reflect-metadata';
 import 'zone.js/dist/zone';
 
+// require the favicons
+require.context('../favicon', true, /^\.\//);
+
 import 'bootstrap/dist/css/bootstrap.css';
 import { HTTP_PROVIDERS } from '@angular/http';
 import { provide, PLATFORM_DIRECTIVES, enableProdMode } from '@angular/core';

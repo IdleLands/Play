@@ -48,6 +48,10 @@ module.exports = {
         loader: 'json'
       },
       {
+        test: /\.png|\.ico|\.xml/,
+        loader:'file-loader?name=favicon/[path][name].[ext]&context=./favicon'
+      },
+      {
         test: /\.woff|\.woff2|\.svg|.eot|\.ttf/,
         loader: 'file'
       },
