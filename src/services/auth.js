@@ -47,6 +47,7 @@ export class Auth {
     this.zoneImpl.run(() => this.user = null);
     this.primus.disconnect();
     this.router.navigate(['/']);
+    window.location.reload();
   }
 }
 

@@ -24,34 +24,55 @@ export class ChatComponent {
 
   constructor(primus) {
     this.primus = primus;
-    this.channels = _.keys(chatData);
+    this.isVisible = {};
     this._activeChannelMessages = new BehaviorSubject([]);
     this.activeChannelMessages = this._activeChannelMessages.asObservable();
     this.chatData = chatData;
+    this.channels = _.keys(chatData);
     this.changeChannel('General');
   }
 
   ngOnInit() {
     this.chatMessageSubscription = this.primus.contentUpdates.chatMessage.subscribe(data => this.addChatMessage(data));
     this.userSubscription = this.primus.contentUpdates.onlineUsers.subscribe(data => this.setOnlineUsers(data));
+    this.nameSubscription = this.primus.contentUpdates.player.subscribe(data => this.playerName = data.name);
   }
 
   ngOnDestroy() {
     this.chatMessageSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
+    this.nameSubscription.unsubscribe();
+  }
+
+  hideChannel(channel) {
+    this.chatData[channel].hidden = true;
+    
+    if(channel === this.activeChannel) {
+      setTimeout(() => this.changeChannel('General'));
+    }
   }
 
   setOnlineUsers(data) {
     this.onlineUsers = _.sortBy(data, 'playerName');
   }
 
+  getOtherPersonFromRoute(route) {
+    return _.reject(route.split(':')[2].split('|'), p => p === this.playerName)[0];
+  }
+
   addChatMessage(chatMessage) {
-    const channelName = chatMessage.channel;
+    let channelName = chatMessage.channel;
+
+    if(_.includes(chatMessage.route, ':pm:')) {
+      channelName = this.getOtherPersonFromRoute(chatMessage.route);
+    }
+
     if(!channelName) return;
     if(!this.chatData[channelName]) this.addChannel(channelName, chatMessage.route);
 
     const channel = this.chatData[channelName].messages;
     channel.push(chatMessage);
+    channel.hidden = false;
     while(channel.length > 1000) channel.shift();
 
     if(channelName !== this.activeChannel) {
@@ -59,6 +80,20 @@ export class ChatComponent {
     } else {
       this._activeChannelMessages.next(channel);
     }
+  }
+
+  openPM(withPlayer) {
+    const sortedUsers = [withPlayer, this.playerName].sort();
+    const channelName = `channel:pm:${sortedUsers.join('|')}`;
+    const myChannelName = withPlayer;
+
+    if(!this.chatData[myChannelName]) {
+      this.addChannel(myChannelName, channelName);
+    } else {
+      this.chatData[myChannelName].hidden = false;
+    }
+    this.activeChannel = myChannelName;
+
   }
 
   addChannel(newChannel, route) {
@@ -76,9 +111,8 @@ export class ChatComponent {
   sendMessage(message) {
     message = message.trim();
     if(!message) return;
-    const { name } = this.primus._contentUpdates.player.getValue();
     this.primus.emit('plugin:chat:sendmessage', {
-      playerName: name,
+      playerName: this.playerName,
       text: message,
       channel: this.activeChannel,
       route: this.chatData[this.activeChannel].route

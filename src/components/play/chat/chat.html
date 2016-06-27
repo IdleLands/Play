@@ -3,10 +3,22 @@
 
   <div class="col-md-3 chat-nav no-padding">
     <ul class="nav nav-pills nav-stacked">
-      <li class="nav-item" *ngFor="let channel of channels">
+      <li class="nav-item"
+          [hidden]="chatData[channel].hidden"
+          *ngFor="let channel of channels">
         <a class="nav-link"
            (click)="changeChannel(channel)"
-           [class.active]="activeChannel === channel">{{channel}} <span class="label label-pill label-info" *ngIf="chatData[channel].unread > 0">{{chatData[channel].unread}}</span></a>
+           (mouseenter)="isVisible['c'+channel] = true"
+           (mouseleave)="isVisible['c'+channel] = false"
+           [class.active]="activeChannel === channel">
+           <span>{{channel}}</span>
+           <span class="label label-pill label-info" *ngIf="chatData[channel].unread > 0">{{chatData[channel].unread}}</span>
+           <span class="pull-md-right pointer"
+                 (click)="hideChannel(channel)"
+                 *ngIf="chatData[channel].canHide && isVisible['c'+channel]">
+             <i fa [icon]="'close'"></i>
+           </span>
+        </a>
       </li>
     </ul>
   </div>
@@ -28,8 +40,18 @@
   </div>
 
   <div class="col-md-3 chat-users no-padding">
-    <div class="card card-block user-card" *ngFor="let user of onlineUsers">
-      <h6 class="card-title">{{ user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></h6>
+    <div class="card card-block user-card"
+         (mouseenter)="isVisible['u'+user.name] = user.name !== playerName"
+         (mouseleave)="isVisible['u'+user.name] = false"
+         *ngFor="let user of onlineUsers">
+      <h6 class="card-title">
+        <span>{{ user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
+        <span class="pull-md-right pointer"
+              *ngIf="isVisible['u'+user.name]"
+              (click)="openPM(user.name)">
+          <i fa [icon]="'comments'"></i>
+        </span>
+      </h6>
       <p class="card-text">
         <small>Level {{ user.level }} {{ user.professionName }}</small>
       </p>
