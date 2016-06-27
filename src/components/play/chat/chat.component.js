@@ -61,6 +61,8 @@ export class ChatComponent {
   }
 
   addChatMessage(chatMessage) {
+    if(!chatMessage) return;
+
     let channelName = chatMessage.channel;
 
     if(_.includes(chatMessage.route, ':pm:')) {
@@ -80,6 +82,9 @@ export class ChatComponent {
     } else {
       this._activeChannelMessages.next(channel);
     }
+
+    // prevent the next load from grabbing a new message accidentally
+    this.primus._contentUpdates.chatMessage.next(null);
   }
 
   openPM(withPlayer) {
