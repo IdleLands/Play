@@ -21,16 +21,21 @@ export class ChatOutputComponent {
     this.showScrollButton = false;
   }
 
+  canShowButton() {
+    return this.elementRef.nativeElement.parentElement.scrollHeight > this.baseElementHeight;
+  }
+
   atBottomish() {
     return this.elementRef.nativeElement.parentElement.scrollTop > this.elementRef.nativeElement.parentElement.scrollHeight - 500;
   }
 
   ngOnInit() {
+    this.baseElementHeight = this.elementRef.nativeElement.parentElement.scrollHeight;
     this.subscription = this.messages.subscribe(data => {
       const atBottom = this.atBottomish();
       this.allMessages = data;
-      if(atBottom) setTimeout(() => this.scrollToBottom());
-      else         this.showScrollButton = true;
+      if(atBottom)                   setTimeout(() => this.scrollToBottom());
+      else if(this.canShowButton())  this.showScrollButton = true;
     });
   }
 

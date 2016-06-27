@@ -46,7 +46,7 @@ export class ChatComponent {
 
   hideChannel(channel) {
     this.chatData[channel].hidden = true;
-    
+
     if(channel === this.activeChannel) {
       setTimeout(() => this.changeChannel('General'));
     }
