@@ -45,7 +45,7 @@ export class PrimusWrapper {
     this.socket.on('reconnect', () => {
       if(!this._cachedOpts || this._reconnecting) return;
       this._reconnecting = true;
-      this.registerPlayer(this._cachedOpts, () => this._reconnecting = false);
+      this.registerPlayer(this._cachedOpts, () => this._reconnecting = false, true);
     });
 
     this.socket.on('data', data => {
@@ -144,8 +144,8 @@ export class PrimusWrapper {
     this.socket.emit('plugin:player:logout', {});
   }
 
-  registerPlayer(opts, doNext = () => {}) {
-    if(this.hasRealUser.getValue() && this._cachedOpts) return;
+  registerPlayer(opts, doNext = () => {}, force = false) {
+    if(!force && this.hasRealUser.getValue() && this._cachedOpts) return;
     this.emit('plugin:player:login', opts, res => {
       if(!res.ok) return;
       doNext(res);
