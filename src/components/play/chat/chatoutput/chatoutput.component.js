@@ -26,7 +26,7 @@ export class ChatOutputComponent {
   }
 
   atBottomish() {
-    return this.elementRef.nativeElement.parentElement.scrollTop > this.elementRef.nativeElement.parentElement.scrollHeight - 500;
+    return this.elementRef.nativeElement.parentElement.scrollTop > this.elementRef.nativeElement.parentElement.scrollHeight - this.baseElementHeight - 100;
   }
 
   ngOnInit() {
