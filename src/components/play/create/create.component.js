@@ -66,7 +66,7 @@ export class CreateComponent {
   createCharacter() {
     this.primus.registerPlayer({
       name: this.name.value,
-      profession: this.profession,
+      professionName: this.profession,
       gender: this.gender,
       userId: this.storage.profile.user_id,
       token: this.storage.idToken
