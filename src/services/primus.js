@@ -59,9 +59,6 @@ export class PrimusWrapper {
     this.socket.on('reconnected', () => {
       if(!this._cachedOpts || this._reconnecting) return;
       this._reconnecting = true;
-      this.socket.end();
-      this.socket = null;
-      this.initSocket();
     });
 
     this.socket.on('data', data => {
