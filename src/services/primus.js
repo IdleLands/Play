@@ -23,11 +23,13 @@ export class PrimusWrapper {
     this.initSocket();
     this.outstandingCallbacks = {};
 
+    console.log(this.storage.adventureLog);
+
     this._contentUpdates = {
       isOnline: new BehaviorSubject('offline'),
       onlineUsers: new BehaviorSubject([]),
       chatMessage: new BehaviorSubject({}),
-      adventureLog: new BehaviorSubject([]),
+      adventureLog: new BehaviorSubject(this.storage.adventureLog || []),
       player: new BehaviorSubject({})
     };
 
@@ -143,7 +145,8 @@ export class PrimusWrapper {
     object.timestamp = Date.now();
     const adventureLog = this._contentUpdates.adventureLog.getValue();
     adventureLog.unshift(object);
-    if(adventureLog.length > 100) adventureLog.length = 100;
+    if(adventureLog.length > 50) adventureLog.length = 50;
+    this.storage.adventureLog = adventureLog;
     this._contentUpdates.adventureLog.next(adventureLog);
   }
 
