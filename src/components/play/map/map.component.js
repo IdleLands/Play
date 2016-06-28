@@ -42,7 +42,7 @@ class Game {
     sprite.inputEnabled = true;
 
     sprite.events.onInputOver.add(() => {
-      this.itemText = `Player: ${data.name}\nLevel ${sprite.level} ${sprite.professionName}`;
+      this.itemText = `Player: ${data.name}\nLevel ${sprite.level || data.level || data._level.__current} ${sprite.professionName || data.professionName}`;
     });
 
     sprite.events.onInputOut.add(() => this.itemText = '');
