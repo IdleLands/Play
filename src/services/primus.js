@@ -22,7 +22,7 @@ export class PrimusWrapper {
     this.pnotify = pnotify;
     this.initSocket();
     this.outstandingCallbacks = {};
-    
+
     this._contentUpdates = {
       isOnline: new BehaviorSubject('offline'),
       onlineUsers: new BehaviorSubject([]),

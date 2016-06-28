@@ -29,8 +29,8 @@ export class Auth {
     return tokenNotExpired('idp-idToken');
   }
 
-  login() {
-    this.lock.show({}, (err, profile, token) => {
+  login(func = 'show') {
+    this.lock[func]({}, (err, profile, token) => {
       if (err) {
         alert(err);
         return;
