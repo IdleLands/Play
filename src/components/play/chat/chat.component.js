@@ -107,7 +107,7 @@ export class ChatComponent {
     } else {
       this.chatData[myChannelName].hidden = false;
     }
-    this.activeChannel = myChannelName;
+    this.changeChannel(myChannelName);
 
   }
 
