@@ -22,6 +22,8 @@ class Game {
 
     this.player = null;
     this.text = null;
+    this.otherPlayers = [];
+    this.otherPlayerHash = {};
     this.itemText = '';
   }
 
@@ -29,12 +31,55 @@ class Game {
     this.game.load.tilemap(mapName, null, mapData, window.Phaser.Tilemap.TILED_JSON);
   }
 
-  createPlayer() {
-    const genders = {
-      male: 12,
-      female: 13
-    };
-    this.player = this.game.add.sprite(this.playerData.x*16, this.playerData.y*16, 'interactables', genders[this.playerData.gender]);
+  createPlayer(data) {
+    let genderNum = 12;
+    switch(data.gender) {
+    case 'male':    genderNum = 12; break;
+    case 'female':  genderNum = 13; break;
+    default:        genderNum = 14; break;
+    }
+    const sprite = this.game.add.sprite(data.x*16, data.y*16, 'interactables', genderNum);
+    sprite.inputEnabled = true;
+
+    sprite.events.onInputOver.add(() => {
+      this.itemText = `Player: ${data.name}\nLevel ${sprite.level} ${sprite.professionName}`;
+    });
+
+    sprite.events.onInputOut.add(() => this.itemText = '');
+    return sprite;
+  }
+
+  checkOtherPlayers() {
+    if (this.otherPlayers.length <= 1) return; // 1 player means it's always self
+
+    _.each(this.otherPlayers, player => {
+      if(player.name === this.player.name) return; // don't draw self
+
+      const prevSprite = this.otherPlayerHash[player.name];
+
+      // no sprite - try to make one
+      if(!prevSprite) {
+        if(player.map !== this.playerData.map) return; // not on same map, no need to draw it
+        const newSprite = this.createPlayer(player);
+        newSprite.level = player.level;
+        newSprite.professionName = player.professionName;
+        this.otherPlayerHash[player.name] = newSprite;
+
+      // has a sprite - try to update it
+      } else {
+
+        // not on the same map - destroy it
+        if(player.map !== this.playerData.map) {
+          prevSprite.destroy();
+          this.otherPlayerHash[player.name] = null;
+          return;
+        }
+
+        // update x,y - we're on the same map
+        prevSprite.x = player.x*16;
+        prevSprite.y = player.y*16;
+      }
+    });
   }
 
   hoverText() {
@@ -99,9 +144,9 @@ class Game {
         if(child.requireMap)         requires=true;requirementText += `\nMap Visited: ${child.requireHoliday}`;
 
         if(requires) this.itemText = `${this.itemText}\n${requirementText}`;
-
-        child.events.onInputOut.add(() => this.itemText = '');
       });
+
+      child.events.onInputOut.add(() => this.itemText = '');
     });
 
   }
@@ -124,12 +169,14 @@ class Game {
 
     this.createObjectData();
 
-    this.createPlayer();
+    this.player = this.createPlayer(this.playerData);
     this.game.camera.follow(this.player);
 
     const textOptions = { font: '15px Arial', fill: '#fff', stroke: '#000', strokeThickness: 3, wordWrap: true, wordWrapWidth: 500 };
     this.text = this.game.add.text(10, 10, this.textForPlayer(), textOptions);
     this.text.fixedToCamera = true;
+
+    this.checkOtherPlayers();
   }
 
   preload() {
@@ -159,6 +206,8 @@ class Game {
     this.player.y = this.playerData.y*16;
 
     this.text.text = this.textForPlayer();
+
+    this.checkOtherPlayers();
   }
 }
 
@@ -198,6 +247,11 @@ export class MapComponent {
     }
   }
 
+  setOtherUsers(data) {
+    if(!this._gameObj) return;
+    this._gameObj.otherPlayers = data;
+  }
+
   setMapData(mapName, mapData) {
     if(!this.game) {
       this._gameObj = new Game({ playerData: this.playerData, mapName: this.mapName });
@@ -210,9 +264,11 @@ export class MapComponent {
 
   ngOnInit() {
     this.playerSubscription = this.primus.contentUpdates.player.subscribe(data => this.setPlayerData(data));
+    this.otherPlayersSubscription = this.primus.contentUpdates.onlineUsers.subscribe(data => this.setOtherUsers(data));
   }
 
   ngOnDestroy() {
     this.playerSubscription.unsubscribe();
+    this.otherPlayersSubscription.unsubscribe();
   }
 }

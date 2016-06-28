@@ -119,6 +119,14 @@ export class PrimusWrapper {
         const player = _.find(userList, { name: data.data.name });
         _.extend(player, data.data);
         this._contentUpdates.onlineUsers.next(userList);
+      },
+      updateMass: () => {
+        const userList = this._contentUpdates.onlineUsers.getValue();
+        _.each(data.data, player => {
+          const playerRef = _.find(userList, { name: player.name });
+          _.extend(playerRef, player);
+        });
+        this._contentUpdates.onlineUsers.next(userList);
       }
     };
     operations[data.playerListOperation]();
