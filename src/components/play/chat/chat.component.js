@@ -1,6 +1,7 @@
 
 import _ from 'lodash';
 
+import { StorageService } from 'ng2-storage';
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { PrimusWrapper } from '../../../services/primus';
@@ -19,16 +20,17 @@ const chatData = {
 })
 export class ChatComponent {
   static get parameters() {
-    return [[PrimusWrapper]];
+    return [[PrimusWrapper], [StorageService]];
   }
 
-  constructor(primus) {
+  constructor(primus, storage) {
+    this.storage = storage.local;
     this.primus = primus;
     this.isVisible = {};
     this._activeChannelMessages = new BehaviorSubject([]);
     this.activeChannelMessages = this._activeChannelMessages.asObservable();
-    this.chatData = chatData;
-    this.channels = _.keys(chatData);
+    this.chatData = this.storage.chatData || chatData;
+    this.channels = _.keys(this.chatData);
     this.changeChannel('General');
   }
 
@@ -95,6 +97,8 @@ export class ChatComponent {
 
     // prevent the next load from grabbing a new message accidentally
     this.primus._contentUpdates.chatMessage.next(null);
+
+    this.formatChatDataForLocalSave(_.cloneDeep(this.chatData));
   }
 
   openPM(withPlayer) {
@@ -133,6 +137,19 @@ export class ChatComponent {
       route: this.chatData[this.activeChannel].route
     });
     this.chatMessage = '';
+  }
+
+  formatChatDataForLocalSave(data) {
+    _.each(data, (val, key) => {
+      if(val.hidden) {
+        delete data[key];
+        return;
+      }
+
+      while(val.messages.length > 10) val.messages.shift();
+    });
+
+    this.storage.chatData = data;
   }
 
 }
