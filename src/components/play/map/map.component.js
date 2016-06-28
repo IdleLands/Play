@@ -201,7 +201,7 @@ export class MapComponent {
   setMapData(mapName, mapData) {
     if(!this.game) {
       this._gameObj = new Game({ playerData: this.playerData, mapName: this.mapName });
-      this.game = new window.Phaser.Game('100%', '100%', window.Phaser.CANVAS, 'map', this._gameObj);
+      this.game = new window.Phaser.Game('100%', window.innerHeight - 54, window.Phaser.CANVAS, 'map', this._gameObj);
       this._gameObj.game = this.game;
     } else {
       this._gameObj.cacheMap(mapName, mapData);
