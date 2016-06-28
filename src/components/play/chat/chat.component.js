@@ -35,13 +35,23 @@ export class ChatComponent {
   ngOnInit() {
     this.chatMessageSubscription = this.primus.contentUpdates.chatMessage.subscribe(data => this.addChatMessage(data));
     this.userSubscription = this.primus.contentUpdates.onlineUsers.subscribe(data => this.setOnlineUsers(data));
-    this.nameSubscription = this.primus.contentUpdates.player.subscribe(data => this.playerName = data.name);
+    this.nameSubscription = this.primus.contentUpdates.player.subscribe(data => this.retrievePlayerData(data));
   }
 
   ngOnDestroy() {
     this.chatMessageSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
     this.nameSubscription.unsubscribe();
+  }
+
+  muteUser(otherUser) {
+    this.primus.mute(this.playerName, otherUser);
+  }
+
+  retrievePlayerData(player) {
+    this.playerName = player.name;
+    this.isMod = player.isMod;
+    this.isMuted = player.isMuted;
   }
 
   hideChannel(channel) {

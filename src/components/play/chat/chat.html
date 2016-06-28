@@ -31,10 +31,17 @@
 
     <div class="chat-input">
       <div class="col-md-10 no-padding">
-        <input type="text" class="form-control" [(ngModel)]="chatMessage" placeholder="Send a message to {{activeChannel}}..." (keyup.enter)="sendMessage(chatMessage)"/>
+        <input type="text"
+               class="form-control"
+               [(ngModel)]="chatMessage"
+               [disabled]="isMuted"
+               placeholder="Send a message to {{activeChannel}}..."
+               (keyup.enter)="sendMessage(chatMessage)"/>
       </div>
       <div class="col-md-2 no-padding">
-        <button class="btn btn-primary" (click)="sendMessage(chatMessage)">Send</button>
+        <button class="btn btn-primary"
+                [class.disabled]="isMuted"
+                (click)="sendMessage(chatMessage)">Send</button>
       </div>
     </div>
   </div>
@@ -45,11 +52,13 @@
          (mouseleave)="isVisible['u'+user.name] = false"
          *ngFor="let user of onlineUsers">
       <h6 class="card-title">
+        <i fa [icon]="'star'" *ngIf="user.isMod"></i>
+        <i fa [icon]="'ban'" *ngIf="user.isMuted"></i>
         <span>{{ user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
         <span class="pull-md-right pointer"
-              *ngIf="isVisible['u'+user.name]"
-              (click)="openPM(user.name)">
-          <i fa [icon]="'comments'"></i>
+              *ngIf="isVisible['u'+user.name]">
+          <i fa [icon]="'comments'" (click)="openPM(user.name)"></i>
+          <i fa [icon]="'ban'" *ngIf="isMod" (click)="muteUser(user.name)"></i>
         </span>
       </h6>
       <p class="card-text">

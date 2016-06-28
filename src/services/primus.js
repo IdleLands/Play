@@ -169,4 +169,8 @@ export class PrimusWrapper {
       this.hasRealUser.next(true);
     });
   }
+
+  mute(muter, mutee) {
+    this.emit('plugin:chat:togglemute', { playerName: muter, targetName: mutee });
+  }
 }
