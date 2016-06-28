@@ -65,7 +65,7 @@ export class ChatComponent {
   }
 
   setOnlineUsers(data) {
-    this.onlineUsers = _.sortBy(data, 'playerName');
+    this.onlineUsers = _.sortBy(data, p => p.playerName.toLowerCase());
   }
 
   getOtherPersonFromRoute(route) {
