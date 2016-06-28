@@ -45,7 +45,7 @@ export class PrimusWrapper {
     this.socket = Primus.connect(`${settings.protocol}://${settings.hostname}:${settings.port}`, {
       reconnect: {
         min: 250,
-        retries: 30,
+        retries: 100,
         factor: 1.5
       }
     });
@@ -63,8 +63,9 @@ export class PrimusWrapper {
     this.socket.on('open', () => {
       this._contentUpdates.isOnline.next('online');
       if(!this._reconnecting || !this._cachedOpts) return;
-      this.registerPlayer(this._cachedOpts, () => this._reconnecting = false, true);
-      // connection
+      setTimeout(() => {
+        this.registerPlayer(this._cachedOpts, () => this._reconnecting = false, true);
+      }, 1000);
     });
 
     this.socket.on('reconnected', () => {
