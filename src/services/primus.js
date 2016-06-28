@@ -24,6 +24,7 @@ export class PrimusWrapper {
     this.outstandingCallbacks = {};
 
     this._contentUpdates = {
+      isOnline: new BehaviorSubject('offline'),
       onlineUsers: new BehaviorSubject([]),
       chatMessage: new BehaviorSubject({}),
       adventureLog: new BehaviorSubject([]),
@@ -31,6 +32,7 @@ export class PrimusWrapper {
     };
 
     this.contentUpdates = {
+      isOnline: this._contentUpdates.isOnline.asObservable(),
       onlineUsers: this._contentUpdates.onlineUsers.asObservable(),
       chatMessage: this._contentUpdates.chatMessage.asObservable(),
       adventureLog: this._contentUpdates.adventureLog.asObservable(),
@@ -51,12 +53,15 @@ export class PrimusWrapper {
     this.socket.on('error', e => console.error('Socket error', e));
 
     this.socket.on('close', () => {
-      // no connection
+      this._contentUpdates.isOnline.next('offline');
     });
 
-    this.socket.on('reconnect scheduled', () => {}); // connecting
+    this.socket.on('reconnect scheduled', () => {
+      this._contentUpdates.isOnline.next('connecting');
+    });
 
     this.socket.on('open', () => {
+      this._contentUpdates.isOnline.next('online');
       if(!this._reconnecting || !this._cachedOpts) return;
       this.registerPlayer(this._cachedOpts, () => this._reconnecting = false, true);
       // connection
