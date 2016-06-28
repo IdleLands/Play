@@ -142,6 +142,10 @@ class Game {
     this.createMap();
   }
 
+  render() {
+    this.game.debug.spriteBounds(this.player, '#000', false);
+  }
+
   update() {
     if(this._currentMapName !== this.mapName) {
       this.game.state.restart();
