@@ -40,7 +40,13 @@ export class PrimusWrapper {
 
   initSocket() {
     if(this.socket) return;
-    this.socket = Primus.connect(`${settings.protocol}://${settings.hostname}:${settings.port}`);
+    this.socket = Primus.connect(`${settings.protocol}://${settings.hostname}:${settings.port}`, {
+      reconnect: {
+        min: 250,
+        retries: 30,
+        factor: 1.5
+      }
+    });
 
     this.socket.on('error', e => console.error('Socket error', e));
 
