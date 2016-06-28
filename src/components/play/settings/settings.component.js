@@ -15,7 +15,6 @@ const thanks = [
 ];
 
 @Component({
-  providers: [SweetAlertService],
   template
 })
 export class SettingsComponent {

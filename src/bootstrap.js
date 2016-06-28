@@ -10,6 +10,7 @@ import { HTTP_PROVIDERS } from '@angular/http';
 import { provide, PLATFORM_DIRECTIVES, enableProdMode } from '@angular/core';
 import { bootstrap } from '@angular/platform-browser-dynamic';
 
+import { SweetAlertService } from 'ng2-sweetalert2';
 import { FontAwesomeDirective } from 'ng2-fontawesome';
 
 import { PrimusWrapper } from './services/primus';
@@ -28,6 +29,7 @@ bootstrap(App, [
   HTTP_PROVIDERS,
   APP_ROUTER_PROVIDERS,
   PrimusWrapper,
+  SweetAlertService,
   StorageService,
   PNotifyService,
   AuthGuard,
