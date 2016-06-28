@@ -3,8 +3,7 @@
     <strong class="author">{{ message.playerName }}</strong>
     <small class="timestamp text-muted">{{ message.timestamp | date:'medium' }}</small>
   </div>
-  <div class="message-row">
-    {{ message.text }}
+  <div class="message-row" [innerHtml]="linkifyText(message.text)">
   </div>
 </div>
 

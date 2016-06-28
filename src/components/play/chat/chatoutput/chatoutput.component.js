@@ -1,4 +1,6 @@
 
+import linkify from 'linkifyjs/string';
+
 import { Component, ElementRef } from '@angular/core';
 import template from './chatoutput.html';
 import './chatoutput.less';
@@ -12,21 +14,9 @@ export class ChatOutputComponent {
   static get parameters() {
     return [[ElementRef]];
   }
+
   constructor(elementRef) {
     this.elementRef = elementRef;
-  }
-
-  scrollToBottom() {
-    this.elementRef.nativeElement.parentElement.scrollTop = this.elementRef.nativeElement.parentElement.scrollHeight + 100;
-    this.showScrollButton = false;
-  }
-
-  canShowButton() {
-    return this.elementRef.nativeElement.parentElement.scrollHeight > this.baseElementHeight;
-  }
-
-  atBottomish() {
-    return this.elementRef.nativeElement.parentElement.scrollTop > this.elementRef.nativeElement.parentElement.scrollHeight - this.baseElementHeight - 100;
   }
 
   ngOnInit() {
@@ -41,5 +31,22 @@ export class ChatOutputComponent {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+  }
+
+  linkifyText(text) {
+    return linkify(text);
+  }
+
+  scrollToBottom() {
+    this.elementRef.nativeElement.parentElement.scrollTop = this.elementRef.nativeElement.parentElement.scrollHeight + 100;
+    this.showScrollButton = false;
+  }
+
+  canShowButton() {
+    return this.elementRef.nativeElement.parentElement.scrollHeight > this.baseElementHeight;
+  }
+
+  atBottomish() {
+    return this.elementRef.nativeElement.parentElement.scrollTop > this.elementRef.nativeElement.parentElement.scrollHeight - this.baseElementHeight - 100;
   }
 }
