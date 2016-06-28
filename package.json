@@ -33,6 +33,7 @@
     "ng2-fontawesome": "0.0.4",
     "ng2-pnotify": "0.0.2",
     "ng2-storage": "0.0.2",
+    "ng2-sweetalert2": "0.0.3",
     "phaser": "^2.5.0",
     "primus": "^5.2.2",
     "reflect-metadata": "0.1.2",
