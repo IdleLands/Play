@@ -149,6 +149,7 @@ export class PrimusWrapper {
   }
 
   handleAdventureLog(object) {
+    if(object.type !== 'Global' && !_.includes(object.targets, this._contentUpdates.player.getValue().name)) return;
     object.timestamp = Date.now();
     const adventureLog = this._contentUpdates.adventureLog.getValue();
     adventureLog.unshift(object);
