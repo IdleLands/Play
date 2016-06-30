@@ -161,6 +161,7 @@ export class ChatComponent {
       }
 
       while(val.messages.length > 10) val.messages.shift();
+      if(val.unread > 10) val.unread = 10;
     });
 
     this.storage.chatData = data;
