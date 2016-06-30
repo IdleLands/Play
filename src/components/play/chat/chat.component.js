@@ -69,10 +69,12 @@ export class ChatComponent {
     this.chatData[channel].hidden = true;
 
     if(channel === this.activeChannel) {
-      setTimeout(() => this.changeChannel('General'));
+      setTimeout(() => {
+        this.changeChannel('General');
+        this.formatChatDataForLocalSave(this.chatData);
+      });
     }
 
-    this.formatChatDataForLocalSave(this.chatData);
   }
 
   setOnlineUsers(data) {
@@ -154,6 +156,7 @@ export class ChatComponent {
     _.each(data, (val, key) => {
       if(val.hidden) {
         delete data[key];
+        this.channels = _.without(this.channels, key);
         return;
       }
 

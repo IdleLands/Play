@@ -4,7 +4,7 @@
   <div class="col-md-3 chat-nav no-padding">
     <ul class="nav nav-pills nav-stacked">
       <li class="nav-item"
-          [hidden]="chatData[channel].hidden"
+          [hidden]="chatData[channel] && chatData[channel].hidden"
           *ngFor="let channel of channels">
         <a class="nav-link"
            (click)="changeChannel(channel)"
@@ -15,7 +15,7 @@
            <span class="label label-pill label-info" *ngIf="chatData[channel] && chatData[channel].unread > 0">{{chatData[channel].unread}}</span>
            <span class="pull-md-right pointer"
                  (click)="hideChannel(channel)"
-                 *ngIf="chatData[channel].canHide && isVisible['c'+channel]">
+                 *ngIf="chatData[channel] && chatData[channel].canHide && isVisible['c'+channel]">
              <i fa [icon]="'close'"></i>
            </span>
         </a>
