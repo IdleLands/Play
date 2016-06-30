@@ -148,7 +148,12 @@ export class PrimusWrapper {
     this.pnotify.pnotify(object);
   }
 
+  convertAdventureLogToChat(object) {
+    console.log(object);
+  }
+
   handleAdventureLog(object) {
+    this.convertAdventureLogToChat(object);
     if(object.type !== 'Global' && !_.includes(object.targets, this._contentUpdates.player.getValue().name)) return;
     object.timestamp = Date.now();
     const adventureLog = this._contentUpdates.adventureLog.getValue();

@@ -62,6 +62,8 @@ export class ChatComponent {
     if(channel === this.activeChannel) {
       setTimeout(() => this.changeChannel('General'));
     }
+
+    this.formatChatDataForLocalSave(this.chatData);
   }
 
   setOnlineUsers(data) {
@@ -148,7 +150,7 @@ export class ChatComponent {
 
       while(val.messages.length > 10) val.messages.shift();
     });
-
+    
     this.storage.chatData = data;
   }
 
