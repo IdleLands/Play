@@ -8,7 +8,7 @@
     "build:app": "webpack -p --progress && cp src/index.html dist/index.html && echo 'idle.land' > dist/CNAME",
     "test:lint": "eslint \"src/**/*.js\"",
     "test:ava": "ava --require babel-register",
-    "test": "npm run test:lint && npm run test:ava && npm run test:lang",
+    "test": "npm run test:lint",
     "start": "webpack-dev-server --open --content-base src/ --inline --hot",
     "deploy": "npm run build:app && gulp deploy"
   },
