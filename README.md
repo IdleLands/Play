@@ -1,4 +1,4 @@
-# IdleLandsPlay
+# IdleLandsPlay [![Build Status](https://travis-ci.org/IdleLands/Play.svg?branch=master)](https://travis-ci.org/IdleLands/Play)
 
 ## Running IdleLandsPlay
 
