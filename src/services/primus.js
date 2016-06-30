@@ -149,12 +149,15 @@ export class PrimusWrapper {
   }
 
   convertAdventureLogToChat(object) {
-    console.log(object);
+    const playerName = object.type === 'Global' ? '[Global]' : `[${object.targets.join(', ')}]`;
+    const channel = 'Global Events';
+    const route = 'chat:channel:Global Events';
+    this.handleChatMessage({ text: object.text, playerName, channel, route });
   }
 
   handleAdventureLog(object) {
     this.convertAdventureLogToChat(object);
-    if(object.type !== 'Global' && !_.includes(object.targets, this._contentUpdates.player.getValue().name)) return;
+    if(object.type === 'Global' || !_.includes(object.targets, this._contentUpdates.player.getValue().name)) return;
     object.timestamp = Date.now();
     const adventureLog = this._contentUpdates.adventureLog.getValue();
     adventureLog.unshift(object);

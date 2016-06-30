@@ -11,7 +11,8 @@ import './chat.less';
 import { ChatOutputComponent } from './chatoutput/chatoutput.component';
 
 const chatData = {
-  General: { unread: 0, route: 'chat:channel:General', messages: [], canHide: false }
+  General: { unread: 0, route: 'chat:channel:General', messages: [], canHide: false },
+  'Global Events': { unread: 0, route: 'chat:channel:Global Events', messages: [], canHide: false }
 };
 
 @Component({
@@ -29,7 +30,15 @@ export class ChatComponent {
     this.isVisible = {};
     this._activeChannelMessages = new BehaviorSubject([]);
     this.activeChannelMessages = this._activeChannelMessages.asObservable();
-    this.chatData = this.storage.chatData || chatData;
+    const newChatData = this.storage.chatData || chatData;
+
+    // adding new global channels will set their hideable status
+    _.each(chatData, (data, channel) => {
+      if(!newChatData[channel]) newChatData[channel] = _.cloneDeep(data);
+      newChatData[channel].canHide = data.canHide;
+    });
+
+    this.chatData = newChatData;
     this.channels = _.keys(this.chatData);
     this.changeChannel('General');
   }
@@ -150,7 +159,7 @@ export class ChatComponent {
 
       while(val.messages.length > 10) val.messages.shift();
     });
-    
+
     this.storage.chatData = data;
   }
 
