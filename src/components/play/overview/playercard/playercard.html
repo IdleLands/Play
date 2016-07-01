@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card player-card">
   <h4 class="card-header no-margin-bottom">{{player.name}}</h4>
   <progress class="progress progress-success" value="{{player._xp?.__current}}" max="{{player._xp?.maximum}}"></progress>
   <span class="progress-label">
@@ -10,18 +10,44 @@
   </div>
   <div class="card-block">
     <div class="card-text">
-      HP: {{ player._hp?.maximum }}
-    </div>
-    <div class="card-text">
-      MP: {{ player._mp?.maximum }}
+      Gold: {{ player.gold }}
     </div>
   </div>
   <div class="card-block">
     <div class="card-text">
-      Map: {{ player.map }}
-    </div>
-    <div class="card-text">
-      Region: {{ player.mapRegion }}
+      <table class="table stat-table">
+        <tr>
+          <td>HP</td>
+          <td class="text-md-right">{{ player._hp?.maximum }}</td>
+
+          <td>MP</td>
+          <td class="text-md-right">{{ player._mp?.maximum }}</td>
+        </tr>
+
+        <tr>
+          <td>STR</td>
+          <td class="text-md-right">{{ player.statCache?.str }}</td>
+
+          <td>CON</td>
+          <td class="text-md-right">{{ player.statCache?.con }}</td>
+        </tr>
+
+        <tr>
+          <td>DEX</td>
+          <td class="text-md-right">{{ player.statCache?.dex }}</td>
+
+          <td>AGI</td>
+          <td class="text-md-right">{{ player.statCache?.agi }}</td>
+        </tr>
+
+        <tr>
+          <td>INT</td>
+          <td class="text-md-right">{{ player.statCache?.int }}</td>
+
+          <td>LUK</td>
+          <td class="text-md-right">{{ player.statCache?.luk }}</td>
+        </tr>
+      </table>
     </div>
   </div>
 </div>
