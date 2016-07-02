@@ -5,12 +5,13 @@ import './overview.less';
 
 import { PlayerCardComponent } from './playercard/playercard';
 import { AdventureLogComponent } from './adventurelog/adventurelog';
+import { ChoiceLogComponent } from './choicelog/choicelog';
 
 import { PrimusWrapper } from '../../../services/primus';
 
 @Component({
   template,
-  directives: [PlayerCardComponent, AdventureLogComponent]
+  directives: [PlayerCardComponent, AdventureLogComponent, ChoiceLogComponent]
 })
 export class OverviewComponent {
 

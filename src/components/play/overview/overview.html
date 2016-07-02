@@ -8,5 +8,9 @@
     <div class="col-md-6">
       <adventurelog [adventureLog]="primus.contentUpdates.adventureLog | async"></adventurelog>
     </div>
+
+    <div class="col-md-3">
+      <choicelog [player]="primus.contentUpdates.player | async"></choicelog>
+    </div>
   </div>
 </div>

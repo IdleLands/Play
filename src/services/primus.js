@@ -200,4 +200,12 @@ export class PrimusWrapper {
   mute(muter, mutee) {
     this.emit('plugin:chat:togglemute', { playerName: muter, targetName: mutee });
   }
+
+  makeChoice(id, response) {
+    this.emit('plugin:player:makechoice', {
+      playerName: this._contentUpdates.player.getValue().name,
+      id,
+      response
+    });
+  }
 }
