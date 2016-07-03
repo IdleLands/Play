@@ -17,6 +17,7 @@ export class EquipmentComponent {
 
   constructor(primus) {
     this.primus = primus;
+    this.stats = ['str', 'con', 'dex', 'agi', 'int', 'luk'];
   }
 
   setPlayerData(data) {
