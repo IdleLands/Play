@@ -1,0 +1,26 @@
+<div class="container-fluid equipment-container">
+  <div class="row m-b-2 equipment-item" *ngFor="let slot of equipmentKeys">
+    <div class="col-md-2 left-side">
+      <div class="text-md-center class-{{player.equipment[slot].itemClass}}">
+        {{ slot }}
+      </div>
+    </div>
+    <div class="col-md-10">
+      <div class="item-header">
+        <strong class="item-name">
+          <span *ngIf="player.equipment[slot].enchantLevel > 0">+{{ player.equipment[slot].enchantLevel }} </span>
+          <span>{{ player.equipment[slot].name }}</span>
+        </strong>
+        <small class="item-timestamp text-muted">Found {{ player.equipment[slot].foundAt | date:'medium' }}</small>
+      </div>
+      <div class="item-stats">
+        <div class="no-padding col-md-2">STR {{ player.equipment[slot].str }}</div>
+        <div class="no-padding col-md-2">CON {{ player.equipment[slot].con }}</div>
+        <div class="no-padding col-md-2">DEX {{ player.equipment[slot].dex }}</div>
+        <div class="no-padding col-md-2">AGI {{ player.equipment[slot].agi }}</div>
+        <div class="no-padding col-md-2">INT {{ player.equipment[slot].int }}</div>
+        <div class="no-padding col-md-2">LUK {{ player.equipment[slot].luk }}</div>
+      </div>
+    </div>
+  </div>
+</div>

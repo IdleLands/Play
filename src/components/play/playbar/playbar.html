@@ -23,6 +23,12 @@
         </a>
       </li>
 
+      <li class="nav-item" [class.active]="hasActiveRoute('equipment')">
+        <a class="nav-link" [routerLink]="['/play/equipment']">
+          Equipment
+        </a>
+      </li>
+
       <li class="nav-item" [class.active]="hasActiveRoute('map')">
         <a class="nav-link" [routerLink]="['/play/map']">
           Map
