@@ -47,6 +47,14 @@ export class ChoiceLogComponent {
   <div class="col-md-2">${playerItem.luk}</div>
 </div>
 <div class="col-md-12 no-padding m-b-1">
+  <div class="col-md-2">STR</div>
+  <div class="col-md-2">CON</div>
+  <div class="col-md-2">DEX</div>
+  <div class="col-md-2">AGI</div>
+  <div class="col-md-2">INT</div>
+  <div class="col-md-2">LUK</div>
+</div>
+<div class="col-md-12 no-padding m-b-1">
   <div class="col-md-2">&darr;</div>
   <div class="col-md-2">&darr;</div>
   <div class="col-md-2">&darr;</div>
