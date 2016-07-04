@@ -10,6 +10,10 @@
       <button class="btn btn-secondary choice-button"
               (click)="makeChoice(choice.id, option)"
               *ngFor="let option of choice.choices">{{ option }}</button>
+
+      <button class="btn btn-info choice-button"
+              (click)="showMoreInfo(choice)"
+              *ngIf="choice.event === 'FindItem'">More Info</button>
     </div>
   </div>
 </div>
