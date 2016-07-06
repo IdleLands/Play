@@ -40,7 +40,14 @@ export class StatisticsComponent {
       });
     };
 
-    this.statistics = recurse(data);
+    const sortAll = (data) => {
+      _.each(data, obj => {
+        if(obj.children) obj.children = sortAll(obj.children);
+      });
+      return _.sortBy(data, 'name');
+    };
+
+    this.statistics = sortAll(recurse(data));
   }
 
   ngOnInit() {
