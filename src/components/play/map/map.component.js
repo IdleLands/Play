@@ -31,14 +31,21 @@ class Game {
     this.game.load.tilemap(mapName, null, mapData, window.Phaser.Tilemap.TILED_JSON);
   }
 
-  createPlayer(data) {
-    let genderNum = 12;
-    switch(data.gender) {
-    case 'male':    genderNum = 12; break;
-    case 'female':  genderNum = 13; break;
-    default:        genderNum = 14; break;
+  genderId(gender) {
+    switch(gender) {
+      case 'male':                return 12;
+      case 'female':              return 13;
+      case 'not a bear':          return 72;
+      case 'glowcloud':           return 62;
+      case 'astronomical entity': return 73;
+      default:                    return 11;
     }
+  }
+
+  createPlayer(data) {
+    const genderNum = this.genderId(data.gender);
     const sprite = this.game.add.sprite(data.x*16, data.y*16, 'interactables', genderNum);
+    sprite.gender = data.gender;
     sprite.inputEnabled = true;
 
     sprite.events.onInputOver.add(() => {
@@ -78,6 +85,11 @@ class Game {
         // update x,y - we're on the same map
         prevSprite.x = player.x*16;
         prevSprite.y = player.y*16;
+
+        if(prevSprite.gender !== player.gender) {
+          prevSprite.gender = player.gender;
+          prevSprite.frame = this.genderId(player.gender);
+        }
       }
     });
   }
@@ -204,6 +216,11 @@ class Game {
 
     this.player.x = this.playerData.x*16;
     this.player.y = this.playerData.y*16;
+
+    if(this.player.gender !== this.playerData.gender) {
+      this.player.gender = this.playerData.gender;
+      this.player.frame = this.genderId(this.player.gender);
+    }
 
     this.text.text = this.textForPlayer();
 

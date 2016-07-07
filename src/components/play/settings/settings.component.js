@@ -1,5 +1,6 @@
 
 import { SweetAlertService } from 'ng2-sweetalert2';
+import { PrimusWrapper } from '../../../services/primus';
 
 import _ from 'lodash';
 
@@ -20,11 +21,12 @@ const thanks = [
 export class SettingsComponent {
 
   static get parameters() {
-    return [[SweetAlertService]];
+    return [[SweetAlertService], [PrimusWrapper]];
   }
 
-  constructor(swal) {
+  constructor(swal, primus) {
     this.swal = swal;
+    this.primus = primus;
   }
 
   thanksHtml() {
@@ -51,5 +53,42 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
       title: 'Special Thanks',
       html: this.thanksHtml()
     });
+  }
+
+  parseTitles(achievementData) {
+    this.validTitles = _(achievementData)
+      .values()
+      .map(achi => achi.rewards)
+      .flattenDeep()
+      .filter(reward => reward.type === 'title')
+      .map(reward => reward.title)
+      .value();
+  }
+
+  changeGender($event) {
+    const newGender = $event.target.value;
+    this.primus.changeGender(newGender);
+  }
+
+  changeTitle($event) {
+    const newTitle = $event.target.value;
+    this.primus.changeTitle(newTitle);
+  }
+
+  ngOnInit() {
+    this.validGenders = ['male', 'female', 'not a bear', 'glowcloud', 'astronomical entity'];
+
+    const player = this.primus._contentUpdates.player.getValue();
+
+    this._playerData = {
+      gender: player.gender,
+      title: player.title
+    };
+
+    this.achievementSubscription = this.primus.contentUpdates.achievements.subscribe(data => this.parseTitles(data));
+  }
+
+  ngOnDestroy() {
+    this.achievementSubscription.unsubscribe();
   }
 }

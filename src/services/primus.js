@@ -201,6 +201,16 @@ export class PrimusWrapper {
     });
   }
 
+  changeGender(newGender) {
+    const playerName = this._contentUpdates.player.getValue().name;
+    this.emit('plugin:player:changegender', { playerName, gender: newGender });
+  }
+
+  changeTitle(newTitle) {
+    const playerName = this._contentUpdates.player.getValue().name;
+    this.emit('plugin:player:changetitle', { playerName, title: newTitle });
+  }
+
   mute(muter, mutee) {
     this.emit('plugin:chat:togglemute', { playerName: muter, targetName: mutee });
   }
