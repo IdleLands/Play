@@ -17,7 +17,7 @@ const AdventureLogIcons = {
   Meta: 'symbol-meta',
   Explore: 'symbol-explore',
   Levelup: 'symbol-levelup',
-  Achievement: 'symbol-acheivement',
+  Achievement: 'symbol-achievement',
   Combat: 'symbol-combat',
   Pet: 'symbol-pet',
   Guild: 'symbol-guild',
