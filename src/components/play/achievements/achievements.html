@@ -4,7 +4,7 @@
       <h3>No achievements.</h3>
     </div>
     <div class="col-md-3" *ngFor="let achievement of achievements">
-      <div class="card">
+      <div class="card achievement-card">
         <div class="card-block">
           <h4 class="card-title">
             <span><stat [name]="achievement.type"></stat> {{achievement.name}}</span>
