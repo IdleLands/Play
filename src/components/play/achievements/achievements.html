@@ -7,7 +7,7 @@
       <div class="card">
         <div class="card-block">
           <h4 class="card-title">
-            <span>{{achievement.name}}</span>
+            <span><stat [name]="achievement.type"></stat> {{achievement.name}}</span>
             <span *ngIf="achievement.tier > 1">(tier {{achievement.tier}})</span>
           </h4>
           <p class="card-text">{{achievement.desc}}</p>
