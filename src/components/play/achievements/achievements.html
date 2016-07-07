@@ -1,0 +1,19 @@
+<div class="container-fluid achievement-container">
+  <div class="row">
+    <div class="col-md-12 empty-text text-md-center text-muted" *ngIf="!achievements">
+      <h3>No achievements.</h3>
+    </div>
+    <div class="col-md-3" *ngFor="let achievement of achievements">
+      <div class="card">
+        <div class="card-block">
+          <h4 class="card-title">
+            <span>{{achievement.name}}</span>
+            <span *ngIf="achievement.tier > 1">(tier {{achievement.tier}})</span>
+          </h4>
+          <p class="card-text">{{achievement.desc}}</p>
+          <a class="btn btn-primary" (click)="moreInfo(achievement)">Rewards</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

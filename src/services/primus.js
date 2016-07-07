@@ -29,6 +29,7 @@ export class PrimusWrapper {
       chatMessage: new BehaviorSubject({}),
       adventureLog: new BehaviorSubject(this.storage.adventureLog || []),
       statistics: new BehaviorSubject({}),
+      achievements: new BehaviorSubject({}),
       player: new BehaviorSubject({})
     };
 
@@ -38,6 +39,7 @@ export class PrimusWrapper {
       chatMessage: this._contentUpdates.chatMessage.asObservable(),
       adventureLog: this._contentUpdates.adventureLog.asObservable(),
       statistics: this._contentUpdates.statistics.asObservable(),
+      achievements: this._contentUpdates.achievements.asObservable(),
       player: this._contentUpdates.player.asObservable()
     };
   }
