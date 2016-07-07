@@ -17,7 +17,9 @@
         <div class="no-padding col-md-2"
              *ngFor="let stat of stats"
              [class.negative-stat]="player.equipment[slot][stat] < 0"
-             [class.positive-stat]="player.equipment[slot][stat] > 0">{{ stat.toUpperCase() }} {{ player.equipment[slot][stat] }}</div>
+             [class.positive-stat]="player.equipment[slot][stat] > 0">
+          <stat [size]="'150'" [name]="stat"></stat> {{ player.equipment[slot][stat] }}
+        </div>
       </div>
     </div>
   </div>

@@ -10,8 +10,23 @@
 
     .adventure-log-message {
       padding-left: 1rem;
-      padding-top: 0.25rem;
-      padding-bottom: 0.25rem;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+
+      position: relative;
+
+      .message-icon {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+
+      .message-data {
+        padding-left: 50px;
+      }
     }
 
     .adventure-log-message:nth-child(2n) {

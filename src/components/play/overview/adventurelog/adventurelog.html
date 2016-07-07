@@ -2,8 +2,16 @@
   <h4 class="card-header no-margin-bottom">Adventure Log</h4>
   <div class="card-block no-padding">
     <div class="card-text adventure-log-message" *ngFor="let message of adventureLog">
-      <div class="message-timestamp text-muted"><small>{{ message.timestamp | date:'medium' }}</small></div>
-      <div class="message">{{ message.text }}</div>
+
+      <div class="message-icon">
+        <stat [size]="'300'" [name]="message.category"></stat>
+      </div>
+
+      <div class="message-data">
+        <div class="message-timestamp text-muted"><small>{{ message.timestamp | date:'medium' }}</small></div>
+        <div class="message">{{ message.text }}</div>
+      </div>
+
     </div>
   </div>
 </div>

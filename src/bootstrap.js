@@ -13,6 +13,7 @@ import { bootstrap } from '@angular/platform-browser-dynamic';
 import { SweetAlertService } from 'ng2-sweetalert2';
 import { GameIconsDirective } from 'ng2-gameicons';
 import { FontAwesomeDirective } from 'ng2-fontawesome';
+import { StatComponent } from './directives/stat';
 
 import { PrimusWrapper } from './services/primus';
 import { PNotifyService, PNotifySettings } from 'ng2-pnotify';
@@ -39,5 +40,6 @@ bootstrap(App, [
   { provide: LocationStrategy, useClass: HashLocationStrategy },
   provide(PLATFORM_DIRECTIVES, { useValue: TOOLTIP_DIRECTIVES, multi: true }),
   provide(PLATFORM_DIRECTIVES, { useValue: FontAwesomeDirective, multi: true }),
-  provide(PLATFORM_DIRECTIVES, { useValue: GameIconsDirective, multi: true })
+  provide(PLATFORM_DIRECTIVES, { useValue: GameIconsDirective, multi: true }),
+  provide(PLATFORM_DIRECTIVES, { useValue: StatComponent, multi: true })
 ]);

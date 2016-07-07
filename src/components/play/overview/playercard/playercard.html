@@ -8,43 +8,43 @@
     <h6 class="card-title text-muted">Level {{player._level?.__current}} {{player.professionName}} ({{player.gender}})</h6>
     <h6 class="card-subtitle">Joined {{ player.joinDate | date }}</h6>
   </div>
-  <div class="card-block">
+  <div class="card-block no-padding-bottom">
     <div class="card-text">
-      Gold: {{ player.gold }}
+      <stat [size]="200" [name]="'gold'"></stat> {{ player.gold }}
     </div>
   </div>
-  <div class="card-block">
+  <div class="card-block no-padding-bottom">
     <div class="card-text">
       <table class="table stat-table">
         <tr>
-          <td>HP</td>
+          <td class="no-padding"><stat [size]="'200'" [name]="'hp'"></stat></td>
           <td class="text-md-right">{{ player._hp?.maximum }}</td>
 
-          <td>MP</td>
+          <td class="no-padding"><stat [size]="'200'" [name]="'mp'"></stat></td>
           <td class="text-md-right">{{ player._mp?.maximum }}</td>
         </tr>
 
         <tr>
-          <td>STR</td>
+          <td class="no-padding"><stat [size]="'200'" [name]="'str'"></stat></td>
           <td class="text-md-right">{{ player.statCache?.str }}</td>
 
-          <td>CON</td>
+          <td class="no-padding"><stat [size]="'200'" [name]="'con'"></stat></td>
           <td class="text-md-right">{{ player.statCache?.con }}</td>
         </tr>
 
         <tr>
-          <td>DEX</td>
+          <td class="no-padding"><stat [size]="'200'" [name]="'dex'"></stat></td>
           <td class="text-md-right">{{ player.statCache?.dex }}</td>
 
-          <td>AGI</td>
+          <td class="no-padding"><stat [size]="'200'" [name]="'agi'"></stat></td>
           <td class="text-md-right">{{ player.statCache?.agi }}</td>
         </tr>
 
         <tr>
-          <td>INT</td>
+          <td class="no-padding"><stat [size]="'200'" [name]="'int'"></stat></td>
           <td class="text-md-right">{{ player.statCache?.int }}</td>
 
-          <td>LUK</td>
+          <td class="no-padding"><stat [size]="'200'" [name]="'luk'"></stat></td>
           <td class="text-md-right">{{ player.statCache?.luk }}</td>
         </tr>
       </table>
