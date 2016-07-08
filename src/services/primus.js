@@ -26,7 +26,7 @@ export class PrimusWrapper {
     this._contentUpdates = {
       isOnline: new BehaviorSubject('offline'),
       onlineUsers: new BehaviorSubject([]),
-      chatMessage: new BehaviorSubject({}),
+      chatMessage: new BehaviorSubject([]),
       adventureLog: new BehaviorSubject(this.storage.adventureLog || []),
       statistics: new BehaviorSubject({}),
       achievements: new BehaviorSubject({}),
@@ -139,7 +139,9 @@ export class PrimusWrapper {
 
   handleChatMessage(message) {
     message.timestamp = Date.now();
-    this._contentUpdates.chatMessage.next(message);
+    const currentMessages = this._contentUpdates.chatMessage.getValue() || [];
+    currentMessages.push(message);
+    this._contentUpdates.chatMessage.next(currentMessages);
   }
 
   handleContentUpdate(content) {

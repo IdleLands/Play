@@ -85,28 +85,31 @@ export class ChatComponent {
     return _.reject(route.split(':')[2].split('|'), p => p === this.playerName)[0];
   }
 
-  addChatMessage(chatMessage) {
-    if(!chatMessage) return;
+  addChatMessage(chatMessages) {
+    if(!chatMessages || chatMessages.length === 0) return;
 
-    let channelName = chatMessage.channel;
+    _.each(chatMessages, chatMessage => {
 
-    if(_.includes(chatMessage.route, ':pm:')) {
-      channelName = this.getOtherPersonFromRoute(chatMessage.route);
-    }
+      let channelName = chatMessage.channel;
 
-    if(!channelName) return;
-    if(!this.chatData[channelName]) this.addChannel(channelName, chatMessage.route);
+      if(_.includes(chatMessage.route, ':pm:')) {
+        channelName = this.getOtherPersonFromRoute(chatMessage.route);
+      }
 
-    const channel = this.chatData[channelName].messages;
-    channel.push(chatMessage);
-    channel.hidden = false;
-    while(channel.length > 500) channel.shift();
+      if(!channelName) return;
+      if(!this.chatData[channelName]) this.addChannel(channelName, chatMessage.route);
 
-    if(channelName !== this.activeChannel) {
-      this.chatData[channelName].unread++;
-    } else {
-      this._activeChannelMessages.next(channel);
-    }
+      const channel = this.chatData[channelName].messages;
+      channel.push(chatMessage);
+      channel.hidden = false;
+      while(channel.length > 500) channel.shift();
+
+      if(channelName !== this.activeChannel) {
+        this.chatData[channelName].unread++;
+      } else {
+        this._activeChannelMessages.next(channel);
+      }
+    });
 
     // prevent the next load from grabbing a new message accidentally
     this.primus._contentUpdates.chatMessage.next(null);
