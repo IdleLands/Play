@@ -15,6 +15,7 @@ import { GameIconsDirective } from 'ng2-gameicons';
 import { FontAwesomeDirective } from 'ng2-fontawesome';
 import { StatComponent } from './directives/stat';
 
+import { MessageNotifier } from './services/messagenotifier';
 import { PrimusWrapper } from './services/primus';
 import { PNotifyService, PNotifySettings } from 'ng2-pnotify';
 import { AuthGuard } from './services/auth';
@@ -34,6 +35,7 @@ bootstrap(App, [
   SweetAlertService,
   StorageService,
   PNotifyService,
+  MessageNotifier,
   AuthGuard,
   provide(StorageSettings, { useValue: { prefix: 'idp' } }),
   provide(PNotifySettings, { useValue: { styling: 'fontawesome' } }),

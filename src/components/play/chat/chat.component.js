@@ -5,6 +5,7 @@ import { StorageService } from 'ng2-storage';
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { PrimusWrapper } from '../../../services/primus';
+import { MessageNotifier } from '../../../services/messagenotifier';
 import template from './chat.html';
 import './chat.less';
 
@@ -21,12 +22,13 @@ const chatData = {
 })
 export class ChatComponent {
   static get parameters() {
-    return [[PrimusWrapper], [StorageService]];
+    return [[PrimusWrapper], [StorageService], [MessageNotifier]];
   }
 
-  constructor(primus, storage) {
+  constructor(primus, storage, notifier) {
     this.storage = storage.local;
     this.primus = primus;
+    this.notifier = notifier;
     this.isVisible = {};
     this._activeChannelMessages = new BehaviorSubject([]);
     this.activeChannelMessages = this._activeChannelMessages.asObservable();
@@ -47,12 +49,15 @@ export class ChatComponent {
     this.chatMessageSubscription = this.primus.contentUpdates.chatMessage.subscribe(data => this.addChatMessage(data));
     this.userSubscription = this.primus.contentUpdates.onlineUsers.subscribe(data => this.setOnlineUsers(data));
     this.nameSubscription = this.primus.contentUpdates.player.subscribe(data => this.retrievePlayerData(data));
+    this.notifier._blockMessages = true;
+    this.notifier.clearIndicators();
   }
 
   ngOnDestroy() {
     this.chatMessageSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
     this.nameSubscription.unsubscribe();
+    this.notifier._blockMessages = false;
   }
 
   muteUser(otherUser) {

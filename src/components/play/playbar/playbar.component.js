@@ -4,6 +4,7 @@ import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES, Router } from '@angular/router';
 import { Auth } from '../../../services/auth';
 import { PrimusWrapper } from '../../../services/primus';
+import { MessageNotifier } from '../../../services/messagenotifier';
 import template from './playbar.html';
 
 @Component({
@@ -15,21 +16,24 @@ import template from './playbar.html';
 })
 export class PlayBarComponent {
   static get parameters() {
-    return [[Router], [Auth], [PrimusWrapper]];
+    return [[Router], [Auth], [PrimusWrapper], [MessageNotifier]];
   }
 
-  constructor(router, auth, primus) {
+  constructor(router, auth, primus, notifier) {
     this.router = router;
     this.auth = auth;
     this.primus = primus;
+    this.notifier = notifier;
   }
 
   ngOnInit() {
     this.onlineSubscription = this.primus.contentUpdates.isOnline.subscribe(data => this.changeOnlineStatus(data));
+    this.messageSubscription = this.notifier.messagesAvailable.subscribe(data => this.unreadMessages = data);
   }
 
   ngOnDestroy() {
     this.onlineSubscription.unsubscribe();
+    this.messageSubscription.unsubscribe();
   }
 
   changeOnlineStatus(state) {

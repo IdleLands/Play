@@ -49,7 +49,7 @@
 
       <li class="nav-item" [class.active]="hasActiveRoute('chat')">
         <a class="nav-link" [routerLink]="['/play/chat']">
-          Chat
+          Chat <span *ngIf="unreadMessages > 0" class="label label-default">{{ unreadMessages }}</span>
         </a>
       </li>
 
