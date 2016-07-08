@@ -30,6 +30,7 @@ export class PrimusWrapper {
       adventureLog: new BehaviorSubject(this.storage.adventureLog || []),
       statistics: new BehaviorSubject({}),
       achievements: new BehaviorSubject({}),
+      personalities: new BehaviorSubject({ earned: [], active: {} }),
       player: new BehaviorSubject({})
     };
 
@@ -40,6 +41,7 @@ export class PrimusWrapper {
       adventureLog: this._contentUpdates.adventureLog.asObservable(),
       statistics: this._contentUpdates.statistics.asObservable(),
       achievements: this._contentUpdates.achievements.asObservable(),
+      personalities: this._contentUpdates.personalities.asObservable(),
       player: this._contentUpdates.player.asObservable()
     };
   }
@@ -211,6 +213,11 @@ export class PrimusWrapper {
   changeTitle(newTitle) {
     const playerName = this._contentUpdates.player.getValue().name;
     this.emit('plugin:player:changetitle', { playerName, title: newTitle });
+  }
+
+  togglePersonality(personality) {
+    const playerName = this._contentUpdates.player.getValue().name;
+    this.emit('plugin:player:togglepersonality', { playerName, personality });
   }
 
   mute(muter, mutee) {

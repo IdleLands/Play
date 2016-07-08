@@ -28,6 +28,24 @@
     </div>
   </div>
 
+  <div class="col-md-3" *ngIf="personalities.length > 0">
+    <div class="card personality-card">
+      <h4 class="card-header no-margin-bottom">Personalities</h4>
+      <div class="card-block">
+        <ul class="link-list">
+          <li *ngFor="let personality of personalities">
+            <div class="checkbox">
+              <label>
+                <input type="checkbox" [checked]="activePersonalities[personality.name]" (change)="togglePersonality(personality.name)">
+                <span [tooltip]="personality.description" tooltipPlacement="left">{{ personality.name }}</span>
+              </label>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
   <div class="col-md-3">
     <div class="card">
       <h4 class="card-header no-margin-bottom">Helpful Links</h4>

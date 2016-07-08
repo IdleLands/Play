@@ -27,6 +27,9 @@ export class SettingsComponent {
   constructor(swal, primus) {
     this.swal = swal;
     this.primus = primus;
+
+    this.personalities = [];
+    this.activePersonalities = {};
   }
 
   thanksHtml() {
@@ -65,6 +68,11 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
       .value();
   }
 
+  setPersonalities({ active, earned }) {
+    this.personalities = earned;
+    this.activePersonalities = active;
+  }
+
   changeGender($event) {
     const newGender = $event.target.value;
     this.primus.changeGender(newGender);
@@ -73,6 +81,10 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
   changeTitle($event) {
     const newTitle = $event.target.value;
     this.primus.changeTitle(newTitle);
+  }
+
+  togglePersonality(personality) {
+    this.primus.togglePersonality(personality);
   }
 
   ngOnInit() {
@@ -86,9 +98,11 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
     };
 
     this.achievementSubscription = this.primus.contentUpdates.achievements.subscribe(data => this.parseTitles(data));
+    this.personalitySubscription = this.primus.contentUpdates.personalities.subscribe(data => this.setPersonalities(data));
   }
 
   ngOnDestroy() {
     this.achievementSubscription.unsubscribe();
+    this.personalitySubscription.unsubscribe();
   }
 }
