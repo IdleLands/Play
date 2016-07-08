@@ -34,7 +34,6 @@ const AchievementIcons = {
   Combat: 'symbol-combat',
   Special: 'symbol-special',
   Event: 'symbol-event'
-
 };
 
 export const AllIcons = _.extend(StatIcons, AdventureLogIcons, AchievementIcons);
