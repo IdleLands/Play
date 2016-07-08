@@ -100,7 +100,7 @@ export class ChatComponent {
     const channel = this.chatData[channelName].messages;
     channel.push(chatMessage);
     channel.hidden = false;
-    while(channel.length > 1000) channel.shift();
+    while(channel.length > 500) channel.shift();
 
     if(channelName !== this.activeChannel) {
       this.chatData[channelName].unread++;
