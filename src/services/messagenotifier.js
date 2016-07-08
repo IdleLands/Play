@@ -33,7 +33,7 @@ export class MessageNotifier {
     if(!messageData || messageData.length === 0) return;
 
     const currentMessages = _(messageData)
-      .reject(msg => msg.channel === 'General Events')
+      .reject(msg => msg.channel === 'Global Events')
       .size();
 
     if(!this._blockMessages) {
