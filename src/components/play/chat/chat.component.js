@@ -50,7 +50,10 @@ export class ChatComponent {
     this.userSubscription = this.primus.contentUpdates.onlineUsers.subscribe(data => this.setOnlineUsers(data));
     this.nameSubscription = this.primus.contentUpdates.player.subscribe(data => this.retrievePlayerData(data));
     this.notifier._blockMessages = true;
-    this.notifier.clearIndicators();
+
+    setTimeout(() => {
+      this.notifier.clearIndicators();
+    });
   }
 
   ngOnDestroy() {
