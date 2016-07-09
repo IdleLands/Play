@@ -35,7 +35,7 @@ export class AchievementsComponent {
       if(reward.type === 'stats') {
         _.each(reward, (val, key) => {
           if(key === 'type') return;
-          html += `<div><strong>${key.toUpperCase()}</strong> ${val}</div>`;
+          html += `<div><strong>${key.split('Display').join('').toUpperCase()}</strong> ${val || reward[`${key}Display`]}</div>`;
         });
 
       } else if(reward.type === 'title') {
