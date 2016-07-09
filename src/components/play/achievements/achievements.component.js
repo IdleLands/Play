@@ -41,6 +41,8 @@ export class AchievementsComponent {
       } else if(reward.type === 'title') {
         html += `<div><strong>Title</strong> ${reward.title}</div>`;
 
+      } else if(reward.type === 'personality') {
+        html += `<div><strong>Personality</strong> ${reward.personality}</div>`;
       }
     });
 
