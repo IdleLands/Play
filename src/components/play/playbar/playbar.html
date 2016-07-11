@@ -41,6 +41,12 @@
         </a>
       </li>
 
+      <li class="nav-item" [class.active]="hasActiveRoute('collectibles')">
+        <a class="nav-link" [routerLink]="['/play/collectibles']">
+          Collectibles
+        </a>
+      </li>
+
       <li class="nav-item" [class.active]="hasActiveRoute('statistics')">
         <a class="nav-link" [routerLink]="['/play/statistics']">
           Statistics

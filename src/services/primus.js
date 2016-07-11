@@ -30,6 +30,7 @@ export class PrimusWrapper {
       adventureLog: new BehaviorSubject(this.storage.adventureLog || []),
       statistics: new BehaviorSubject({}),
       achievements: new BehaviorSubject({}),
+      collectibles: new BehaviorSubject({}),
       personalities: new BehaviorSubject({ earned: [], active: {} }),
       player: new BehaviorSubject({})
     };
@@ -42,6 +43,7 @@ export class PrimusWrapper {
       statistics: this._contentUpdates.statistics.asObservable(),
       achievements: this._contentUpdates.achievements.asObservable(),
       personalities: this._contentUpdates.personalities.asObservable(),
+      collectibles: this._contentUpdates.collectibles.asObservable(),
       player: this._contentUpdates.player.asObservable()
     };
   }

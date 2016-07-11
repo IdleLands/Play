@@ -1,0 +1,22 @@
+<div class="container-fluid collectible-container">
+  <div class="row">
+
+    <div class="col-md-12 empty-text text-md-center text-muted" *ngIf="!collectibles || !collectibles.length">
+      <h3>No collectibles.</h3>
+    </div>
+
+    <div class="col-md-3" *ngFor="let collectible of collectibles">
+      <div class="card collectible-card">
+        <div class="card-block">
+          <h4 class="card-title text-md-center">
+            <span class="class-{{collectible.rarity}}">{{collectible.name}}</span>
+          </h4>
+          <h6 class="text-muted">{{collectible.storyline}}</h6>
+          <h6 class="text-muted">Found in {{collectible.map}} - {{collectible.region}} <small class="text-muted">on {{collectible.foundAt | date:'medium'}}</small></h6>
+          <p class="card-text">{{collectible.description}}</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
