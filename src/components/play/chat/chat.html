@@ -55,10 +55,24 @@
         <i fa [icon]="'star'" *ngIf="user.isMod"></i>
         <i fa [icon]="'ban'" *ngIf="user.isMuted"></i>
         <span>{{ user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
+
+        <span class="pull-md-right pointer" dropdown *ngIf="isMod">
+          <i fa [fw]="true" [icon]="'ellipsis-v'" dropdownToggle></i>
+          <ul class="dropdown-menu dropdown-menu-right" dropdownMenu>
+            <li>
+              <a class="dropdown-item" (click)="muteUser(user.name)" *ngIf="user.isMuted">Unmute user</a>
+              <a class="dropdown-item" (click)="muteUser(user.name)" *ngIf="!user.isMuted">Mute user</a>
+              <a class="dropdown-item" (click)="gmToggleMod(user.name)" *ngIf="user.isMod">Remove Moderator</a>
+              <a class="dropdown-item" (click)="gmToggleMod(user.name)" *ngIf="!user.isMod">Make Moderator</a>
+              <a class="dropdown-item" (click)="gmTeleport(user.name)">Teleport to Location</a>
+              <!-- <a class="dropdown-item" href>Teleport to...</a> -->
+            </li>
+          </ul>
+        </span>
+
         <span class="pull-md-right pointer"
               *ngIf="isVisible['u'+user.name]">
-          <i fa [icon]="'comments'" (click)="openPM(user.name)"></i>
-          <i fa [icon]="'ban'" *ngIf="isMod" (click)="muteUser(user.name)"></i>
+          <i fa [fw]="true" [icon]="'comments'" (click)="openPM(user.name)"></i>
         </span>
       </h6>
       <p class="card-text">

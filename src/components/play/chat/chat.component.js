@@ -1,6 +1,8 @@
 
 import _ from 'lodash';
 
+import { SweetAlertService } from 'ng2-sweetalert2';
+import { DROPDOWN_DIRECTIVES } from 'ng2-bootstrap/components/dropdown';
 import { StorageService } from 'ng2-storage';
 import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -17,18 +19,19 @@ const chatData = {
 };
 
 @Component({
-  directives: [ChatOutputComponent],
+  directives: [ChatOutputComponent, DROPDOWN_DIRECTIVES],
   template
 })
 export class ChatComponent {
   static get parameters() {
-    return [[PrimusWrapper], [StorageService], [MessageNotifier]];
+    return [[PrimusWrapper], [StorageService], [MessageNotifier], [SweetAlertService]];
   }
 
-  constructor(primus, storage, notifier) {
+  constructor(primus, storage, notifier, swal) {
     this.storage = storage.local;
     this.primus = primus;
     this.notifier = notifier;
+    this.swal = swal;
     this.isVisible = {};
     this._activeChannelMessages = new BehaviorSubject([]);
     this.activeChannelMessages = this._activeChannelMessages.asObservable();
@@ -49,6 +52,7 @@ export class ChatComponent {
     this.chatMessageSubscription = this.primus.contentUpdates.chatMessage.subscribe(data => this.addChatMessage(data));
     this.userSubscription = this.primus.contentUpdates.onlineUsers.subscribe(data => this.setOnlineUsers(data));
     this.nameSubscription = this.primus.contentUpdates.player.subscribe(data => this.retrievePlayerData(data));
+    this.gmSubscription = this.primus.contentUpdates.gmdata.subscribe(data => this.gmData = data);
     this.notifier._blockMessages = true;
 
     setTimeout(() => {
@@ -60,6 +64,7 @@ export class ChatComponent {
     this.chatMessageSubscription.unsubscribe();
     this.userSubscription.unsubscribe();
     this.nameSubscription.unsubscribe();
+    this.gmSubscription.unsubscribe();
     this.notifier._blockMessages = false;
   }
 
@@ -176,6 +181,26 @@ export class ChatComponent {
     });
 
     this.storage.chatData = data;
+  }
+
+  gmTeleport(targetName) {
+    this.swal.swal({
+      title: 'Select a Teleport Location',
+      input: 'select',
+      inputOptions: _(this.gmData.teleNames).reduce((prev, cur) => {
+        prev[cur] = cur;
+        return prev;
+      }, {}),
+      inputPlaceholder: 'Select location...',
+      showCancelButton: true
+    }).then(loc => {
+      if(!loc) return;
+      this.primus.teleport(targetName, loc);
+    });
+  }
+
+  gmToggleMod(targetName) {
+    this.primus.toggleMod(targetName);
   }
 
 }

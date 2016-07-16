@@ -32,7 +32,8 @@ export class PrimusWrapper {
       achievements: new BehaviorSubject({}),
       collectibles: new BehaviorSubject({}),
       personalities: new BehaviorSubject({ earned: [], active: {} }),
-      player: new BehaviorSubject({})
+      player: new BehaviorSubject({}),
+      gmdata: new BehaviorSubject({})
     };
 
     this.contentUpdates = {
@@ -44,7 +45,8 @@ export class PrimusWrapper {
       achievements: this._contentUpdates.achievements.asObservable(),
       personalities: this._contentUpdates.personalities.asObservable(),
       collectibles: this._contentUpdates.collectibles.asObservable(),
-      player: this._contentUpdates.player.asObservable()
+      player: this._contentUpdates.player.asObservable(),
+      gmdata: this._contentUpdates.gmdata.asObservable()
     };
   }
 
@@ -155,6 +157,10 @@ export class PrimusWrapper {
 
   handleNotification(object) {
     object.text = object.notify;
+    object.nonblock = {
+      nonblock: true,
+      nonblock_opacity: .2
+    };
     this.pnotify.pnotify(object);
   }
 
@@ -231,6 +237,21 @@ export class PrimusWrapper {
       playerName: this._contentUpdates.player.getValue().name,
       id,
       response
+    });
+  }
+
+  teleport(targetName, location) {
+    this.emit('plugin:gm:teleport', {
+      targetName,
+      teleData: {
+        toLoc: location
+      }
+    });
+  }
+
+  toggleMod(targetName) {
+    this.emit('plugin:gm:togglemod', {
+      targetName
     });
   }
 }
