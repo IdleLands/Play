@@ -48,7 +48,7 @@
 
   <div class="col-md-3 chat-users no-padding">
     <div class="card card-block user-card"
-         (mouseenter)="isVisible['u'+user.name] = user.name !== playerName"
+         (mouseenter)="isVisible['u'+user.name] = true"
          (mouseleave)="isVisible['u'+user.name] = false"
          *ngFor="let user of onlineUsers">
       <h6 class="card-title">
@@ -56,7 +56,7 @@
         <i fa [icon]="'ban'" *ngIf="user.isMuted"></i>
         <span>{{ user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
 
-        <span class="pull-md-right pointer" dropdown *ngIf="isMod">
+        <span class="pull-md-right pointer" dropdown *ngIf="isMod && isVisible['u'+user.name]">
           <i fa [fw]="true" [icon]="'ellipsis-v'" dropdownToggle></i>
           <ul class="dropdown-menu dropdown-menu-right" dropdownMenu>
             <li>
@@ -71,7 +71,7 @@
         </span>
 
         <span class="pull-md-right pointer"
-              *ngIf="isVisible['u'+user.name]">
+              *ngIf="isVisible['u'+user.name] && user.name !== playerName">
           <i fa [fw]="true" [icon]="'comments'" (click)="openPM(user.name)"></i>
         </span>
       </h6>
