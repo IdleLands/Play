@@ -25,7 +25,9 @@ export class MessageNotifier {
 
   clearIndicators() {
     this._messagesAvailable.next(0);
-    this.favicon.badge(0);
+    if(this.favicon) {
+      this.favicon.badge(0);
+    }
   }
 
   possiblyDisplayMessages(messageData) {
@@ -39,7 +41,7 @@ export class MessageNotifier {
     if(!this._blockMessages) {
       this._messagesAvailable.next(currentMessages);
     }
-    if(!this._blockMessages || document.hidden) {
+    if(this.favicon && !this._blockMessages || document.hidden) {
       this.favicon.badge(currentMessages);
     }
   }
