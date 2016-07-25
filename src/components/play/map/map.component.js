@@ -60,7 +60,7 @@ class Game {
     if (this.otherPlayers.length <= 1) return; // 1 player means it's always self
 
     _.each(this.otherPlayers, player => {
-      if(player.name === this.player.name) return; // don't draw self
+      if(player.name === this.playerData.name) return; // don't draw self
 
       const prevSprite = this.otherPlayerHash[player.name];
 
