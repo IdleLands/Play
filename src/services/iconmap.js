@@ -20,6 +20,7 @@ const AdventureLogIcons = {
   Achievement: 'symbol-achievement',
   Combat: 'symbol-combat',
   Pet: 'symbol-pet',
+  Party: 'symbol-party',
   Guild: 'symbol-guild',
   Towncrier: 'symbol-towncrier',
   Item: 'symbol-item',
