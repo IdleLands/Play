@@ -165,7 +165,8 @@ export class PrimusWrapper {
   }
 
   convertAdventureLogToChat(object) {
-    const playerName = object.type === 'Global' ? '[Global]' : `[${object.targets.join(', ')}]`;
+    const targets = object.targetsDisplay ? object.targetsDisplay : object.targets;
+    const playerName = object.type === 'Global' ? '[Global]' : `[${targets.join(', ')}]`;
     const channel = 'Global Events';
     const route = 'chat:channel:Global Events';
     this.handleChatMessage({ text: object.text, playerName, channel, route });
