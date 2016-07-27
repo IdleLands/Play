@@ -203,4 +203,17 @@ export class ChatComponent {
     this.primus.toggleMod(targetName);
   }
 
+  gmNameChange(targetName) {
+    this.swal.swal({
+      title: 'Choose a new name',
+      input: 'text',
+      inputPlaceholder: 'Enter name...',
+      inputValue: targetName,
+      showCancelButton: true
+    }).then(name => {
+      if(!name) return;
+      this.primus.changeName(this.playerName, targetName, name);
+    });
+  }
+
 }

@@ -232,6 +232,10 @@ export class PrimusWrapper {
     this.emit('plugin:chat:togglemute', { playerName: muter, targetName: mutee });
   }
 
+  changeName(changer, changee, newName) {
+    this.emit('plugin:player:changename', { playerName: changer, targetName: changee, newName });
+  }
+
   makeChoice(id, response) {
     this.emit('plugin:player:makechoice', {
       playerName: this._contentUpdates.player.getValue().name,

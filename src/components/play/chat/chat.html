@@ -54,7 +54,7 @@
       <h6 class="card-title">
         <i fa [icon]="'star'" *ngIf="user.isMod"></i>
         <i fa [icon]="'ban'" *ngIf="user.isMuted"></i>
-        <span>{{ user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
+        <span>{{ user.nameEdit ? user.nameEdit : user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
 
         <span class="pull-md-right pointer" dropdown *ngIf="isMod && isVisible['u'+user.name]">
           <i fa [fw]="true" [icon]="'ellipsis-v'" dropdownToggle></i>
@@ -65,6 +65,7 @@
               <a class="dropdown-item" (click)="gmToggleMod(user.name)" *ngIf="user.isMod">Remove Moderator</a>
               <a class="dropdown-item" (click)="gmToggleMod(user.name)" *ngIf="!user.isMod">Make Moderator</a>
               <a class="dropdown-item" (click)="gmTeleport(user.name)">Teleport to Location</a>
+              <a class="dropdown-item" (click)="gmNameChange(user.name)">Change Name</a>
               <!-- <a class="dropdown-item" href>Teleport to...</a> -->
             </li>
           </ul>

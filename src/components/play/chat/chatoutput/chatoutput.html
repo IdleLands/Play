@@ -1,6 +1,6 @@
 <div class="message" *ngFor="let message of allMessages">
   <div class="author-row">
-    <strong class="author">{{ message.playerName }}</strong>
+    <strong class="author">{{ message.playerName }}<span *ngIf="message.title">, the {{ message.title }}</span></strong>
     <small class="timestamp text-muted">{{ message.timestamp | date:'medium' }}</small>
   </div>
   <div class="message-row" [innerHtml]="linkifyText(message.text)">
