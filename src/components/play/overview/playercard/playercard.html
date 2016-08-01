@@ -1,5 +1,5 @@
 <div class="card player-card">
-  <h4 class="card-header no-margin-bottom">{{player.name}}</h4>
+  <h4 class="card-header no-margin-bottom">{{player.nameEdit || player.name}}</h4>
   <progress class="progress progress-success" value="{{player._xp?.__current}}" max="{{player._xp?.maximum}}"></progress>
   <span class="progress-label">
     {{player._xp?.__current | number}}/{{player._xp?.maximum | number}}
