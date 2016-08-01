@@ -65,6 +65,7 @@
               <a class="dropdown-item" (click)="gmToggleMod(user.name)" *ngIf="user.isMod">Remove Moderator</a>
               <a class="dropdown-item" (click)="gmToggleMod(user.name)" *ngIf="!user.isMod">Make Moderator</a>
               <a class="dropdown-item" (click)="gmTeleport(user.name)">Teleport to Location</a>
+              <a class="dropdown-item" (click)="gmToggleAchievement(user.name)">Toggle Permanent Achievement</a>
               <a class="dropdown-item" (click)="gmNameChange(user.name)">Change Name</a>
               <!-- <a class="dropdown-item" href>Teleport to...</a> -->
             </li>

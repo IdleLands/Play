@@ -203,6 +203,23 @@ export class ChatComponent {
     this.primus.toggleMod(targetName);
   }
 
+  gmToggleAchievement(targetName) {
+    this.swal.swal({
+      title: 'Select an achievement',
+      input: 'select',
+      inputOptions: _(this.gmData.permAchs).reduce((prev, cur) => {
+        prev[cur.property] = cur.name;
+        return prev;
+      }, {}),
+      inputPlaceholder: 'Select achievement...',
+      showCancelButton: true
+    }).then(achievement => {
+      if(!achievement) return;
+      console.log(achievement);
+      this.primus.toggleAchievement(targetName, achievement);
+    });
+  }
+
   gmNameChange(targetName) {
     this.swal.swal({
       title: 'Choose a new name',

@@ -259,4 +259,11 @@ export class PrimusWrapper {
       targetName
     });
   }
+
+  toggleAchievement(targetName, achievement) {
+    this.emit('plugin:gm:toggleachievement', {
+      targetName,
+      achievement
+    });
+  }
 }
