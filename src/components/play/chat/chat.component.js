@@ -105,8 +105,9 @@ export class ChatComponent {
 
       let channelName = chatMessage.channel;
 
-      if(_.includes(chatMessage.route, ':pm:')) {
+      if(_.startsWith(chatMessage.route, 'channel:pm:')) {
         channelName = this.getOtherPersonFromRoute(chatMessage.route);
+        chatMessage.channel = channelName;
       }
 
       if(!channelName) return;
@@ -215,7 +216,6 @@ export class ChatComponent {
       showCancelButton: true
     }).then(achievement => {
       if(!achievement) return;
-      console.log(achievement);
       this.primus.toggleAchievement(targetName, achievement);
     });
   }
