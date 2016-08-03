@@ -233,4 +233,16 @@ export class ChatComponent {
     });
   }
 
+  gmBan(targetName) {
+    this.swal.confirm({
+      title: 'Are you sure you want to ban this user?',
+      text: 'This is really annoying to revert!',
+      type: 'warning',
+      showCancelButton: true
+    }).then(res => {
+      if(!res) return;
+      this.primus.banUser(this.playerName, targetName);
+    });
+  }
+
 }

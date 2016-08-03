@@ -266,4 +266,11 @@ export class PrimusWrapper {
       achievement
     });
   }
+
+  banUser(playerName, targetName) {
+    this.emit('plugin:gm:toggleban', {
+      playerName,
+      targetName
+    });
+  }
 }
