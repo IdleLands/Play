@@ -268,7 +268,7 @@ export class PrimusWrapper {
   }
 
   banUser(playerName, targetName) {
-    this.emit('plugin:gm:toggleban', {
+    this.emit('plugin:chat:toggleban', {
       playerName,
       targetName
     });
