@@ -33,6 +33,7 @@ export class PrimusWrapper {
       collectibles: new BehaviorSubject({}),
       personalities: new BehaviorSubject({ earned: [], active: {} }),
       player: new BehaviorSubject({}),
+      party: new BehaviorSubject({}),
       gmdata: new BehaviorSubject({})
     };
 
@@ -46,6 +47,7 @@ export class PrimusWrapper {
       personalities: this._contentUpdates.personalities.asObservable(),
       collectibles: this._contentUpdates.collectibles.asObservable(),
       player: this._contentUpdates.player.asObservable(),
+      party: this._contentUpdates.party.asObservable(),
       gmdata: this._contentUpdates.gmdata.asObservable()
     };
   }

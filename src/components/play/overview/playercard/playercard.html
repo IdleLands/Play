@@ -55,4 +55,14 @@
       </table>
     </div>
   </div>
+
+  <div class="card-block" *ngIf="party.name">
+    <strong>Party: {{ party.name }}</strong>
+    <ul>
+      <li *ngFor="let player of party.players">
+        {{ player.name }} ({{player.level}} {{player.profession}})
+      </li>
+    </ul>
+  </div>
+
 </div>

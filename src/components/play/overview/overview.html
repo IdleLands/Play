@@ -2,7 +2,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-md-3">
-      <playercard [player]="primus.contentUpdates.player | async"></playercard>
+      <playercard [player]="primus.contentUpdates.player | async" [party]="primus.contentUpdates.party | async"></playercard>
     </div>
 
     <div class="col-md-6">
