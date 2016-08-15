@@ -8,7 +8,12 @@
       </div>
 
       <div class="message-data">
-        <div class="message-timestamp text-muted"><small>{{ message.timestamp | date:'medium' }}</small></div>
+        <div class="message-timestamp text-muted">
+          <small>{{ message.timestamp | date:'medium' }}</small>
+          <small *ngIf="message.extraData && message.extraData.battleName">
+            <a class="pointer" [routerLink]="['/play/combat', { name: message.extraData.battleName }]">[View Battle]</a>
+          </small>
+        </div>
         <div class="message">{{ message.text }}</div>
       </div>
 

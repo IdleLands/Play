@@ -34,7 +34,8 @@ export class PrimusWrapper {
       personalities: new BehaviorSubject({ earned: [], active: {} }),
       player: new BehaviorSubject({}),
       party: new BehaviorSubject({}),
-      gmdata: new BehaviorSubject({})
+      gmdata: new BehaviorSubject({}),
+      battle: new BehaviorSubject({})
     };
 
     this.contentUpdates = {
@@ -48,7 +49,8 @@ export class PrimusWrapper {
       collectibles: this._contentUpdates.collectibles.asObservable(),
       player: this._contentUpdates.player.asObservable(),
       party: this._contentUpdates.party.asObservable(),
-      gmdata: this._contentUpdates.gmdata.asObservable()
+      gmdata: this._contentUpdates.gmdata.asObservable(),
+      battle: this._contentUpdates.battle.asObservable()
     };
   }
 
@@ -229,6 +231,13 @@ export class PrimusWrapper {
   togglePersonality(personality) {
     const playerName = this._contentUpdates.player.getValue().name;
     this.emit('plugin:player:togglepersonality', { playerName, personality });
+  }
+
+  loadBattle(battleName) {
+    this.emit('plugin:combat:retrieve', {
+      playerName: this._contentUpdates.player.getValue().name,
+      battleName
+    });
   }
 
   mute(muter, mutee) {
