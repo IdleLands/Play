@@ -32,10 +32,14 @@
       <hr>
       <div *ngFor="let party of message.data" class="row">
         <em class="col-md-2">{{ party.name }}</em>
-        <span class="col-md-4" *ngFor="let member of party.players">
-          <strong>{{ member.name }}</strong>
-          <span>[HP {{member.hp.__current}}/{{member.hp.maximum}}]</span>
-          <span>[MP {{member.mp.__current}}/{{member.mp.maximum}}]</span>
+        <span class="col-md-10">
+          <ul>
+            <li *ngFor="let member of party.players">
+              <strong>{{ member.name }}</strong>
+              <span>[HP {{member.hp.__current}}/{{member.hp.maximum}}]</span>
+              <span>[MP {{member.mp.__current}}/{{member.mp.maximum}}]</span>
+            </li>
+          </ul>
         </span>
       </div>
       <hr>
