@@ -8,11 +8,12 @@
     <div class="col-md-3" *ngFor="let collectible of collectibles">
       <div class="card collectible-card">
         <div class="card-block">
-          <h4 class="card-title text-md-center">
+          <h6 class="card-title text-md-center m-b-0">
             <span class="class-{{collectible.rarity}}">{{collectible.name}}</span>
-          </h4>
+          </h6>
           <h6 class="text-muted">{{collectible.storyline}}</h6>
-          <h6 class="text-muted">Found in {{collectible.map}} - {{collectible.region}} <small class="text-muted">on {{collectible.foundAt | date:'medium'}}</small></h6>
+          <h6 class="text-muted">{{collectible.map}} - {{collectible.region}}</h6>
+          <small class="text-muted">Found on {{collectible.foundAt | date:'longDate'}}</small>
           <p class="card-text">{{collectible.description}}</p>
         </div>
       </div>

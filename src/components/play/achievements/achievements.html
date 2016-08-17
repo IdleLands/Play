@@ -6,10 +6,10 @@
     <div class="col-md-3" *ngFor="let achievement of achievements">
       <div class="card achievement-card">
         <div class="card-block">
-          <h4 class="card-title">
+          <h6 class="card-title">
             <span><stat [name]="achievement.type"></stat> {{achievement.name}}</span>
             <span *ngIf="achievement.tier > 1">(tier {{achievement.tier}})</span>
-          </h4>
+          </h6>
           <p class="card-text">{{achievement.desc}}</p>
           <a class="btn btn-primary" (click)="moreInfo(achievement)">Rewards</a>
         </div>
