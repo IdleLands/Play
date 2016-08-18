@@ -36,7 +36,7 @@ export class ChoiceLogComponent {
   <h4>Type: ${playerItem.type}</h4>
 </div>
 <div class="col-md-12 no-padding text-md-center m-b-1">
-  <strong>${playerItem.name}</strong> (Score: ${playerItem._calcScore})
+  <strong>${playerItem.name}</strong> (Score: ${playerItem._calcScore}, ${Math.round(playerItem._calcScore/playerItem._baseScore*100)}%)
 </div>
 <div class="col-md-12 no-padding m-b-1">
   <div class="col-md-2">${playerItem.str}</div>
@@ -63,7 +63,7 @@ export class ChoiceLogComponent {
   <div class="col-md-2">&darr;</div>
 </div>
 <div class="col-md-12 no-padding text-md-center m-b-1">
-  <strong>${choiceItem.name}</strong> (Score: ${choiceItem._calcScore})
+  <strong>${choiceItem.name}</strong> (Score: ${choiceItem._calcScore}, 100%)
 </div>
 <div class="col-md-12 no-padding m-b-1">
   <div class="col-md-2 ${playerItem.str > choiceItem.str ? 'negative' : 'positive'}-stat">${choiceItem.str}</div>

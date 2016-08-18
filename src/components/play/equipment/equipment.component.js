@@ -25,6 +25,10 @@ export class EquipmentComponent {
     this.equipmentKeys = _.sortBy(_.keys(data.equipment));
   }
 
+  scoreRating(item) {
+    return Math.round(item._calcScore/item._baseScore*100);
+  }
+
   ngOnInit() {
     this.playerSubscription = this.primus.contentUpdates.player.subscribe(data => this.setPlayerData(data));
   }
