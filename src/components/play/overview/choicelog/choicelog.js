@@ -36,7 +36,7 @@ export class ChoiceLogComponent {
   <h4>Type: ${playerItem.type}</h4>
 </div>
 <div class="col-md-12 no-padding text-md-center m-b-1">
-  <strong>${playerItem.name}</strong> (Score: ${playerItem._calcScore}, ${Math.round(playerItem._calcScore/playerItem._baseScore*100)}%)
+  <strong>${playerItem.name}</strong> (Score: ${playerItem._calcScore} [base ${playerItem._baseScore}], ${Math.round(playerItem._calcScore/playerItem._baseScore*100)}%)
 </div>
 <div class="col-md-12 no-padding m-b-1">
   <div class="col-md-2">${playerItem.str}</div>
