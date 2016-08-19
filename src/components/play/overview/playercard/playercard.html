@@ -56,7 +56,7 @@
     </div>
   </div>
 
-  <div class="card-block" *ngIf="party.name">
+  <div class="card-block" *ngIf="party.name && !party.isBattleParty">
     <strong>Party: {{ party.name }}</strong>
     <ul>
       <li *ngFor="let player of party.players">
