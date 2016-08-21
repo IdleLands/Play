@@ -13,10 +13,12 @@ import './chat.less';
 
 import { ChatOutputComponent } from './chatoutput/chatoutput.component';
 
-const chatData = {
+let chatData = {
   General: { unread: 0, route: 'chat:channel:General', messages: [], canHide: false },
   'Global Events': { unread: 0, route: 'chat:channel:Global Events', messages: [], canHide: false }
 };
+
+let needsLoad = true;
 
 @Component({
   directives: [ChatOutputComponent, DROPDOWN_DIRECTIVES],
@@ -35,7 +37,12 @@ export class ChatComponent {
     this.isVisible = {};
     this._activeChannelMessages = new BehaviorSubject([]);
     this.activeChannelMessages = this._activeChannelMessages.asObservable();
-    const newChatData = this.storage.chatData || chatData;
+
+    if(needsLoad) {
+      chatData = this.storage.chatData;
+      needsLoad = false;
+    }
+    const newChatData = chatData;
 
     // adding new global channels will set their hideable status
     _.each(chatData, (data, channel) => {
