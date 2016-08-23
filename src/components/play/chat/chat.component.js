@@ -13,6 +13,8 @@ import './chat.less';
 
 import { ChatOutputComponent } from './chatoutput/chatoutput.component';
 
+const MAX_MESSAGES = 100;
+
 let chatData = {
   General: { unread: 0, route: 'chat:channel:General', messages: [], canHide: false },
   'Global Events': { unread: 0, route: 'chat:channel:Global Events', messages: [], canHide: false }
@@ -123,10 +125,11 @@ export class ChatComponent {
       const channel = this.chatData[channelName].messages;
       channel.push(chatMessage);
       channel.hidden = false;
-      while(channel.length > 200) channel.shift();
+      while(channel.length > MAX_MESSAGES) channel.shift();
 
       if(channelName !== this.activeChannel) {
         this.chatData[channelName].unread++;
+        if(this.chatData[channelName].unread > MAX_MESSAGES) this.chatData[channelName].unread = MAX_MESSAGES;
       } else {
         this._activeChannelMessages.next(channel);
       }
