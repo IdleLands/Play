@@ -12,7 +12,7 @@
            (mouseleave)="isVisible['c'+channel] = false"
            [class.active]="activeChannel === channel">
            <span>{{channel}}</span>
-           <span class="label label-pill label-info" *ngIf="chatData[channel] && chatData[channel].unread > 0">{{chatData[channel].unread}}</span>
+           <span class="tag tag-pill tag-info" *ngIf="chatData[channel] && chatData[channel].unread > 0">{{chatData[channel].unread}}</span>
            <span class="pull-md-right pointer"
                  (click)="hideChannel(channel)"
                  *ngIf="chatData[channel] && chatData[channel].canHide && isVisible['c'+channel]">

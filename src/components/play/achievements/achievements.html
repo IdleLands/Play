@@ -11,7 +11,7 @@
             <span *ngIf="achievement.tier > 1">(tier {{achievement.tier}})</span>
           </h6>
           <p class="card-text">{{achievement.desc}}</p>
-          <a class="btn btn-primary" (click)="moreInfo(achievement)">Rewards</a>
+          <button class="btn btn-primary active" (click)="moreInfo(achievement)">Rewards</button>
         </div>
       </div>
     </div>
