@@ -32,7 +32,7 @@ export class PlayComponent {
       if(this.needsCreate) return;
 
       this.primus.registerPlayer({ userId: this.storage.profile.user_id, token: this.storage.idToken }, () => {
-        if(_.includes(window.location.href, '/play/(')) return;
+        if(_.includes(window.location.href, '/play/')) return;
         this.router.navigate(['/play/overview']);
       });
     });
