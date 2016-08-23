@@ -16,8 +16,8 @@ import { ChatOutputComponent } from './chatoutput/chatoutput.component';
 const MAX_MESSAGES = 100;
 
 let chatData = {
-  General: { unread: 0, route: 'chat:channel:General', messages: [], canHide: false },
-  'Global Events': { unread: 0, route: 'chat:channel:Global Events', messages: [], canHide: false }
+  General: { unread: 0, route: 'chat:channel:General', messages: [], canHide: false }
+  // 'Global Events': { unread: 0, route: 'chat:channel:Global Events', messages: [], canHide: false }
 };
 
 let needsLoad = true;
@@ -42,8 +42,10 @@ export class ChatComponent {
 
     if(needsLoad) {
       chatData = this.storage.chatData;
+      if(chatData['Global Events']) delete chatData['Global Events'];
       needsLoad = false;
     }
+
     const newChatData = chatData;
 
     // adding new global channels will set their hideable status
