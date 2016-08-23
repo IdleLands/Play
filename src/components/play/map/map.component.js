@@ -124,6 +124,8 @@ class Game {
       };
     });
 
+    if(this.playerData.map === mapName) return;
+
     // re-cache the tilemap with the new data
     this.game.cache.removeTilemap(mapName);
     this.cacheMap(mapName, map.data);

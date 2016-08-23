@@ -64,6 +64,8 @@ export class PrimusWrapper {
       }
     });
 
+    window.socket = this.socket;
+
     this.socket.on('error', e => console.error('Socket error', e));
 
     this.socket.on('close', () => {
