@@ -2,7 +2,7 @@
 import _ from 'lodash';
 
 import { Http } from '@angular/http';
-import { Component } from '@angular/core';
+import { Component, NgZone } from '@angular/core';
 import template from './map.html';
 import './map.less';
 
@@ -239,12 +239,13 @@ class Game {
 export class MapComponent {
 
   static get parameters() {
-    return [[PrimusWrapper], [Http]];
+    return [[PrimusWrapper], [Http], [NgZone]];
   }
 
-  constructor(primus, http) {
+  constructor(primus, http, ngZone) {
     this.primus = primus;
     this.http = http;
+    this.ngZone = ngZone;
 
     this.playerData = primus._contentUpdates.player.getValue();
   }
@@ -276,9 +277,11 @@ export class MapComponent {
 
   setMapData(mapName, mapData) {
     if(!this.game) {
-      this._gameObj = new Game({ playerData: this.playerData, mapName: this.mapName });
-      this.game = new window.Phaser.Game('100%', window.innerHeight - 54, window.Phaser.CANVAS, 'map', this._gameObj);
-      this._gameObj.game = this.game;
+      this.ngZone.runOutsideAngular(() => {
+        this._gameObj = new Game({ playerData: this.playerData, mapName: this.mapName });
+        this.game = new window.Phaser.Game('100%', window.innerHeight - 54, window.Phaser.CANVAS, 'map', this._gameObj);
+        this._gameObj.game = this.game;
+      });
     } else {
       this._gameObj.cacheMap(mapName, mapData);
     }
@@ -292,6 +295,9 @@ export class MapComponent {
   ngOnDestroy() {
     this.playerSubscription.unsubscribe();
     this.otherPlayersSubscription.unsubscribe();
+
+    this.game.destroy();
+
     const elements = document.getElementsByTagName('canvas');
     while(elements[0]) elements[0].parentNode.removeChild(elements[0]);
   }
