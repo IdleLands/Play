@@ -204,6 +204,7 @@ class Game {
   }
 
   render() {
+    if(!this.player) return;
     this.game.debug.spriteBounds(this.player, '#000', false);
   }
 
@@ -215,6 +216,8 @@ class Game {
     }
 
     this._currentMapName = this.mapName;
+
+    if(!this.player) return;
 
     this.player.x = this.playerData.x*16;
     this.player.y = this.playerData.y*16;
@@ -289,5 +292,7 @@ export class MapComponent {
   ngOnDestroy() {
     this.playerSubscription.unsubscribe();
     this.otherPlayersSubscription.unsubscribe();
+    const elements = document.getElementsByTagName('canvas');
+    while(elements[0]) elements[0].parentNode.removeChild(elements[0]);
   }
 }
