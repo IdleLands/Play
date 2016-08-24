@@ -41,10 +41,13 @@ export class ChatComponent {
     this.activeChannelMessages = this._activeChannelMessages.asObservable();
 
     if(needsLoad) {
-      chatData = this.storage.chatData;
-      if(chatData['Global Events']) delete chatData['Global Events'];
+      if(this.storage.chatData) {
+        chatData = this.storage.chatData;
+      }
       needsLoad = false;
     }
+
+    if(chatData && chatData['Global Events']) delete chatData['Global Events'];
 
     const newChatData = chatData;
 
