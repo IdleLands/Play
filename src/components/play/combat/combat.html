@@ -38,6 +38,7 @@
               <strong>{{ member.name }}</strong>
               <span>[HP {{member.hp.__current}}/{{member.hp.maximum}}]</span>
               <span>[MP {{member.mp.__current}}/{{member.mp.maximum}}]</span>
+              <span *ngIf="member.special.name">[{{member.special.name}} {{member.special.__current}}/{{member.special.maximum}}]</span>
             </li>
           </ul>
         </span>
