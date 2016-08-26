@@ -8,7 +8,7 @@
     <div class="col-md-10 right-side">
       <div class="item-header">
         <strong class="item-name">
-          <span *ngIf="player.equipment[slot].enchantLevel > 0">+{{ player.equipment[slot].enchantLevel }} </span>
+          <span *ngIf="player.equipment[slot].enchantLevel > 0">+{{ player.equipment[slot].enchantLevel }}</span>
           <span>{{ player.equipment[slot].name }}</span>
         </strong>
         <small class="item-timestamp text-muted">Found {{ player.equipment[slot].foundAt | date:'medium' }}; Score Rating: {{ scoreRating(player.equipment[slot]) }}%</small>
