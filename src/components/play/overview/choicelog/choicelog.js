@@ -31,14 +31,15 @@ export class ChoiceLogComponent {
     const player = this.primus._contentUpdates.player.getValue();
     const playerItem = player.equipment[choiceItem.type] || { str: 0, dex: 0, con: 0, int: 0, agi: 0, luk: 0, _baseScore: 1, _calcScore: 1 };
 
+    const choiceItemName = choiceItem.enchantLevel > 0 ? `+${choiceItem.enchantLevel} ${choiceItem.name}` : choiceItem.name;
+    const playerItemName = playerItem.enchantLevel > 0 ? `+${playerItem.enchantLevel} ${playerItem.name}` : playerItem.name;
+
     const html = `
 <div class="col-md-12 no-padding text-md-center">
   <h4>Type: ${choiceItem.type}</h4>
 </div>
 <div class="col-md-12 no-padding text-md-center m-b-1">
-  <strong>
-    <span *ngIf="playerItem.enchantLevel > 0">+{{ playerItem.enchantLevel }}</span> ${playerItem.name}
-  </strong> (Score: ${playerItem._calcScore} [base ${playerItem._baseScore}], ${Math.round(playerItem._calcScore/playerItem._baseScore*100)}%)
+  <strong>${playerItemName}</strong> (Score: ${playerItem._calcScore} [base ${playerItem._baseScore}], ${Math.round(playerItem._calcScore/playerItem._baseScore*100)}%)
 </div>
 <div class="col-md-12 no-padding m-b-1">
   <div class="col-md-2">${playerItem.str}</div>
@@ -65,9 +66,7 @@ export class ChoiceLogComponent {
   <div class="col-md-2">&darr;</div>
 </div>
 <div class="col-md-12 no-padding text-md-center m-b-1">
-  <strong>
-    <span *ngIf="choiceItem.enchantLevel > 0">+{{ choiceItem.enchantLevel }}</span> ${choiceItem.name}
-  </strong> (Score: ${choiceItem._calcScore}, 100%)
+  <strong>${choiceItemName}</strong> (Score: ${choiceItem._calcScore}, 100%)
 </div>
 <div class="col-md-12 no-padding m-b-1">
   <div class="col-md-2 ${playerItem.str > choiceItem.str ? 'negative' : 'positive'}-stat">${choiceItem.str}</div>
