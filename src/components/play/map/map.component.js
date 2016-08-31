@@ -197,6 +197,7 @@ class Game {
   }
 
   preload() {
+    this.game.stage.disableVisibilityChange = true;
     this.game.load.image('tiles', `${baseUrl}/maps/img/tiles.png`, 16, 16);
     this.game.load.spritesheet('interactables', `${baseUrl}/maps/img/tiles.png`, 16, 16);
     this.game.load.tilemap(this.mapName, `${baseUrl}/maps/world-maps/${this.playerData.mapPath}`, null, window.Phaser.Tilemap.TILED_JSON);
