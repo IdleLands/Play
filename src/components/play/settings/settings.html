@@ -24,6 +24,11 @@
           </option>
         </select>
 
+        <label>
+          <input type="checkbox" [checked]="storage.showPersonalityWindow" (change)="storage.showPersonalityWindow = !storage.showPersonalityWindow">
+          <span>Show Personalities on Map</span>
+        </label>
+
       </div>
     </div>
   </div>

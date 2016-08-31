@@ -8,6 +8,8 @@ import { Component } from '@angular/core';
 import template from './settings.html';
 import './settings.less';
 
+import { StorageService } from 'ng2-storage';
+
 const thanks = [
   { name: 'Darkblizer', reason: 'Art' },
   { name: 'Sedgwick', reason: 'Donation, Maps' },
@@ -21,12 +23,14 @@ const thanks = [
 export class SettingsComponent {
 
   static get parameters() {
-    return [[SweetAlertService], [PrimusWrapper]];
+    return [[SweetAlertService], [PrimusWrapper], [StorageService]];
   }
 
-  constructor(swal, primus) {
+  constructor(swal, primus, storage) {
     this.swal = swal;
     this.primus = primus;
+
+    this.storage = storage.local;
 
     this.personalities = [];
     this.activePersonalities = {};

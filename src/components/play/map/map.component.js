@@ -6,6 +6,9 @@ import { Component, NgZone } from '@angular/core';
 import template from './map.html';
 import './map.less';
 
+import { StorageService } from 'ng2-storage';
+import { Draggable } from '../../../directives/draggable';
+
 window.PIXI = require('pixi.js');
 window.p2 = require('p2');
 window.Phaser = require('phaser');
@@ -234,20 +237,31 @@ class Game {
 }
 
 @Component({
-  template
+  template,
+  directives: [Draggable]
 })
 export class MapComponent {
 
   static get parameters() {
-    return [[PrimusWrapper], [Http], [NgZone]];
+    return [[PrimusWrapper], [Http], [NgZone], [StorageService]];
   }
 
-  constructor(primus, http, ngZone) {
+  constructor(primus, http, ngZone, storageService) {
     this.primus = primus;
     this.http = http;
     this.ngZone = ngZone;
+    this.storage = storageService.local;
+    if(!this.storage.lastWindowPos) this.storage.lastWindowPos = { x: 0, y: 54 };
+
+    this.personalities = [];
+    this.activePersonalities = {};
 
     this.playerData = primus._contentUpdates.player.getValue();
+  }
+
+  updatePos({ pos }) {
+    if(!pos || !pos.x || !pos.y) return;
+    this.storage.lastWindowPos = pos;
   }
 
   loadMap(mapName, mapPath) {
@@ -287,14 +301,25 @@ export class MapComponent {
     }
   }
 
+  togglePersonality(personality) {
+    this.primus.togglePersonality(personality);
+  }
+
+  setPersonalities({ active, earned }) {
+    this.personalities = earned;
+    this.activePersonalities = active;
+  }
+
   ngOnInit() {
     this.playerSubscription = this.primus.contentUpdates.player.subscribe(data => this.setPlayerData(data));
     this.otherPlayersSubscription = this.primus.contentUpdates.onlineUsers.subscribe(data => this.setOtherUsers(data));
+    this.personalitySubscription = this.primus.contentUpdates.personalities.subscribe(data => this.setPersonalities(data));
   }
 
   ngOnDestroy() {
     this.playerSubscription.unsubscribe();
     this.otherPlayersSubscription.unsubscribe();
+    this.personalitySubscription.unsubscribe();
 
     this.game.destroy();
 
