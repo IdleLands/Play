@@ -47,40 +47,45 @@
   </div>
 
   <div class="col-md-3 chat-users no-padding">
-    <div class="card card-block user-card"
-         (mouseenter)="isVisible['u'+user.name] = true"
-         (mouseleave)="isVisible['u'+user.name] = false"
-         *ngFor="let user of onlineUsers">
-      <h6 class="card-title">
-        <i fa [icon]="'star'" *ngIf="user.isMod"></i>
-        <i fa [icon]="'ban'" *ngIf="user.isMuted"></i>
-        <span>{{ user.nameEdit ? user.nameEdit : user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
+    <div class="card card-block user-card text-sm-center">
+      {{ onlineUsers.length }} players online
+    </div>
+    <div class="chat-users-inner">
+      <div class="card card-block user-card"
+           (mouseenter)="isVisible['u'+user.name] = true"
+           (mouseleave)="isVisible['u'+user.name] = false"
+           *ngFor="let user of onlineUsers">
+        <h6 class="card-title">
+          <i fa [icon]="'star'" *ngIf="user.isMod"></i>
+          <i fa [icon]="'ban'" *ngIf="user.isMuted"></i>
+          <span>{{ user.nameEdit ? user.nameEdit : user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
 
-        <span class="pull-md-right pointer" dropdown *ngIf="isMod && isVisible['u'+user.name]">
-          <i fa [fw]="true" [icon]="'ellipsis-v'" dropdownToggle></i>
-          <ul class="dropdown-menu dropdown-menu-right" dropdownMenu>
-            <li>
-              <a class="dropdown-item" (click)="muteUser(user.name)" *ngIf="user.isMuted">Unmute user</a>
-              <a class="dropdown-item" (click)="muteUser(user.name)" *ngIf="!user.isMuted">Mute user</a>
-              <a class="dropdown-item" (click)="gmBan(user.name)" *ngIf="user.name !== playerName">Ban user</a>
-              <a class="dropdown-item" (click)="gmToggleMod(user.name)" *ngIf="user.isMod">Remove Moderator</a>
-              <a class="dropdown-item" (click)="gmToggleMod(user.name)" *ngIf="!user.isMod">Make Moderator</a>
-              <a class="dropdown-item" (click)="gmTeleport(user.name)">Teleport to Location</a>
-              <a class="dropdown-item" (click)="gmToggleAchievement(user.name)">Toggle Permanent Achievement</a>
-              <a class="dropdown-item" (click)="gmNameChange(user.name)">Change Name</a>
-              <!-- <a class="dropdown-item" href>Teleport to...</a> -->
-            </li>
-          </ul>
-        </span>
+          <span class="pull-md-right pointer" dropdown *ngIf="isMod && isVisible['u'+user.name]">
+            <i fa [fw]="true" [icon]="'ellipsis-v'" dropdownToggle></i>
+            <ul class="dropdown-menu dropdown-menu-right" dropdownMenu>
+              <li>
+                <a class="dropdown-item" (click)="muteUser(user.name)" *ngIf="user.isMuted">Unmute user</a>
+                <a class="dropdown-item" (click)="muteUser(user.name)" *ngIf="!user.isMuted">Mute user</a>
+                <a class="dropdown-item" (click)="gmBan(user.name)" *ngIf="user.name !== playerName">Ban user</a>
+                <a class="dropdown-item" (click)="gmToggleMod(user.name)" *ngIf="user.isMod">Remove Moderator</a>
+                <a class="dropdown-item" (click)="gmToggleMod(user.name)" *ngIf="!user.isMod">Make Moderator</a>
+                <a class="dropdown-item" (click)="gmTeleport(user.name)">Teleport to Location</a>
+                <a class="dropdown-item" (click)="gmToggleAchievement(user.name)">Toggle Permanent Achievement</a>
+                <a class="dropdown-item" (click)="gmNameChange(user.name)">Change Name</a>
+                <!-- <a class="dropdown-item" href>Teleport to...</a> -->
+              </li>
+            </ul>
+          </span>
 
-        <span class="pull-md-right pointer"
-              *ngIf="isVisible['u'+user.name] && user.name !== playerName">
-          <i fa [fw]="true" [icon]="'comments'" (click)="openPM(user.name)"></i>
-        </span>
-      </h6>
-      <p class="card-text">
-        <small>Level {{ user.level }} {{ user.professionName }}</small>
-      </p>
+          <span class="pull-md-right pointer"
+                *ngIf="isVisible['u'+user.name] && user.name !== playerName">
+            <i fa [fw]="true" [icon]="'comments'" (click)="openPM(user.name)"></i>
+          </span>
+        </h6>
+        <p class="card-text">
+          <small>Level {{ user.level }} {{ user.professionName }}</small>
+        </p>
+      </div>
     </div>
   </div>
 
