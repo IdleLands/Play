@@ -21,6 +21,9 @@
           <stat [size]="'150'" [name]="stat"></stat> {{ player.equipment[slot][stat] }}
         </div>
       </div>
+      <div class="item-extra-stats">
+        {{ extraItemStats(player.equipment[slot]) }}
+      </div>
     </div>
   </div>
 </div>

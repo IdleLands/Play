@@ -3,6 +3,7 @@ import _ from 'lodash';
 
 import { Component } from '@angular/core';
 import { PrimusWrapper } from '../../../services/primus';
+import { ItemService } from '../../../services/item';
 
 import template from './equipment.html';
 import './equipment.less';
@@ -18,6 +19,10 @@ export class EquipmentComponent {
   constructor(primus) {
     this.primus = primus;
     this.stats = ['str', 'con', 'dex', 'agi', 'int', 'luk'];
+  }
+
+  extraItemStats(item) {
+    return ItemService.getSpecialStatString(item);
   }
 
   setPlayerData(data) {

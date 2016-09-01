@@ -6,6 +6,7 @@ import './choicelog.less';
 import { SweetAlertService } from 'ng2-sweetalert2';
 
 import { PrimusWrapper } from '../../../../services/primus';
+import { ItemService } from '../../../../services/item';
 
 @Component({
   template,
@@ -57,6 +58,9 @@ export class ChoiceLogComponent {
   <div class="col-md-2">INT</div>
   <div class="col-md-2">LUK</div>
 </div>
+<div class="col-md-12 no-padding text-md-center m-b-1">
+  ${ItemService.getSpecialStatString(playerItem)}
+</div>
 <div class="col-md-12 no-padding m-b-1">
   <div class="col-md-2">&darr;</div>
   <div class="col-md-2">&darr;</div>
@@ -75,6 +79,9 @@ export class ChoiceLogComponent {
   <div class="col-md-2 ${playerItem.agi > choiceItem.agi ? 'negative' : 'positive'}-stat">${choiceItem.agi}</div>
   <div class="col-md-2 ${playerItem.int > choiceItem.int ? 'negative' : 'positive'}-stat">${choiceItem.int}</div>
   <div class="col-md-2 ${playerItem.luk > choiceItem.luk ? 'negative' : 'positive'}-stat">${choiceItem.luk}</div>
+</div>
+<div class="col-md-12 no-padding text-md-center m-b-1">
+  ${ItemService.getSpecialStatString(choiceItem)}
 </div>
 `;
 
