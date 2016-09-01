@@ -15,7 +15,7 @@ const thanks = [
   { name: 'Sedgwick', reason: 'Donation, Maps' },
   { name: 'Latin', reason: 'Donation' },
   { name: 'Marcus', reason: 'Donation' },
-  { name: 'John Paul', reason: 'Donation' }
+  { name: 'OnionKnight', reason: 'Donation' }
 ];
 
 @Component({
