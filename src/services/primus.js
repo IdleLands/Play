@@ -58,9 +58,9 @@ export class PrimusWrapper {
     if(this.socket) return;
     this.socket = Primus.connect(`${settings.protocol}://${settings.hostname}:${settings.port}`, {
       reconnect: {
-        min: 250,
-        retries: 100,
-        factor: 1.5
+        min: 500,
+        retries: 30,
+        factor: 2
       }
     });
 
