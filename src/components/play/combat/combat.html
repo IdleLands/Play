@@ -24,9 +24,7 @@
 
   <div class="row" *ngFor="let message of battle.messageData">
 
-    <div class="col-md-offset-2 col-md-8" *ngIf="!message.data">
-      {{ message.message }}
-    </div>
+    <div class="col-md-offset-2 col-md-8" *ngIf="!message.data" [innerHTML]="message.message | highlightPipe:playerName"></div>
 
     <div class="col-md-12" *ngIf="message.data">
       <hr>

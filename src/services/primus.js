@@ -220,6 +220,10 @@ export class PrimusWrapper {
     });
   }
 
+  get playerName() {
+    return this._contentUpdates.player.getValue().name;
+  }
+
   changeGender(newGender) {
     const playerName = this._contentUpdates.player.getValue().name;
     this.emit('plugin:player:changegender', { playerName, gender: newGender });

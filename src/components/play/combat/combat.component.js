@@ -2,6 +2,7 @@
 // import _ from 'lodash';
 
 import { PrimusWrapper } from '../../../services/primus';
+import { HighlightPipe } from '../../../pipes/highlight';
 
 import { ActivatedRoute } from '@angular/router';
 
@@ -10,7 +11,8 @@ import template from './combat.html';
 import './combat.less';
 
 @Component({
-  template
+  template,
+  pipes: [HighlightPipe]
 })
 export class CombatComponent {
 
@@ -29,6 +31,8 @@ export class CombatComponent {
     this.paramSub = this.route.params.subscribe(params => {
       this.battleName = params.name;
       this.primus.loadBattle(this.battleName);
+      this.playerName = this.primus.playerName;
+      console.log(this.playerName);
     });
 
   }
