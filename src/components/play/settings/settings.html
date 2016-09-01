@@ -24,7 +24,7 @@
           </option>
         </select>
 
-        <label>
+        <label *ngIf="personalities.length > 0">
           <input type="checkbox" [checked]="storage.showPersonalityWindow" (change)="storage.showPersonalityWindow = !storage.showPersonalityWindow">
           <span>Show Personalities on Map</span>
         </label>
