@@ -19,7 +19,7 @@
 
       <li class="nav-item" [class.active]="hasActiveRoute('overview')">
         <a class="nav-link" [routerLink]="['/play/overview']">
-          Overview
+          Overview <span *ngIf="(primus.contentUpdates.player | async).choices?.length" class="tag tag-pill tag-default">{{ (primus.contentUpdates.player | async).choices?.length }}</span>
         </a>
       </li>
 
