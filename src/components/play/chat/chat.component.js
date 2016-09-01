@@ -169,7 +169,7 @@ export class ChatComponent {
   changeChannel(newChannel) {
     this.activeChannel = newChannel;
     this.chatData[newChannel].unread = 0;
-    this._activeChannelMessages.next(this.chatData[newChannel].messages);
+    this._activeChannelMessages.next(chatData[newChannel].messages);
   }
 
   sendMessage(message) {
