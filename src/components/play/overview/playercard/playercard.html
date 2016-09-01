@@ -1,68 +1,71 @@
 <div class="card player-card">
   <h4 class="card-header no-margin-bottom">{{player.nameEdit || player.name}}</h4>
-  <progress class="progress progress-success" value="{{player._xp?.__current}}" max="{{player._xp?.maximum}}"></progress>
-  <span class="progress-label">
-    {{player._xp?.__current | number}}/{{player._xp?.maximum | number}}
-  </span>
-  <div class="card-block">
-    <h6 class="card-title text-muted">Level {{player._level?.__current}} {{player.professionName}} ({{player.gender}})</h6>
-    <h6 class="card-subtitle">Joined {{ player.joinDate | date }}</h6>
-  </div>
-  <div class="card-block no-padding-bottom">
-    <div class="card-text">
-      {{ player.map }} | {{ player.mapRegion }}
+
+  <div class="player-card-inner">
+    <progress class="progress progress-success" value="{{player._xp?.__current}}" max="{{player._xp?.maximum}}"></progress>
+    <span class="progress-label">
+      {{player._xp?.__current | number}}/{{player._xp?.maximum | number}}
+    </span>
+    <div class="card-block">
+      <h6 class="card-title text-muted">Level {{player._level?.__current}} {{player.professionName}} ({{player.gender}})</h6>
+      <h6 class="card-subtitle">Joined {{ player.joinDate | date }}</h6>
     </div>
-  </div>
-  <div class="card-block no-padding-bottom">
-    <div class="card-text">
-      <stat [size]="200" [name]="'gold'"></stat> {{ player.gold }}
+    <div class="card-block no-padding-bottom">
+      <div class="card-text">
+        {{ player.map }} | {{ player.mapRegion }}
+      </div>
     </div>
-  </div>
-  <div class="card-block no-padding-bottom">
-    <div class="card-text">
-      <table class="table stat-table">
-        <tr>
-          <td class="no-padding"><stat [size]="'200'" [name]="'hp'"></stat></td>
-          <td class="text-md-right">{{ player._hp?.maximum }}</td>
-
-          <td class="no-padding"><stat [size]="'200'" [name]="'mp'"></stat></td>
-          <td class="text-md-right">{{ player._mp?.maximum }}</td>
-        </tr>
-
-        <tr>
-          <td class="no-padding"><stat [size]="'200'" [name]="'str'"></stat></td>
-          <td class="text-md-right">{{ player.statCache?.str }}</td>
-
-          <td class="no-padding"><stat [size]="'200'" [name]="'con'"></stat></td>
-          <td class="text-md-right">{{ player.statCache?.con }}</td>
-        </tr>
-
-        <tr>
-          <td class="no-padding"><stat [size]="'200'" [name]="'dex'"></stat></td>
-          <td class="text-md-right">{{ player.statCache?.dex }}</td>
-
-          <td class="no-padding"><stat [size]="'200'" [name]="'agi'"></stat></td>
-          <td class="text-md-right">{{ player.statCache?.agi }}</td>
-        </tr>
-
-        <tr>
-          <td class="no-padding"><stat [size]="'200'" [name]="'int'"></stat></td>
-          <td class="text-md-right">{{ player.statCache?.int }}</td>
-
-          <td class="no-padding"><stat [size]="'200'" [name]="'luk'"></stat></td>
-          <td class="text-md-right">{{ player.statCache?.luk }}</td>
-        </tr>
-      </table>
+    <div class="card-block no-padding-bottom">
+      <div class="card-text">
+        <stat [size]="200" [name]="'gold'"></stat> {{ player.gold }}
+      </div>
     </div>
-  </div>
+    <div class="card-block no-padding-bottom">
+      <div class="card-text">
+        <table class="table stat-table">
+          <tr>
+            <td class="no-padding"><stat [size]="'200'" [name]="'hp'"></stat></td>
+            <td class="text-md-right">{{ player._hp?.maximum }}</td>
 
-  <div class="card-block" *ngIf="party.name && !party.isBattleParty">
-    <strong>Party: {{ party.name }}</strong>
-    <ul>
-      <li *ngFor="let player of party.players">
-        {{ player.name }} ({{player.level}} {{player.profession}})
-      </li>
-    </ul>
+            <td class="no-padding"><stat [size]="'200'" [name]="'mp'"></stat></td>
+            <td class="text-md-right">{{ player._mp?.maximum }}</td>
+          </tr>
+
+          <tr>
+            <td class="no-padding"><stat [size]="'200'" [name]="'str'"></stat></td>
+            <td class="text-md-right">{{ player.statCache?.str }}</td>
+
+            <td class="no-padding"><stat [size]="'200'" [name]="'con'"></stat></td>
+            <td class="text-md-right">{{ player.statCache?.con }}</td>
+          </tr>
+
+          <tr>
+            <td class="no-padding"><stat [size]="'200'" [name]="'dex'"></stat></td>
+            <td class="text-md-right">{{ player.statCache?.dex }}</td>
+
+            <td class="no-padding"><stat [size]="'200'" [name]="'agi'"></stat></td>
+            <td class="text-md-right">{{ player.statCache?.agi }}</td>
+          </tr>
+
+          <tr>
+            <td class="no-padding"><stat [size]="'200'" [name]="'int'"></stat></td>
+            <td class="text-md-right">{{ player.statCache?.int }}</td>
+
+            <td class="no-padding"><stat [size]="'200'" [name]="'luk'"></stat></td>
+            <td class="text-md-right">{{ player.statCache?.luk }}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card-block" *ngIf="party.name && !party.isBattleParty">
+      <strong>Party: {{ party.name }}</strong>
+      <ul>
+        <li *ngFor="let player of party.players">
+          {{ player.name }} ({{player.level}} {{player.profession}})
+        </li>
+      </ul>
+    </div>
   </div>
 
 </div>
