@@ -106,7 +106,7 @@ export class ChatComponent {
   }
 
   setOnlineUsers(data) {
-    this.onlineUsers = _.sortBy(data, p => p.name.toLowerCase());
+    this.onlineUsers = _.sortBy(data, p => (p.nameEdit ? p.nameEdit : p.name).toLowerCase());
   }
 
   getOtherPersonFromRoute(route) {
