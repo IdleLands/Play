@@ -1,26 +1,30 @@
 
 import _ from 'lodash';
 
+const baseIgnores = [
+  'piety',
+  'enchantLevel',
+  'uid',
+  '_calcScore',
+  '_baseScore',
+  'name',
+  'id',
+  'itemClass',
+  'type',
+  'foundAt',
+  'str',
+  'dex',
+  'con',
+  'int',
+  'agi',
+  'luk'
+];
+
 export class ItemService {
   static getSpecialStatString(item) {
-    const newItem = _.omit(item, [
-      'piety',
-      'enchantLevel',
-      'uid',
-      '_calcScore',
-      '_baseScore',
-      'name',
-      'id',
-      'itemClass',
-      'type',
-      'foundAt',
-      'str',
-      'dex',
-      'con',
-      'int',
-      'agi',
-      'luk'
-    ]);
+    const newItem = _.omitBy(item, (val, key) => {
+      return _.includes(baseIgnores, key) || _.includes(key, 'Percent');
+    });
 
     return _(newItem)
       .keys()
