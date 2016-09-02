@@ -88,6 +88,7 @@ export class ChatComponent {
 
   retrievePlayerData(player) {
     this.playerName = player.name;
+    this.playerTitle = player.title;
     this.isMod = player.isMod;
     this.isMuted = player.isMuted;
   }
@@ -175,7 +176,7 @@ export class ChatComponent {
   sendMessage(message) {
     message = message.trim();
     if(!message) return;
-    this.primus.emit('plugin:chat:sendmessage', {
+    this.primus.sendChatMessage({
       playerName: this.playerName,
       text: message,
       channel: this.activeChannel,

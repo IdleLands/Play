@@ -60,7 +60,7 @@ export class CreateComponent {
   }
 
   formValid() {
-    return this.name.value && this.profession && this.gender;
+    return this.name.value && this.name.value.trim() && this.profession && this.gender;
   }
 
   createCharacter() {

@@ -104,7 +104,7 @@ export class PrimusWrapper {
       if(data.playerListOperation) return this.handleUserListUpdate(data);
 
       // chat messages are handled differently
-      if(data.route && data.channel && data.text) return this.handleChatMessage(data);
+      if(data.route && data.channel && data.text) return this.handleChatMessage(data, true);
 
       // data updates are handled differently
       if(data.update) return this.handleContentUpdate(data);
@@ -159,11 +159,23 @@ export class PrimusWrapper {
     operations[data.playerListOperation]();
   }
 
-  handleChatMessage(message) {
-    message.timestamp = Date.now();
+  handleChatMessage(message, fromPrimus = false) {
+    const player = this._contentUpdates.player.getValue();
+    const playerName = player.nameEdit ? player.nameEdit : player.name;
+    if(fromPrimus && message.playerName === playerName) return;
+    if(!message.timestamp) message.timestamp = Date.now();
     const currentMessages = this._contentUpdates.chatMessage.getValue() || [];
     currentMessages.push(message);
     this._contentUpdates.chatMessage.next(currentMessages);
+  }
+
+  sendChatMessage(message) {
+    this.emit('plugin:chat:sendmessage', message);
+
+    const player = this._contentUpdates.player.getValue();
+    message.playerName = player.nameEdit ? player.nameEdit : player.name;
+    message.title = player.title;
+    this.handleChatMessage(message);
   }
 
   handleContentUpdate(content) {

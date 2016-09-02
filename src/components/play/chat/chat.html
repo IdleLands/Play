@@ -34,13 +34,11 @@
         <input type="text"
                class="form-control"
                [(ngModel)]="chatMessage"
-               [disabled]="isMuted"
                placeholder="Send a message to {{activeChannel}}..."
                (keyup.enter)="sendMessage(chatMessage)"/>
       </div>
       <div class="col-md-2 no-padding">
         <button class="btn btn-primary"
-                [class.disabled]="isMuted"
                 (click)="sendMessage(chatMessage)">Send</button>
       </div>
     </div>
