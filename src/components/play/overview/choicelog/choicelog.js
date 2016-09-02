@@ -29,8 +29,8 @@ export class ChoiceLogComponent {
 
   showMoreInfo(choice) {
     const choiceItem = choice.extraData.item;
-    const player = this.primus._contentUpdates.player.getValue();
-    const playerItem = player.equipment[choiceItem.type] || { str: 0, dex: 0, con: 0, int: 0, agi: 0, luk: 0, _baseScore: 1, _calcScore: 1 };
+    const equipment = this.primus._contentUpdates.equipment.getValue();
+    const playerItem = equipment[choiceItem.type] || { str: 0, dex: 0, con: 0, int: 0, agi: 0, luk: 0, _baseScore: 1, _calcScore: 1 };
 
     const choiceItemName = choiceItem.enchantLevel > 0 ? `+${choiceItem.enchantLevel} ${choiceItem.name}` : choiceItem.name;
     const playerItemName = playerItem.enchantLevel > 0 ? `+${playerItem.enchantLevel} ${playerItem.name}` : playerItem.name;
