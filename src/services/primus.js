@@ -243,7 +243,8 @@ export class PrimusWrapper {
   }
 
   get playerName() {
-    return this._contentUpdates.player.getValue().name;
+    const player = this._contentUpdates.player.getValue();
+    return player.nameEdit ? player.nameEdit : player.name;
   }
 
   changeGender(newGender) {

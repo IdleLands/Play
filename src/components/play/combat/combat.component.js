@@ -32,7 +32,6 @@ export class CombatComponent {
       this.battleName = params.name;
       this.primus.loadBattle(this.battleName);
       this.playerName = this.primus.playerName;
-      console.log(this.playerName);
     });
 
   }
