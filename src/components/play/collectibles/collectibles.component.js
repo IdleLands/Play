@@ -26,6 +26,7 @@ export class CollectiblesComponent {
 
   ngOnInit() {
     this.collectibleSubscription = this.primus.contentUpdates.collectibles.subscribe(data => this.setCollectibles(data));
+    this.primus.requestCollectibles();
   }
 
   ngOnDestroy() {

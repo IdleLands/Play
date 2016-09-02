@@ -52,6 +52,14 @@ export class PrimusWrapper {
       gmdata: this._contentUpdates.gmdata.asObservable(),
       battle: this._contentUpdates.battle.asObservable()
     };
+
+    this._playerName = new Promise(resolve => {
+      const sub = this.contentUpdates.player.subscribe(x => {
+        if(!x.name) return;
+        resolve(x.name);
+        sub.unsubscribe();
+      });
+    });
   }
 
   initSocket() {
@@ -288,6 +296,24 @@ export class PrimusWrapper {
     this.emit('plugin:chat:toggleban', {
       playerName,
       targetName
+    });
+  }
+
+  requestStatistics() {
+    this._playerName.then(name => {
+      this.emit('plugin:player:request:statistics', { playerName: name });
+    });
+  }
+
+  requestCollectibles() {
+    this._playerName.then(name => {
+      this.emit('plugin:player:request:collectibles', { playerName: name });
+    });
+  }
+
+  requestAchievements() {
+    this._playerName.then(name => {
+      this.emit('plugin:player:request:achievements', { playerName: name });
     });
   }
 }

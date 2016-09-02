@@ -54,6 +54,7 @@ export class AchievementsComponent {
 
   ngOnInit() {
     this.achievementSubscription = this.primus.contentUpdates.achievements.subscribe(data => this.setAchievements(data));
+    this.primus.requestAchievements();
   }
 
   ngOnDestroy() {

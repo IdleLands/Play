@@ -52,6 +52,7 @@ export class StatisticsComponent {
 
   ngOnInit() {
     this.statSubscription = this.primus.contentUpdates.statistics.subscribe(data => this.setStatistics(data));
+    this.primus.requestStatistics();
   }
 
   ngOnDestroy() {
