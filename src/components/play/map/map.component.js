@@ -315,6 +315,7 @@ export class MapComponent {
     this.playerSubscription = this.primus.contentUpdates.player.subscribe(data => this.setPlayerData(data));
     this.otherPlayersSubscription = this.primus.contentUpdates.onlineUsers.subscribe(data => this.setOtherUsers(data));
     this.personalitySubscription = this.primus.contentUpdates.personalities.subscribe(data => this.setPersonalities(data));
+    this.primus.requestPersonalities();
   }
 
   ngOnDestroy() {

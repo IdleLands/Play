@@ -337,4 +337,10 @@ export class PrimusWrapper {
       this.emit('plugin:player:request:equipment', { playerName: name });
     });
   }
+
+  requestPersonalities() {
+    this._playerName.then(name => {
+      this.emit('plugin:player:request:personalities', { playerName: name });
+    });
+  }
 }
