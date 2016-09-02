@@ -1,8 +1,11 @@
 
+import _ from 'lodash';
+
 import { Component } from '@angular/core';
 import { FORM_DIRECTIVES, FormBuilder, Validators } from '@angular/common';
 import { PrimusWrapper } from '../../../services/primus';
 import { StorageService } from 'ng2-storage';
+import { SweetAlertService } from 'ng2-sweetalert2';
 
 import { Router } from '@angular/router';
 import template from './create.html';
@@ -26,12 +29,13 @@ const genders = [
 })
 export class CreateComponent {
   static get parameters() {
-    return [[Router], [FormBuilder], [PrimusWrapper], [StorageService]];
+    return [[Router], [FormBuilder], [PrimusWrapper], [StorageService], [SweetAlertService]];
   }
 
-  constructor(router, formBuilder, primus, storage) {
+  constructor(router, formBuilder, primus, storage, swal) {
     this.router = router;
     this.storage = storage.local;
+    this.swal = swal;
 
     const baseModel = {
       name: ''
@@ -64,14 +68,20 @@ export class CreateComponent {
   }
 
   createCharacter() {
-    this.primus.registerPlayer({
-      name: this.name.value,
-      professionName: this.profession,
-      gender: this.gender,
-      userId: this.storage.profile.user_id,
-      token: this.storage.idToken
-    }, () => {
-      this.router.navigate(['/play/overview']);
+    const name = _.truncate(this.name.value, { length: 20 }).trim().replace(/[^\w\d ]/gm, '');
+    this.swal.confirm({ text: `Do you want to create "${name}" the ${this.gender} ${this.profession}?` }).then(res => {
+      if(!res) return;
+
+      this.primus.registerPlayer({
+        name: this.name.value,
+        professionName: this.profession,
+        gender: this.gender,
+        userId: this.storage.profile.user_id,
+        token: this.storage.idToken
+      }, () => {
+        this.router.navigate(['/play/overview']);
+      });
+
     });
     return false;
   }
