@@ -31,6 +31,7 @@ export class PrimusWrapper {
       statistics: new BehaviorSubject({}),
       achievements: new BehaviorSubject({}),
       collectibles: new BehaviorSubject({}),
+      equipment: new BehaviorSubject({}),
       personalities: new BehaviorSubject({ earned: [], active: {} }),
       player: new BehaviorSubject({}),
       party: new BehaviorSubject({}),
@@ -47,6 +48,7 @@ export class PrimusWrapper {
       achievements: this._contentUpdates.achievements.asObservable(),
       personalities: this._contentUpdates.personalities.asObservable(),
       collectibles: this._contentUpdates.collectibles.asObservable(),
+      equipment: this._contentUpdates.equipment.asObservable(),
       player: this._contentUpdates.player.asObservable(),
       party: this._contentUpdates.party.asObservable(),
       gmdata: this._contentUpdates.gmdata.asObservable(),
@@ -314,6 +316,12 @@ export class PrimusWrapper {
   requestAchievements() {
     this._playerName.then(name => {
       this.emit('plugin:player:request:achievements', { playerName: name });
+    });
+  }
+
+  requestEquipment() {
+    this._playerName.then(name => {
+      this.emit('plugin:player:request:equipment', { playerName: name });
     });
   }
 }

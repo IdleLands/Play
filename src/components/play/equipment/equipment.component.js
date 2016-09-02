@@ -26,8 +26,8 @@ export class EquipmentComponent {
   }
 
   setPlayerData(data) {
-    this.player = data;
-    this.equipmentKeys = _.sortBy(_.keys(data.equipment));
+    this.player = { equipment: data };
+    this.equipmentKeys = _.sortBy(_.keys(this.player.equipment));
   }
 
   scoreRating(item) {
@@ -35,10 +35,11 @@ export class EquipmentComponent {
   }
 
   ngOnInit() {
-    this.playerSubscription = this.primus.contentUpdates.player.subscribe(data => this.setPlayerData(data));
+    this.equipmentSubscription = this.primus.contentUpdates.equipment.subscribe(data => this.setPlayerData(data));
+    this.primus.requestEquipment();
   }
 
   ngOnDestroy() {
-    this.playerSubscription.unsubscribe();
+    this.equipmentSubscription.unsubscribe();
   }
 }
