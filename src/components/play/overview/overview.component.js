@@ -22,4 +22,8 @@ export class OverviewComponent {
   constructor(primus) {
     this.primus = primus;
   }
+
+  ngOnInit() {
+    this.primus.requestEquipment();
+  }
 }
