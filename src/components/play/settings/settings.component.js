@@ -104,6 +104,7 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
 
     this.achievementSubscription = this.primus.contentUpdates.achievements.subscribe(data => this.parseTitles(data));
     this.personalitySubscription = this.primus.contentUpdates.personalities.subscribe(data => this.setPersonalities(data));
+    this.primus.requestAchievements();
   }
 
   ngOnDestroy() {
