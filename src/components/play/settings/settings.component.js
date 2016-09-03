@@ -22,9 +22,10 @@ const thanks = [
 
 const themes = [
   { name: 'Light Theme', val: '' },
-  { name: 'Orangina Theme', val: 'bright' },
   { name: 'Dark Theme', val: 'dark' },
-  { name: 'AMOLED Black Theme', val: 'amoled' }
+  { name: 'AMOLED Black Theme', val: 'amoled' },
+  { name: 'Orangina Theme', val: 'bright' },
+  { name: 'Dim Ocean Theme', val: 'dimocean' }
 ];
 
 @Component({

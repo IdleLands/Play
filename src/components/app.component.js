@@ -12,6 +12,7 @@ import './app.less';
 import '../_themes/amoled.less';
 import '../_themes/bright.less';
 import '../_themes/dark.less';
+import '../_themes/dimocean.less';
 
 @Component({
   selector: 'app',
