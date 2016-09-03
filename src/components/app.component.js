@@ -10,6 +10,7 @@ import { StorageService } from 'ng2-storage';
 import './app.less';
 
 import '../_themes/dark.less';
+import '../_themes/amoled.less';
 
 @Component({
   selector: 'app',

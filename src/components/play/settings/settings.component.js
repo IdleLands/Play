@@ -22,7 +22,8 @@ const thanks = [
 
 const themes = [
   { name: 'Light Theme', val: '' },
-  { name: 'Dark Theme', val: 'dark' }
+  { name: 'Dark Theme', val: 'dark' },
+  { name: 'AMOLED Black Theme', val: 'amoled' }
 ];
 
 @Component({

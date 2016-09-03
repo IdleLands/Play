@@ -1,16 +1,15 @@
-@bg-default:      #212121;
+@bg-default:      #000;
 @bg-highlight:    #2b7cab;
 @color-default:   rgba(255, 255, 255, 0.87);
 @color-highlight: #dda4e1;
 @color-active:    darken(@color-highlight, 10%);
 
+@global-text-color:      #aaa;
+@global-bg-color:        #000;
+@global-bg-alt-color:    #000;
+@global-border-color:    #aaa;
 
-@global-text-color:      #ccc;
-@global-bg-color:        #212121;
-@global-bg-alt-color:    #101010;
-@global-border-color:    #ccc;
-
-.swal2-modal.dark {
+.swal2-modal.amoled {
 
   &, h2, .swal2-content {
     color: @global-text-color !important;
@@ -19,12 +18,12 @@
   background-color: @global-bg-color !important;
 }
 
-.theme-dark {
+.theme-amoled {
 
   background-color: @global-bg-color;
 
   a {
-    color: #5bc0de;
+    color: darken(#5bc0de, 30%);
   }
 
   .positive-stat {
@@ -33,6 +32,11 @@
 
   .negative-stat {
     color: #c00;
+  }
+
+  .progress-label {
+    background-color: @global-bg-color;
+    border-color: @global-border-color;
   }
 
   .container-fluid, .jumbotron {
@@ -54,6 +58,13 @@
     border-color: @global-border-color;
   }
 
+  .achievement-container {
+    .btn-primary {
+      background-color: darken(#025aa5, 30%);
+      color: @global-text-color;
+    }
+  }
+
   .choice-log {
     .btn-secondary {
       background-color: #212121;
@@ -61,7 +72,17 @@
     }
 
     .btn-info {
-      background-color: #0275d8;
+      background-color: darken(#0275d8, 30%);
+      color: @global-text-color;
+    }
+  }
+
+  .chat-container {
+    .nav-link.active {
+      background-color: darken(#0275d8, 30%);
+    }
+    .btn-primary {
+      background-color: darken(#025aa5, 30%);
       color: @global-text-color;
     }
   }
@@ -81,7 +102,7 @@
   }
 
   .navbar-light {
-    background-color: @global-bg-alt-color !important;
+    background-color: @bg-default;
     border-color: @bg-highlight;
 
     border-radius: 0;
