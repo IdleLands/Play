@@ -1,22 +1,22 @@
 
 @color-default:   rgba(255, 255, 255, 0.87);
-@color-highlight: #1A237E;
+@color-highlight: #fff;
 @color-active:    darken(@color-highlight, 10%);
 
 @global-text-color:      #000;
 @global-text-alt-color:  @color-default;
-@global-bg-color:        #B0BEC5;
-@global-bg-alt-color:    #4DB6AC;
-@global-border-color:    #78909C;
-@global-card-head-color: #03A9F4;
-@global-bg-nav-color:    #00ACC1;
+@global-bg-color:        #F5F5F5;
+@global-bg-alt-color:    #212121;
+@global-border-color:    #212121;
+@global-card-head-color: #212121;
+@global-bg-nav-color:    #212121;
 @global-nav-highlight:   #FFA726;
 
-@primary-color:          #5C6BC0;
-@secondary-color:        #29B6F6;
-@info-color:             #66BB6A;
+@primary-color:          #212121;
+@secondary-color:        #212121;
+@info-color:             #212121;
 
-.swal2-modal.dimocean {
+.swal2-modal.blackwhite {
 
   &, h2, .swal2-content {
     color: @global-text-color !important;
@@ -25,7 +25,7 @@
   background-color: @global-bg-color !important;
 }
 
-.theme-dimocean {
+.theme-blackwhite {
 
   background-color: @global-bg-color;
 
@@ -47,7 +47,8 @@
   }
 
   .highlighted {
-    background-color: #29B6F6 !important;
+    background-color: #000 !important;
+    color: #fff;
   }
 
   .combat-container {
@@ -97,6 +98,7 @@
 
   .adventure-log-message:nth-child(2n), .choice-message:nth-child(2n), .chat-output .message:nth-child(2n) {
     background-color: @global-bg-alt-color !important;
+    color: @global-text-alt-color;
   }
 
   .item-name, .item-extra-stats, statistics-tree, .chat-output .message {

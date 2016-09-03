@@ -25,7 +25,8 @@ const themes = [
   { name: 'Dark Theme', val: 'dark' },
   { name: 'AMOLED Black Theme', val: 'amoled' },
   { name: 'Orangina Theme', val: 'bright' },
-  { name: 'Dim Ocean Theme', val: 'dimocean' }
+  { name: 'Dim Ocean Theme', val: 'dimocean' },
+  { name: 'Black & White Theme', val: 'blackwhite' }
 ];
 
 @Component({
