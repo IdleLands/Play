@@ -20,6 +20,11 @@ const thanks = [
   { name: 'random', reason: 'Donation' }
 ];
 
+const themes = [
+  { name: 'Light Theme', val: '' },
+  { name: 'Dark Theme', val: 'dark' }
+];
+
 @Component({
   template
 })
@@ -90,12 +95,18 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
     this.primus.changeTitle(newTitle);
   }
 
+  changeTheme($event) {
+    const newTheme = $event.target.value;
+    this.storage.theme = newTheme;
+  }
+
   togglePersonality(personality) {
     this.primus.togglePersonality(personality);
   }
 
   ngOnInit() {
     this.validGenders = ['male', 'female', 'not a bear', 'glowcloud', 'astronomical entity'];
+    this.themes = themes;
 
     const player = this.primus._contentUpdates.player.getValue();
 

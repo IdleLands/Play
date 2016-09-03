@@ -1,0 +1,63 @@
+@bg-default:      #212121;
+@bg-highlight:    #2b7cab;
+@color-default:   rgba(255, 255, 255, 0.87);
+@color-highlight: #dda4e1;
+@color-active:    darken(@color-highlight, 10%);
+
+.theme-dark {
+
+  background-color: #000;
+
+  .container-fluid {
+    background-color: #000;
+  }
+
+  .card, .card-header {
+    background-color: #000;
+    color: #fff;
+  }
+
+  .adventure-log-message:nth-child(2n), .choice-message:nth-child(2n), .chat-output .message:nth-child(2n) {
+    background-color: #212121 !important;
+  }
+
+  .item-name, .item-extra-stats, statistics-tree, .chat-output .message {
+    color: #ccc;
+  }
+
+  .form-control {
+    color: #ccc;
+    background-color: #212121 !important;
+  }
+
+  .navbar-light {
+    background-color: @bg-default;
+    border-color: @bg-highlight;
+
+    border-radius: 0;
+
+    .navbar-brand {
+      color: @color-default;
+      &:hover, &:focus {
+        color: @color-highlight;
+      }
+    }
+
+    .nav {
+      .nav-item.active {
+        .nav-link {
+          color: @color-active;
+        }
+      }
+
+      .nav-item {
+        .nav-link {
+          color: @color-default;
+          &:hover,  &:focus {
+            color: @color-highlight;
+          }
+        }
+      }
+    }
+  }
+}
