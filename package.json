@@ -9,7 +9,7 @@
     "test:lint": "eslint \"src/**/*.js\"",
     "test:ava": "ava --require babel-register",
     "test": "npm run test:lint",
-    "start": "webpack-dev-server --open --content-base src/ --inline --hot",
+    "start": "webpack-dev-server --open --content-base src/ --inline --hot --host 0.0.0.0",
     "deploy": "npm run build:app && gulp deploy"
   },
   "dependencies": {

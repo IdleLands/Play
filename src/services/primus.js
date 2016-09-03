@@ -6,9 +6,9 @@ import { StorageService } from 'ng2-storage';
 import { PNotifyService } from 'ng2-pnotify';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
-export const settings = window.location.hostname !== 'localhost' ?
+export const settings = window.location.hostname === 'idle.land' ?
   { port: 80,   protocol: 'http', hostname: 'game.idle.land' } :
-  { port: 8080, protocol: 'http', hostname: 'localhost' };
+  { port: 8080, protocol: 'http', hostname: window.location.hostname };
 
 export class PrimusWrapper {
 
