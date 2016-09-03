@@ -202,6 +202,7 @@ export class ChatComponent {
 
   gmTeleport(targetName) {
     this.swal.swal({
+      customClass: this.storage.theme,
       title: 'Select a Teleport Location',
       input: 'select',
       inputOptions: _(this.gmData.teleNames).reduce((prev, cur) => {
@@ -222,6 +223,7 @@ export class ChatComponent {
 
   gmToggleAchievement(targetName) {
     this.swal.swal({
+      customClass: this.storage.theme,
       title: 'Select an achievement',
       input: 'select',
       inputOptions: _(this.gmData.permAchs).reduce((prev, cur) => {
@@ -238,6 +240,7 @@ export class ChatComponent {
 
   gmNameChange(targetName) {
     this.swal.swal({
+      customClass: this.storage.theme,
       title: 'Choose a new name',
       input: 'text',
       inputPlaceholder: 'Enter name...',
@@ -251,6 +254,7 @@ export class ChatComponent {
 
   gmBan(targetName) {
     this.swal.confirm({
+      customClass: this.storage.theme,
       title: 'Are you sure you want to ban this user?',
       text: 'This is really annoying to revert!',
       type: 'warning',

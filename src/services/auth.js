@@ -44,7 +44,7 @@ export class Auth {
   }
 
   logout() {
-    this.swal.confirm({ text: 'Are you sure you want to log out?' }).then(res => {
+    this.swal.confirm({ text: 'Are you sure you want to log out?', customClass: this.storage.theme }).then(res => {
       if(!res) return;
       this.storage.profile = null;
       this.storage.idToken = null;

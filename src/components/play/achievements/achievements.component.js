@@ -3,6 +3,8 @@ import _ from 'lodash';
 
 import { SweetAlertService } from 'ng2-sweetalert2';
 
+import { StorageService } from 'ng2-storage';
+
 import { PrimusWrapper } from '../../../services/primus';
 
 import { Component } from '@angular/core';
@@ -15,12 +17,13 @@ import './achievements.less';
 export class AchievementsComponent {
 
   static get parameters() {
-    return [[PrimusWrapper], [SweetAlertService]];
+    return [[PrimusWrapper], [SweetAlertService], [StorageService]];
   }
 
-  constructor(primus, swal) {
+  constructor(primus, swal, storage) {
     this.primus = primus;
     this.swal = swal;
+    this.storage = storage.local;
   }
 
   setAchievements(achievementData) {
@@ -47,6 +50,7 @@ export class AchievementsComponent {
     });
 
     this.swal.swal({
+      customClass: this.storage.theme,
       title: 'Achievement Rewards',
       html
     });

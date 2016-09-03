@@ -5,6 +5,8 @@ import './choicelog.less';
 
 import { SweetAlertService } from 'ng2-sweetalert2';
 
+import { StorageService } from 'ng2-storage';
+
 import { PrimusWrapper } from '../../../../services/primus';
 import { ItemService } from '../../../../services/item';
 
@@ -15,12 +17,13 @@ import { ItemService } from '../../../../services/item';
 })
 export class ChoiceLogComponent {
   static get parameters() {
-    return [[PrimusWrapper], [SweetAlertService]];
+    return [[PrimusWrapper], [SweetAlertService], [StorageService]];
   }
 
-  constructor(primus, swal) {
+  constructor(primus, swal, storage) {
     this.primus = primus;
     this.swal = swal;
+    this.storage = storage.local;
   }
 
   makeChoice(id, choice) {
@@ -87,6 +90,7 @@ export class ChoiceLogComponent {
 
     this.swal.swal({
       title: 'New Item Information',
+      customClass: this.storage.theme,
       html
     });
   }

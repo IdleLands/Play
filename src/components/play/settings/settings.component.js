@@ -66,6 +66,7 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
   showThanks() {
     this.swal.swal({
       title: 'Special Thanks',
+      customClass: this.storage.theme,
       html: this.thanksHtml()
     });
   }
