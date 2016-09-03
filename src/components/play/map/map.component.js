@@ -15,7 +15,7 @@ window.Phaser = require('phaser');
 
 import { PrimusWrapper, settings } from '../../../services/primus';
 
-const baseUrl = `${settings.protocol}://${settings.hostname}:${settings.port}`;
+const baseUrl = `${settings.protocol}://${settings.cdn ? settings.cdn : settings.hostname}:${settings.port}`;
 
 class Game {
 
