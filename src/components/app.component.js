@@ -16,6 +16,7 @@ import '../_themes/dark.less';
 import '../_themes/dimocean.less';
 import '../_themes/greenmachine.less';
 import '../_themes/majestic.less';
+import '../_themes/simple.less';
 
 @Component({
   selector: 'app',

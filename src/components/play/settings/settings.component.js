@@ -28,7 +28,8 @@ const themes = [
   { name: 'Dim Ocean Theme', val: 'dimocean' },
   { name: 'Black & White Theme', val: 'blackwhite' },
   { name: 'Green Machine Theme', val: 'greenmachine' },
-  { name: 'Majestic Theme', val: 'majestic' }
+  { name: 'Majestic Theme', val: 'majestic' },
+  { name: 'Simple Theme', val: 'simple' }
 ];
 
 @Component({
