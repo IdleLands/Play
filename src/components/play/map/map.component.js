@@ -319,7 +319,6 @@ export class MapComponent {
 
   setCollectibles(collectibleData) {
     this.collectibles = collectibleData;
-    console.log(this.game);
   }
 
   ngOnInit() {
