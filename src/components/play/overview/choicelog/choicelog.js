@@ -28,6 +28,10 @@ export class ChoiceLogComponent {
 
   makeChoice(id, choice) {
     this.primus.makeChoice(id, choice);
+
+    if(choice === 'Yes') {
+      this.primus.requestEquipment();
+    }
   }
 
   showMoreInfo(choice) {
