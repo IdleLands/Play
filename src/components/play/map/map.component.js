@@ -146,7 +146,12 @@ class Game {
 
         const nameKey = child.teleportMap ? 'teleportMap' : 'name';
 
-        if(child.realtype && child.realtype !== 'Door') this.itemText = `${child.realtype}: ${child[nameKey]}`;
+        if(child.realtype && child.realtype !== 'Door') {
+          this.itemText = `${child.realtype}: ${child[nameKey]}`;
+          if(child.realtype === 'Collectible' && this.collectibles[child[nameKey]]) {
+            this.itemText = `${this.itemText} (Owned)`;
+          }
+        }
 
         if(child.flavorText) this.itemText += `\n\"${child.flavorText}\"`;
 
@@ -296,6 +301,7 @@ export class MapComponent {
         this._gameObj = new Game({ playerData: this.playerData, mapName: this.mapName });
         this.game = new window.Phaser.Game('100%', window.innerHeight - 54, window.Phaser.CANVAS, 'map', this._gameObj);
         this._gameObj.game = this.game;
+        this._gameObj.collectibles = this.collectibles;
       });
     } else {
       this._gameObj.cacheMap(mapName, mapData);
@@ -311,17 +317,25 @@ export class MapComponent {
     this.activePersonalities = active;
   }
 
+  setCollectibles(collectibleData) {
+    this.collectibles = collectibleData;
+    console.log(this.game);
+  }
+
   ngOnInit() {
     this.playerSubscription = this.primus.contentUpdates.player.subscribe(data => this.setPlayerData(data));
     this.otherPlayersSubscription = this.primus.contentUpdates.onlineUsers.subscribe(data => this.setOtherUsers(data));
     this.personalitySubscription = this.primus.contentUpdates.personalities.subscribe(data => this.setPersonalities(data));
+    this.collectibleSubscription = this.primus.contentUpdates.collectibles.subscribe(data => this.setCollectibles(data));
     this.primus.requestPersonalities();
+    this.primus.requestCollectibles();
   }
 
   ngOnDestroy() {
     this.playerSubscription.unsubscribe();
     this.otherPlayersSubscription.unsubscribe();
     this.personalitySubscription.unsubscribe();
+    this.collectibleSubscription.unsubscribe();
 
     this.game.destroy();
 
