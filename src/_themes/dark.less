@@ -5,18 +5,23 @@
 @color-active:    darken(@color-highlight, 10%);
 
 
+@global-text-color:      #ccc;
+@global-bg-color:        #212121;
+@global-bg-alt-color:    #101010;
+@global-border-color:    #ccc;
+
 .swal2-modal.dark {
 
   &, h2, .swal2-content {
-    color: #ccc !important;
+    color: @global-text-color !important;
   }
-  border-color: #ccc;
-  background-color: #212121 !important;
+  border-color: @global-border-color;
+  background-color: @global-bg-color !important;
 }
 
 .theme-dark {
 
-  background-color: #000;
+  background-color: @global-bg-color;
 
   .positive-stat {
     color: #0c0;
@@ -26,8 +31,9 @@
     color: #c00;
   }
 
-  .container-fluid {
-    background-color: #000;
+  .container-fluid, .jumbotron {
+    background-color: @global-bg-color;
+    color: @global-text-color;
   }
 
   .highlighted {
@@ -35,38 +41,38 @@
   }
 
   .combat-container {
-    color: #ccc;
+    color: @global-text-color;
   }
 
   .card, .card-header {
-    background-color: #000;
-    color: #fff;
-    border-color: #ccc;
+    background-color: @global-bg-color;
+    color: @global-text-color;
+    border-color: @global-border-color;
   }
 
   .choice-log {
     .btn-secondary {
       background-color: #212121;
-      color: #ccc;
+      color: @global-text-color;
     }
 
     .btn-info {
       background-color: #0275d8;
-      color: #ccc;
+      color: @global-text-color;
     }
   }
 
   .adventure-log-message:nth-child(2n), .choice-message:nth-child(2n), .chat-output .message:nth-child(2n) {
-    background-color: #212121 !important;
+    background-color: @global-bg-alt-color !important;
   }
 
   .item-name, .item-extra-stats, statistics-tree, .chat-output .message {
-    color: #ccc;
+    color: @global-text-color;
   }
 
   .form-control {
-    color: #ccc;
-    background-color: #212121 !important;
+    color: @global-text-color;
+    background-color: @global-bg-color !important;
   }
 
   .navbar-light {
