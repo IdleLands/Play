@@ -1,0 +1,148 @@
+
+@color-default:   rgba(255, 255, 255, 0.87);
+@color-highlight: #fff;
+@color-active:    darken(@color-highlight, 10%);
+
+@global-text-color:      #000;
+@global-text-alt-color:  @color-default;
+@global-bg-color:        #F5F5F5;
+@global-bg-alt-color:    #4A148C;
+@global-border-color:    #4A148C;
+@global-card-head-color: #4A148C;
+@global-bg-nav-color:    #4A148C;
+@global-nav-highlight:   #FFA726;
+
+@primary-color:          #6A1B9A;
+@secondary-color:        #7E57C2;
+@info-color:             #2196F3;
+
+.swal2-modal.majestic {
+
+  &, h2, .swal2-content {
+    color: @global-text-color !important;
+  }
+  border-color: @global-border-color;
+  background-color: @global-bg-color !important;
+}
+
+.theme-majestic {
+
+  background-color: @global-bg-color;
+
+  a:not(.nav-link, .navbar-brand) {
+    color: #9C27B0 !important;
+
+    &:visited {
+      color: #B39DDB !important;
+    }
+  }
+
+  .positive-stat {
+    color: #1B5E20;
+  }
+
+  .negative-stat {
+    color: #c00;
+  }
+
+  .container-fluid, .jumbotron {
+    background-color: @global-bg-color;
+    color: @global-text-color;
+  }
+
+  .highlighted {
+    background-color: #000 !important;
+    color: #fff;
+  }
+
+  .combat-container {
+    color: @global-text-color;
+  }
+
+  .card-header {
+    background-color: @global-card-head-color;
+    color: #fff;
+    border-color: @global-border-color;
+  }
+
+  .card {
+    background-color: @global-bg-color;
+    color: @global-text-color;
+    border-color: @global-border-color;
+  }
+
+  .achievement-container {
+    .btn-primary {
+      background-color: @primary-color;
+      color: @global-text-alt-color;
+    }
+  }
+
+  .choice-log {
+    .btn-secondary {
+      background-color: @secondary-color;
+      color: @global-text-alt-color;
+    }
+
+    .btn-info {
+      background-color: @info-color;
+      color: @global-text-alt-color;
+    }
+  }
+
+  .chat-container {
+    .nav-link.active {
+      background-color: @primary-color;
+    }
+    .btn-primary {
+      background-color: @primary-color;
+      color: @global-text-alt-color;
+    }
+  }
+
+  .adventure-log-message:nth-child(2n), .choice-message:nth-child(2n), .chat-output .message:nth-child(2n) {
+    background-color: @global-bg-alt-color !important;
+    color: @global-text-alt-color;
+  }
+
+  .item-name, .item-extra-stats, statistics-tree, .chat-output .message {
+    color: @global-text-color;
+  }
+
+  .form-control {
+    color: @global-text-color;
+    background-color: @global-bg-color !important;
+    border-color: @global-border-color;
+  }
+
+  .navbar-light {
+    background-color: @global-bg-nav-color !important;
+    border-color: @global-nav-highlight;
+
+    border-radius: 0;
+
+    .navbar-brand {
+      color: @color-default;
+      &:hover, &:focus {
+        color: @color-highlight;
+      }
+    }
+
+    .nav {
+      .nav-item.active {
+        .nav-link {
+          color: @color-active;
+        }
+      }
+
+      .nav-item {
+        .nav-link {
+          color: @color-default;
+          &:hover,  &:focus {
+            color: @color-highlight;
+          }
+        }
+      }
+    }
+  }
+}
