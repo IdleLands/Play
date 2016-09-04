@@ -202,6 +202,7 @@ class Game {
   }
 
   preload() {
+    this._currentMapName = this.mapName;
     this.game.stage.disableVisibilityChange = true;
     this.game.load.image('tiles', `${baseUrl}/maps/img/tiles.png`, 16, 16);
     this.game.load.spritesheet('interactables', `${baseUrl}/maps/img/tiles.png`, 16, 16);
@@ -220,7 +221,7 @@ class Game {
   update() {
     if(this._currentMapName !== this.mapName) {
       this.game.state.restart();
-      this.createMap();
+      // this.createMap();
       this.itemText = '';
     }
 
@@ -270,10 +271,8 @@ export class MapComponent {
     this.storage.lastWindowPos = pos;
   }
 
-  loadMap(mapName, mapPath) {
-    return this.http.get(`${baseUrl}/maps/world-maps/${mapPath}`)
-      .map(res => res.json())
-      .subscribe(data => this.setMapData(mapName, data));
+  loadMap() {
+    return this.setMapData();
   }
 
   setPlayerData(data) {
@@ -295,7 +294,7 @@ export class MapComponent {
     this._gameObj.otherPlayers = data;
   }
 
-  setMapData(mapName, mapData) {
+  setMapData(/* mapName, mapData */) {
     if(!this.game) {
       this.ngZone.runOutsideAngular(() => {
         this._gameObj = new Game({ playerData: this.playerData, mapName: this.mapName });
@@ -304,7 +303,7 @@ export class MapComponent {
         this._gameObj.collectibles = this.collectibles;
       });
     } else {
-      this._gameObj.cacheMap(mapName, mapData);
+      // this._gameObj.cacheMap(mapName, mapData);
     }
   }
 
@@ -336,7 +335,9 @@ export class MapComponent {
     this.personalitySubscription.unsubscribe();
     this.collectibleSubscription.unsubscribe();
 
-    this.game.destroy();
+    if(this.game) {
+      this.game.destroy();
+    }
 
     const elements = document.getElementsByTagName('canvas');
     while(elements[0]) elements[0].parentNode.removeChild(elements[0]);
