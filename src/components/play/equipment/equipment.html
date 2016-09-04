@@ -11,7 +11,7 @@
           <span *ngIf="player.equipment[slot].enchantLevel > 0">+{{ player.equipment[slot].enchantLevel }}</span>
           <span>{{ player.equipment[slot].name }}</span>
         </strong>
-        <small class="item-timestamp text-muted">Found {{ player.equipment[slot].foundAt | date:'medium' }}; Score Rating: {{ scoreRating(player.equipment[slot]) }}%</small>
+        <small class="item-timestamp text-muted">Found {{ player.equipment[slot].foundAt | date:'medium' }}; Score Rating: {{player.equipment[slot]._calcScore}} ({{ scoreRating(player.equipment[slot]) }}%)</small>
       </div>
       <div class="item-stats">
         <div class="no-padding col-md-2"
