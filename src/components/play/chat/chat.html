@@ -40,6 +40,7 @@
       </div>
       <div class="col-md-2 no-padding">
         <button class="btn btn-primary"
+                [disabled]="onlineStatus !== 'online'"
                 (click)="sendMessage(chatMessage)">Send</button>
       </div>
     </div>

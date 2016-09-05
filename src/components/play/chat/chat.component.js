@@ -67,6 +67,7 @@ export class ChatComponent {
     this.userSubscription = this.primus.contentUpdates.onlineUsers.subscribe(data => this.setOnlineUsers(data));
     this.nameSubscription = this.primus.contentUpdates.player.subscribe(data => this.retrievePlayerData(data));
     this.gmSubscription = this.primus.contentUpdates.gmdata.subscribe(data => this.gmData = data);
+    this.onlineSubscription = this.primus.contentUpdates.isOnline.subscribe(data => this.onlineStatus = data);
     this.notifier._blockMessages = true;
 
     setTimeout(() => {
@@ -79,6 +80,7 @@ export class ChatComponent {
     this.userSubscription.unsubscribe();
     this.nameSubscription.unsubscribe();
     this.gmSubscription.unsubscribe();
+    this.onlineSubscription.unsubscribe();
     this.notifier._blockMessages = false;
   }
 
@@ -174,6 +176,7 @@ export class ChatComponent {
   }
 
   sendMessage(message) {
+    if(this.onlineStatus !== 'online') return;
     message = message.trim();
     if(!message) return;
     this.primus.sendChatMessage({
