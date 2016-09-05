@@ -4,6 +4,16 @@
   height: calc(~"100vh - 100px");
   max-height: calc(~"100vh - 100px");
 
+  &.half-size {
+    min-height: calc(~"50vh - 100px");
+    height: calc(~"50vh - 100px");
+    max-height: calc(~"50vh - 100px");
+
+    .card-block {
+      height: calc(~"50vh - 100px - 51px");
+    }
+  }
+
   .card-block {
     overflow-y: auto;
     height: calc(~"100vh - 100px - 51px");

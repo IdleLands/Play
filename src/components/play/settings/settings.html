@@ -45,6 +45,11 @@
           <span>Show Personalities on Map</span>
         </label>
 
+        <label>
+          <input type="checkbox" [checked]="storage.showEquipOverview" (change)="storage.showEquipOverview = !storage.showEquipOverview">
+          <span>Show Equipment on Overview</span>
+        </label>
+
       </div>
     </div>
   </div>

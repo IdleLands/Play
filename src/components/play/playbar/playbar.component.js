@@ -7,6 +7,8 @@ import { PrimusWrapper } from '../../../services/primus';
 import { MessageNotifier } from '../../../services/messagenotifier';
 import template from './playbar.html';
 
+import { StorageService } from 'ng2-storage';
+
 @Component({
   selector: 'playbar',
   providers: [Auth],
@@ -16,14 +18,15 @@ import template from './playbar.html';
 })
 export class PlayBarComponent {
   static get parameters() {
-    return [[Router], [Auth], [PrimusWrapper], [MessageNotifier]];
+    return [[Router], [Auth], [PrimusWrapper], [MessageNotifier], [StorageService]];
   }
 
-  constructor(router, auth, primus, notifier) {
+  constructor(router, auth, primus, notifier, storage) {
     this.router = router;
     this.auth = auth;
     this.primus = primus;
     this.notifier = notifier;
+    this.storage = storage.local;
   }
 
   ngOnInit() {

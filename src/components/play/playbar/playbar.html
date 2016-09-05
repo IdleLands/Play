@@ -23,7 +23,7 @@
         </a>
       </li>
 
-      <li class="nav-item" [class.active]="hasActiveRoute('equipment')">
+      <li class="nav-item" [class.active]="hasActiveRoute('equipment')" *ngIf="!storage.showEquipOverview">
         <a class="nav-link" [routerLink]="['/play/equipment']">
           Equipment
         </a>

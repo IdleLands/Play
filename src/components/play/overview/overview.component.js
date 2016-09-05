@@ -7,20 +7,25 @@ import { PlayerCardComponent } from './playercard/playercard';
 import { AdventureLogComponent } from './adventurelog/adventurelog';
 import { ChoiceLogComponent } from './choicelog/choicelog';
 
+import { EquipmentComponent } from '../equipment/equipment.component';
+
 import { PrimusWrapper } from '../../../services/primus';
+
+import { StorageService } from 'ng2-storage';
 
 @Component({
   template,
-  directives: [PlayerCardComponent, AdventureLogComponent, ChoiceLogComponent]
+  directives: [PlayerCardComponent, AdventureLogComponent, ChoiceLogComponent, EquipmentComponent]
 })
 export class OverviewComponent {
 
   static get parameters() {
-    return [[PrimusWrapper]];
+    return [[PrimusWrapper], [StorageService]];
   }
 
-  constructor(primus) {
+  constructor(primus, storage) {
     this.primus = primus;
+    this.storage = storage.local;
   }
 
   ngOnInit() {

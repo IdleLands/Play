@@ -9,6 +9,7 @@ import template from './equipment.html';
 import './equipment.less';
 
 @Component({
+  selector: 'equipment',
   template
 })
 export class EquipmentComponent {

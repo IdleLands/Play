@@ -9,7 +9,7 @@ import { PrimusWrapper } from '../../../../services/primus';
 @Component({
   template,
   selector: 'adventurelog',
-  inputs: ['adventureLog'],
+  inputs: ['adventureLog', 'half'],
   directives: [ROUTER_DIRECTIVES]
 })
 export class AdventureLogComponent {

@@ -6,7 +6,14 @@
     </div>
 
     <div class="col-md-6">
-      <adventurelog [adventureLog]="primus.contentUpdates.adventureLog | async"></adventurelog>
+      <adventurelog [adventureLog]="primus.contentUpdates.adventureLog | async" [half]="storage.showEquipOverview"></adventurelog>
+
+      <div class="card overview-equipment-container" *ngIf="storage.showEquipOverview">
+        <h4 class="card-header no-margin-bottom">Equipment</h4>
+        <div class="card-block no-padding">
+          <equipment></equipment>
+        </div>
+      </div>
     </div>
 
     <div class="col-md-3">
