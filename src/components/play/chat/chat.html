@@ -33,6 +33,7 @@
       <div class="col-md-10 no-padding">
         <input type="text"
                class="form-control"
+               autofocus
                [(ngModel)]="chatMessage"
                placeholder="Send a message to {{activeChannel}}..."
                (keyup.enter)="sendMessage(chatMessage)"/>
