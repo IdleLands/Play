@@ -129,6 +129,7 @@ export class PrimusWrapper {
     const operations = {
       add: () => {
         let userList = this._contentUpdates.onlineUsers.getValue();
+        if(_.find(userList, { name: data.data.name })) return;
         userList.push(data.data);
         userList = _.sortBy(userList, 'name');
         this._contentUpdates.onlineUsers.next(userList);
