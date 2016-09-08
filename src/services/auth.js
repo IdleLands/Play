@@ -39,6 +39,7 @@ export class Auth {
       this.storage.profile = profile;
       this.storage.idToken = token;
       this.zoneImpl.run(() => this.user = profile);
+      this.primus.initSocket();
       this.router.navigate(['/play']);
     });
   }

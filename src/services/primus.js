@@ -20,7 +20,6 @@ export class PrimusWrapper {
     this.hasRealUser = new BehaviorSubject(false);
     this.storage = storage.local;
     this.pnotify = pnotify;
-    this.initSocket();
     this.outstandingCallbacks = {};
 
     this._contentUpdates = {

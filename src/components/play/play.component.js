@@ -18,12 +18,16 @@ export class PlayComponent {
     return [[PrimusWrapper], [Router], [StorageService]];
   }
 
-  constructor(socketCluster, router, storage) {
-    this.primus = socketCluster;
+  constructor(primus, router, storage) {
+    this.primus = primus;
     this.router = router;
     this.storage = storage.local;
 
     this.needsCreate = !this.primus.doesUserExistForThisId;
+
+    if(!this.primus.socket) {
+      this.primus.initSocket();
+    }
   }
 
   ngOnInit() {
