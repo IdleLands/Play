@@ -1,7 +1,7 @@
 <div class="container-fluid equipment-container">
   <div class="row m-b-2 equipment-item" *ngFor="let slot of equipmentKeys">
     <div class="col-md-2 left-side">
-      <div class="text-md-center class-{{player.equipment[slot].itemClass}}">
+      <div class="text-md-center class-{{player.equipment[slot].itemClass}}" [tooltip]="player.equipment[slot].itemClass">
         {{ slot }}
       </div>
     </div>
