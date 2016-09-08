@@ -13,11 +13,8 @@ import { StorageService } from 'ng2-storage';
 const thanks = [
   { name: 'Darkblizer', reason: 'Art' },
   { name: 'Sedgwick', reason: 'Donation, Maps' },
-  { name: 'Latin', reason: 'Donation' },
-  { name: 'Marcus', reason: 'Donation' },
-  { name: 'OnionKnight', reason: 'Donation' },
-  { name: 'SteelMemes69', reason: 'Donation' },
-  { name: 'random', reason: 'Donation' }
+  { name: 'Yngvildr', reason: 'Development' },
+  { name: 'Therealtahu', reason: 'Support' }
 ];
 
 const themes = [
@@ -57,6 +54,8 @@ export class SettingsComponent {
 
 <p><strong>Contributions:</strong></p>
 ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
+
+... and the many other donators, who are viewable in the Hall of Heroes! Thank you!
 
 <p></p>
 <p><strong>Want to help?</strong></p>
