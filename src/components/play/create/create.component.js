@@ -53,6 +53,7 @@ export class CreateComponent {
     this.genders = genders;
 
     this.primus = primus;
+    this.primus.requestNoKill();
     this.subscription = this.primus.hasRealUser.subscribe(res => {
       if(!res) return;
       this.router.navigate(['/play/overview']);

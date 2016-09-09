@@ -343,4 +343,8 @@ export class PrimusWrapper {
       this.emit('plugin:player:request:personalities', { playerName: name });
     });
   }
+
+  requestNoKill() {
+    this.emit('plugin:player:imregisteringrightnowdontkillme');
+  }
 }
