@@ -5,7 +5,7 @@
   "repository": "https://github.com/seiyria/deck.zone",
   "license": "MIT",
   "scripts": {
-    "build:app": "webpack -p --progress && cp src/index.html dist/index.html && echo 'idle.land' > dist/CNAME",
+    "build:app": "webpack -p --progress && cp src/index.html dist/index.html",
     "test:lint": "eslint \"src/**/*.js\"",
     "test:ava": "ava --require babel-register",
     "test": "npm run test:lint",
