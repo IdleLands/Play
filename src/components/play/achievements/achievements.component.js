@@ -41,6 +41,9 @@ export class AchievementsComponent {
           html += `<div><strong>${key.split('Display').join('').toUpperCase()}</strong> ${val || reward[`${key}Display`]}</div>`;
         });
 
+      } else if(reward.type === 'pet') {
+        html += `<div><strong>Pet</strong> ${reward.pet}</div>`;
+
       } else if(reward.type === 'title') {
         html += `<div><strong>Title</strong> ${reward.title}</div>`;
 
