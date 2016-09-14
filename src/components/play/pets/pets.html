@@ -21,11 +21,11 @@
           </div>
 
           <div class="card-block">
-            <h6 class="card-title text-muted m-b-0">Level {{petactive._level?.__current}} {{petactive.professionName}} ({{petactive.gender}})</h6>
+            <h6 class="card-title text-muted m-b-0">Level {{petactive._level?.__current}}/{{petactive._level?.maximum}} {{petactive.professionName}} ({{petactive.gender}})</h6>
             <h6 class="card-title text-muted m-b-0">with {{petactive.attr}}</h6>
           </div>
 
-          <div class="card-block no-padding-bottom">
+          <div class="card-block no-padding-bottom" *ngIf="petactive.nextItemFind">
             <div class="card-text">
               <stat [size]="200" [name]="'Special'"></stat> Next Item Find: {{ petactive.nextItemFind | date:'short' }}
             </div>
