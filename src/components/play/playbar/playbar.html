@@ -47,6 +47,12 @@
         </a>
       </li>
 
+      <li class="nav-item" [class.active]="hasActiveRoute('pets')">
+        <a class="nav-link" [routerLink]="['/play/pets']">
+          Pets
+        </a>
+      </li>
+
       <li class="nav-item" [class.active]="hasActiveRoute('statistics')">
         <a class="nav-link" [routerLink]="['/play/statistics']">
           Statistics

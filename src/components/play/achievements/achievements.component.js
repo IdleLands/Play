@@ -44,6 +44,9 @@ export class AchievementsComponent {
       } else if(reward.type === 'pet') {
         html += `<div><strong>Pet</strong> ${reward.pet}</div>`;
 
+      } else if(reward.type === 'petattr') {
+        html += `<div><strong>Pet Attribute</strong> ${reward.petattr}</div>`;
+
       } else if(reward.type === 'title') {
         html += `<div><strong>Title</strong> ${reward.title}</div>`;
 

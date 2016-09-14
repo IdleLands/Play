@@ -35,7 +35,10 @@ export class PrimusWrapper {
       player: new BehaviorSubject({}),
       party: new BehaviorSubject({}),
       gmdata: new BehaviorSubject({}),
-      battle: new BehaviorSubject({})
+      battle: new BehaviorSubject({}),
+      petbasic: new BehaviorSubject([]),
+      petbuy: new BehaviorSubject({}),
+      petactive: new BehaviorSubject({})
     };
 
     this.contentUpdates = {
@@ -51,7 +54,10 @@ export class PrimusWrapper {
       player: this._contentUpdates.player.asObservable(),
       party: this._contentUpdates.party.asObservable(),
       gmdata: this._contentUpdates.gmdata.asObservable(),
-      battle: this._contentUpdates.battle.asObservable()
+      battle: this._contentUpdates.battle.asObservable(),
+      petbasic: this._contentUpdates.petbasic.asObservable(),
+      petbuy: this._contentUpdates.petbuy.asObservable(),
+      petactive: this._contentUpdates.petactive.asObservable()
     };
 
     this._playerName = new Promise(resolve => {
@@ -189,6 +195,7 @@ export class PrimusWrapper {
       nonblock: true,
       nonblock_opacity: .2
     };
+    object.delay = 3000;
     this.pnotify.pnotify(object);
   }
 
@@ -344,7 +351,65 @@ export class PrimusWrapper {
     });
   }
 
+  requestPets() {
+    this._playerName.then(() => {
+      this.emit('plugin:player:request:pets');
+    });
+  }
+
   requestNoKill() {
     this.emit('plugin:player:imregisteringrightnowdontkillme');
+  }
+
+  buyPet(petType, petName) {
+    this.emit('plugin:pet:buy', { petType, petName });
+  }
+
+  swapPet(petType) {
+    this.emit('plugin:pet:swap', { petType });
+  }
+
+  togglePetSmart(setting) {
+    this.emit('plugin:pet:smart', { setting });
+  }
+
+  changePetClass(newProfession) {
+    this.emit('plugin:pet:profession', { newProfession });
+  }
+
+  changePetAttr(newAttr) {
+    this.emit('plugin:pet:attr', { newAttr });
+  }
+
+  upgradePetAttr(upgradeAttr) {
+    this.emit('plugin:pet:upgrade', { upgradeAttr });
+  }
+
+  feedPet(gold) {
+    this.emit('plugin:pet:feed', { gold });
+  }
+
+  takeGoldFromPet() {
+    this.emit('plugin:pet:takegold');
+  }
+
+  sellItemFromPet(itemId) {
+    this.emit('plugin:pet:sell', { itemId });
+  }
+
+  equipItemOnPet(itemId) {
+    this.emit('plugin:pet:equip', { itemId });
+  }
+
+  unequipItemFromPet(itemId) {
+    this.emit('plugin:pet:unequip', { itemId });
+  }
+
+  giveItemToPet(itemId) {
+    this.emit('plugin:pet:giveitem', { itemId });
+  }
+
+  giveItemToPlayer(itemId) {
+    this.emit('plugin:pet:takeitem', { itemId });
   }
 }

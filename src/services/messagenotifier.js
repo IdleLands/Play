@@ -41,8 +41,11 @@ export class MessageNotifier {
     if(!this._blockMessages) {
       this._messagesAvailable.next(currentMessages);
     }
-    if(this.favicon && !this._blockMessages || document.hidden) {
+
+    /*
+    if(false && this.favicon && !this._blockMessages || document.hidden) {
       this.favicon.badge(currentMessages);
     }
+    */
   }
 }

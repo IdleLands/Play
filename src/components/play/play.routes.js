@@ -11,6 +11,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { AchievementsComponent } from './achievements/achievements.component';
 import { CollectiblesComponent } from './collectibles/collectibles.component';
 import { CombatComponent } from './combat/combat.component';
+import { PetsComponent } from './pets/pets.component';
 
 export const routes = [
   { path: 'create',       canActivate: [AuthGuard], component: CreateComponent },
@@ -22,5 +23,6 @@ export const routes = [
   { path: 'achievements', canActivate: [AuthGuard], component: AchievementsComponent },
   { path: 'collectibles', canActivate: [AuthGuard], component: CollectiblesComponent },
   { path: 'settings',     canActivate: [AuthGuard], component: SettingsComponent },
-  { path: 'combat',       canActivate: [AuthGuard], component: CombatComponent }
+  { path: 'combat',       canActivate: [AuthGuard], component: CombatComponent },
+  { path: 'pets',         canActivate: [AuthGuard], component: PetsComponent }
 ];

@@ -3,13 +3,15 @@ import _ from 'lodash';
 
 import { Component } from '@angular/core';
 import { PrimusWrapper } from '../../../services/primus';
-import { ItemService } from '../../../services/item';
+
+import { ItemComponent } from '../_shared/item/item.component';
 
 import template from './equipment.html';
 import './equipment.less';
 
 @Component({
   selector: 'equipment',
+  directives: [ItemComponent],
   template
 })
 export class EquipmentComponent {
@@ -20,19 +22,15 @@ export class EquipmentComponent {
   constructor(primus) {
     this.primus = primus;
     this.stats = ['str', 'con', 'dex', 'agi', 'int', 'luk'];
-  }
 
-  extraItemStats(item) {
-    return ItemService.getSpecialStatString(item);
+    this.equippedItemButtons = [
+      { tooltip: 'Give to Pet', name: 'Pet', callback: (item) => this.primus.giveItemToPet(item.id) }
+    ];
   }
 
   setPlayerData(data) {
     this.player = { equipment: data };
     this.equipmentKeys = _.sortBy(_.keys(this.player.equipment));
-  }
-
-  scoreRating(item) {
-    return Math.round(item._calcScore/item._baseScore*100);
   }
 
   ngOnInit() {

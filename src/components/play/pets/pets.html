@@ -1,0 +1,217 @@
+<div class="container-fluid pet-container">
+
+  <div class="row">
+
+    <div class="col-md-12 empty-text text-md-center text-muted" *ngIf="!petbasic || !petbasic.length">
+      <h3>No pets.</h3>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card pet-card player-card half" *ngIf="petactive?.name">
+        <h4 class="card-header no-margin-bottom">{{petactive.name}}</h4>
+
+        <div class="pet-card-inner">
+          <progress class="progress progress-success" value="{{petactive._xp?.__current}}" max="{{petactive._xp?.maximum}}"></progress>
+          <span class="progress-label">
+            {{petactive._xp?.__current | number}}/{{petactive._xp?.maximum | number}}
+          </span>
+
+          <div class="text-md-center m-b-1 feed-button" *ngIf="petactive._level.__current !== petactive._level.maximum && petactive._level.__current < player._level?.__current">
+            <button class="btn btn-primary btn-sm" (click)="feed()">Feed</button>
+          </div>
+
+          <div class="card-block">
+            <h6 class="card-title text-muted m-b-0">Level {{petactive._level?.__current}} {{petactive.professionName}} ({{petactive.gender}})</h6>
+            <h6 class="card-title text-muted m-b-0">with {{petactive.attr}}</h6>
+          </div>
+
+          <div class="card-block no-padding-bottom">
+            <div class="card-text">
+              <stat [size]="200" [name]="'Special'"></stat> Next Item Find: {{ petactive.nextItemFind | date:'short' }}
+            </div>
+          </div>
+
+          <div class="card-block no-padding-bottom">
+            <div class="card-text">
+              <stat [size]="200" [name]="'Item'"></stat> Max Item Score: {{ petactive.statCache.itemFindRange }}
+            </div>
+          </div>
+
+          <div class="card-block no-padding-bottom">
+            <div class="card-text">
+              <stat [size]="200" [name]="'gold'"></stat>
+              <span>{{ petactive.gold.__current }} / {{ petactive.gold.maximum }}</span>
+              <button class="btn btn-primary btn-sm" (click)="takeGold()">Take</button>
+            </div>
+          </div>
+
+          <div class="card-block no-padding-bottom">
+            <div class="card-text">
+              <table class="table stat-table">
+                <tr>
+                  <td class="no-padding"><stat [size]="'200'" [name]="'hp'"></stat></td>
+                  <td class="text-md-right">{{ petactive._hp?.maximum }}</td>
+
+                  <td class="no-padding"><stat [size]="'200'" [name]="'mp'"></stat></td>
+                  <td class="text-md-right">{{ petactive._mp?.maximum }}</td>
+                </tr>
+
+                <tr>
+                  <td class="no-padding"><stat [size]="'200'" [name]="'str'"></stat></td>
+                  <td class="text-md-right">{{ petactive.statCache?.str }}</td>
+
+                  <td class="no-padding"><stat [size]="'200'" [name]="'con'"></stat></td>
+                  <td class="text-md-right">{{ petactive.statCache?.con }}</td>
+                </tr>
+
+                <tr>
+                  <td class="no-padding"><stat [size]="'200'" [name]="'dex'"></stat></td>
+                  <td class="text-md-right">{{ petactive.statCache?.dex }}</td>
+
+                  <td class="no-padding"><stat [size]="'200'" [name]="'agi'"></stat></td>
+                  <td class="text-md-right">{{ petactive.statCache?.agi }}</td>
+                </tr>
+
+                <tr>
+                  <td class="no-padding"><stat [size]="'200'" [name]="'int'"></stat></td>
+                  <td class="text-md-right">{{ petactive.statCache?.int }}</td>
+
+                  <td class="no-padding"><stat [size]="'200'" [name]="'luk'"></stat></td>
+                  <td class="text-md-right">{{ petactive.statCache?.luk }}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card pet-card half">
+        <h4 class="card-header no-margin-bottom">Pets</h4>
+        <div class="pet-card-inner">
+          <div class="card-block no-margin-bottom no-padding-bottom" *ngFor="let pet of petbasic">
+
+            <div *ngIf="pet.bought">
+              <span class="pet-unbought-name">{{ pet.petName }}</span>
+              <button class="pull-md-right btn btn-sm btn-info"
+                      *ngIf="petactive.$petId !== pet.name"
+                      (click)="swapPet(pet.name)">Swap To</button>
+              <h6 class="text-muted">Level {{ pet.level }} {{ pet.profession }} {{ pet.name }}</h6>
+            </div>
+
+            <div *ngIf="!pet.bought">
+              <span class="pet-unbought-name">{{ pet.name }}</span>
+              <button class="pull-md-right btn btn-sm btn-info"
+                      [disabled]="player.gold < petbuy[pet.name].cost"
+                      (click)="buyPet(pet.name)">Buy for {{petbuy[pet.name].cost}} gold</button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card pet-card third" *ngIf="petactive?.name">
+        <h4 class="card-header no-margin-bottom">Settings</h4>
+
+        <div class="pet-card-inner card-block no-padding-bottom">
+          <div class="card-text">
+            <label class="m-b-0" [tooltip]="'Automatically upgrade self if enough gold.'">
+              <input type="checkbox"
+                     [checked]="petactive.smart.self"
+                     (change)="toggleSmart('self')">
+              <span>Smart Self</span>
+            </label>
+            <br>
+            <label class="m-b-0" [tooltip]="'Automatically sell the lowest score items.'">
+              <input type="checkbox"
+                     [checked]="petactive.smart.sell"
+                     (change)="toggleSmart('sell')">
+              <span>Smart Sell</span>
+            </label>
+            <br>
+            <label class="m-b-0"  [tooltip]="'Automatically unequip items with the lowest score.'">
+              <input type="checkbox"
+                     [checked]="petactive.smart.equip"
+                     (change)="toggleSmart('equip')">
+              <span>Smart Equip</span>
+            </label>
+            <br>
+            <select class="form-control m-b-0" (change)="changePetClass($event)">
+              <option
+                [value]="class"
+                [selected]="petactive.professionName === class"
+                *ngFor="let class of validClasses">
+                {{ class }}
+              </option>
+            </select>
+            <br>
+            <select class="form-control m-b-0" (change)="changePetAttr($event)">
+              <option
+                [value]="attr"
+                [selected]="petactive.attr === attr"
+                *ngFor="let attr of validPetAttrs">
+                {{ attr }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card pet-card two-third" *ngIf="petactive?.name">
+        <h4 class="card-header no-margin-bottom">Upgrades</h4>
+
+        <div class="pet-card-inner card-block no-padding-bottom">
+          <div class="card-text">
+            <div *ngFor="let stat of formattedStats">
+              <div [tooltip]="stat.tooltip(petactive.$scale[stat.stat][petactive.scaleLevel[stat.stat]])">
+                <strong>{{ stat.name }}</strong>
+              </div>
+              <button class="pull-md-right btn btn-sm btn-info"
+                      *ngIf="petactive.scaleLevel[stat.stat]+1 !== petactive.$scale[stat.stat].length"
+                      [disabled]="player.gold < petactive.$scaleCost[stat.stat][petactive.scaleLevel[stat.stat]+1]"
+                      (click)="upgradePetAttr(stat.stat)">Buy for {{ petactive.$scaleCost[stat.stat][petactive.scaleLevel[stat.stat]+1] }} gold</button>
+              <h6 class="text-muted">Level {{ petactive.scaleLevel[stat.stat]+1 }}/{{ petactive.$scale[stat.stat].length }}</h6>
+              <hr>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-6">
+
+      <div class="card pet-card half" *ngIf="petactive?.name">
+        <h4 class="card-header no-margin-bottom">Equipment</h4>
+
+        <div class="pet-card-inner card-block no-padding-bottom" *ngIf="!equipment.length">
+          <div class="empty-text text-md-center text-muted">
+            <h3>Not able to equip gear.</h3>
+          </div>
+        </div>
+
+        <div class="pet-card-inner card-block no-padding-bottom">
+          <div class="row m-b-2" *ngFor="let item of equipment">
+            <item [item]="item" [buttons]="equippedItemButtons"></item>
+          </div>
+        </div>
+      </div>
+
+      <div class="card pet-card half" *ngIf="petactive?.name">
+        <h4 class="card-header no-margin-bottom">Inventory ({{ petactive.inventory.length }}/{{ petactive.$scale.inventory[petactive.scaleLevel.inventory] }})</h4>
+
+        <div class="pet-card-inner card-block no-padding-bottom" *ngIf="!petactive.inventory.length">
+          <div class="empty-text text-md-center text-muted">
+            <h3>Inventory empty.</h3>
+          </div>
+        </div>
+
+        <div class="pet-card-inner card-block no-padding-bottom">
+          <div class="row m-b-2" *ngFor="let item of petactive.inventory">
+            <item [item]="item" [buttons]="inventoryButtons"></item>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
