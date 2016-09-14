@@ -41,7 +41,7 @@
             <div class="card-text">
               <stat [size]="200" [name]="'gold'"></stat>
               <span>{{ petactive.gold.__current }} / {{ petactive.gold.maximum }}</span>
-              <button class="btn btn-primary btn-sm" (click)="takeGold()">Take</button>
+              <button class="btn btn-primary btn-sm" (click)="takeGold()" *ngIf="petactive.gold.__current > 0">Take</button>
             </div>
           </div>
 
