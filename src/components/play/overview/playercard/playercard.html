@@ -17,6 +17,11 @@
     </div>
     <div class="card-block no-padding-bottom">
       <div class="card-text">
+        <stat [size]="200" [name]="'Item'"></stat> Max Item Score: {{ player.statCache?.itemFindRange }}
+      </div>
+    </div>
+    <div class="card-block no-padding-bottom">
+      <div class="card-text">
         <stat [size]="200" [name]="'gold'"></stat> {{ player.gold }}
       </div>
     </div>
