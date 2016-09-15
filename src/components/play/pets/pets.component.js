@@ -82,8 +82,8 @@ export class PetsComponent {
 
     this.inventoryButtons = [
       { tooltip: 'Sell Item', name: 'gold', callback: (item) => this.primus.sellItemFromPet(item.id) },
-      { tooltip: 'Equip Item', name: 'Item', callback: (item) => this.primus.equipItemOnPet(item.id) },
-      { tooltip: 'Give Item', name: 'Profession', callback: (item) => this.primus.giveItemToPlayer(item.id) }
+      { tooltip: 'Equip Item (Pet)', name: 'Item', callback: (item) => this.primus.equipItemOnPet(item.id) },
+      { tooltip: 'Equip Item (Player)', name: 'Profession', callback: (item) => this.primus.giveItemToPlayer(item.id) }
     ];
   }
 
