@@ -169,7 +169,6 @@ export class PrimusWrapper {
     const player = this._contentUpdates.player.getValue();
     const playerName = player.nameEdit ? player.nameEdit : player.name;
     if(fromPrimus && message.playerName === playerName) return;
-    if(!message.timestamp) message.timestamp = Date.now();
     const currentMessages = this._contentUpdates.chatMessage.getValue() || [];
     currentMessages.push(message);
     this._contentUpdates.chatMessage.next(currentMessages);

@@ -8,7 +8,7 @@ import './chatoutput.less';
 @Component({
   template,
   selector: 'chatoutput',
-  inputs: ['messages']
+  inputs: ['messages', 'showMod']
 })
 export class ChatOutputComponent {
   static get parameters() {

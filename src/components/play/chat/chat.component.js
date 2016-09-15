@@ -119,7 +119,6 @@ export class ChatComponent {
     if(!chatMessages || chatMessages.length === 0) return;
 
     _.each(chatMessages, chatMessage => {
-
       let channelName = chatMessage.channel;
 
       if(_.startsWith(chatMessage.route, 'channel:pm:')) {
@@ -183,7 +182,9 @@ export class ChatComponent {
       playerName: this.playerName,
       text: message,
       channel: this.activeChannel,
-      route: this.chatData[this.activeChannel].route
+      route: this.chatData[this.activeChannel].route,
+      isMod: this.isMod,
+      ip: '<self>'
     });
     this.chatMessage = '';
   }

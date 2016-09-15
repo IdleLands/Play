@@ -1,7 +1,10 @@
 <div class="message" *ngFor="let message of allMessages">
   <div class="author-row">
+    <i fa [icon]="'star'" *ngIf="message.isMod"></i>
     <strong class="author">{{ message.playerName }}<span *ngIf="message.title">, the {{ message.title }}</span></strong>
     <small class="timestamp text-muted">{{ message.timestamp | date:'medium' }}</small>
+    <small *ngIf="showMod">Mod; IP|{{ message.ip }}</small>
+
   </div>
   <div class="message-row" [innerHtml]="linkifyText(message.text)">
   </div>
