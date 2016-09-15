@@ -80,12 +80,12 @@ export class ChoiceLogComponent {
   <strong>${choiceItemName}</strong> (Score: ${choiceItem._calcScore}, 100%)
 </div>
 <div class="col-md-12 no-padding m-b-1">
-  <div class="col-md-2 ${playerItem.str > choiceItem.str ? 'negative' : 'positive'}-stat">${choiceItem.str} (${playerItem.str > choiceItem.str ? '' : '+'}${choiceItem.str - playerItem.str})</div>
-  <div class="col-md-2 ${playerItem.con > choiceItem.con ? 'negative' : 'positive'}-stat">${choiceItem.con} (${playerItem.con > choiceItem.con ? '' : '+'}${choiceItem.con - playerItem.con})</div>
-  <div class="col-md-2 ${playerItem.dex > choiceItem.dex ? 'negative' : 'positive'}-stat">${choiceItem.dex} (${playerItem.dex > choiceItem.dex ? '' : '+'}${choiceItem.dex - playerItem.dex})</div>
-  <div class="col-md-2 ${playerItem.agi > choiceItem.agi ? 'negative' : 'positive'}-stat">${choiceItem.agi} (${playerItem.agi > choiceItem.agi ? '' : '+'}${choiceItem.agi - playerItem.agi})</div>
-  <div class="col-md-2 ${playerItem.int > choiceItem.int ? 'negative' : 'positive'}-stat">${choiceItem.int} (${playerItem.int > choiceItem.int ? '' : '+'}${choiceItem.int - playerItem.int})</div>
-  <div class="col-md-2 ${playerItem.luk > choiceItem.luk ? 'negative' : 'positive'}-stat">${choiceItem.luk} (${playerItem.luk > choiceItem.luk ? '' : '+'}${choiceItem.luk - playerItem.luk})</div>
+  <div class="col-md-2">${choiceItem.str} <span class="${playerItem.str > choiceItem.str ? 'negative' : 'positive'}-stat">(${playerItem.str > choiceItem.str ? '' : '+'}${choiceItem.str - playerItem.str})</span></div>
+  <div class="col-md-2">${choiceItem.con} <span class="${playerItem.con > choiceItem.con ? 'negative' : 'positive'}-stat">(${playerItem.con > choiceItem.con ? '' : '+'}${choiceItem.con - playerItem.con})</span></div>
+  <div class="col-md-2">${choiceItem.dex} <span class="${playerItem.dex > choiceItem.dex ? 'negative' : 'positive'}-stat">(${playerItem.dex > choiceItem.dex ? '' : '+'}${choiceItem.dex - playerItem.dex})</span></div>
+  <div class="col-md-2">${choiceItem.agi} <span class="${playerItem.agi > choiceItem.agi ? 'negative' : 'positive'}-stat">(${playerItem.agi > choiceItem.agi ? '' : '+'}${choiceItem.agi - playerItem.agi})</span></div>
+  <div class="col-md-2">${choiceItem.int} <span class="${playerItem.int > choiceItem.int ? 'negative' : 'positive'}-stat">(${playerItem.int > choiceItem.int ? '' : '+'}${choiceItem.int - playerItem.int})</span></div>
+  <div class="col-md-2">${choiceItem.luk} <span class="${playerItem.luk > choiceItem.luk ? 'negative' : 'positive'}-stat">(${playerItem.luk > choiceItem.luk ? '' : '+'}${choiceItem.luk - playerItem.luk})</span></div>
 </div>
 <div class="col-md-12 no-padding text-md-center m-b-1">
   ${ItemService.getSpecialStatString(choiceItem)}
