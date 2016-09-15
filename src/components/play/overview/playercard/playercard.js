@@ -6,7 +6,7 @@ import './playercard.less';
 @Component({
   template,
   selector: 'playercard',
-  inputs: ['player', 'party']
+  inputs: ['player', 'party', 'pet']
 })
 export class PlayerCardComponent {
   constructor() {}

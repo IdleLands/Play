@@ -63,6 +63,12 @@
       </div>
     </div>
 
+    <div class="card-block" *ngIf="pet && pet.$scale">
+      <div><strong>{{pet.name}}</strong> ({{pet.$petId}})</div>
+      <div><strong>Pet Gold: </strong> {{pet.gold.__current}}/{{pet.gold.maximum}}</div>
+      <div><strong>Pet Items: </strong> {{pet.inventory.length}}/{{ pet.$scale.inventory[pet.scaleLevel.inventory] }}</div>
+    </div>
+
     <div class="card-block" *ngIf="party.name && !party.isBattleParty">
       <strong>Party: {{ party.name }}</strong>
       <ul>

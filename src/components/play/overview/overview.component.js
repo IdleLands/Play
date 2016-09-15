@@ -30,5 +30,6 @@ export class OverviewComponent {
 
   ngOnInit() {
     this.primus.requestEquipment();
+    this.primus.requestPets();
   }
 }
