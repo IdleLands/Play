@@ -20,6 +20,7 @@ import { PrimusWrapper } from './services/primus';
 import { PNotifyService, PNotifySettings } from 'ng2-pnotify';
 import { AuthGuard } from './services/auth';
 import { App } from './components/app.component';
+
 import { StorageSettings, StorageService } from 'ng2-storage';
 import { TOOLTIP_DIRECTIVES } from 'ng2-bootstrap/components/tooltip';
 // import { LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -28,20 +29,25 @@ import { APP_ROUTER_PROVIDERS } from './components/app.routes';
 
 if(window.location.hostname !== 'localhost') enableProdMode();
 
-bootstrap(App, [
-  HTTP_PROVIDERS,
-  APP_ROUTER_PROVIDERS,
-  PrimusWrapper,
-  SweetAlertService,
-  StorageService,
-  PNotifyService,
-  MessageNotifier,
-  AuthGuard,
-  provide(StorageSettings, { useValue: { prefix: 'idp' } }),
-  provide(PNotifySettings, { useValue: { styling: 'fontawesome' } }),
-  // { provide: LocationStrategy, useClass: HashLocationStrategy },
-  provide(PLATFORM_DIRECTIVES, { useValue: TOOLTIP_DIRECTIVES, multi: true }),
-  provide(PLATFORM_DIRECTIVES, { useValue: FontAwesomeDirective, multi: true }),
-  provide(PLATFORM_DIRECTIVES, { useValue: GameIconsDirective, multi: true }),
-  provide(PLATFORM_DIRECTIVES, { useValue: StatComponent, multi: true })
-]);
+if(window.Proxy) {
+  bootstrap(App, [
+    HTTP_PROVIDERS,
+    APP_ROUTER_PROVIDERS,
+    PrimusWrapper,
+    SweetAlertService,
+    StorageService,
+    PNotifyService,
+    MessageNotifier,
+    AuthGuard,
+    provide(StorageSettings, { useValue: { prefix: 'idp' } }),
+    provide(PNotifySettings, { useValue: { styling: 'fontawesome' } }),
+    // { provide: LocationStrategy, useClass: HashLocationStrategy },
+    provide(PLATFORM_DIRECTIVES, { useValue: TOOLTIP_DIRECTIVES, multi: true }),
+    provide(PLATFORM_DIRECTIVES, { useValue: FontAwesomeDirective, multi: true }),
+    provide(PLATFORM_DIRECTIVES, { useValue: GameIconsDirective, multi: true }),
+    provide(PLATFORM_DIRECTIVES, { useValue: StatComponent, multi: true })
+  ]);
+
+  const badBrowser = document.getElementById('badbrowser');
+  badBrowser.parentNode.removeChild(badBrowser);
+}
