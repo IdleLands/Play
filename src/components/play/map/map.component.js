@@ -123,7 +123,7 @@ class Game {
         requireRegion:      object.properties.requireRegion,
         requireMap:         object.properties.requireMap,
         flavorText:         object.properties.flavorText,
-        requireHoliday:     object.properties.holiday
+        requireHoliday:     object.properties.requireHoliday
       };
     });
 
