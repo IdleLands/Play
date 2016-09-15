@@ -81,11 +81,18 @@ export class PrimusWrapper {
 
     window.socket = this.socket;
 
+    const popupClose = () => {
+      this.handleNotification({ type: 'error', title: 'Socket Closed', notify: 'The connection has ended. It may or may not come back.' });
+    };
+
     this.socket.on('error', e => console.error('Socket error', e));
 
     this.socket.on('close', () => {
       this._contentUpdates.isOnline.next('offline');
+      popupClose();
     });
+
+    this.socket.on('end', popupClose);
 
     this.socket.on('reconnect scheduled', () => {
       this._contentUpdates.isOnline.next('connecting');
