@@ -88,6 +88,10 @@ export class ChatComponent {
     this.primus.mute(this.playerName, otherUser);
   }
 
+  pardonUser(otherUser) {
+    this.primus.pardon(this.playerName, otherUser);
+  }
+
   retrievePlayerData(player) {
     this.playerName = player.name;
     this.playerTitle = player.title;

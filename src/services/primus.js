@@ -287,6 +287,10 @@ export class PrimusWrapper {
     this.emit('plugin:chat:togglemute', { playerName: muter, targetName: mutee });
   }
 
+  pardon(pardoner, pardoned) {
+    this.emit('plugin:chat:togglepardon', { playerName: pardoner, targetName: pardoned });
+  }
+
   changeName(changer, changee, newName) {
     this.emit('plugin:player:changename', { playerName: changer, targetName: changee, newName });
   }

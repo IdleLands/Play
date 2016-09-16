@@ -67,6 +67,8 @@
               <li>
                 <a class="dropdown-item" (click)="muteUser(user.name)" *ngIf="user.isMuted">Unmute user</a>
                 <a class="dropdown-item" (click)="muteUser(user.name)" *ngIf="!user.isMuted">Mute user</a>
+                <a class="dropdown-item" (click)="pardonUser(user.name)" *ngIf="user.isPardoned">Unpardon user</a>
+                <a class="dropdown-item" (click)="pardonUser(user.name)" *ngIf="!user.isPardoned">Pardon user</a>
                 <a class="dropdown-item" (click)="gmBan(user.name)" *ngIf="user.name !== playerName">Ban user</a>
                 <a class="dropdown-item" (click)="gmToggleMod(user.name)" *ngIf="user.isMod">Remove Moderator</a>
                 <a class="dropdown-item" (click)="gmToggleMod(user.name)" *ngIf="!user.isMod">Make Moderator</a>
