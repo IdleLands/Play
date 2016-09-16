@@ -13,7 +13,7 @@ import './chat.less';
 
 import { ChatOutputComponent } from './chatoutput/chatoutput.component';
 
-const MAX_MESSAGES = 100;
+const MAX_MESSAGES = 500;
 
 let chatData = {
   General: { unread: 0, route: 'chat:channel:General', messages: [], canHide: false }
