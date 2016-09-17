@@ -133,8 +133,6 @@ export class ChatComponent {
     _.each(chatMessages, chatMessage => {
       let channelName = chatMessage.channel;
 
-      console.log(chatMessage);
-
       if(_.startsWith(chatMessage.route, 'channel:pm:')) {
         channelName = this.getOtherPersonFromRoute(chatMessage.route);
         chatMessage.channel = channelName;

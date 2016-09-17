@@ -21,6 +21,8 @@ export class MessageNotifier {
     this.messagesAvailable = this._messagesAvailable.asObservable();
     this.primus.contentUpdates.chatMessage.subscribe(data => this.possiblyDisplayMessages(data));
     this.favicon = new Favico({ animation: 'none' });
+
+    this._currentMessages = 0;
   }
 
   clearIndicators() {
@@ -40,12 +42,12 @@ export class MessageNotifier {
 
     if(!this._blockMessages) {
       this._messagesAvailable.next(currentMessages);
+    } else {
+      this.clearIndicators();
     }
 
-    /*
-    if(false && this.favicon && !this._blockMessages || document.hidden) {
-      this.favicon.badge(currentMessages);
+    if(this.favicon && !this._blockMessages || document.hidden) {
+      this.favicon.badge(++this._currentMessages);
     }
-    */
   }
 }
