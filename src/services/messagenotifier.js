@@ -34,6 +34,7 @@ export class MessageNotifier {
     if(this.favicon) {
       this.favicon.badge(0);
     }
+    this._currentMessages = 0;
   }
 
   possiblyDisplayMessages(messageData) {
