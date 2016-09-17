@@ -2,7 +2,7 @@
   "name": "IdleLandsPlay",
   "version": "0.0.1",
   "description": "Play IdleLands in the browser",
-  "repository": "https://github.com/seiyria/deck.zone",
+  "repository": "https://github.com/IdleLands/Play",
   "license": "MIT",
   "scripts": {
     "build:app": "webpack -p --progress && cp src/index.html dist/index.html && echo '/*    /index.html   200' > dist/_redirects && echo `date` > dist/builtat",
