@@ -24,5 +24,6 @@ export const routes = [
   { path: 'collectibles', canActivate: [AuthGuard], component: CollectiblesComponent },
   { path: 'settings',     canActivate: [AuthGuard], component: SettingsComponent },
   { path: 'combat',       canActivate: [AuthGuard], component: CombatComponent },
+  { path: 'opencombat',                             component: CombatComponent },
   { path: 'pets',         canActivate: [AuthGuard], component: PetsComponent }
 ];

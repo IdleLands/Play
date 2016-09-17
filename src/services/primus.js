@@ -82,6 +82,7 @@ export class PrimusWrapper {
     window.socket = this.socket;
 
     const popupClose = () => {
+      if(this._forceKill) return;
       this.handleNotification({ type: 'error', title: 'Socket Closed', notify: 'The connection has ended. It may or may not come back.' });
     };
 
