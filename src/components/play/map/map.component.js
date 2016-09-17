@@ -162,8 +162,8 @@ class Game {
         if(child.requireClass)       requires=true;requirementText += `\nClass: ${child.requireClass}`;
         if(child.requireCollectible) requires=true;requirementText += `\nCollectible: ${child.requireCollectible}`;
         if(child.requireHoliday)     requires=true;requirementText += `\nHoliday: ${child.requireHoliday}`;
-        if(child.requireRegion)      requires=true;requirementText += `\nRegion Visited: ${child.requireHoliday}`;
-        if(child.requireMap)         requires=true;requirementText += `\nMap Visited: ${child.requireHoliday}`;
+        if(child.requireRegion)      requires=true;requirementText += `\nRegion Visited: ${child.requireRegion}`;
+        if(child.requireMap)         requires=true;requirementText += `\nMap Visited: ${child.requireMap}`;
 
         if(requires) this.itemText = `${this.itemText}\n${requirementText}`;
       });
