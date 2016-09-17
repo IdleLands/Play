@@ -113,7 +113,7 @@ export class ChatComponent {
     if(channel === this.activeChannel) {
       setTimeout(() => {
         this.changeChannel('General');
-        this.formatChatDataForLocalSave(this.chatData);
+        this.formatChatDataForLocalSave(_.cloneDeep(this.chatData));
       });
     }
 
