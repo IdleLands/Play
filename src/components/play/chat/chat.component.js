@@ -59,11 +59,17 @@ export class ChatComponent {
 
     this.chatData = newChatData;
     this.channels = _.keys(this.chatData);
+
+    console.log(chatData);
     this.changeChannel('General');
   }
 
   ngOnInit() {
-    this.chatMessageSubscription = this.primus.contentUpdates.chatMessage.subscribe(data => this.addChatMessage(data));
+    this.chatMessageSubscription = this.primus.contentUpdates.chatMessage.subscribe(data => {
+      this.primus._playerName.then(() => {
+        this.addChatMessage(data);
+      });
+    });
     this.userSubscription = this.primus.contentUpdates.onlineUsers.subscribe(data => this.setOnlineUsers(data));
     this.nameSubscription = this.primus.contentUpdates.player.subscribe(data => this.retrievePlayerData(data));
     this.gmSubscription = this.primus.contentUpdates.gmdata.subscribe(data => this.gmData = data);
@@ -124,6 +130,8 @@ export class ChatComponent {
 
     _.each(chatMessages, chatMessage => {
       let channelName = chatMessage.channel;
+
+      console.log(chatMessage);
 
       if(_.startsWith(chatMessage.route, 'channel:pm:')) {
         channelName = this.getOtherPersonFromRoute(chatMessage.route);
