@@ -8,6 +8,9 @@ import { Component } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { PrimusWrapper } from '../../../services/primus';
 import { MessageNotifier } from '../../../services/messagenotifier';
+
+import { AutoFocus } from '../../../directives/autofocus';
+
 import template from './chat.html';
 import './chat.less';
 
@@ -23,7 +26,7 @@ let chatData = {
 let needsLoad = true;
 
 @Component({
-  directives: [ChatOutputComponent, DROPDOWN_DIRECTIVES],
+  directives: [ChatOutputComponent, DROPDOWN_DIRECTIVES, AutoFocus],
   template
 })
 export class ChatComponent {
@@ -60,7 +63,6 @@ export class ChatComponent {
     this.chatData = newChatData;
     this.channels = _.keys(this.chatData);
 
-    console.log(chatData);
     this.changeChannel('General');
   }
 
