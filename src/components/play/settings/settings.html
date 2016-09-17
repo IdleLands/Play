@@ -50,6 +50,11 @@
           <span>Show Equipment on Overview</span>
         </label>
 
+        <label>
+          <input type="checkbox" [checked]="storage.noFaviconNotifications" (change)="storage.noFaviconNotifications = !storage.noFaviconNotifications">
+          <span>No Favicon Notifications</span>
+        </label>
+
       </div>
     </div>
   </div>

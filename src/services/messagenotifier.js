@@ -7,15 +7,19 @@ import { PrimusWrapper } from './primus';
 import { PNotifyService } from 'ng2-pnotify';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
+import { StorageService } from 'ng2-storage';
+
 export class MessageNotifier {
 
   static get parameters() {
-    return [[PrimusWrapper], [PNotifyService]];
+    return [[PrimusWrapper], [PNotifyService], [StorageService]];
   }
 
-  constructor(primus, pnotify) {
+  constructor(primus, pnotify, storage) {
     this.primus = primus;
     this.pnotify = pnotify;
+    this.storage = storage.local;
+
     this._blockMessages = false;
     this._messagesAvailable = new BehaviorSubject(0);
     this.messagesAvailable = this._messagesAvailable.asObservable();
@@ -35,6 +39,10 @@ export class MessageNotifier {
   possiblyDisplayMessages(messageData) {
 
     if(!messageData || messageData.length === 0) return;
+    if(this.storage.noFaviconNotifications) {
+      this.clearIndicators();
+      return;
+    }
 
     const currentMessages = _(messageData)
       .reject(msg => msg.channel === 'Global Events')
