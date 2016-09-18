@@ -318,7 +318,7 @@ export class MapComponent {
 
   setCollectibles(collectibleData) {
     this.collectibles = collectibleData;
-    
+
     if(this._gameObj) {
       this._gameObj.collectibles = this.collectibles;
     }
