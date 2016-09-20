@@ -312,4 +312,17 @@ export class ChatComponent {
     });
   }
 
+  gmGiveItem(targetName) {
+    this.swal.swal({
+      customClass: this.storage.theme,
+      title: 'Type in the item string (include type!)',
+      input: 'text',
+      inputPlaceholder: 'Item string...',
+      showCancelButton: true
+    }).then(newItem => {
+      if(!newItem || !newItem.trim()) return;
+      this.primus.giveItem(this.playerName, targetName, newItem);
+    });
+  }
+
 }

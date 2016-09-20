@@ -341,6 +341,10 @@ export class PrimusWrapper {
     this.emit('plugin:gm:giveevent', { targetName, targetEvent });
   }
 
+  giveItem(playerName, targetName, targetItemString) {
+    this.emit('plugin:gm:giveitem', { targetName, targetItemString });
+  }
+
   requestStatistics() {
     this._playerName.then(name => {
       this.emit('plugin:player:request:statistics', { playerName: name });
