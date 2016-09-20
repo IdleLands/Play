@@ -295,4 +295,21 @@ export class ChatComponent {
     });
   }
 
+  gmGrantEvent(targetName) {
+    this.swal.swal({
+      customClass: this.storage.theme,
+      title: 'Select an event',
+      input: 'select',
+      inputOptions: _(this.gmData.allEvents).reduce((prev, cur) => {
+        prev[cur] = cur;
+        return prev;
+      }, {}),
+      inputPlaceholder: 'Select event...',
+      showCancelButton: true
+    }).then(event => {
+      if(!event) return;
+      this.primus.giveEvent(this.playerName, targetName, event);
+    });
+  }
+
 }

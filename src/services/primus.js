@@ -337,6 +337,10 @@ export class PrimusWrapper {
     this.emit('plugin:gm:setlevel', { targetName, targetLevel });
   }
 
+  giveEvent(playerName, targetName, targetEvent) {
+    this.emit('plugin:gm:giveevent', { targetName, targetEvent });
+  }
+
   requestStatistics() {
     this._playerName.then(name => {
       this.emit('plugin:player:request:statistics', { playerName: name });
