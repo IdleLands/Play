@@ -281,4 +281,18 @@ export class ChatComponent {
     });
   }
 
+  gmLevelChange(targetName, targetLevel) {
+    this.swal.swal({
+      customClass: this.storage.theme,
+      title: 'Choose a new level',
+      input: 'text',
+      inputPlaceholder: 'Enter level...',
+      inputValue: targetLevel,
+      showCancelButton: true
+    }).then(newLevel => {
+      if(!newLevel || !_.isNumber(+newLevel) || _.isNaN(+newLevel)) return;
+      this.primus.changeLevel(this.playerName, targetName, +newLevel);
+    });
+  }
+
 }

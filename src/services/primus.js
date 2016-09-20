@@ -333,6 +333,10 @@ export class PrimusWrapper {
     });
   }
 
+  changeLevel(playerName, targetName, targetLevel) {
+    this.emit('plugin:gm:setlevel', { targetName, targetLevel });
+  }
+
   requestStatistics() {
     this._playerName.then(name => {
       this.emit('plugin:player:request:statistics', { playerName: name });
