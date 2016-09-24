@@ -67,7 +67,7 @@ export class PetsComponent {
       { name: 'Combat Aid Chance', stat: 'battleJoinPercent',       tooltip: (val) => `Battle join chance is ${val}%` },
       { name: 'Gold Storage',      stat: 'goldStorage',             tooltip: (val) => `Gold storage is ${val}` },
       { name: 'Inventory Size',    stat: 'inventory',               tooltip: (val) => `Inventory size is ${val}` },
-      { name: 'Item Find Bonus',   stat: 'itemFindBonus',           tooltip: (val) => `Bonus to item find is +${val}` },
+      { name: 'Item Quality Bonus',stat: 'itemFindBonus',           tooltip: (val) => `Bonus to item quality is +${val}` },
       { name: 'Item Find Time',    stat: 'itemFindTimeDuration',    tooltip: (val) => `New item every ${val}s` },
       { name: 'Item Equip Bonus',  stat: 'itemFindRangeMultiplier', tooltip: (val) => `Bonus to item equip is ${val*100}%` },
       { name: 'Item Sell Bonus',   stat: 'itemSellMultiplier',      tooltip: (val) => `Bonus to item sell value is ${val*100}%` },
