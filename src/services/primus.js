@@ -65,6 +65,8 @@ export class PrimusWrapper {
         if(!x.name) return;
         resolve(x.name);
         sub.unsubscribe();
+
+        document.title = `IdleLands - ${x.nameEdit || x.name}`;
       });
     });
   }
