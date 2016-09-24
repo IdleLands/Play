@@ -17,7 +17,7 @@
           </span>
 
           <div class="text-md-center m-b-1 feed-button" *ngIf="petactive._level.__current !== petactive._level.maximum && petactive._level.__current < player._level?.__current">
-            <button class="btn btn-primary btn-sm" (click)="feed()">Feed</button>
+            <button class="btn btn-info btn-sm" (click)="feed()">Feed</button>
           </div>
 
           <div class="card-block">
@@ -41,7 +41,7 @@
             <div class="card-text">
               <stat [size]="200" [name]="'gold'"></stat>
               <span>{{ petactive.gold.__current }} / {{ petactive.gold.maximum }}</span>
-              <button class="btn btn-primary btn-sm" (click)="takeGold()" *ngIf="petactive.gold.__current > 0">Take</button>
+              <button class="btn btn-info btn-sm" (click)="takeGold()" *ngIf="petactive.gold.__current > 0">Take</button>
             </div>
           </div>
 
