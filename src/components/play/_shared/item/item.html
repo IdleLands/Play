@@ -21,7 +21,7 @@
          *ngFor="let stat of stats"
          [class.negative-stat]="item[stat] < 0"
          [class.positive-stat]="item[stat] > 0">
-      <stat [size]="'150'" [name]="stat"></stat> {{ item[stat] }}
+      <stat [size]="'150'" [name]="stat"></stat> <span class="hidden-copy">{{stat}}</span> {{ item[stat] }}
     </div>
   </div>
   <div class="item-extra-stats">
