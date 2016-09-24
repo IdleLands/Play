@@ -60,6 +60,7 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
 <p></p>
 <p><strong>Want to help?</strong></p>
 <p>All support goes directly to the game and servers! Thanks in advance!</p>
+<p>Please check out <a href="https://github.com/IdleLands/Maps/issues/37" target="_blank">this thread</a> and leave your in-game name, sprite, and quote of choice in your paypal message if you'd like to be added to the hall of heroes!</p>
 <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
   <input type="hidden" name="cmd" value="_s-xclick">
   <input type="hidden" name="hosted_button_id" value="TF5HJJLVYWMQU">
