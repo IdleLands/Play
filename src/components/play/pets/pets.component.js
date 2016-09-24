@@ -70,7 +70,7 @@ export class PetsComponent {
       { name: 'Item Quality Bonus',stat: 'itemFindBonus',           tooltip: (val) => `Bonus to item quality is +${val}` },
       { name: 'Item Find Time',    stat: 'itemFindTimeDuration',    tooltip: (val) => `New item every ${val}s` },
       { name: 'Item Equip Bonus',  stat: 'itemFindRangeMultiplier', tooltip: (val) => `Bonus to item equip is ${val*100}%` },
-      { name: 'Item Sell Bonus',   stat: 'itemSellMultiplier',      tooltip: (val) => `Bonus to item sell value is ${val*100}%` },
+      { name: 'Item Sell Bonus',   stat: 'itemSellMultiplier',      tooltip: (val) => `Bonus to item sell value is ${(val*100).toFixed(0)}%` },
       { name: 'Max Item Score',    stat: 'maxItemScore',            tooltip: (val) => `Max equippable item score bonus is +${val}` },
       { name: 'Max Level',         stat: 'maxLevel',                tooltip: (val) => `Max level is ${val}` },
       { name: 'XP / Gold',         stat: 'xpPerGold',               tooltip: (val) => `${val} xp gained per gold eaten` }
