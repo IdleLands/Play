@@ -250,7 +250,7 @@ export class PrimusWrapper {
   }
 
   registerPlayer(opts, doNext = () => {}, force = false) {
-    if(!force && this.hasRealUser.getValue() && this._cachedOpts) return;
+    if(_.includes(window.location.pathname, 'opencombat') || (!force && this.hasRealUser.getValue() && this._cachedOpts)) return;
     this.emit('plugin:player:login', opts, res => {
       if(!res.ok) return;
       doNext(res);
