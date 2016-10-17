@@ -4,6 +4,7 @@ import _ from 'lodash';
 import { PrimusWrapper } from '../../../services/primus';
 
 import { SweetAlertService } from 'ng2-sweetalert2';
+import { StorageService } from 'ng2-storage';
 
 import { ItemComponent } from '../_shared/item/item.component';
 
@@ -18,12 +19,13 @@ import './pets.less';
 export class PetsComponent {
 
   static get parameters() {
-    return [[PrimusWrapper], [SweetAlertService]];
+    return [[PrimusWrapper], [SweetAlertService], [StorageService]];
   }
 
-  constructor(primus, swal) {
+  constructor(primus, swal, storage) {
     this.primus = primus;
     this.swal = swal;
+    this.storage = storage.local;
   }
 
   ngOnInit() {
@@ -161,6 +163,7 @@ export class PetsComponent {
 
     this.swal.swal({
       title: 'Feed your pet',
+      customClass: this.storage.theme,
       text: `Your pet gains ${xpPerGold} xp per gold spent and needs ${neededXp} xp to level up. You have ${totalGold} gold and can spend ${maxGold} gold maximum.`,
       input: 'text',
       inputPlaceholder: 'Gold to feed to pet',
