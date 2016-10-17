@@ -16,7 +16,8 @@
             {{petactive._xp?.__current | number}}/{{petactive._xp?.maximum | number}}
           </span>
 
-          <div class="text-md-center m-b-1 feed-button" *ngIf="petactive._level.__current !== petactive._level.maximum && petactive._level.__current < player._level?.__current">
+          <div class="text-md-center m-b-1 feed-button"
+               *ngIf="petactive._level.__current !== petactive._level.maximum && petactive._level.__current < player._level?.__current && petactive.$scale.xpPerGold[petactive.scaleLevel.xpPerGold] !== 0">
             <button class="btn btn-info btn-sm" (click)="feed()">Feed</button>
           </div>
 
