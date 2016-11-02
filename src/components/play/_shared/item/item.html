@@ -14,14 +14,14 @@
       <span *ngIf="item.enchantLevel > 0">+{{ item.enchantLevel }}</span>
       <span>{{ item.name }}</span>
     </strong>
-    <small class="item-timestamp text-muted">Found {{ item.foundAt | date:'medium' }}; Score Rating: {{item._calcScore}} ({{ scoreRating(item) }}%)</small>
+    <small class="item-timestamp text-muted">Found {{ item.foundAt | date:'medium' }}; Score Rating: {{item._calcScore | number}} ({{ scoreRating(item) | number }}%)</small>
   </div>
   <div class="item-stats">
     <div class="no-padding col-md-2"
          *ngFor="let stat of stats"
          [class.negative-stat]="item[stat] < 0"
          [class.positive-stat]="item[stat] > 0">
-      <stat [size]="'150'" [name]="stat"></stat> <span class="hidden-copy">{{stat}}</span> {{ item[stat] }}
+      <stat [size]="'150'" [name]="stat"></stat> <span class="hidden-copy">{{stat}}</span> {{ item[stat] | number }}
     </div>
   </div>
   <div class="item-extra-stats">

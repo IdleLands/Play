@@ -17,12 +17,12 @@
     </div>
     <div class="card-block no-padding-bottom">
       <div class="card-text">
-        <stat [size]="200" [name]="'Item'"></stat> Max Item Score: {{ player.statCache?.itemFindRange }}
+        <stat [size]="200" [name]="'Item'"></stat> Max Item Score: {{ player.statCache?.itemFindRange | number }}
       </div>
     </div>
     <div class="card-block no-padding-bottom">
       <div class="card-text">
-        <stat [size]="200" [name]="'gold'"></stat> {{ player.gold }}
+        <stat [size]="200" [name]="'gold'"></stat> {{ player.gold | number }}
       </div>
     </div>
     <div class="card-block no-padding-bottom">
@@ -30,34 +30,34 @@
         <table class="table stat-table">
           <tr>
             <td class="no-padding"><stat [size]="'200'" [name]="'hp'"></stat></td>
-            <td class="text-md-right">{{ player._hp?.maximum }}</td>
+            <td class="text-md-right">{{ player._hp?.maximum | number }}</td>
 
             <td class="no-padding"><stat [size]="'200'" [name]="'mp'"></stat></td>
-            <td class="text-md-right">{{ player._mp?.maximum }}</td>
+            <td class="text-md-right">{{ player._mp?.maximum | number }}</td>
           </tr>
 
           <tr>
             <td class="no-padding"><stat [size]="'200'" [name]="'str'"></stat></td>
-            <td class="text-md-right">{{ player.statCache?.str }}</td>
+            <td class="text-md-right">{{ player.statCache?.str | number }}</td>
 
             <td class="no-padding"><stat [size]="'200'" [name]="'con'"></stat></td>
-            <td class="text-md-right">{{ player.statCache?.con }}</td>
+            <td class="text-md-right">{{ player.statCache?.con | number }}</td>
           </tr>
 
           <tr>
             <td class="no-padding"><stat [size]="'200'" [name]="'dex'"></stat></td>
-            <td class="text-md-right">{{ player.statCache?.dex }}</td>
+            <td class="text-md-right">{{ player.statCache?.dex | number }}</td>
 
             <td class="no-padding"><stat [size]="'200'" [name]="'agi'"></stat></td>
-            <td class="text-md-right">{{ player.statCache?.agi }}</td>
+            <td class="text-md-right">{{ player.statCache?.agi | number }}</td>
           </tr>
 
           <tr>
             <td class="no-padding"><stat [size]="'200'" [name]="'int'"></stat></td>
-            <td class="text-md-right">{{ player.statCache?.int }}</td>
+            <td class="text-md-right">{{ player.statCache?.int | number }}</td>
 
             <td class="no-padding"><stat [size]="'200'" [name]="'luk'"></stat></td>
-            <td class="text-md-right">{{ player.statCache?.luk }}</td>
+            <td class="text-md-right">{{ player.statCache?.luk | number }}</td>
           </tr>
         </table>
       </div>
@@ -65,7 +65,7 @@
 
     <div class="card-block" *ngIf="pet && pet.$scale">
       <div><strong>{{pet.name}}</strong> ({{pet.$petId}})</div>
-      <div><strong>Pet Gold: </strong> {{pet.gold.__current}}/{{pet.gold.maximum}}</div>
+      <div><strong>Pet Gold: </strong> {{pet.gold.__current | number}}/{{pet.gold.maximum | number}}</div>
       <div><strong>Pet Items: </strong> {{pet.inventory.length}}/{{ pet.$scale.inventory[pet.scaleLevel.inventory] }}</div>
     </div>
 

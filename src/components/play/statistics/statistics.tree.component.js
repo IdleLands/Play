@@ -8,7 +8,7 @@ import { Component, forwardRef } from '@angular/core';
   template: `
   <ul>
     <li *ngFor="let node of treeData">
-      <strong>{{node.name}}</strong> {{node.val}}
+      <strong>{{node.name}}</strong> {{node.val | number}}
       <statistics-tree [treeData]="node.children"></statistics-tree>
     </li>
   </ul>

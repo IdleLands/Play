@@ -34,14 +34,14 @@
 
           <div class="card-block no-padding-bottom">
             <div class="card-text">
-              <stat [size]="200" [name]="'Item'"></stat> Max Item Score: {{ petactive.statCache.itemFindRange }}
+              <stat [size]="200" [name]="'Item'"></stat> Max Item Score: {{ petactive.statCache.itemFindRange | number }}
             </div>
           </div>
 
           <div class="card-block no-padding-bottom">
             <div class="card-text">
               <stat [size]="200" [name]="'gold'"></stat>
-              <span>{{ petactive.gold.__current }} / {{ petactive.gold.maximum }}</span>
+              <span>{{ petactive.gold.__current | number }} / {{ petactive.gold.maximum | number }}</span>
               <button class="btn btn-info btn-sm" (click)="takeGold()" *ngIf="petactive.gold.__current > 0">Take</button>
             </div>
           </div>
@@ -51,34 +51,34 @@
               <table class="table stat-table">
                 <tr>
                   <td class="no-padding"><stat [size]="'200'" [name]="'hp'"></stat></td>
-                  <td class="text-md-right">{{ petactive._hp?.maximum }}</td>
+                  <td class="text-md-right">{{ petactive._hp?.maximum | number }}</td>
 
                   <td class="no-padding"><stat [size]="'200'" [name]="'mp'"></stat></td>
-                  <td class="text-md-right">{{ petactive._mp?.maximum }}</td>
+                  <td class="text-md-right">{{ petactive._mp?.maximum | number }}</td>
                 </tr>
 
                 <tr>
                   <td class="no-padding"><stat [size]="'200'" [name]="'str'"></stat></td>
-                  <td class="text-md-right">{{ petactive.statCache?.str }}</td>
+                  <td class="text-md-right">{{ petactive.statCache?.str | number }}</td>
 
                   <td class="no-padding"><stat [size]="'200'" [name]="'con'"></stat></td>
-                  <td class="text-md-right">{{ petactive.statCache?.con }}</td>
+                  <td class="text-md-right">{{ petactive.statCache?.con | number }}</td>
                 </tr>
 
                 <tr>
                   <td class="no-padding"><stat [size]="'200'" [name]="'dex'"></stat></td>
-                  <td class="text-md-right">{{ petactive.statCache?.dex }}</td>
+                  <td class="text-md-right">{{ petactive.statCache?.dex | number }}</td>
 
                   <td class="no-padding"><stat [size]="'200'" [name]="'agi'"></stat></td>
-                  <td class="text-md-right">{{ petactive.statCache?.agi }}</td>
+                  <td class="text-md-right">{{ petactive.statCache?.agi | number }}</td>
                 </tr>
 
                 <tr>
                   <td class="no-padding"><stat [size]="'200'" [name]="'int'"></stat></td>
-                  <td class="text-md-right">{{ petactive.statCache?.int }}</td>
+                  <td class="text-md-right">{{ petactive.statCache?.int | number }}</td>
 
                   <td class="no-padding"><stat [size]="'200'" [name]="'luk'"></stat></td>
-                  <td class="text-md-right">{{ petactive.statCache?.luk }}</td>
+                  <td class="text-md-right">{{ petactive.statCache?.luk | number }}</td>
                 </tr>
               </table>
             </div>
@@ -103,7 +103,7 @@
               <span class="pet-unbought-name">{{ pet.name }}</span>
               <button class="float-xs-right btn btn-sm btn-info"
                       [disabled]="player.gold < petbuy[pet.name].cost"
-                      (click)="buyPet(pet.name)">Buy for {{petbuy[pet.name].cost}} gold</button>
+                      (click)="buyPet(pet.name)">Buy for {{petbuy[pet.name].cost | number}} gold</button>
             </div>
 
           </div>
@@ -171,7 +171,7 @@
               <button class="float-xs-right btn btn-sm btn-info"
                       *ngIf="petactive.scaleLevel[stat.stat]+1 !== petactive.$scale[stat.stat].length"
                       [disabled]="player.gold < petactive.$scaleCost[stat.stat][petactive.scaleLevel[stat.stat]+1]"
-                      (click)="upgradePetAttr(stat.stat)">Buy for {{ petactive.$scaleCost[stat.stat][petactive.scaleLevel[stat.stat]+1] }} gold</button>
+                      (click)="upgradePetAttr(stat.stat)">Buy for {{ petactive.$scaleCost[stat.stat][petactive.scaleLevel[stat.stat]+1] | number }} gold</button>
               <h6 class="text-muted">Level {{ petactive.scaleLevel[stat.stat]+1 }}/{{ petactive.$scale[stat.stat].length }}</h6>
               <hr>
             </div>
