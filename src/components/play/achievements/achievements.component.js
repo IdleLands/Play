@@ -28,6 +28,7 @@ export class AchievementsComponent {
 
   setAchievements(achievementData) {
     this.achievements = _.values(achievementData);
+    this.tiers = _.sumBy(this.achievements, 'tier');
   }
 
   moreInfo(achievement) {
