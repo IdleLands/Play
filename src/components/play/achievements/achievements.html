@@ -6,10 +6,9 @@
     <div class="col-md-3" *ngFor="let achievement of achievements">
       <div class="card achievement-card">
         <div class="card-block">
-          <h6 class="card-title">
-            <span><stat [name]="achievement.type"></stat> {{achievement.name}}</span>
-            <span *ngIf="achievement.tier > 1">(tier {{achievement.tier}})</span>
-          </h6>
+          <h4 class="card-title">
+            <stat [name]="achievement.type"></stat> {{achievement.name}} <span *ngIf="achievement.tier > 1">(tier {{achievement.tier}})</span>
+          </h4>
           <p class="card-text">{{achievement.desc}}</p>
           <button class="btn btn-primary active" (click)="moreInfo(achievement)">Rewards</button>
         </div>
