@@ -1,5 +1,5 @@
 <div class="container-fluid equipment-container">
-  <div class="row m-b-2 equipment-item" *ngFor="let slot of equipmentKeys">
+  <div class="row mb-2 equipment-item" *ngFor="let slot of equipmentKeys">
     <item [item]="player.equipment[slot]" [buttons]="equippedItemButtons"></item>
   </div>
 </div>

@@ -16,14 +16,14 @@
             {{petactive._xp?.__current | number}}/{{petactive._xp?.maximum | number}}
           </span>
 
-          <div class="text-md-center m-b-1 feed-button"
+          <div class="text-md-center mb-1 feed-button"
                *ngIf="petactive._level.__current !== petactive._level.maximum && petactive._level.__current < player._level?.__current && petactive.$scale.xpPerGold[petactive.scaleLevel.xpPerGold] !== 0">
             <button class="btn btn-info btn-sm" (click)="feed()">Feed</button>
           </div>
 
           <div class="card-block">
-            <h6 class="card-title text-muted m-b-0">Level {{petactive._level?.__current}}/{{petactive._level?.maximum}} {{petactive.professionName}} ({{petactive.gender}})</h6>
-            <h6 class="card-title text-muted m-b-0">with {{petactive.attr}}</h6>
+            <h6 class="card-title text-muted mb-0">Level {{petactive._level?.__current}}/{{petactive._level?.maximum}} {{petactive.professionName}} ({{petactive.gender}})</h6>
+            <h6 class="card-title text-muted mb-0">with {{petactive.attr}}</h6>
           </div>
 
           <div class="card-block no-padding-bottom" *ngIf="petactive.nextItemFind">
@@ -117,28 +117,28 @@
 
         <div class="pet-card-inner card-block no-padding-bottom">
           <div class="card-text">
-            <label class="m-b-0" [tooltip]="'Automatically upgrade self if enough gold.'">
+            <label class="mb-0" [tooltip]="'Automatically upgrade self if enough gold.'">
               <input type="checkbox"
                      [checked]="petactive.smart.self"
                      (change)="toggleSmart('self')">
               <span>Smart Self</span>
             </label>
             <br>
-            <label class="m-b-0" [tooltip]="'Automatically sell the lowest score items.'">
+            <label class="mb-0" [tooltip]="'Automatically sell the lowest score items.'">
               <input type="checkbox"
                      [checked]="petactive.smart.sell"
                      (change)="toggleSmart('sell')">
               <span>Smart Sell</span>
             </label>
             <br>
-            <label class="m-b-0"  [tooltip]="'Automatically unequip items with the lowest score.'">
+            <label class="mb-0"  [tooltip]="'Automatically unequip items with the lowest score.'">
               <input type="checkbox"
                      [checked]="petactive.smart.equip"
                      (change)="toggleSmart('equip')">
               <span>Smart Equip</span>
             </label>
             <br>
-            <select class="form-control m-b-0" (change)="changePetClass($event)">
+            <select class="form-control mb-0" (change)="changePetClass($event)">
               <option
                 [value]="class"
                 [selected]="petactive.professionName === class"
@@ -147,7 +147,7 @@
               </option>
             </select>
             <br>
-            <select class="form-control m-b-0" (change)="changePetAttr($event)">
+            <select class="form-control mb-0" (change)="changePetAttr($event)">
               <option
                 [value]="attr"
                 [selected]="petactive.attr === attr"
@@ -192,7 +192,7 @@
         </div>
 
         <div class="pet-card-inner card-block no-padding-bottom">
-          <div class="row m-b-2" *ngFor="let item of equipment">
+          <div class="row mb-2" *ngFor="let item of equipment">
             <item [item]="item" [buttons]="equippedItemButtons"></item>
           </div>
         </div>
@@ -208,7 +208,7 @@
         </div>
 
         <div class="pet-card-inner card-block no-padding-bottom">
-          <div class="row m-b-2" *ngFor="let item of petactive.inventory">
+          <div class="row mb-2" *ngFor="let item of petactive.inventory">
             <item [item]="item" [buttons]="inventoryButtons"></item>
           </div>
         </div>

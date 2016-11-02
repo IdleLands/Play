@@ -46,10 +46,10 @@ export class ChoiceLogComponent {
 <div class="col-md-12 no-padding text-md-center">
   <h4>Type: ${choiceItem.type}</h4>
 </div>
-<div class="col-md-12 no-padding text-md-center m-b-1">
+<div class="col-md-12 no-padding text-md-center mb-1">
   <strong>${playerItemName}</strong> (Score: ${playerItem._calcScore} [base ${playerItem._baseScore}], ${Math.round(playerItem._calcScore/playerItem._baseScore*100)}%)
 </div>
-<div class="col-md-12 no-padding m-b-1">
+<div class="col-md-12 no-padding mb-1">
   <div class="col-md-2">${playerItem.str}</div>
   <div class="col-md-2">${playerItem.con}</div>
   <div class="col-md-2">${playerItem.dex}</div>
@@ -57,7 +57,7 @@ export class ChoiceLogComponent {
   <div class="col-md-2">${playerItem.int}</div>
   <div class="col-md-2">${playerItem.luk}</div>
 </div>
-<div class="col-md-12 no-padding m-b-1">
+<div class="col-md-12 no-padding mb-1">
   <div class="col-md-2">STR</div>
   <div class="col-md-2">CON</div>
   <div class="col-md-2">DEX</div>
@@ -65,10 +65,10 @@ export class ChoiceLogComponent {
   <div class="col-md-2">INT</div>
   <div class="col-md-2">LUK</div>
 </div>
-<div class="col-md-12 no-padding text-md-center m-b-1">
+<div class="col-md-12 no-padding text-md-center mb-1">
   ${ItemService.getSpecialStatString(playerItem)}
 </div>
-<div class="col-md-12 no-padding m-b-1">
+<div class="col-md-12 no-padding mb-1">
   <div class="col-md-2">&darr;</div>
   <div class="col-md-2">&darr;</div>
   <div class="col-md-2">&darr;</div>
@@ -76,10 +76,10 @@ export class ChoiceLogComponent {
   <div class="col-md-2">&darr;</div>
   <div class="col-md-2">&darr;</div>
 </div>
-<div class="col-md-12 no-padding text-md-center m-b-1">
+<div class="col-md-12 no-padding text-md-center mb-1">
   <strong>${choiceItemName}</strong> (Score: ${choiceItem._calcScore}, 100%)
 </div>
-<div class="col-md-12 no-padding m-b-1">
+<div class="col-md-12 no-padding mb-1">
   <div class="col-md-2">${choiceItem.str} <span class="${playerItem.str > choiceItem.str ? 'negative' : 'positive'}-stat">(${playerItem.str > choiceItem.str ? '' : '+'}${choiceItem.str - playerItem.str})</span></div>
   <div class="col-md-2">${choiceItem.con} <span class="${playerItem.con > choiceItem.con ? 'negative' : 'positive'}-stat">(${playerItem.con > choiceItem.con ? '' : '+'}${choiceItem.con - playerItem.con})</span></div>
   <div class="col-md-2">${choiceItem.dex} <span class="${playerItem.dex > choiceItem.dex ? 'negative' : 'positive'}-stat">(${playerItem.dex > choiceItem.dex ? '' : '+'}${choiceItem.dex - playerItem.dex})</span></div>
@@ -87,7 +87,7 @@ export class ChoiceLogComponent {
   <div class="col-md-2">${choiceItem.int} <span class="${playerItem.int > choiceItem.int ? 'negative' : 'positive'}-stat">(${playerItem.int > choiceItem.int ? '' : '+'}${choiceItem.int - playerItem.int})</span></div>
   <div class="col-md-2">${choiceItem.luk} <span class="${playerItem.luk > choiceItem.luk ? 'negative' : 'positive'}-stat">(${playerItem.luk > choiceItem.luk ? '' : '+'}${choiceItem.luk - playerItem.luk})</span></div>
 </div>
-<div class="col-md-12 no-padding text-md-center m-b-1">
+<div class="col-md-12 no-padding text-md-center mb-1">
   ${ItemService.getSpecialStatString(choiceItem)}
 </div>
 `;

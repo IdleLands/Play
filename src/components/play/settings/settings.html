@@ -5,7 +5,7 @@
       <h4 class="card-header no-margin-bottom">Adventurer</h4>
       <div class="card-block">
 
-        <select class="form-control m-b-1" (change)="changeGender($event)">
+        <select class="form-control mb-1" (change)="changeGender($event)">
           <option
             [value]="gender"
             [selected]="_playerData.gender === gender"
@@ -14,7 +14,7 @@
           </option>
         </select>
 
-        <select class="form-control m-b-1" (change)="changeTitle($event)">
+        <select class="form-control mb-1" (change)="changeTitle($event)">
           <option value="">No title</option>
           <option
             [value]="title"
@@ -31,7 +31,7 @@
       <h4 class="card-header no-margin-bottom">Other</h4>
       <div class="card-block">
 
-        <select class="form-control m-b-1" (change)="changeTheme($event)">
+        <select class="form-control mb-1" (change)="changeTheme($event)">
           <option
             [value]="theme.val"
             [selected]="storage.theme === theme.val"
