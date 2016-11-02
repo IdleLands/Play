@@ -93,7 +93,7 @@
 
             <div *ngIf="pet.bought">
               <span class="pet-unbought-name">{{ pet.petName }}</span>
-              <button class="pull-md-right btn btn-sm btn-info"
+              <button class="float-xs-right btn btn-sm btn-info"
                       *ngIf="petactive.$petId !== pet.name"
                       (click)="swapPet(pet.name)">Swap To</button>
               <h6 class="text-muted">Level {{ pet.level }} {{ pet.profession }} {{ pet.name }}</h6>
@@ -101,7 +101,7 @@
 
             <div *ngIf="!pet.bought">
               <span class="pet-unbought-name">{{ pet.name }}</span>
-              <button class="pull-md-right btn btn-sm btn-info"
+              <button class="float-xs-right btn btn-sm btn-info"
                       [disabled]="player.gold < petbuy[pet.name].cost"
                       (click)="buyPet(pet.name)">Buy for {{petbuy[pet.name].cost}} gold</button>
             </div>
@@ -168,7 +168,7 @@
               <div [tooltip]="stat.tooltip(petactive.$scale[stat.stat][petactive.scaleLevel[stat.stat]])">
                 <strong>{{ stat.name }}</strong>
               </div>
-              <button class="pull-md-right btn btn-sm btn-info"
+              <button class="float-xs-right btn btn-sm btn-info"
                       *ngIf="petactive.scaleLevel[stat.stat]+1 !== petactive.$scale[stat.stat].length"
                       [disabled]="player.gold < petactive.$scaleCost[stat.stat][petactive.scaleLevel[stat.stat]+1]"
                       (click)="upgradePetAttr(stat.stat)">Buy for {{ petactive.$scaleCost[stat.stat][petactive.scaleLevel[stat.stat]+1] }} gold</button>

@@ -23,7 +23,7 @@
     "angular2-jwt": "^0.1.16",
     "angularfire2": "2.0.0-beta.3",
     "auth0-lock": "^9.2.1",
-    "bootstrap": "^4.0.0-alpha.2",
+    "bootstrap": "^4.0.0-alpha.5",
     "clipboard": "^1.5.12",
     "es6-promise": "^3.0.2",
     "es6-shim": "^0.35.0",

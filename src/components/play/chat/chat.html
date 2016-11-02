@@ -13,7 +13,7 @@
            [class.active]="activeChannel === channel">
            <span>{{channel}}</span>
            <span class="tag tag-pill tag-info" *ngIf="chatData[channel] && chatData[channel].unread > 0">{{chatData[channel].unread}}</span>
-           <span class="pull-md-right pointer"
+           <span class="float-xs-right pointer"
                  (click)="hideChannel(channel)"
                  *ngIf="chatData[channel] && chatData[channel].canHide && isVisible['c'+channel]">
              <i fa [icon]="'close'"></i>
@@ -61,7 +61,7 @@
           <span>{{ user.nameEdit ? user.nameEdit : user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
           <small *ngIf="isMod">({{ user.$currentIp }})</small>
 
-          <span class="pull-md-right pointer" dropdown *ngIf="isMod && isVisible['u'+user.name]">
+          <span class="float-xs-right pointer" dropdown *ngIf="isMod && isVisible['u'+user.name]">
             <i fa [fw]="true" [icon]="'ellipsis-v'" dropdownToggle></i>
             <ul class="dropdown-menu dropdown-menu-right" dropdownMenu>
               <li>
@@ -83,7 +83,7 @@
             </ul>
           </span>
 
-          <span class="pull-md-right pointer"
+          <span class="float-xs-right pointer"
                 *ngIf="isVisible['u'+user.name] && user.name !== playerName">
             <i fa [fw]="true" [icon]="'comments'" (click)="openPM(user.name)"></i>
           </span>
