@@ -21,7 +21,7 @@ export class CollectiblesComponent {
   }
 
   setCollectibles(collectibleData) {
-    this.collectibles = _.values(collectibleData);
+    this.collectibles = _.sortBy(_.values(collectibleData), 'name');
   }
 
   ngOnInit() {
