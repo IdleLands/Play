@@ -1,4 +1,6 @@
 
+import linkify from 'linkifyjs/string';
+
 import { Component } from '@angular/core';
 import template from './adventurelog.html';
 import './adventurelog.less';
@@ -20,5 +22,9 @@ export class AdventureLogComponent {
 
   constructor(primus) {
     this.primus = primus;
+  }
+
+  linkifyText(text) {
+    return linkify(text);
   }
 }

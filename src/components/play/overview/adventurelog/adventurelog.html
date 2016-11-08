@@ -14,7 +14,8 @@
             <a class="pointer" [routerLink]="['/play/combat', { name: message.extraData.battleName }]">[View Battle]</a>
           </small>
         </div>
-        <div class="message">{{ message.text }}</div>
+
+        <div class="message" [innerHtml]="linkifyText(message.text)"></div>
       </div>
 
     </div>
