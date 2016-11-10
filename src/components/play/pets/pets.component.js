@@ -2,6 +2,7 @@
 import _ from 'lodash';
 
 import { PrimusWrapper } from '../../../services/primus';
+import { ItemCompareService } from '../../../services/itemcompare';
 
 import { SweetAlertService } from 'ng2-sweetalert2';
 import { StorageService } from 'ng2-storage';
@@ -14,18 +15,20 @@ import './pets.less';
 
 @Component({
   directives: [ItemComponent],
+  providers: [ItemCompareService],
   template
 })
 export class PetsComponent {
 
   static get parameters() {
-    return [[PrimusWrapper], [SweetAlertService], [StorageService]];
+    return [[PrimusWrapper], [SweetAlertService], [StorageService], [ItemCompareService]];
   }
 
-  constructor(primus, swal, storage) {
+  constructor(primus, swal, storage, icomp) {
     this.primus = primus;
     this.swal = swal;
     this.storage = storage.local;
+    this.icomp = icomp;
   }
 
   ngOnInit() {
@@ -35,6 +38,7 @@ export class PetsComponent {
     this.playerSubscription = this.primus.contentUpdates.player.subscribe(data => this.player = data);
     this.statSubscription = this.primus.contentUpdates.statistics.subscribe(data => this.setStatistics(data));
     this.achievementSubscription = this.primus.contentUpdates.achievements.subscribe(data => this.parsePetAttrs(data));
+    this.equipmentSubscription = this.primus.contentUpdates.equipment.subscribe(data => this.playerEquipment = data);
 
     this.primus.requestAchievements();
     this.primus.requestPets();
@@ -85,7 +89,14 @@ export class PetsComponent {
     this.inventoryButtons = [
       { tooltip: 'Sell Item', name: 'gold', callback: (item) => this.primus.sellItemFromPet(item.id) },
       { tooltip: 'Equip Item (Pet)', name: 'Item', callback: (item) => this.primus.equipItemOnPet(item.id) },
-      { tooltip: 'Equip Item (Player)', name: 'Profession', callback: (item) => this.primus.giveItemToPlayer(item.id) }
+      { tooltip: 'Equip Item (Player)', name: 'Profession', callback: (item) => {
+        const playerItem = this.playerEquipment[item.type] || { name: 'nothing', type: item.type, str: 0, dex: 0, con: 0, int: 0, agi: 0, luk: 0, _baseScore: 1, _calcScore: 1 };
+        this.icomp.compare(item, playerItem, { showCancelButton: true, confirmButtonText: 'Equip' })
+          .then(res => {
+            if(!res) return;
+            this.primus.giveItemToPlayer(item.id);
+          });
+      } }
     ];
   }
 
@@ -96,6 +107,7 @@ export class PetsComponent {
     this.playerSubscription.unsubscribe();
     this.statSubscription.unsubscribe();
     this.achievementSubscription.unsubscribe();
+    this.equipmentSubscription.unsubscribe();
   }
 
   setActivePet(data) {

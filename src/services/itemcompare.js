@@ -78,6 +78,6 @@ export class ItemCompareService {
       html
     };
 
-    this.swal.swal(_.extend(baseOpts, swalOpts));
+    return this.swal.swal(_.extend(baseOpts, swalOpts));
   }
 }
