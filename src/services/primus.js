@@ -223,7 +223,9 @@ export class PrimusWrapper {
     object.timestamp = Date.now();
     const adventureLog = this._contentUpdates.adventureLog.getValue();
     adventureLog.unshift(object);
-    if(adventureLog.length > 50) adventureLog.length = 50;
+    const player = this._contentUpdates.player.getValue();
+    const advLogLength = 50 + (player._premiumTier > 0 ? player._premiumTier * 25 : 0);
+    if(adventureLog.length > advLogLength) adventureLog.length = advLogLength;
     this.storage.adventureLog = adventureLog;
     this._contentUpdates.adventureLog.next(adventureLog);
   }
