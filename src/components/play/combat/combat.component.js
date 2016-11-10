@@ -44,8 +44,8 @@ export class CombatComponent {
 
   ngOnInit() {
 
-    const clipboard = new Clipboard('.copy');
-    clipboard.on('success', () => {
+    this.clipboard = new Clipboard('.copy');
+    this.clipboard.on('success', () => {
       this.primus.handleNotification({ type: 'success', notify: 'Copied url to clipboard!', title: 'Copy Success' });
     });
 
@@ -62,5 +62,6 @@ export class CombatComponent {
   ngOnDestroy() {
     this.paramSub.unsubscribe();
     this.battleSubscription.unsubscribe();
+    this.clipboard.destroy();
   }
 }
