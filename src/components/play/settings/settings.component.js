@@ -15,7 +15,8 @@ const thanks = [
   { name: 'Sedgwick', reason: 'Donation, Maps' },
   { name: 'Yngvildr', reason: 'Development' },
   { name: 'Therealtahu', reason: 'Support, Development, Stability' },
-  { name: 'Anexes', reason: 'Development' }
+  { name: 'Anexes', reason: 'Development' },
+  { name: 'Ascended', reason: 'Content, Development, Donation' }
 ];
 
 const themes = [
