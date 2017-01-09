@@ -183,7 +183,7 @@ export class PetsComponent {
       inputValidator: (value) => {
         value = Math.round(+value);
         return new Promise((resolve, reject) => {
-          if(value <= 0 || _.isNaN(value)) return reject('Must feed a positive value.');
+          if(value < 0 || _.isNaN(value)) return reject('Must feed a positive value.');
           if(value > maxGold) return reject('Cannot overfeed gold.');
           resolve();
         });
