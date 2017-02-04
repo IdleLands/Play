@@ -6,7 +6,7 @@
     <span class="progress-label">
       {{player._xp?.__current | number}}/{{player._xp?.maximum | number}}
     </span>
-    <div class="card-block" *ngIf="player._level?.__current === player._level?.maximum">
+    <div class="card-block" *ngIf="player._level?.__current === player._level?.maximum" [class.hidden]="!player._level">
       <button class="btn btn-primary btn-block" (click)="ascend()">
         <stat [size]="100" [name]="'Special'"></stat> Ascend
       </button>
