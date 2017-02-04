@@ -28,7 +28,7 @@ export class PlayerCardComponent {
     this.swal.confirm({
       customClass: this.storage.theme,
       title: 'Do you want to ascend?',
-      text: 'This will reset your collectibles, gold, level, equipment, and personality selections. It will also increase your max level and the speed at which you gain levels. Certain Ascension levels carry permanent bonuses, as well.',
+      text: 'This will reset your collectibles, gold, level, equipment, and personality selections. Unbought pets will be lost. It will also increase your max level and the speed at which you gain levels. Certain Ascension levels carry permanent bonuses, as well.',
       type: 'warning',
       showCancelButton: true
     }).then(res => {
