@@ -25,7 +25,7 @@ export class CollectiblesComponent {
       .sortBy('name')
       .each(coll => coll.count = 1);
 
-    _.each(_.values(prior), coll => {
+    _.each(_.sortBy(_.values(prior), 'name'), coll => {
       const prev = _.find(this.collectibles, { name: coll.name });
       if(prev) {
         prev.count += coll.count;
