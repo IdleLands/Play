@@ -6,6 +6,11 @@
     <span class="progress-label">
       {{player._xp?.__current | number}}/{{player._xp?.maximum | number}}
     </span>
+    <div class="card-block" *ngIf="player._level?.__current === player._level?.maximum">
+      <button class="btn btn-primary btn-block" (click)="ascend()">
+        <stat [size]="100" [name]="'Special'"></stat> Ascend
+      </button>
+    </div>
     <div class="card-block">
       <h6 class="card-title text-muted">Level {{player._level?.__current}} {{player.professionName}} ({{player.gender}})</h6>
       <h6 class="card-subtitle">Joined {{ player.joinDate | date }}</h6>

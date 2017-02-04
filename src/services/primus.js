@@ -440,4 +440,8 @@ export class PrimusWrapper {
   giveItemToPlayer(itemId) {
     this.emit('plugin:pet:takeitem', { itemId });
   }
+
+  ascend() {
+    this.emit('plugin:player:ascend');
+  }
 }
