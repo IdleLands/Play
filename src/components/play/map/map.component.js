@@ -317,8 +317,8 @@ export class MapComponent {
     this.activePersonalities = active;
   }
 
-  setCollectibles(collectibleData) {
-    this.collectibles = collectibleData;
+  setCollectibles({ current }) {
+    this.collectibles = current;
 
     if(this._gameObj) {
       this._gameObj.collectibles = this.collectibles;

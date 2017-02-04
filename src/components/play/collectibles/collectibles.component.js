@@ -20,8 +20,25 @@ export class CollectiblesComponent {
     this.primus = primus;
   }
 
-  setCollectibles(collectibleData) {
-    this.collectibles = _.sortBy(_.values(collectibleData), 'name');
+  setCollectibles({ current, prior }) {
+    this.collectibles = _(current)
+      .sortBy('name')
+      .each(coll => coll.count = 1);
+
+    _.each(_.values(prior), coll => {
+      const prev = _.find(this.collectibles, { name: coll.name });
+      if(prev) {
+        prev.count += coll.count;
+
+      } else {
+        this.collectibles.push(coll);
+        coll.faded = true;
+
+      }
+    });
+
+    this.totalCurrentCollectibles = _.size(current);
+    this.totalCollectibleCount = _.sumBy(this.collectibles, 'count');
   }
 
   ngOnInit() {

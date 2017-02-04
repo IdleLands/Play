@@ -3,7 +3,17 @@
     <ul class="nav navbar-nav">
       <li class="nav-item">
         <a class="nav-link">
-          Total Collectibles: {{ collectibles.length }}
+          Total Collectibles (Current): {{ totalCurrentCollectibles }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          Total Collectibles (Cumulative): {{ collectibles.length }}
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link">
+          Total Collectibles Count: {{ totalCollectibleCount }}
         </a>
       </li>
     </ul>
@@ -18,10 +28,10 @@
     </div>
 
     <div class="col-md-3" *ngFor="let collectible of collectibles">
-      <div class="card collectible-card">
+      <div class="card collectible-card" [class.faded]="collectible.faded">
         <div class="card-block">
           <h5 class="card-title text-md-center class-{{collectible.rarity}}">
-            {{collectible.name}}
+            {{collectible.name}} (x{{collectible.count}})
           </h5>
           <h6 class="text-muted">{{collectible.storyline}}</h6>
           <h6 class="text-muted">{{collectible.map}} - {{collectible.region}}</h6>
