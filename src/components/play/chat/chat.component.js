@@ -198,7 +198,7 @@ export class ChatComponent {
       isMod: this.isMod,
       ip: '<self>'
     });
-    this.chatMessage = '';
+    this.storage.chatMessage = '';
   }
 
   formatChatDataForLocalSave(data) {

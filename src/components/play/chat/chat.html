@@ -34,14 +34,14 @@
         <input type="text"
                class="form-control"
                autofocus
-               [(ngModel)]="chatMessage"
+               [(ngModel)]="storage.chatMessage"
                placeholder="Send a message to {{activeChannel}}..."
-               (keyup.enter)="sendMessage(chatMessage)"/>
+               (keyup.enter)="sendMessage(storage.chatMessage)"/>
       </div>
       <div class="col-md-2 no-padding">
         <button class="btn btn-primary"
                 [disabled]="onlineStatus !== 'online'"
-                (click)="sendMessage(chatMessage)">Send</button>
+                (click)="sendMessage(storage.chatMessage)">Send</button>
       </div>
     </div>
   </div>
