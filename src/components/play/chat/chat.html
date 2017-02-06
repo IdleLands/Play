@@ -56,6 +56,7 @@
            (mouseleave)="isVisible['u'+user.name] = false"
            *ngFor="let user of onlineUsers">
         <h6 class="card-title">
+          <ascension-level *ngIf="user.ascensionLevel > 0" [lvl]="user.ascensionLevel"></ascension-level>
           <i fa [icon]="'star'" *ngIf="user.isMod"></i>
           <i fa [icon]="'ban'" *ngIf="user.isMuted && user.name !== playerName"></i>
           <span>{{ user.nameEdit ? user.nameEdit : user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>

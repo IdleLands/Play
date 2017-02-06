@@ -9,6 +9,8 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { PrimusWrapper } from '../../../services/primus';
 import { MessageNotifier } from '../../../services/messagenotifier';
 
+import { AscensionLevelComponent } from '../_shared/ascension-level';
+
 import { AutoFocus } from '../../../directives/autofocus';
 
 import template from './chat.html';
@@ -26,7 +28,7 @@ let chatData = {
 let needsLoad = true;
 
 @Component({
-  directives: [ChatOutputComponent, DROPDOWN_DIRECTIVES, AutoFocus],
+  directives: [AscensionLevelComponent, ChatOutputComponent, DROPDOWN_DIRECTIVES, AutoFocus],
   template
 })
 export class ChatComponent {
@@ -105,6 +107,7 @@ export class ChatComponent {
     this.playerTitle = player.title;
     this.isMod = player.isMod;
     this.isMuted = player.isMuted;
+    this.ascensionLevel = player.ascensionLevel;
   }
 
   hideChannel(channel) {
@@ -196,6 +199,7 @@ export class ChatComponent {
       channel: this.activeChannel,
       route: this.chatData[this.activeChannel].route,
       isMod: this.isMod,
+      ascensionLevel: this.ascensionLevel,
       ip: '<self>'
     });
     this.storage.chatMessage = '';

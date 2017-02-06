@@ -5,10 +5,13 @@ import { Component, ElementRef } from '@angular/core';
 import template from './chatoutput.html';
 import './chatoutput.less';
 
+import { AscensionLevelComponent } from '../../_shared/ascension-level';
+
 @Component({
   template,
   selector: 'chatoutput',
-  inputs: ['messages', 'showMod']
+  inputs: ['messages', 'showMod'],
+  directives: [AscensionLevelComponent]
 })
 export class ChatOutputComponent {
   static get parameters() {
