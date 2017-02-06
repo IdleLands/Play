@@ -50,6 +50,10 @@ export class SettingsComponent {
     this.activePersonalities = {};
   }
 
+  get version() {
+    return VERSION; // eslint-disable-line
+  }
+
   thanksHtml() {
     return `
 <p>If you're interested in helping design content for the game, let Seiyria know.</p>

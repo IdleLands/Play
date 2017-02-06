@@ -1,10 +1,12 @@
 var path = require('path');
-var OpenBrowserPlugin = require('open-browser-webpack-plugin');
+var GitRevisionPlugin = require('git-revision-webpack-plugin');
+var webpack = require('webpack');
 
 var phaserModule = path.join(__dirname, '/node_modules/phaser/');
 var phaser = path.join(phaserModule, 'build/custom/phaser-split.js');
 var pixi = path.join(phaserModule, 'build/custom/pixi.js');
 var p2 = path.join(phaserModule, 'build/custom/p2.js');
+var gitRevisionPlugin = new GitRevisionPlugin();
 
 module.exports = {
   context: path.join(__dirname, 'src'),
@@ -78,6 +80,9 @@ module.exports = {
     fs: 'empty'
   },
   plugins: [
-    new OpenBrowserPlugin({ url: 'http://localhost:9002' })
+    new webpack.DefinePlugin({
+      'VERSION': JSON.stringify(gitRevisionPlugin.version()),
+      'COMMITHASH': JSON.stringify(gitRevisionPlugin.commithash()),
+    })
   ]
 };
