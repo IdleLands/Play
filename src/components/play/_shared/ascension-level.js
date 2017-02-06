@@ -15,8 +15,8 @@ import { Component } from '@angular/core';
     .ascension-container .lvl { 
       position: absolute; 
       left: 0; 
-      padding: 3px 0 3px 0; 
-      width: 100%; 
+      padding: 4px 0 4px 0; 
+      width: 12.58px; 
       height: 100%; 
       font-size: 60%; 
       text-align: center;
