@@ -165,6 +165,7 @@ class Game {
         if(child.requireHoliday)     requires=true;requirementText += `\nHoliday: ${child.requireHoliday}`;
         if(child.requireRegion)      requires=true;requirementText += `\nRegion Visited: ${child.requireRegion}`;
         if(child.requireMap)         requires=true;requirementText += `\nMap Visited: ${child.requireMap}`;
+        if(child.requireAscension)   requires=true;requirementText += `\nAscension Level: ${child.requireAscension}`;
 
         if(requires) this.itemText = `${this.itemText}\n${requirementText}`;
       });
