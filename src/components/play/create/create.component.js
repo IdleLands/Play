@@ -54,6 +54,13 @@ export class CreateComponent {
 
     this.primus = primus;
     this.primus.requestNoKill();
+
+    this.loading = true;
+
+    this.onlineStatus = this.primus.contentUpdates.isOnline.subscribe(res => {
+      this.loading = res !== 'online';
+    });
+
     this.subscription = this.primus.hasRealUser.subscribe(res => {
       if(!res) return;
       this.router.navigate(['/play/overview']);
@@ -62,6 +69,7 @@ export class CreateComponent {
 
   ngOnDestroy() {
     this.subscription.unsubscribe();
+    this.onlineStatus.unsubscribe();
   }
 
   formValid() {

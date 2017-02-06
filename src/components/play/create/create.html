@@ -1,4 +1,10 @@
-<div class="container">
+<div class="container" *ngIf="loading">
+  <div class="row connection-message">
+    Connecting to Server...
+  </div>
+</div>
+
+<div class="container" *ngIf="!loading">
 
   <div class="row">
     <div class="col-sm-12">
