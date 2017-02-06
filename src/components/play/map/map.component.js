@@ -110,7 +110,9 @@ class Game {
   setObjectData(mapName, map) {
     if(!map || !map.data.layers[2]) return;
     _.each(map.data.layers[2].objects, object => {
-      if(!object.type || !object.properties) return;
+      if(!object.type) return;
+      if(!object.properties) object.properties = {};
+
       object.properties = {
         realtype:           object.type,
         teleportX: parseInt(object.properties.destx || 0),
