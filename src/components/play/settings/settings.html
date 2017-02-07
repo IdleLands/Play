@@ -92,7 +92,7 @@
             No Festivals
           </li>
           <li *ngFor="let festival of festivals, let i = index">
-            <div [tooltip]="festivalTooltip(festival)"><strong>{{ festival.name }}</strong> <span class="close pull-right" (click)="gmCancelFestival(festival)">&times;</span></div>
+            <div [tooltip]="festivalTooltip(festival)"><strong>{{ festival.name }}</strong> <span class="close pull-right" (click)="gmCancelFestival(festival)" *ngIf="_playerData.isMod">&times;</span></div>
             <div>Ends At: {{ festival.endDate | date:'short' }}</div>
             <hr *ngIf="i !== festivals.length-1">
           </li>
