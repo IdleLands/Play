@@ -118,6 +118,17 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
     this.primus.togglePersonality(personality);
   }
 
+  setFestivals(festivals) {
+    this.festivals = festivals;
+  }
+
+  festivalTooltip(festival) {
+    const keys = _.keys(festival.bonuses);
+    return _.reduce(keys, (prev, cur) => {
+      return `${prev} ${cur.toUpperCase()} +${festival.bonuses[cur] * 100}%`;
+    }, '');
+  }
+
   ngOnInit() {
     this.validGenders = ['male', 'female', 'not a bear', 'glowcloud', 'astronomical entity'];
     this.themes = themes;
@@ -131,6 +142,7 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
 
     this.achievementSubscription = this.primus.contentUpdates.achievements.subscribe(data => this.parseTitles(data));
     this.personalitySubscription = this.primus.contentUpdates.personalities.subscribe(data => this.setPersonalities(data));
+    this.festivalSubscription = this.primus.contentUpdates.festivals.subscribe(data => this.setFestivals(data));
     this.primus.requestAchievements();
     this.primus.requestPersonalities();
   }
@@ -138,5 +150,6 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
   ngOnDestroy() {
     this.achievementSubscription.unsubscribe();
     this.personalitySubscription.unsubscribe();
+    this.festivalSubscription.unsubscribe();
   }
 }

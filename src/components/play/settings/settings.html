@@ -85,6 +85,24 @@
 
   <div class="col-md-3">
     <div class="card">
+      <h4 class="card-header no-margin-bottom">Festivals</h4>
+      <div class="card-block">
+        <ul class="link-list">
+          <li *ngIf="!festivals.length">
+            No Festivals
+          </li>
+          <li *ngFor="let festival of festivals, let i = index">
+            <div [tooltip]="festivalTooltip(festival)"><strong>{{ festival.name }}</strong></div>
+            <div>Ends At: {{ festival.endDate | date:'short' }}</div>
+            <hr *ngIf="i !== festivals.length-1">
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-3">
+    <div class="card">
       <h4 class="card-header no-margin-bottom">Helpful Links</h4>
       <div class="card-block">
         <ul class="link-list">
@@ -118,11 +136,9 @@
         </ul>
       </div>
     </div>
-  </div>
 
-  <div class="col-md-3">
     <div class="card">
-      <h4 class="card-header no-margin-bottom">Helpful Links</h4>
+      <h4 class="card-header no-margin-bottom">Helpful Info</h4>
       <div class="card-block">
         <ul class="link-list">
           <li>
