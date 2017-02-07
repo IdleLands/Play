@@ -351,6 +351,14 @@ export class PrimusWrapper {
     this.emit('plugin:gm:giveitem', { targetName, targetItemString });
   }
 
+  createFestival(playerName, targetFestivalString) {
+    this.emit('plugin:festival:create', { targetFestivalString });
+  }
+
+  cancelFestival(festivalId) {
+    this.emit('plugin:festival:cancel', { festivalId });
+  }
+
   requestStatistics() {
     this._playerName.then(name => {
       this.emit('plugin:player:request:statistics', { playerName: name });

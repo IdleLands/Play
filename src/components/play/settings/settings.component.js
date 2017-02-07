@@ -129,6 +129,32 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
     }, '');
   }
 
+  gmCreateFestival() {
+    this.swal.swal({
+      customClass: this.storage.theme,
+      title: 'Type in the festival string (include hours!)',
+      input: 'text',
+      inputPlaceholder: '"Festival Name" hours=24 xp=0.2',
+      showCancelButton: true
+    }).then(newFestival => {
+      if(!newFestival || !newFestival.trim()) return;
+      this.primus.createFestival(this.playerName, newFestival);
+    });
+  }
+
+  gmCancelFestival(festival) {
+    this.swal.confirm({
+      customClass: this.storage.theme,
+      title: 'Do you want to cancel this festival?',
+      text: 'It will make the players very sad :(',
+      type: 'warning',
+      showCancelButton: true
+    }).then(res => {
+      if(!res) return;
+      this.primus.cancelFestival(festival._id);
+    });
+  }
+
   ngOnInit() {
     this.validGenders = ['male', 'female', 'not a bear', 'glowcloud', 'astronomical entity'];
     this.themes = themes;
@@ -137,7 +163,8 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
 
     this._playerData = {
       gender: player.gender,
-      title: player.title
+      title: player.title,
+      isMod: player.isMod
     };
 
     this.achievementSubscription = this.primus.contentUpdates.achievements.subscribe(data => this.parseTitles(data));

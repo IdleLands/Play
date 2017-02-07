@@ -321,7 +321,7 @@ export class ChatComponent {
       customClass: this.storage.theme,
       title: 'Type in the item string (include type!)',
       input: 'text',
-      inputPlaceholder: 'Item string...',
+      inputPlaceholder: '"Item Name" type=mainhand str=5',
       showCancelButton: true
     }).then(newItem => {
       if(!newItem || !newItem.trim()) return;
