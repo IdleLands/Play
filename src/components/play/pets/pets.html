@@ -23,7 +23,7 @@
 
           <div class="card-block">
             <h6 class="card-title text-muted mb-0">Level {{petactive._level?.__current}}/{{petactive._level?.maximum}} {{petactive.professionName}} ({{petactive.gender}})</h6>
-            <h6 class="card-title text-muted mb-0">with {{petactive.attr}}</h6>
+            <h6 class="card-title text-muted mb-0">with {{petactive.attr || 'no attribute'}}</h6>
           </div>
 
           <div class="card-block no-padding-bottom" *ngIf="petactive.nextItemFind">
@@ -148,6 +148,7 @@
             </select>
             <br>
             <select class="form-control mb-0" (change)="changePetAttr($event)">
+              <option value="">No title</option>
               <option
                 [value]="attr"
                 [selected]="petactive.attr === attr"
