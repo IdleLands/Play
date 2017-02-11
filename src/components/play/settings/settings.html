@@ -63,6 +63,17 @@
 
       </div>
     </div>
+
+    <div class="card">
+      <h4 class="card-header no-margin-bottom">Helpful Info</h4>
+      <div class="card-block">
+        <ul class="link-list">
+          <li>
+            Version: {{ version }}
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 
   <div class="col-md-3" *ngIf="personalities.length > 0">
@@ -132,17 +143,6 @@
           </li>
           <li>
             <i fa [icon]="'thumbs-up'" [fw]="true"></i> <a class="pointer blue" (click)="showThanks()">Special Thanks & Donations</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="card">
-      <h4 class="card-header no-margin-bottom">Helpful Info</h4>
-      <div class="card-block">
-        <ul class="link-list">
-          <li>
-            Version: {{ version }}
           </li>
         </ul>
       </div>
