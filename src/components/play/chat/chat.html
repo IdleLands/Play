@@ -60,7 +60,7 @@
           <i fa [icon]="'star'" *ngIf="user.isMod"></i>
           <i fa [icon]="'ban'" *ngIf="user.isMuted && user.name !== playerName"></i>
           <span>{{ user.nameEdit ? user.nameEdit : user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
-          <small *ngIf="isMod">({{ user.$currentIp }})</small>
+          <small *ngIf="isMod">({{user.$shard || 0 }}~{{ user.$currentIp }})</small>
 
           <span class="float-xs-right pointer" dropdown *ngIf="isMod && isVisible['u'+user.name]">
             <i fa [fw]="true" [icon]="'ellipsis-v'" dropdownToggle></i>

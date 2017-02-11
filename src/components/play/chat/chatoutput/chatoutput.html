@@ -4,7 +4,7 @@
     <i fa [icon]="'star'" *ngIf="message.isMod"></i>
     <strong class="author">{{ message.playerName }}<span *ngIf="message.title">, the {{ message.title }}</span></strong>
     <small class="timestamp text-muted">{{ message.timestamp | date:'medium' }}</small>
-    <small *ngIf="showMod">&lt;Mod; IP|{{ message.ip }}&gt;</small>
+    <small *ngIf="showMod">&lt;Mod; Shard|{{ message.shard }} IP|{{ message.ip }}&gt;</small>
 
   </div>
   <div class="message-row" [innerHtml]="linkifyText(message.text)">
