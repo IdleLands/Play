@@ -39,7 +39,8 @@ export class PrimusWrapper {
       petbasic: new BehaviorSubject([]),
       petbuy: new BehaviorSubject({}),
       petactive: new BehaviorSubject({}),
-      festivals: new BehaviorSubject([])
+      festivals: new BehaviorSubject([]),
+      genders: new BehaviorSubject([])
     };
 
     this.contentUpdates = {
@@ -59,7 +60,8 @@ export class PrimusWrapper {
       petbasic: this._contentUpdates.petbasic.asObservable(),
       petbuy: this._contentUpdates.petbuy.asObservable(),
       petactive: this._contentUpdates.petactive.asObservable(),
-      festivals: this._contentUpdates.festivals.asObservable()
+      festivals: this._contentUpdates.festivals.asObservable(),
+      genders: this._contentUpdates.genders.asObservable()
     };
 
     this._playerName = new Promise(resolve => {

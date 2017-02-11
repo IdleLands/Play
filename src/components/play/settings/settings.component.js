@@ -156,22 +156,29 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
     });
   }
 
-  ngOnInit() {
-    this.validGenders = ['male', 'female', 'not a bear', 'glowcloud', 'astronomical entity'];
-    this.themes = themes;
-
-    const player = this.primus._contentUpdates.player.getValue();
-
+  setPlayerData(player) {
     this._playerData = {
       name: player.name,
       gender: player.gender,
       title: player.title,
       isMod: player.isMod
     };
+  }
+
+  setValidGenders(genders) {
+    this.validGenders = genders;
+  }
+
+
+  ngOnInit() {
+    this.themes = themes;
+    this._playerData = {};
 
     this.achievementSubscription = this.primus.contentUpdates.achievements.subscribe(data => this.parseTitles(data));
     this.personalitySubscription = this.primus.contentUpdates.personalities.subscribe(data => this.setPersonalities(data));
     this.festivalSubscription = this.primus.contentUpdates.festivals.subscribe(data => this.setFestivals(data));
+    this.playerSubscription = this.primus.contentUpdates.player.subscribe(data => this.setPlayerData(data));
+    this.genderSubscription = this.primus.contentUpdates.genders.subscribe(data => this.setValidGenders(data));
     this.primus.requestAchievements();
     this.primus.requestPersonalities();
   }
@@ -180,5 +187,7 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
     this.achievementSubscription.unsubscribe();
     this.personalitySubscription.unsubscribe();
     this.festivalSubscription.unsubscribe();
+    this.playerSubscription.unsubscribe();
+    this.genderSubscription.unsubscribe();
   }
 }
