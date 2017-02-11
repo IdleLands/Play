@@ -41,6 +41,8 @@ class Game {
       case 'not a bear':          return 72;
       case 'glowcloud':           return 62;
       case 'astronomical entity': return 73;
+      case 'boss monster':        return 25;
+      case 'blue':                return 11;
       default:                    return 11;
     }
   }

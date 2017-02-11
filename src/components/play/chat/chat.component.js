@@ -329,4 +329,32 @@ export class ChatComponent {
     });
   }
 
+  gmGiveGold(targetName) {
+    this.swal.swal({
+      customClass: this.storage.theme,
+      title: 'Enter bonus gold',
+      input: 'text',
+      inputPlaceholder: 'Enter gold...',
+      inputValue: 0,
+      showCancelButton: true
+    }).then(bonusGold => {
+      if(!bonusGold || !_.isNumber(+bonusGold) || _.isNaN(+bonusGold)) return;
+      this.primus.giveGold(targetName, +bonusGold);
+    });
+  }
+
+  gmGiveIlp(targetName) {
+    this.swal.swal({
+      customClass: this.storage.theme,
+      title: 'Enter bonus ILP',
+      input: 'text',
+      inputPlaceholder: 'Enter ILP...',
+      inputValue: 0,
+      showCancelButton: true
+    }).then(bonusIlp => {
+      if(!bonusIlp || !_.isNumber(+bonusIlp) || _.isNaN(+bonusIlp)) return;
+      this.primus.giveIlp(targetName, +bonusIlp);
+    });
+  }
+
 }

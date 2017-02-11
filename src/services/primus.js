@@ -40,7 +40,8 @@ export class PrimusWrapper {
       petbuy: new BehaviorSubject({}),
       petactive: new BehaviorSubject({}),
       festivals: new BehaviorSubject([]),
-      genders: new BehaviorSubject([])
+      genders: new BehaviorSubject([]),
+      premium: new BehaviorSubject({ ilp: 0, bought: {}, buyable: [] })
     };
 
     this.contentUpdates = {
@@ -61,7 +62,8 @@ export class PrimusWrapper {
       petbuy: this._contentUpdates.petbuy.asObservable(),
       petactive: this._contentUpdates.petactive.asObservable(),
       festivals: this._contentUpdates.festivals.asObservable(),
-      genders: this._contentUpdates.genders.asObservable()
+      genders: this._contentUpdates.genders.asObservable(),
+      premium: this._contentUpdates.premium.asObservable()
     };
 
     this._playerName = new Promise(resolve => {
@@ -455,5 +457,21 @@ export class PrimusWrapper {
 
   ascend() {
     this.emit('plugin:player:ascend');
+  }
+
+  buyIlp(ilpBuy) {
+    this.emit('plugin:premium:buyilp', { ilpBuy });
+  }
+
+  buyIlpItem(item) {
+    this.emit('plugin:premium:buyilpitem', { item });
+  }
+
+  giveGold(targetName, bonusGold) {
+    this.emit('plugin:gm:givegold', { targetName, bonusGold });
+  }
+
+  giveIlp(targetName, bonusIlp) {
+    this.emit('plugin:gm:giveilp', { targetName, bonusIlp });
   }
 }

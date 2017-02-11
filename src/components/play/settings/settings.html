@@ -71,6 +71,15 @@
           <li>
             Version: {{ version }}
           </li>
+          <li>
+            Your ILP: {{ premium.ilp }}
+          </li>
+          <li *ngIf="_playerData.gold > 1000000">
+            <button class="btn btn-sm btn-primary" (click)="buyIlp(100)">Trade 1,000,000 gold for 100 ILP</button>
+          </li>
+          <li *ngIf="_playerData.gold > 10000000">
+            <button class="btn btn-sm btn-primary" (click)="buyIlp(1000)">Trade 10,000,000 gold for 1000 ILP</button>
+          </li>
         </ul>
       </div>
     </div>
@@ -147,6 +156,18 @@
         </ul>
       </div>
     </div>
+
+    <div class="card">
+      <h4 class="card-header no-margin-bottom">Premium Content</h4>
+      <div class="card-block">
+        <ul class="link-list">
+          <li *ngFor="let item of premium.buyable" [tooltip]="item.description">
+            <button class="btn btn-sm btn-primary" (click)="buyWithIlp(item)" [disabled]="premium.bought[item.name]">{{ item.name }} ({{ item.cost }} ILP)</button>
+          </li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 
 </div>

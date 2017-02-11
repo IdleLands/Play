@@ -161,7 +161,8 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
       name: player.name,
       gender: player.gender,
       title: player.title,
-      isMod: player.isMod
+      isMod: player.isMod,
+      gold: player.gold
     };
   }
 
@@ -169,6 +170,18 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
     this.validGenders = genders;
   }
 
+  setPremiumData(premium) {
+    this.premium = premium;
+    console.log(premium);
+  }
+
+  buyWithIlp(item) {
+    this.primus.buyIlpItem(item);
+  }
+
+  buyIlp(ilp) {
+    this.primus.buyIlp(ilp);
+  }
 
   ngOnInit() {
     this.themes = themes;
@@ -179,6 +192,7 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
     this.festivalSubscription = this.primus.contentUpdates.festivals.subscribe(data => this.setFestivals(data));
     this.playerSubscription = this.primus.contentUpdates.player.subscribe(data => this.setPlayerData(data));
     this.genderSubscription = this.primus.contentUpdates.genders.subscribe(data => this.setValidGenders(data));
+    this.premiumSubscription = this.primus.contentUpdates.premium.subscribe(data => this.setPremiumData(data));
     this.primus.requestAchievements();
     this.primus.requestPersonalities();
   }
@@ -189,5 +203,6 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
     this.festivalSubscription.unsubscribe();
     this.playerSubscription.unsubscribe();
     this.genderSubscription.unsubscribe();
+    this.premiumSubscription.unsubscribe();
   }
 }
