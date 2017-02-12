@@ -13,6 +13,9 @@
           <small *ngIf="message.extraData && message.extraData.battleName">
             <a class="pointer" [routerLink]="['/play/combat', { name: message.extraData.battleName }]">[View Battle]</a>
           </small>
+          <small *ngIf="message.extraData && message.extraData.link">
+            <a class="pointer" [href]="message.extraData.link" target="_blank">[View Link]</a>
+          </small>
         </div>
 
         <div class="message" [innerHtml]="linkifyText(message.text)"></div>
