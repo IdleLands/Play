@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid settings-container">
 
   <div class="col-md-3">
     <div class="card">
@@ -104,7 +104,7 @@
   </div>
 
   <div class="col-md-3">
-    <div class="card">
+    <div class="card festival-card">
       <h4 class="card-header no-margin-bottom">Festivals ({{ festivals.length }}) <button class="pull-right btn-sm btn btn-primary" (click)="gmCreateFestival()" *ngIf="_playerData.isMod">Create</button></h4>
       <div class="card-block">
         <ul class="link-list">
@@ -157,7 +157,7 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card premium-card">
       <h4 class="card-header no-margin-bottom">Premium Content</h4>
       <div class="card-block">
         <ul class="link-list">
