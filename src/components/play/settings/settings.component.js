@@ -174,8 +174,8 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
     this.premium = premium;
   }
 
-  buyWithIlp(item) {
-    this.primus.buyIlpItem(item);
+  buyWithIlp(itemName) {
+    this.primus.buyIlpItem(itemName);
   }
 
   buyIlp(ilp) {

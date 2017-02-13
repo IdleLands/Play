@@ -162,7 +162,7 @@
       <div class="card-block">
         <ul class="link-list">
           <li *ngFor="let item of premium.buyable" [tooltip]="item.description">
-            <button class="btn btn-sm btn-primary" (click)="buyWithIlp(item)" [disabled]="premium.bought[item.name]">{{ item.name }} ({{ item.cost }} ILP)</button>
+            <button class="btn btn-sm btn-primary" (click)="buyWithIlp(item.name)" [disabled]="premium.bought[item.name]">{{ item.name }} ({{ item.cost }} ILP)</button>
           </li>
         </ul>
       </div>

@@ -463,8 +463,8 @@ export class PrimusWrapper {
     this.emit('plugin:premium:buyilp', { ilpBuy });
   }
 
-  buyIlpItem(item) {
-    this.emit('plugin:premium:buyilpitem', { item });
+  buyIlpItem(itemName) {
+    this.emit('plugin:premium:buyilpitem', { itemName });
   }
 
   giveGold(targetName, bonusGold) {
