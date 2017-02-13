@@ -172,7 +172,6 @@ ${_.map(thanks, t => `<div>${t.name} - ${t.reason}</div>`).join('')}
 
   setPremiumData(premium) {
     this.premium = premium;
-    console.log(premium);
   }
 
   buyWithIlp(item) {
