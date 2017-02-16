@@ -23,7 +23,7 @@ const baseIgnores = [
 export class ItemService {
   static getSpecialStatString(item) {
     const newItem = _.omitBy(item, (val, key) => {
-      return _.includes(baseIgnores, key) || _.includes(key, 'Percent') || _.includes(key, 'item') || !_.isNumber(val);
+      return _.includes(baseIgnores, key) || _.includes(key, 'Percent') || _.includes(key, 'item') || !_.isNumber(val) || key === 'vector';
     });
 
     return _(newItem)
