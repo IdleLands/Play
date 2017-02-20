@@ -1,5 +1,6 @@
 import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import { StorageService } from 'ng2-storage';
 import { SweetAlertService } from 'ng2-sweetalert2';
 import { tokenNotExpired } from 'angular2-jwt';
@@ -30,12 +31,17 @@ export class Auth {
   }
 
   login(func = 'show') {
-    this.lock[func]({}, (err, profile, token) => {
+    this.lock[func]({
+      authParams: {
+        scope: 'openid offline_access'
+      }
+    }, (err, profile, token, accessToken, state, refreshToken) => {
       if (err) {
         alert(err);
         return;
       }
 
+      this.storage.refreshToken = refreshToken;
       this.storage.profile = profile;
       this.storage.idToken = token;
       this.zoneImpl.run(() => this.user = profile);
@@ -47,6 +53,7 @@ export class Auth {
   logout() {
     this.swal.confirm({ text: 'Are you sure you want to log out?', customClass: this.storage.theme }).then(res => {
       if(!res) return;
+      this.storage.refreshToken = null;
       this.storage.profile = null;
       this.storage.idToken = null;
       this.zoneImpl.run(() => this.user = null);
@@ -70,11 +77,21 @@ export class AuthGuard {
   }
 
   canActivate() {
-    if(this.storage.idToken && tokenNotExpired('idp-idToken')) {
-      return true;
-    }
+    return Observable.fromPromise(new Promise(resolve => {
+      if(this.storage.idToken && tokenNotExpired('idp-idToken')) {
+        return resolve(true);
+      }
 
-    this.router.navigate(['/']);
-    return false;
+      this.lock.getClient().refreshToken(this.storage.refreshToken, (err, delegationResult) => {
+        if(err) {
+          console.error(err);
+          this.router.navigate(['/']);
+          return resolve(false);
+        }
+
+        this.storage.idToken = delegationResult.id_token;
+        return resolve(true);
+      });
+    }));
   }
 }
