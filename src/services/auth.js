@@ -8,6 +8,8 @@ import Auth0Lock from 'auth0-lock';
 
 import { PrimusWrapper } from './primus';
 
+const lock = new Auth0Lock('eeZLr1IQYWDYgxUtEAAiibI4617kIfT9', 'idlelands.auth0.com');
+
 @Injectable()
 export class Auth {
 
@@ -23,7 +25,7 @@ export class Auth {
     this.primus = primus;
     this.swal = swal;
 
-    this.lock = new Auth0Lock('eeZLr1IQYWDYgxUtEAAiibI4617kIfT9', 'idlelands.auth0.com');
+    this.lock = lock;
   }
 
   authenticated() {
@@ -74,6 +76,7 @@ export class AuthGuard {
   constructor(router, storage) {
     this.router = router;
     this.storage = storage.local;
+    this.lock = lock;
   }
 
   canActivate() {
