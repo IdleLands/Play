@@ -263,6 +263,7 @@ export class PrimusWrapper {
     if(_.includes(window.location.pathname, 'opencombat') || (!force && this.hasRealUser.getValue() && this._cachedOpts)) return;
 
     this.auth.renew().then(() => {
+      opts.token = this.storage.idToken;
       this.emit('plugin:player:login', opts, res => {
         if(!res.ok) return;
         doNext(res);
