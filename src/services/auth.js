@@ -85,11 +85,19 @@ export class AuthGuard {
         return resolve(true);
       }
 
+      const back = () => {
+        this.router.navigate(['/']);
+        resolve(false);
+      };
+
+      if(!this.storage.refreshToken) {
+        return back();
+      }
+
       this.lock.getClient().refreshToken(this.storage.refreshToken, (err, delegationResult) => {
         if(err) {
           console.error(err);
-          this.router.navigate(['/']);
-          return resolve(false);
+          return back();
         }
 
         this.storage.idToken = delegationResult.id_token;
