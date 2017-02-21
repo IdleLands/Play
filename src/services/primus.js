@@ -2,6 +2,7 @@
 import _ from 'lodash';
 
 import Primus from '../../primus.gen';
+import { Auth } from './auth';
 import { StorageService } from 'ng2-storage';
 import { PNotifyService } from 'ng2-pnotify';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
@@ -13,14 +14,15 @@ export const settings = window.location.hostname === 'idle.land' ?
 export class PrimusWrapper {
 
   static get parameters() {
-    return [[StorageService], [PNotifyService]];
+    return [[StorageService], [PNotifyService], [Auth]];
   }
 
-  constructor(storage, pnotify) {
+  constructor(storage, pnotify, auth) {
     this.hasRealUser = new BehaviorSubject(false);
     this.storage = storage.local;
     this.pnotify = pnotify;
     this.outstandingCallbacks = {};
+    this.auth = auth;
 
     this._contentUpdates = {
       isOnline: new BehaviorSubject('offline'),
@@ -259,11 +261,14 @@ export class PrimusWrapper {
 
   registerPlayer(opts, doNext = () => {}, force = false) {
     if(_.includes(window.location.pathname, 'opencombat') || (!force && this.hasRealUser.getValue() && this._cachedOpts)) return;
-    this.emit('plugin:player:login', opts, res => {
-      if(!res.ok) return;
-      doNext(res);
-      this._cachedOpts = opts;
-      this.hasRealUser.next(true);
+
+    this.auth.renew().then(() => {
+      this.emit('plugin:player:login', opts, res => {
+        if(!res.ok) return;
+        doNext(res);
+        this._cachedOpts = opts;
+        this.hasRealUser.next(true);
+      });
     });
   }
 

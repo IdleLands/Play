@@ -6,23 +6,20 @@ import { SweetAlertService } from 'ng2-sweetalert2';
 import { tokenNotExpired } from 'angular2-jwt';
 import Auth0Lock from 'auth0-lock';
 
-import { PrimusWrapper } from './primus';
-
 const lock = new Auth0Lock('eeZLr1IQYWDYgxUtEAAiibI4617kIfT9', 'idlelands.auth0.com');
 
 @Injectable()
 export class Auth {
 
   static get parameters() {
-    return [[NgZone], [Router], [StorageService], [PrimusWrapper], [SweetAlertService]];
+    return [[NgZone], [Router], [StorageService], [SweetAlertService]];
   }
 
-  constructor(zone, router, storage, primus, swal) {
+  constructor(zone, router, storage, swal) {
     this.zoneImpl = zone;
     this.router = router;
     this.storage = storage.local;
     this.user = this.storage.profile;
-    this.primus = primus;
     this.swal = swal;
 
     this.lock = lock;
@@ -33,35 +30,53 @@ export class Auth {
   }
 
   login(func = 'show') {
-    this.lock[func]({
-      authParams: {
-        scope: 'openid offline_access'
-      }
-    }, (err, profile, token, accessToken, state, refreshToken) => {
-      if (err) {
-        alert(err);
-        return;
-      }
+    return new Promise((resolve, reject) => {
+      this.lock[func]({
+        authParams: {
+          scope: 'openid offline_access'
+        }
+      }, (err, profile, token, accessToken, state, refreshToken) => {
+        if (err) {
+          alert(err);
+          return reject();
+        }
 
-      this.storage.refreshToken = refreshToken;
-      this.storage.profile = profile;
-      this.storage.idToken = token;
-      this.zoneImpl.run(() => this.user = profile);
-      this.primus.initSocket();
-      this.router.navigate(['/play']);
+        this.storage.refreshToken = refreshToken;
+        this.storage.profile = profile;
+        this.storage.idToken = token;
+        this.zoneImpl.run(() => this.user = profile);
+        this.router.navigate(['/play']);
+        resolve();
+      });
     });
   }
 
   logout() {
-    this.swal.confirm({ text: 'Are you sure you want to log out?', customClass: this.storage.theme }).then(res => {
-      if(!res) return;
-      this.storage.refreshToken = null;
-      this.storage.profile = null;
-      this.storage.idToken = null;
-      this.zoneImpl.run(() => this.user = null);
-      this.primus.disconnect();
-      this.router.navigate(['/']);
-      window.location.reload();
+    return new Promise((resolve, reject) => {
+      this.swal.confirm({ text: 'Are you sure you want to log out?', customClass: this.storage.theme }).then(res => {
+        if(!res) return reject();
+        this.storage.refreshToken = null;
+        this.storage.profile = null;
+        this.storage.idToken = null;
+        this.zoneImpl.run(() => this.user = null);
+        this.router.navigate(['/']);
+        window.location.reload();
+        resolve();
+      });
+    });
+  }
+
+  renew() {
+    return new Promise((resolve, reject) => {
+      this.lock.getClient().refreshToken(this.storage.refreshToken, (err, delegationResult) => {
+        if(err) {
+          console.error(err);
+          return reject();
+        }
+
+        this.storage.idToken = delegationResult.id_token;
+        return resolve();
+      });
     });
   }
 }

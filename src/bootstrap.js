@@ -18,7 +18,7 @@ import { StatComponent } from './directives/stat';
 import { MessageNotifier } from './services/messagenotifier';
 import { PrimusWrapper } from './services/primus';
 import { PNotifyService, PNotifySettings } from 'ng2-pnotify';
-import { AuthGuard } from './services/auth';
+import { Auth, AuthGuard } from './services/auth';
 import { App } from './components/app.component';
 
 import { StorageSettings, StorageService } from 'ng2-storage';
@@ -39,6 +39,7 @@ if(window.Proxy) {
     PNotifyService,
     MessageNotifier,
     AuthGuard,
+    Auth,
     provide(StorageSettings, { useValue: { prefix: 'idp' } }),
     provide(PNotifySettings, { useValue: { styling: 'fontawesome' } }),
     // { provide: LocationStrategy, useClass: HashLocationStrategy },
