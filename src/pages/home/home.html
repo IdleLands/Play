@@ -1,0 +1,105 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>IdleLands - Log In or Sign Up</ion-title>
+
+    <ion-buttons start>
+      <a ion-button icon-left solid color="primary" (click)="privacy()">
+        <ion-icon name="lock"></ion-icon> Privacy Policy
+      </a>
+      <a ion-button icon-left solid color="primary" href="http://blog.idle.land" target="_blank">
+        <ion-icon name="logo-rss"></ion-icon> Blog
+      </a>
+    </ion-buttons>
+
+    <ion-buttons end>
+      <button ion-button icon-left solid color="primary" (click)="play()" *ngIf="auth.authenticated">
+        <ion-icon name="game-controller-b"></ion-icon> Play
+      </button>
+
+      <button ion-button icon-left solid color="primary" (click)="login()" *ngIf="!auth.authenticated">
+        <ion-icon name="log-in"></ion-icon> Login
+      </button>
+
+      <button ion-button icon-left solid color="primary" (click)="logout()" *ngIf="auth.authenticated">
+        <ion-icon name="log-out"></ion-icon> Logout
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <h1>Welcome to IdleLands</h1>
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding>
+      <ion-col padding>
+        <h3 class="unbold">
+          IdleLands is a great game about idling, finding cool loot, and laughing at the crazy things that happen.
+        </h3>
+        <h4 class="unbold">
+          Please be advised that there may be some questionable content in this game. Content is community-created and lightly moderated, but everyone is different so some things may be hilarious to you while others may not amuse you at all. Everybody's different!
+        </h4>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col width-33 padding>
+        <ion-card>
+
+          <ion-card-header>
+            <h1>Sign Up Now</h1>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p>Registration is easy - just a few clicks and you're in the game. Plus, it's handled by Auth0, so you know it's secured with the latest technologies.</p>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+
+      <ion-col width-33 padding>
+        <ion-card>
+
+          <ion-card-header>
+            <h1>Online Multiplayer</h1>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p>Don't want to play alone? That's perfect! Join many other players and play IdleLands in the same world. Explore and slay monsters together!</p>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+
+      <ion-col width-33 padding>
+        <ion-card>
+
+          <ion-card-header>
+            <h1>Massive World</h1>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p>Explore a massive, hand-crafted and lore-rich world with over 150 "Collectibles" and 100 unique regions spread across 50 maps!</p>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding-left>
+      <ion-col padding-left>
+        <button ion-button icon-left color="primary" (click)="auth.login()">
+          <ion-icon name="log-in"></ion-icon> Sign Up
+        </button>
+
+        <a ion-button clear width="150" height="50" href="https://auth0.com/?utm_source=oss&amp;utm_medium=gp&amp;utm_campaign=oss" target="_blank" alt="Single Sign On &amp; Token Based Authentication - Auth0"><img width="150" height="50" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"></a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

@@ -1,0 +1,30 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "land.idle.play"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "land.idle.play"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "land.idle.play"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "land.idle.play"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "land.idle.play"
+        },
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "land.idle.play"
+        }
+    },
+    "dependent_plugins": {}
+}
