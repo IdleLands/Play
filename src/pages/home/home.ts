@@ -4,8 +4,8 @@ import { NavController } from 'ionic-angular';
 
 import { Auth } from '../../services';
 
-import { ConnectPage } from '../';
-import { PrivacyPage } from '../';
+import { ConnectPage, PrivacyPage } from '../';
+import { Primus } from '../../services';
 
 @Component({
   selector: 'page-home',
@@ -15,7 +15,8 @@ export class HomePage {
 
   constructor(
     public navCtrl: NavController,
-    public auth: Auth
+    public auth: Auth,
+    public primus: Primus
   ) {}
 
   login() {
@@ -26,7 +27,10 @@ export class HomePage {
   }
 
   logout() {
-    this.auth.logout();
+    this.auth.logout()
+      .then(() => {
+        this.primus.disconnectSocket();
+      });
   }
 
   privacy() {

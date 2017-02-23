@@ -2,17 +2,24 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-angular';
 import { Ng2Webstorage } from 'ng2-webstorage';
 
-import { AppState, Auth } from '../services';
+import { AppState, Auth, Primus } from '../services';
 
 import { MyApp } from './app.component';
-import { HomePage, ConnectPage, CreatePage, PrivacyPage } from '../pages';
+import {
+  HomePage,
+  ConnectPage,
+  CreatePage,
+  PrivacyPage,
+  OverviewPage
+} from '../pages';
 
 const deepLinks: DeepLinkConfig = {
   links: [
-    { component: HomePage, name: 'Home Page', segment: '' },
-    { component: PrivacyPage, name: 'Privacy Policy', segment: 'privacy' },
-    { component: ConnectPage, name: 'Connecting...', segment: 'connect' },
-    { component: CreatePage, name: 'Create Character', segment: 'create' }
+    { component: HomePage,          name: 'Home Page',          segment: '' },
+    { component: PrivacyPage,       name: 'Privacy Policy',     segment: 'privacy' },
+    { component: ConnectPage,       name: 'Connecting...',      segment: 'connect' },
+    { component: CreatePage,        name: 'Create Character',   segment: 'create' },
+    { component: OverviewPage,      name: 'Overview',           segment: 'overview' }
   ]
 };
 
@@ -22,7 +29,8 @@ const deepLinks: DeepLinkConfig = {
     HomePage,
     ConnectPage,
     CreatePage,
-    PrivacyPage
+    PrivacyPage,
+    OverviewPage
   ],
   imports: [
     Ng2Webstorage.forRoot({ prefix: 'idp', separator: '-' }),
@@ -34,11 +42,13 @@ const deepLinks: DeepLinkConfig = {
     HomePage,
     ConnectPage,
     CreatePage,
-    PrivacyPage
+    PrivacyPage,
+    OverviewPage
   ],
   providers: [
     AppState,
     Auth,
+    Primus,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

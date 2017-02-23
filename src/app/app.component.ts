@@ -2,9 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { AppState } from '../services/appstate.service';
+import { AppState } from '../services';
 
-import { HomePage } from '../pages/home/home';
+import { HomePage, OverviewPage } from '../pages';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +18,7 @@ export class MyApp {
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}> = [
-    // { title: 'Overview', component: OverviewPage }
+    { title: 'Overview', component: OverviewPage }
   ];
 
   constructor(public platform: Platform, public state: AppState) {

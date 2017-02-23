@@ -91,13 +91,44 @@
       </ion-col>
     </ion-row>
 
-    <ion-row padding-left>
-      <ion-col padding-left>
-        <button ion-button icon-left color="primary" (click)="auth.login()">
-          <ion-icon name="log-in"></ion-icon> Sign Up
-        </button>
+    <ion-row>
+      <ion-col padding>
+        <div padding>
+          <button ion-button icon-left color="primary" (click)="auth.login()">
+            <ion-icon name="log-in"></ion-icon> Sign Up
+          </button>
 
-        <a ion-button clear width="150" height="50" href="https://auth0.com/?utm_source=oss&amp;utm_medium=gp&amp;utm_campaign=oss" target="_blank" alt="Single Sign On &amp; Token Based Authentication - Auth0"><img width="150" height="50" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"></a>
+          <a ion-button clear width="150" height="50" href="https://auth0.com/?utm_source=oss&amp;utm_medium=gp&amp;utm_campaign=oss" target="_blank" alt="Single Sign On &amp; Token Based Authentication - Auth0"><img width="150" height="50" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"></a>
+        </div>
+
+      </ion-col>
+
+      <ion-col width-33 padding>
+        <ion-card>
+
+          <ion-card-header>
+            <h1>In-Depth Help</h1>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p>No matter if you need help getting started, understanding some aspects of the game, or want to find information, our <a href="https://github.com/IdleLands/IdleLands/wiki" target="_blank">wiki</a> has you covered!</p>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+
+      <ion-col width-33 padding>
+        <ion-card>
+
+          <ion-card-header>
+            <h1>Global Leaderboard</h1>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p>Into competition? Awesome. We have a <a href="http://global.idle.land/leaderboard" target="_blank">leaderboard</a> and many other features (like game-wide <a href="http://global.idle.land/statistics" target="_blank">statistics</a>) that span the whole game. Check it out!</p>
+          </ion-card-content>
+
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>

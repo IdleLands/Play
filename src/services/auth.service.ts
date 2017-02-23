@@ -9,6 +9,8 @@ import { AlertController } from 'ionic-angular';
 
 import { LocalStorageService } from 'ng2-webstorage';
 
+import { AppState } from './';
+
 const lockOptions = {
   autoclose: true,
   auth: {
@@ -39,6 +41,7 @@ export class Auth {
 
   constructor(
     private storage: LocalStorageService,
+    private appState: AppState,
     private alertCtrl: AlertController
   ) {}
 
@@ -86,6 +89,7 @@ export class Auth {
               this.storage.clear('profile');
               this.storage.clear('refreshToken');
               this.storage.clear('idToken');
+              this.appState.reset();
               resolve();
             }
           }
