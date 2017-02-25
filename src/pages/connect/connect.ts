@@ -1,8 +1,14 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import * as _ from 'lodash';
+
+import { Observable } from 'rxjs';
+
 import { OverviewPage, CreatePage } from '../';
 import { AppState, Primus } from '../../services';
+
+import * as messages from './messages.json';
 
 @Component({
   selector: 'page-connect',
@@ -12,6 +18,9 @@ export class ConnectPage implements OnInit, OnDestroy {
 
   public isOnline$: any;
   public isOnline: boolean;
+
+  public connectMessage$: any;
+  public currentMessage = '';
 
   constructor(
     public navCtrl: NavController,
@@ -40,11 +49,17 @@ export class ConnectPage implements OnInit, OnDestroy {
       });
     });
 
+    this.connectMessage$ = Observable.timer(0, 1000)
+      .subscribe(() => {
+        this.currentMessage = _.sample(messages);
+      });
+
     this.primus.initSocket();
   }
 
   ngOnDestroy() {
     this.isOnline$.unsubscribe();
+    this.connectMessage$.unsubscribe();
   }
 
 }
