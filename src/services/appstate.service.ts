@@ -1,15 +1,50 @@
 
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 
-import { Player } from '../models';
+import {
+  Achievements,
+  AdventureLog,
+  Battle,
+  ChatMessage,
+  ChatUser,
+  Collectibles,
+  Equipment,
+  Festival,
+  GMData,
+  Party,
+  Player,
+  Personalities,
+  PetActive,
+  PetBasic,
+  PetBuy,
+  Premium,
+  Statistics
+} from '../models';
 
 type OnlineStatus = 'online' | 'offline' | 'connecting';
 
 export class AppState {
   onlineStatus:   BehaviorSubject<OnlineStatus> = new BehaviorSubject<OnlineStatus>('offline');
   loggedIn:       BehaviorSubject<boolean> = new BehaviorSubject(false);
+  chatUsers:      BehaviorSubject<ChatUser[]> = new BehaviorSubject([]);
+  chatMessages:   ReplaySubject<ChatMessage> = new ReplaySubject(200);
+  adventureLog:   ReplaySubject<AdventureLog> = new ReplaySubject(50);
+
   player:         BehaviorSubject<Player> = new BehaviorSubject(new Player());
-  chatMessages:   ReplaySubject<any> = new ReplaySubject(200);
+  statistics:     BehaviorSubject<Statistics> = new BehaviorSubject(new Statistics());
+  achievements:   BehaviorSubject<Achievements> = new BehaviorSubject(new Achievements());
+  collectibles:   BehaviorSubject<Collectibles> = new BehaviorSubject(new Collectibles());
+  equipment:      BehaviorSubject<Equipment> = new BehaviorSubject(new Equipment());
+  personalities:  BehaviorSubject<Personalities> = new BehaviorSubject(new Personalities());
+  party:          BehaviorSubject<Party> = new BehaviorSubject(new Party());
+  gmdata:         BehaviorSubject<GMData> = new BehaviorSubject(new GMData());
+  battle:         BehaviorSubject<Battle> = new BehaviorSubject(new Battle());
+  petbasic:       BehaviorSubject<PetBasic> = new BehaviorSubject(new PetBasic());
+  petbuy:         BehaviorSubject<PetBuy> = new BehaviorSubject(new PetBuy());
+  petactive:      BehaviorSubject<PetActive> = new BehaviorSubject(new PetActive());
+  festivals:      BehaviorSubject<Festival[]> = new BehaviorSubject([]);
+  genders:        BehaviorSubject<string[]> = new BehaviorSubject([]);
+  premium:        BehaviorSubject<Premium> = new BehaviorSubject(new Premium());
 
   reset() {
     this.onlineStatus.next('offline');

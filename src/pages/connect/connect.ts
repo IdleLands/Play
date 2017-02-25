@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
 import * as _ from 'lodash';
 
@@ -24,11 +24,18 @@ export class ConnectPage implements OnInit, OnDestroy {
 
   constructor(
     public navCtrl: NavController,
+    public navParams: NavParams,
     public appState: AppState,
     public primus: Primus
   ) {}
 
   ngOnInit() {
+
+    // can't be defined anywhere else or pages won't be instantiated
+    const backrefPages = {
+      OverviewPage
+    };
+
     this.appState.loggedIn.next(false);
 
     this.isOnline$ = this.appState.onlineStatus.subscribe(onlineStatus => {
@@ -40,7 +47,9 @@ export class ConnectPage implements OnInit, OnDestroy {
         if(exists) {
           this.primus.login(() => {
             this.appState.loggedIn.next(true);
-            this.navCtrl.setRoot(OverviewPage);
+
+            const ref = this.navParams.get('fromPage') || 'OverviewPage';
+            this.navCtrl.setRoot(backrefPages[ref]);
           });
           return;
         }

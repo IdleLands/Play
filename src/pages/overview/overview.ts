@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
+import { Player } from '../../models';
+
 import { AppState, Primus } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
@@ -10,6 +12,9 @@ import { PlayComponent } from '../../components/play.component';
 })
 export class OverviewPage extends PlayComponent {
 
+  public player$: any;
+  public player: Player;
+
   constructor(
     public appState: AppState,
     public primus: Primus,
@@ -18,8 +23,18 @@ export class OverviewPage extends PlayComponent {
     super(appState, primus, navCtrl);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad OverviewPage');
+  ngOnInit() {
+    super.ngOnInit();
+
+    this.player$ = this.appState.player.subscribe(data => {
+      this.player = data;
+    });
+  }
+
+  ngOnDestroy() {
+    super.ngOnDestroy();
+
+    this.player$.unsubscribe();
   }
 
 }

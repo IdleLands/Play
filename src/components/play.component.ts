@@ -16,10 +16,13 @@ export class PlayComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
+    const toConnecting = () => {
+      this.navCtrl.setRoot(ConnectPage, { fromPage: this.constructor.name });
+    };
+
     this.isOnline$ = this.appState.onlineStatus.subscribe(onlineStatus => {
       if(onlineStatus === 'online') return;
-
-      this.navCtrl.setRoot(ConnectPage);
+      toConnecting();
     });
   }
 
