@@ -4,6 +4,8 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 
 import { AppState, Auth, Primus } from '../services';
 
+import { RedditNewsComponent } from '../components/reddit-news.component';
+
 import { MyApp } from './app.component';
 import {
   HomePage,
@@ -30,7 +32,9 @@ const deepLinks: DeepLinkConfig = {
     ConnectPage,
     CreatePage,
     PrivacyPage,
-    OverviewPage
+    OverviewPage,
+
+    RedditNewsComponent
   ],
   imports: [
     Ng2Webstorage.forRoot({ prefix: 'idp', separator: '-' }),

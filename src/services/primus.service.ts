@@ -53,7 +53,7 @@ export class Primus {
       }
     });
 
-    this.socket.on('error', e => { throw e; });
+    this.socket.on('error', e => { console.error(e); });
 
     this.socket.on('close', () => {
       this.appState.onlineStatus.next('offline');

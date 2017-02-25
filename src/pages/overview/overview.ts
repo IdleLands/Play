@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { AppState, Primus } from '../../services';
-import { PlayComponent } from '../../components/play-component';
+import { PlayComponent } from '../../components/play.component';
 
 @Component({
   selector: 'page-overview',
