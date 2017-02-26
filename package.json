@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^2.3.1",
     "@angular/platform-server": "^2.3.1",
     "@ionic/storage": "1.1.7",
+    "angular-svg-round-progressbar": "^1.0.4",
     "angular2-jwt": "^0.1.28",
     "auth0-lock": "^10.11.0",
     "clipboard": "^1.6.0",

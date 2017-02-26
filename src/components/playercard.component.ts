@@ -17,6 +17,10 @@ const genderPositions = {
 @Component({
   selector: 'player-card',
   styles: [`
+    :host round-progress {
+      position: absolute;
+    }
+    
     :host [img-container] {
       display: flex;
       justify-content: center;
@@ -34,6 +38,7 @@ const genderPositions = {
   <ion-grid>
     <ion-row>
       <ion-col width-20 img-container>
+        <round-progress class="xp-circle" [radius]="25" [stroke]="5" [current]="player._xp.__current" [max]="player._xp.maximum"></round-progress>
         <img src="http://game.idle.land/maps/img/tiles.png" [style.object-position]="imgStyleFit()">
       </ion-col>
      
@@ -60,9 +65,12 @@ export class PlayerCardComponent implements OnInit, OnDestroy {
 
   constructor(public appState: AppState) {}
 
-  imgStyleFit() {
+  currentXp(): number {
+    return ~~(this.player._xp.__current / this.player._xp.maximum);
+  }
+
+  imgStyleFit(): string {
     const pos = genderPositions[this.player.gender] || { x: 0, y: 0 };
-    console.log(this.player.gender);
     return `-${pos.x*16}px -${pos.y*16}px`;
   }
 

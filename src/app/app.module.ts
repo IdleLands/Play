@@ -1,6 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-angular';
+
 import { Ng2Webstorage } from 'ng2-webstorage';
+import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
 import { AppState, Auth, Primus } from '../services';
 
@@ -43,6 +45,7 @@ const deepLinks: DeepLinkConfig = {
     PlayerCardComponent
   ],
   imports: [
+    RoundProgressModule,
     Ng2Webstorage.forRoot({ prefix: 'idp', separator: '-' }),
     IonicModule.forRoot(MyApp, { locationStrategy: 'hash' }, deepLinks)
   ],

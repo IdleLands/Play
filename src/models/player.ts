@@ -1,8 +1,8 @@
 
 export class RestrictedNumber {
-  __current: number;
-  maximum: number;
-  minimum: number;
+  __current: number = 1;
+  maximum: number = 100;
+  minimum: number = 0;
 }
 
 export class Choice {
