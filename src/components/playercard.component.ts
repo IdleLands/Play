@@ -51,7 +51,13 @@ const genderPositions = {
           <h3>The {{ player.gender }} level {{ player._level.__current }}/{{ player._level.maximum }} {{ player.professionName }}</h3>
         </div>
         <div>
+          <h3>Currently in {{ player.map }}: {{ player.mapRegion }}</h3>
+        </div>
+        <div>
           <h3><stat stat="gold" [value]="player.gold"></stat> Gold</h3>
+        </div>
+        <div>
+          <h3><game-icon icon="symbol-item"></game-icon> {{ player.statCache.itemFindRange | number }} Max Item Score</h3>
         </div>
       </ion-col>
     </ion-row> 

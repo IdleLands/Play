@@ -11,11 +11,11 @@
 
   .xp-circle {
     circle {
-      stroke: darken(map-get($colors, secondary), 10%) !important;
+      stroke: darken(map-get($colors, playercard), 10%) !important;
     }
 
     path {
-      stroke: darken(map-get($colors, secondary), 30%) !important;
+      stroke: darken(map-get($colors, playercard), 30%) !important;
     }
   }
 }
