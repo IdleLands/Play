@@ -1,11 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { LocalStorageService } from 'ng2-webstorage';
 
 import * as _ from 'lodash';
 
 import { Observable } from 'rxjs';
 
-import { OverviewPage, CreatePage } from '../';
+import { OverviewPage, CreatePage, HomePage } from '../';
 import { AppState, Primus } from '../../services';
 
 import * as messages from './messages.json';
@@ -32,7 +33,8 @@ export class ConnectPage implements OnInit, OnDestroy {
     public navCtrl: NavController,
     public navParams: NavParams,
     public appState: AppState,
-    public primus: Primus
+    public primus: Primus,
+    public storage: LocalStorageService
   ) {}
 
   ngOnInit() {
@@ -63,6 +65,10 @@ export class ConnectPage implements OnInit, OnDestroy {
   }
 
   handleLoggedInAndStatus() {
+    if(!this.storage.retrieve('profile')) {
+      this.navCtrl.setRoot(HomePage);
+      return;
+    }
 
     // can't be defined anywhere else or pages won't be instantiated
     const backrefPages = {

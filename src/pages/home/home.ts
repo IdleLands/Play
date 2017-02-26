@@ -23,6 +23,9 @@ export class HomePage {
     this.auth.login()
       .then(() => {
         this.play();
+      })
+      .catch(e => {
+        console.error(e);
       });
   }
 
@@ -30,6 +33,9 @@ export class HomePage {
     this.auth.logout()
       .then(() => {
         this.primus.disconnectSocket();
+      })
+      .catch(e => {
+        console.error(e);
       });
   }
 

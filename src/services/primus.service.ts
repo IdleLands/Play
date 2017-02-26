@@ -89,15 +89,19 @@ export class Primus {
         this.appState.onlineStatus.next('online');
       }
 
-      this.checkIfExists(exists => {
-        if(!exists) {
-          this.appState.hasCharacter.next(false);
-          return;
-        }
+      this.checkIfExists()
+        .then(exists => {
+          if(!exists) {
+            this.appState.hasCharacter.next(false);
+            return;
+          }
 
-        this.appState.hasCharacter.next(true);
-        this.login(() => {});
-      });
+          this.appState.hasCharacter.next(true);
+          this.login();
+        })
+        .catch((e) => {
+          console.error(e);
+        });
     });
 
     this.socket.on('data', data => {
@@ -195,32 +199,34 @@ export class Primus {
     this._emit('plugin:player:imregisteringrightnowdontkillme');
   }
 
-  checkIfExists(callback: Function): void {
-    const profile = this.storage.retrieve('profile');
-    if(!profile) return;
+  checkIfExists(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const profile = this.storage.retrieve('profile');
+      if(!profile) return reject(new Error('No profile to check against'));
 
-    this._emit('plugin:player:exists', { userId: profile.user_id }, data => {
-      callback(data.exists);
+      this._emit('plugin:player:exists', { userId: profile.user_id }, data => {
+        resolve(data.exists);
+      });
     });
   }
 
-  login(callback: Function): void {
-    const isLoggedIn = this.appState.loggedIn.getValue();
-    if(isLoggedIn) return;
+  login(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const isLoggedIn = this.appState.loggedIn.getValue();
+      if(isLoggedIn) return reject(new Error('Already logged in'));
 
-    const profile = this.storage.retrieve('profile');
-    if(!profile) return;
+      const profile = this.storage.retrieve('profile');
+      if(!profile) return reject(new Error('No profile to login'));
 
-    this.auth.renew()
-      .then(() => {
-        this._emit('plugin:player:login', { userId: profile.user_id }, res => {
-          if(!res.ok) return;
-          this.appState.loggedIn.next(true);
-          callback(res);
-        });
-      })
-      .catch((e) => {
-        console.error(e);
-      });
+      this.auth.renew()
+        .then(() => {
+          this._emit('plugin:player:login', { userId: profile.user_id }, res => {
+            if(!res.ok) return;
+            this.appState.loggedIn.next(true);
+            resolve(res);
+          });
+        })
+        .catch(reject);
+    })
   }
 }

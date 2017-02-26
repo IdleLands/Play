@@ -57,16 +57,17 @@ export class Auth {
 
         lock.getUserInfo(accessToken, (error, profile) => {
           if(error) {
-            return reject();
+            return reject(error);
           }
 
           this.storage.store('profile', profile);
           this.storage.store('idToken', idToken);
           this.storage.store('accessToken', accessToken);
           this.storage.store('refreshToken', refreshToken);
-        });
 
-        resolve();
+          console.log(profile);
+          resolve();
+        });
       });
 
       lock.show();
@@ -88,6 +89,7 @@ export class Auth {
             handler: () => {
               this.storage.clear('profile');
               this.storage.clear('refreshToken');
+              this.storage.clear('accessToken');
               this.storage.clear('idToken');
               this.appState.reset();
               resolve();
@@ -99,14 +101,24 @@ export class Auth {
   }
 
   get authenticated(): boolean {
-    return tokenNotExpired('idp-idtoken');
+    return this.storage.retrieve('profile') && tokenNotExpired('idp-idtoken');
   }
 
   renew(): Promise<any> {
     return new Promise((resolve, reject) => {
+
+      if(!this.storage.retrieve('profile')) {
+        return reject(new Error('No profile to renew token for'));
+      }
+
+      const refreshToken = this.storage.retrieve('refreshToken');
+      if(!refreshToken) {
+        return reject(new Error('No refresh token in storage'));
+      }
+
       const auth0 = new (<any>window).Auth0({ clientID: CLIENT_ID, domain: DOMAIN, responseType: 'token' });
 
-      auth0.refreshToken(this.storage.retrieve('refreshToken'), (err, authData) => {
+      auth0.refreshToken(refreshToken, (err, authData) => {
         if(err) {
           return reject(err);
         }

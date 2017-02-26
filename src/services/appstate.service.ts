@@ -50,6 +50,9 @@ export class AppState {
 
   reset() {
     this.onlineStatus.next('offline');
-    this.loggedIn.next(false);
+    this.loggedIn.next(undefined);
+    this.hasCharacter.next(undefined);
+    this.showSideMenu.next(false);
+    this.chatUsers.next([]);
   }
 }
