@@ -9,6 +9,24 @@
 
 
 <ion-content padding>
-  <stat stat="str" [value]="player.statCache.str"></stat>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="size-200" text-center>
+        <stat stat="hp" [value]="player.statCache.hp"></stat>
+      </ion-col>
+      <ion-col class="size-200" text-center>
+        <stat stat="mp" [value]="player.statCache.mp"></stat>
+      </ion-col>
+      <ion-col class="size-200" text-center>
+        <stat stat="xp" value="0" showValue="false"></stat> {{ player._xp.__current | number }}/{{ player._xp.maximum | number }}
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col *ngFor="let stat of stats" class="size-150" text-center>
+        <stat [stat]="stat" [value]="player.statCache[stat]" [showColor]="true"></stat>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   {{ player | json }}
 </ion-content>

@@ -9,10 +9,15 @@ import { Component, Input } from '@angular/core';
       color: rgba(0, 0, 0, 0);
     }
   `],
-  template: `<game-icon [icon]="'stat-'+stat"></game-icon><span class="invisible">{{ stat }}</span> {{ value | number }}`
+  template: `
+    <span [class.positive]="showColor && value > 0" [class.negative]="showColor && value < 0">
+      <game-icon [icon]="'stat-'+stat"></game-icon><span class="invisible">{{ stat.toUpperCase() }}</span> <span *ngIf="showValue">{{ value | number }}</span>
+    </span>
+  `
 })
 export class StatComponent {
-
   @Input() public stat: string;
   @Input() public value: number;
+  @Input() public showColor: boolean;
+  @Input() public showValue: boolean = true;
 }

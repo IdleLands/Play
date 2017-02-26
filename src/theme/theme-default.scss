@@ -1,5 +1,14 @@
 
 .theme-default {
+
+  .positive {
+    color: #0c0;
+  }
+
+  .negative {
+    color: #c00;
+  }
+
   .xp-circle {
     circle {
       stroke: darken(map-get($colors, secondary), 10%) !important;

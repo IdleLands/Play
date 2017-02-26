@@ -10,6 +10,8 @@ import { PlayComponent } from '../../components/play.component';
 })
 export class OverviewPage extends PlayComponent {
 
+  public stats = ['str', 'con', 'dex', 'agi', 'int', 'luk'];
+
   constructor(
     public appState: AppState,
     public primus: Primus,
