@@ -87,9 +87,9 @@ export class Auth {
             text: 'Yes, log out',
             handler: () => {
               this.storage.clear('profile');
-              this.storage.clear('refreshToken');
-              this.storage.clear('accessToken');
               this.storage.clear('idToken');
+              this.storage.clear('accessToken');
+              this.storage.clear('refreshToken');
               this.appState.reset();
               resolve();
             }

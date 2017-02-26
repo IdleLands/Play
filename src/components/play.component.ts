@@ -4,8 +4,13 @@ import { NavController } from 'ionic-angular';
 import { ConnectPage } from '../pages';
 import { AppState, Primus } from '../services';
 
+import { Player } from '../models';
+
 @Component({})
 export class PlayComponent implements OnInit, OnDestroy {
+
+  public player$: any;
+  public player: Player;
 
   private isOnline$: any;
 
@@ -26,9 +31,14 @@ export class PlayComponent implements OnInit, OnDestroy {
       if(onlineStatus === 'online') return;
       toConnecting();
     });
+
+    this.player$ = this.appState.player.subscribe(data => {
+      this.player = data;
+    });
   }
 
   ngOnDestroy() {
     this.isOnline$.unsubscribe();
+    this.player$.unsubscribe();
   }
 }

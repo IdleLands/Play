@@ -10,6 +10,9 @@
 
       <ion-content>
         <ion-list>
+          <ion-item color="secondary">
+            <player-card></player-card>
+          </ion-item>
           <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
             {{ p.title }}
           </button>

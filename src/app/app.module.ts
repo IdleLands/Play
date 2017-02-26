@@ -5,6 +5,9 @@ import { Ng2Webstorage } from 'ng2-webstorage';
 import { AppState, Auth, Primus } from '../services';
 
 import { RedditNewsComponent } from '../components/reddit-news.component';
+import { GameIconComponent } from '../components/gameicon.component';
+import { StatComponent } from '../components/stat.component';
+import { PlayerCardComponent } from '../components/playercard.component';
 
 import { MyApp } from './app.component';
 import {
@@ -34,7 +37,10 @@ const deepLinks: DeepLinkConfig = {
     PrivacyPage,
     OverviewPage,
 
-    RedditNewsComponent
+    RedditNewsComponent,
+    GameIconComponent,
+    StatComponent,
+    PlayerCardComponent
   ],
   imports: [
     Ng2Webstorage.forRoot({ prefix: 'idp', separator: '-' }),

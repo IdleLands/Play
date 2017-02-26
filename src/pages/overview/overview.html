@@ -2,12 +2,13 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Overview</ion-title>
+    <ion-title>Overview - {{ player.name }}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <stat stat="str" [value]="player.statCache.str"></stat>
   {{ player | json }}
 </ion-content>
