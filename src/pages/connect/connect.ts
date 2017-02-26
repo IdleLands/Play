@@ -16,8 +16,14 @@ import * as messages from './messages.json';
 })
 export class ConnectPage implements OnInit, OnDestroy {
 
-  public isOnline$: any;
+  public onlineStatus$: any;
   public isOnline: boolean;
+
+  public loggedIn$: any;
+  public loggedIn: boolean;
+
+  public hasCharacter$: any;
+  public hasCharacter: boolean;
 
   public connectMessage$: any;
   public currentMessage = '';
@@ -31,43 +37,55 @@ export class ConnectPage implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+    this.appState.loggedIn.next(false);
+    this.appState.showSideMenu.next(false);
+
+    this.onlineStatus$ = this.appState.onlineStatus.subscribe(onlineStatus => {
+      this.isOnline = onlineStatus === 'online';
+      this.handleLoggedInAndStatus();
+    });
+
+    this.loggedIn$ = this.appState.loggedIn.subscribe(loggedIn => {
+      this.loggedIn = loggedIn;
+      this.handleLoggedInAndStatus();
+    });
+
+    this.hasCharacter$ = this.appState.hasCharacter.subscribe(hasCharacter => {
+      this.hasCharacter = hasCharacter;
+      this.handleLoggedInAndStatus();
+    });
+
+    this.connectMessage$ = Observable.timer(0, 1000).subscribe(() => {
+      this.currentMessage = _.sample(messages);
+    });
+
+    this.primus.initSocket();
+  }
+
+  handleLoggedInAndStatus() {
+
     // can't be defined anywhere else or pages won't be instantiated
     const backrefPages = {
       OverviewPage
     };
 
-    this.appState.loggedIn.next(false);
+    if(_.isUndefined(this.loggedIn)
+    || _.isUndefined(this.isOnline)
+    || _.isUndefined(this.hasCharacter)
+    || !this.isOnline
+    || !this.loggedIn) return;
 
-    this.isOnline$ = this.appState.onlineStatus.subscribe(onlineStatus => {
-      this.isOnline = onlineStatus === 'online';
-
-      if(!this.isOnline) return;
-
-      this.primus.checkIfExists(exists => {
-        if(exists) {
-          this.primus.login(() => {
-            this.appState.loggedIn.next(true);
-
-            const ref = this.navParams.get('fromPage') || 'OverviewPage';
-            this.navCtrl.setRoot(backrefPages[ref]);
-          });
-          return;
-        }
-
-        this.navCtrl.push(CreatePage);
-      });
-    });
-
-    this.connectMessage$ = Observable.timer(0, 1000)
-      .subscribe(() => {
-        this.currentMessage = _.sample(messages);
-      });
-
-    this.primus.initSocket();
+    if(!this.hasCharacter) {
+      this.navCtrl.push(CreatePage);
+    } else {
+      const ref = this.navParams.get('fromPage') || 'OverviewPage';
+      this.navCtrl.setRoot(backrefPages[ref]);
+    }
   }
 
   ngOnDestroy() {
-    this.isOnline$.unsubscribe();
+    this.onlineStatus$.unsubscribe();
+    this.loggedIn$.unsubscribe();
     this.connectMessage$.unsubscribe();
   }
 

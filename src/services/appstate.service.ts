@@ -25,7 +25,9 @@ type OnlineStatus = 'online' | 'offline' | 'connecting';
 
 export class AppState {
   onlineStatus:   BehaviorSubject<OnlineStatus> = new BehaviorSubject<OnlineStatus>('offline');
-  loggedIn:       BehaviorSubject<boolean> = new BehaviorSubject(false);
+  loggedIn:       BehaviorSubject<boolean> = new BehaviorSubject(undefined);
+  hasCharacter:   BehaviorSubject<boolean> = new BehaviorSubject(undefined);
+  showSideMenu:   BehaviorSubject<boolean> = new BehaviorSubject(false);
   chatUsers:      BehaviorSubject<ChatUser[]> = new BehaviorSubject([]);
   chatMessages:   ReplaySubject<ChatMessage> = new ReplaySubject(200);
   adventureLog:   ReplaySubject<AdventureLog> = new ReplaySubject(50);

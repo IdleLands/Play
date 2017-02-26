@@ -31,7 +31,7 @@ export class MyApp {
       Splashscreen.hide();
     });
 
-    this.state.loggedIn.subscribe(isLoggedIn => {
+    this.state.showSideMenu.subscribe(isLoggedIn => {
       this.showSideMenu = isLoggedIn;
     });
   }

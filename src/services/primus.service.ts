@@ -20,6 +20,8 @@ export class Primus {
   private callbacks = {};
   private socket: any;
 
+  private _reconnecting: boolean;
+
   constructor(
     private storage: LocalStorageService,
     private appState: AppState,
@@ -67,15 +69,35 @@ export class Primus {
     this.socket.on('error', e => { console.error(e); });
 
     this.socket.on('close', () => {
-      this.appState.onlineStatus.next('offline');
+      if(this.appState.onlineStatus.getValue() !== 'offline') {
+        this.appState.onlineStatus.next('offline');
+      }
     });
 
     this.socket.on('reconnect scheduled', () => {
-      this.appState.onlineStatus.next('connecting');
+      if(this.appState.onlineStatus.getValue() !== 'connecting') {
+        this.appState.onlineStatus.next('connecting');
+      }
+    });
+
+    this.socket.on('reconnected', () => {
+      this._reconnecting = true;
     });
 
     this.socket.on('open', () => {
-      this.appState.onlineStatus.next('online');
+      if(this.appState.onlineStatus.getValue() !== 'online') {
+        this.appState.onlineStatus.next('online');
+      }
+
+      this.checkIfExists(exists => {
+        if(!exists) {
+          this.appState.hasCharacter.next(false);
+          return;
+        }
+
+        this.appState.hasCharacter.next(true);
+        this.login(() => {});
+      });
     });
 
     this.socket.on('data', data => {
@@ -183,6 +205,9 @@ export class Primus {
   }
 
   login(callback: Function): void {
+    const isLoggedIn = this.appState.loggedIn.getValue();
+    if(isLoggedIn) return;
+
     const profile = this.storage.retrieve('profile');
     if(!profile) return;
 
@@ -190,8 +215,12 @@ export class Primus {
       .then(() => {
         this._emit('plugin:player:login', { userId: profile.user_id }, res => {
           if(!res.ok) return;
+          this.appState.loggedIn.next(true);
           callback(res);
         });
+      })
+      .catch((e) => {
+        console.error(e);
       });
   }
 }
