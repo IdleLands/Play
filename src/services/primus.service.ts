@@ -8,7 +8,7 @@ import { ToastController } from 'ionic-angular';
 
 import { LocalStorageService } from 'ng2-webstorage';
 
-import { AppState, Auth } from './';
+import { AppState, Auth, Logger } from './';
 
 const settings = window.location.hostname === 'idle.land' ?
   { port: 80, protocol: 'http', hostname: 'game.idle.land' } :
@@ -66,7 +66,7 @@ export class Primus {
       }
     });
 
-    this.socket.on('error', e => { console.error(e); });
+    this.socket.on('error', e => { Logger.error(e); });
 
     this.socket.on('close', () => {
       if(this.appState.onlineStatus.getValue() !== 'offline') {
@@ -100,7 +100,7 @@ export class Primus {
           this.login();
         })
         .catch((e) => {
-          console.error(e);
+          Logger.error(e);
         });
     });
 
@@ -114,7 +114,7 @@ export class Primus {
       if(data.event === 'adventurelog') return this.handleAdventureLog(data);
 
       if(!data.event) {
-        console.error('no event specified', data);
+        Logger.error(new Error('no event specified' + JSON.parse(data)));
         return;
       }
 

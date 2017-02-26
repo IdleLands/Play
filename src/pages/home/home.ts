@@ -5,7 +5,7 @@ import { NavController } from 'ionic-angular';
 import { Auth } from '../../services';
 
 import { ConnectPage, PrivacyPage } from '../';
-import { Primus } from '../../services';
+import { Primus, Logger } from '../../services';
 
 @Component({
   selector: 'page-home',
@@ -25,7 +25,7 @@ export class HomePage {
         this.play();
       })
       .catch(e => {
-        console.error(e);
+        Logger.error(e);
       });
   }
 
@@ -35,7 +35,7 @@ export class HomePage {
         this.primus.disconnectSocket();
       })
       .catch(e => {
-        console.error(e);
+        Logger.error(e);
       });
   }
 

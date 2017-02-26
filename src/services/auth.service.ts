@@ -65,7 +65,6 @@ export class Auth {
           this.storage.store('accessToken', accessToken);
           this.storage.store('refreshToken', refreshToken);
 
-          console.log(profile);
           resolve();
         });
       });
