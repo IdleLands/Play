@@ -9,6 +9,7 @@ import { ToastController } from 'ionic-angular';
 import { LocalStorageService } from 'ng2-webstorage';
 
 import { AppState, Auth, Logger } from './';
+import {AdventureLog} from "../models/adventurelog";
 
 const settings = _.includes(window.location.hostname, 'idle.land') ?
   { port: 80, protocol: 'http', hostname: 'game.idle.land' } :
@@ -183,11 +184,17 @@ export class Primus {
 
   handleContentUpdate(content) {
     if(!content.update || !this.appState[content.update]) return;
-    this.appState[content.update].next(content.data);
+
+    let value = content.data;
+    if(content.update === 'achievements') {
+      value = _.sortBy(_.values(value), 'name');
+    }
+
+    this.appState[content.update].next(value);
   }
 
-  handleAdventureLog(object) {
-    if(object.type === 'Global' || !_.includes(object.targets, this.appState.player.getValue().name)) return;
+  handleAdventureLog(object: AdventureLog) {
+    if(!_.includes(object.targets, this.appState.player.getValue().name)) return;
     object.timestamp = Date.now();
     this.appState.adventureLog.next(object);
   }
@@ -204,6 +211,10 @@ export class Primus {
 
   requestEquipment(): void {
     this._emit('plugin:player:request:equipment');
+  }
+
+  requestAchievements(): void {
+    this._emit('plugin:player:request:achievements');
   }
 
   checkIfExists(): Promise<any> {

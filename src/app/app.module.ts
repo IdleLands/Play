@@ -12,6 +12,7 @@ import { AdventureLogIconComponent } from '../components/advlogicon.component';
 import { StatComponent } from '../components/stat.component';
 import { PlayerCardComponent } from '../components/playercard.component';
 import { ItemComponent } from '../components/item.component';
+import { AchievementIconComponent } from '../components/achievementicon.component';
 
 import { MyApp } from './app.component';
 import {
@@ -21,7 +22,7 @@ import {
   PrivacyPage,
   OverviewPage,
   EquipmentPage,
-  AchievementsPage,
+  AchievementsPage, AchievementModal,
   CollectiblesPage,
   StatisticsPage,
   ChatPage,
@@ -77,7 +78,9 @@ const deepLinks: DeepLinkConfig = {
     StatComponent,
     PlayerCardComponent,
     ItemComponent,
+    AchievementIconComponent,
 
+    AchievementModal,
     ItemCompareModal
   ],
   imports: [
@@ -104,6 +107,7 @@ const deepLinks: DeepLinkConfig = {
     SettingsPage,
     BattlePage,
 
+    AchievementModal,
     ItemCompareModal
   ],
   providers: [

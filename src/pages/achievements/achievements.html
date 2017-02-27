@@ -2,11 +2,31 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>Achievements - {{ player.name }}</ion-title>
+    <ion-title>Achievements - {{ player.name }} (Achievements: {{ achievements.length }}, Tiers: {{ totalTiers }})</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
+  <div class="true-center max-space background-text" *ngIf="achievements.length === 0">
+    You don't have any achievements... yet!
+  </div>
 
+  <ion-row wrap>
+    <ion-col width-33 *ngFor="let achievement of achievements">
+      <ion-card class="achievement-card">
+        <achievement-icon class="background-icon true-center size-1000" [icon]="achievement.type"></achievement-icon>
+        <ion-card-header>
+          <span>{{ achievement.name }}</span>
+          <span *ngIf="achievement.tier > 1">tier {{ achievement.tier }}</span>
+        </ion-card-header>
+        <ion-card-content>{{ achievement.desc }}</ion-card-content>
+        <ion-row>
+          <ion-col text-center>
+            <button ion-button clear (click)="viewRewards(achievement)">Rewards</button>
+          </ion-col>
+        </ion-row>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

@@ -2,7 +2,7 @@
 import { BehaviorSubject, ReplaySubject } from 'rxjs';
 
 import {
-  Achievements,
+  Achievement,
   AdventureLog,
   Battle,
   ChatMessage,
@@ -30,11 +30,11 @@ export class AppState {
   showSideMenu:   BehaviorSubject<boolean> = new BehaviorSubject(false);
   chatUsers:      BehaviorSubject<ChatUser[]> = new BehaviorSubject([]);
   chatMessages:   ReplaySubject<ChatMessage> = new ReplaySubject(200);
-  adventureLog:   ReplaySubject<AdventureLog> = new ReplaySubject(50);
+  adventureLog:   ReplaySubject<AdventureLog> = new ReplaySubject<AdventureLog>(50);
 
   player:         BehaviorSubject<Player> = new BehaviorSubject(new Player());
   statistics:     BehaviorSubject<Statistics> = new BehaviorSubject(new Statistics());
-  achievements:   BehaviorSubject<Achievements> = new BehaviorSubject(new Achievements());
+  achievements:   BehaviorSubject<Achievement[]> = new BehaviorSubject([]);
   collectibles:   BehaviorSubject<Collectibles> = new BehaviorSubject(new Collectibles());
   equipment:      BehaviorSubject<Equipment> = new BehaviorSubject(new Equipment());
   personalities:  BehaviorSubject<Personalities> = new BehaviorSubject(new Personalities());

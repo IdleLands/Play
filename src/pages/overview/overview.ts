@@ -8,6 +8,8 @@ import { LocalStorageService } from 'ng2-webstorage';
 import { AppState, Primus, ItemCompare, ItemInfo } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
+import { AdventureLog } from '../../models';
+
 @Component({
   selector: 'page-overview',
   templateUrl: 'overview.html'
@@ -19,7 +21,7 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
 
   public adventureLog$: any;
 
-  public adventureLog: any[] = [];
+  public adventureLog: AdventureLog[] = [];
 
   constructor(
     public appState: AppState,
