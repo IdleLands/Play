@@ -41,7 +41,8 @@ export class Primus {
     this.toastCtrl.create({
       message,
       duration: 3000,
-      position: 'top'
+      position: 'top',
+      showCloseButton: true
     }).present();
   }
 
