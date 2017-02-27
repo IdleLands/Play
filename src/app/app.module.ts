@@ -28,7 +28,8 @@ import {
   MapPage,
   PetsPage,
   PremiumPage,
-  SettingsPage
+  SettingsPage,
+  BattlePage
 } from '../pages';
 
 const deepLinks: DeepLinkConfig = {
@@ -46,7 +47,8 @@ const deepLinks: DeepLinkConfig = {
     { component: MapPage,           name: 'Map',                segment: 'map' },
     { component: PetsPage,          name: 'Pets',               segment: 'pets' },
     { component: PremiumPage,       name: 'Premium',            segment: 'premium' },
-    { component: SettingsPage,      name: 'Settings',           segment: 'settings' }
+    { component: SettingsPage,      name: 'Settings',           segment: 'settings' },
+    { component: BattlePage,        name: 'Battle',             segment: 'battle' }
   ]
 };
 
@@ -67,6 +69,7 @@ const deepLinks: DeepLinkConfig = {
     PetsPage,
     PremiumPage,
     SettingsPage,
+    BattlePage,
 
     RedditNewsComponent,
     GameIconComponent,
@@ -99,6 +102,7 @@ const deepLinks: DeepLinkConfig = {
     PetsPage,
     PremiumPage,
     SettingsPage,
+    BattlePage,
 
     ItemCompareModal
   ],

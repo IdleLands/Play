@@ -17,6 +17,7 @@ import {
   PetsPage,
   PremiumPage,
   SettingsPage,
+  BattlePage,
   CreatePage,
   HomePage
 } from '../';
@@ -94,7 +95,8 @@ export class ConnectPage implements OnInit, OnDestroy {
       MapPage,
       PetsPage,
       PremiumPage,
-      SettingsPage
+      SettingsPage,
+      BattlePage
     };
 
     if(_.isUndefined(this.loggedIn)

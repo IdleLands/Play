@@ -1,5 +1,6 @@
 
 export * from './achievements/achievements';
+export * from './battle/battle';
 export * from './chat/chat';
 export * from './collectibles/collectibles';
 export * from './connect/connect';
