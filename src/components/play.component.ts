@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { ConnectPage } from '../pages';
+// import { ConnectPage } from '../pages';
 import { AppState, Primus } from '../services';
 
 import { Player } from '../models';
@@ -11,8 +11,6 @@ export class PlayComponent implements OnInit, OnDestroy {
 
   public player$: any;
   public player: Player;
-
-  private isOnline$: any;
 
   constructor(
     public appState: AppState,
@@ -31,15 +29,7 @@ export class PlayComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.appState.showSideMenu.next(true);
     this.updatePageData('');
-
-    const toConnecting = () => {
-      this.navCtrl.setRoot(ConnectPage, { fromPage: this.constructor.name });
-    };
-
-    this.isOnline$ = this.appState.onlineStatus.subscribe(onlineStatus => {
-      if(onlineStatus === 'online') return;
-      toConnecting();
-    });
+    this.primus.initSocket();
 
     this.player$ = this.appState.player.subscribe(data => {
       this.setPlayer(data);
@@ -47,7 +37,6 @@ export class PlayComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.isOnline$.unsubscribe();
     this.player$.unsubscribe();
   }
 }

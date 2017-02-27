@@ -82,6 +82,7 @@ export class Primus {
     this.socket.on('close', () => {
       if(this.appState.onlineStatus.getValue() !== 'offline') {
         this.appState.onlineStatus.next('offline');
+        this.appState.loggedIn.next(false);
       }
     });
 
@@ -108,7 +109,7 @@ export class Primus {
           }
 
           this.appState.hasCharacter.next(true);
-          this.login();
+          return this.login();
         })
         .catch((e) => {
           Logger.error(e);
@@ -245,7 +246,7 @@ export class Primus {
       const profile = this.storage.retrieve('profile');
       if(!profile) return reject(new Error('No profile to login'));
 
-      this.auth.renew()
+      return this.auth.renew()
         .then(() => {
           this._emit('plugin:player:login', { userId: profile.user_id }, res => {
             if(!res.ok) return;
@@ -253,7 +254,13 @@ export class Primus {
             resolve(res);
           });
         })
-        .catch(reject);
+        .catch(e => {
+          if(e.error === 'too_many_requests') {
+            this._handleNotification({ message: 'Too many login requests - take a break and refresh in a bit.' });
+            return;
+          }
+          reject(e);
+        });
     })
   }
 

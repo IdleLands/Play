@@ -76,7 +76,7 @@ export class PlayerCardComponent implements OnInit, OnDestroy {
   }
 
   imgStyleFit(): string {
-    const pos = genderPositions[this.player.gender] || { x: 0, y: 0 };
+    const pos = genderPositions[this.player.gender] || { x: 5, y: 1 };
     return `-${pos.x*16}px -${pos.y*16}px`;
   }
 

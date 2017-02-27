@@ -13,21 +13,21 @@ export class Choice {
 }
 
 export class Player {
-  name: string;
+  name: string = '???';
   nameEdit: string;
 
   title: string;
 
-  professionName: string;
-  gender: string;
+  professionName: string = '???';
+  gender: string = 'unknown';
   isMod: boolean;
 
   joinDate: number;
   gold: number = 0;
   ascensionLevel: number;
   mapPath: string;
-  map: string;
-  region: string;
+  map: string = 'Norkos';
+  region: string = 'Wilderness';
 
   _hp: RestrictedNumber = new RestrictedNumber();
   _mp: RestrictedNumber = new RestrictedNumber();
@@ -37,7 +37,7 @@ export class Player {
   _premiumTier: number;
   _choiceLimit: number;
 
-  statCache: any = {};
+  statCache: any = { str: 0, con: 0, dex: 0, agi: 0, int: 0, luk: 0, itemFindRange: 0, hp: 0, mp: 0 };
 
   choices: Choice[] = [];
 }
