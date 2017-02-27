@@ -1,6 +1,4 @@
 
-// import * as _ from 'lodash';
-
 import { Injectable, Component, OnInit } from '@angular/core';
 import { ModalController, ViewController, NavParams } from 'ionic-angular';
 
@@ -84,7 +82,7 @@ import { ItemInfo } from './';
 })
 export class ItemCompareModal implements OnInit {
 
-  public stats = ['str', 'con', 'dex', 'agi', 'int', 'luk'];
+  public stats = [];
 
   public currentItem: any;
   public newItem: any;
@@ -100,6 +98,8 @@ export class ItemCompareModal implements OnInit {
   }
 
   ngOnInit() {
+    this.stats = ItemInfo.statOrder;
+
     this.currentItem = this.navParams.get('currentItem');
     this.newItem = this.navParams.get('newItem');
     this.buttons = this.navParams.get('buttons');

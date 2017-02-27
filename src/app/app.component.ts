@@ -4,7 +4,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { AppState } from '../services';
 
-import { HomePage, OverviewPage } from '../pages';
+import { HomePage, OverviewPage, EquipmentPage } from '../pages';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +18,8 @@ export class MyApp {
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}> = [
-    { title: 'Overview', component: OverviewPage }
+    { title: 'Overview',    component: OverviewPage },
+    { title: 'Equipment',   component: EquipmentPage }
   ];
 
   constructor(public platform: Platform, public state: AppState) {

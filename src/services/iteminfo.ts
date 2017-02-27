@@ -21,6 +21,10 @@ const baseIgnores = [
 ];
 
 export class ItemInfo {
+  static get statOrder() {
+    return ['str', 'con', 'dex', 'agi', 'int', 'luk'];
+  }
+
   static getSpecialStatString(item) {
     const newItem = _.omitBy(item, (val, key) => {
       return _.includes(baseIgnores, key) || _.includes(key, 'Percent') || _.includes(key, 'item') || !_.isNumber(val) || key === 'vector';

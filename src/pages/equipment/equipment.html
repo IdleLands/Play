@@ -1,0 +1,18 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Equipment - {{ player.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row *ngFor="let slot of iterationOrder">
+      <ion-col>
+        <item [item]="equipment[slot]"></item>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

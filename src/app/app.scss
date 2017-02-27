@@ -27,24 +27,33 @@
   user-select: text;
 }
 
-.size-125 {
-  font-size: 125%;
+$sizes: 125 150 175 200 250 300 350 400;
+
+@each $size in $sizes {
+  .size-#{$size} {
+    font-size: $size + 0%;
+  }
 }
 
-.size-150 {
-  font-size: 150%;
+$itemcolors: (
+  newbie:     teal,
+  basic:      gray,
+  guardian:   blue,
+  pro:        purple,
+  godly:      black
+);
+
+@each $class, $color in $itemcolors {
+  .class-#{$class} {
+    background-color: $color;
+    color: #fff;
+  }
 }
 
-.size-175 {
-  font-size: 175%;
-}
-
-.size-200 {
-  font-size: 200%;
-}
-
-.size-400 {
-  font-size: 400%;
+.item-idle {
+  background: linear-gradient(to right, red, orange, green, blue, indigo, violet);
+  color: #fff;
+  text-shadow: 1px 0 0 black, 0 -1px 0 black, 0 1px 0 black, -1px 0 0 black;
 }
 
 .positive {
@@ -59,4 +68,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.class-newbie {
 }

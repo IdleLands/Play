@@ -5,7 +5,7 @@ import { NavController } from 'ionic-angular';
 
 import { LocalStorageService } from 'ng2-webstorage';
 
-import { AppState, Primus, ItemCompare } from '../../services';
+import { AppState, Primus, ItemCompare, ItemInfo } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
 @Component({
@@ -14,7 +14,7 @@ import { PlayComponent } from '../../components/play.component';
 })
 export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
 
-  public stats = ['str', 'con', 'dex', 'agi', 'int', 'luk'];
+  public stats = [];
   public choices = [];
 
   public adventureLog$: any;
@@ -33,6 +33,8 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     super.ngOnInit();
+
+    this.stats = ItemInfo.statOrder;
 
     this.adventureLog$ = this.appState.adventureLog.subscribe(data => {
       if(!this.adventureLog) this.adventureLog = [];
@@ -84,6 +86,7 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     ];
 
     this.icomp.compare(playerItem, choiceItem, buttons).then(button => {
+      if(!button) return;
       button.callback();
     });
   }

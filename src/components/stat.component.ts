@@ -19,5 +19,4 @@ export class StatComponent {
   @Input() public stat: string;
   @Input() public value: number;
   @Input() public showColor: boolean;
-  @Input() public showValue: boolean = true;
 }

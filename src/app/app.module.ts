@@ -11,6 +11,7 @@ import { GameIconComponent } from '../components/gameicon.component';
 import { AdventureLogIconComponent } from '../components/advlogicon.component';
 import { StatComponent } from '../components/stat.component';
 import { PlayerCardComponent } from '../components/playercard.component';
+import { ItemComponent } from '../components/item.component';
 
 import { MyApp } from './app.component';
 import {
@@ -18,7 +19,8 @@ import {
   ConnectPage,
   CreatePage,
   PrivacyPage,
-  OverviewPage
+  OverviewPage,
+  EquipmentPage
 } from '../pages';
 
 const deepLinks: DeepLinkConfig = {
@@ -27,7 +29,8 @@ const deepLinks: DeepLinkConfig = {
     { component: PrivacyPage,       name: 'Privacy Policy',     segment: 'privacy' },
     { component: ConnectPage,       name: 'Connecting...',      segment: 'connect' },
     { component: CreatePage,        name: 'Create Character',   segment: 'create' },
-    { component: OverviewPage,      name: 'Overview',           segment: 'overview' }
+    { component: OverviewPage,      name: 'Overview',           segment: 'overview' },
+    { component: EquipmentPage,     name: 'Equipment',          segment: 'equipment' }
   ]
 };
 
@@ -39,12 +42,14 @@ const deepLinks: DeepLinkConfig = {
     CreatePage,
     PrivacyPage,
     OverviewPage,
+    EquipmentPage,
 
     RedditNewsComponent,
     GameIconComponent,
     AdventureLogIconComponent,
     StatComponent,
     PlayerCardComponent,
+    ItemComponent,
 
     ItemCompareModal
   ],
@@ -61,6 +66,7 @@ const deepLinks: DeepLinkConfig = {
     CreatePage,
     PrivacyPage,
     OverviewPage,
+    EquipmentPage,
 
     ItemCompareModal
   ],
