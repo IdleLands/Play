@@ -20,7 +20,15 @@ import {
   CreatePage,
   PrivacyPage,
   OverviewPage,
-  EquipmentPage
+  EquipmentPage,
+  AchievementsPage,
+  CollectiblesPage,
+  StatisticsPage,
+  ChatPage,
+  MapPage,
+  PetsPage,
+  PremiumPage,
+  SettingsPage
 } from '../pages';
 
 const deepLinks: DeepLinkConfig = {
@@ -30,7 +38,15 @@ const deepLinks: DeepLinkConfig = {
     { component: ConnectPage,       name: 'Connecting...',      segment: 'connect' },
     { component: CreatePage,        name: 'Create Character',   segment: 'create' },
     { component: OverviewPage,      name: 'Overview',           segment: 'overview' },
-    { component: EquipmentPage,     name: 'Equipment',          segment: 'equipment' }
+    { component: EquipmentPage,     name: 'Equipment',          segment: 'equipment' },
+    { component: AchievementsPage,  name: 'Achievements',       segment: 'achievements' },
+    { component: CollectiblesPage,  name: 'Collectibles',       segment: 'collectibles' },
+    { component: StatisticsPage,    name: 'Statistics',         segment: 'statistics' },
+    { component: ChatPage,          name: 'Chat',               segment: 'chat' },
+    { component: MapPage,           name: 'Map',                segment: 'map' },
+    { component: PetsPage,          name: 'Pets',               segment: 'pets' },
+    { component: PremiumPage,       name: 'Premium',            segment: 'premium' },
+    { component: SettingsPage,      name: 'Settings',           segment: 'settings' }
   ]
 };
 
@@ -43,6 +59,14 @@ const deepLinks: DeepLinkConfig = {
     PrivacyPage,
     OverviewPage,
     EquipmentPage,
+    AchievementsPage,
+    CollectiblesPage,
+    StatisticsPage,
+    ChatPage,
+    MapPage,
+    PetsPage,
+    PremiumPage,
+    SettingsPage,
 
     RedditNewsComponent,
     GameIconComponent,
@@ -67,6 +91,14 @@ const deepLinks: DeepLinkConfig = {
     PrivacyPage,
     OverviewPage,
     EquipmentPage,
+    AchievementsPage,
+    CollectiblesPage,
+    StatisticsPage,
+    ChatPage,
+    MapPage,
+    PetsPage,
+    PremiumPage,
+    SettingsPage,
 
     ItemCompareModal
   ],

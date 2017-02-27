@@ -6,7 +6,20 @@ import * as _ from 'lodash';
 
 import { Observable } from 'rxjs';
 
-import { OverviewPage, EquipmentPage, CreatePage, HomePage } from '../';
+import {
+  OverviewPage,
+  EquipmentPage,
+  AchievementsPage,
+  CollectiblesPage,
+  StatisticsPage,
+  ChatPage,
+  MapPage,
+  PetsPage,
+  PremiumPage,
+  SettingsPage,
+  CreatePage,
+  HomePage
+} from '../';
 import { AppState, Primus } from '../../services';
 
 import * as messages from './messages.json';
@@ -73,7 +86,15 @@ export class ConnectPage implements OnInit, OnDestroy {
     // can't be defined anywhere else or pages won't be instantiated
     const backrefPages = {
       OverviewPage,
-      EquipmentPage
+      EquipmentPage,
+      AchievementsPage,
+      CollectiblesPage,
+      StatisticsPage,
+      ChatPage,
+      MapPage,
+      PetsPage,
+      PremiumPage,
+      SettingsPage
     };
 
     if(_.isUndefined(this.loggedIn)

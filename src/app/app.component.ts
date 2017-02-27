@@ -4,7 +4,19 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { AppState } from '../services';
 
-import { HomePage, OverviewPage, EquipmentPage } from '../pages';
+import {
+  HomePage,
+  OverviewPage,
+  EquipmentPage,
+  AchievementsPage,
+  CollectiblesPage,
+  StatisticsPage,
+  ChatPage,
+  MapPage,
+  PetsPage,
+  PremiumPage,
+  SettingsPage
+} from '../pages';
 
 @Component({
   templateUrl: 'app.html'
@@ -18,8 +30,16 @@ export class MyApp {
   rootPage: any = HomePage;
 
   pages: Array<{title: string, component: any}> = [
-    { title: 'Overview',    component: OverviewPage },
-    { title: 'Equipment',   component: EquipmentPage }
+    { title: 'Overview',      component: OverviewPage },
+    { title: 'Equipment',     component: EquipmentPage },
+    { title: 'Achievements',  component: AchievementsPage },
+    { title: 'Collectibles',  component: CollectiblesPage },
+    { title: 'Statistics',    component: StatisticsPage },
+    { title: 'Chat',          component: ChatPage },
+    { title: 'Map',           component: MapPage },
+    { title: 'Pets',          component: PetsPage },
+    { title: 'Premium',       component: PremiumPage },
+    { title: 'Settings',      component: SettingsPage }
   ];
 
   constructor(public platform: Platform, public state: AppState) {
