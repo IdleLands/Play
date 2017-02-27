@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-// import { ConnectPage } from '../pages';
 import { AppState, Primus } from '../services';
 
 import { Player } from '../models';

@@ -4,7 +4,14 @@
     <ion-menu [content]="content" [class.hidden]="!showSideMenu">
       <ion-header>
         <ion-toolbar color="primary">
-          <ion-title>Menu</ion-title>
+          <ion-title>{{ currentStatusString }}</ion-title>
+
+          <ion-buttons end>
+            <button ion-button icon-only solid color="primary" (click)="clickStatus()">
+              <ion-spinner *ngIf="onlineStatusIcon === 'reconnecting'"></ion-spinner>
+              <ion-icon [name]="onlineStatusIcon" *ngIf="onlineStatusIcon !== 'reconnecting'"></ion-icon>
+            </button>
+          </ion-buttons>
         </ion-toolbar>
       </ion-header>
 
