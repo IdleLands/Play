@@ -36,6 +36,8 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     this.adventureLog = this.storage.retrieve('adventureLog') || [];
 
     this.adventureLog$ = this.appState.adventureLog.subscribe(data => {
+      if(!this.adventureLog) this.adventureLog = [];
+
       this.adventureLog.unshift(data);
       if(this.adventureLog.length > 50) {
         this.adventureLog.length = 50;
