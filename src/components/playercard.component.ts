@@ -51,7 +51,7 @@ const genderPositions = {
           <h3>The level {{ player._level.__current }}/{{ player._level.maximum }} {{ player.professionName }}</h3>
         </div>
         <div>
-          <h3>@{{ player.map }}: {{ player.mapRegion }}</h3>
+          <h3><game-icon icon="symbol-explore"></game-icon> {{ player.map }}: {{ player.mapRegion }}</h3>
         </div>
         <div>
           <h3><game-icon icon="stat-gold"></game-icon> {{ player.gold | number }} Gold</h3>

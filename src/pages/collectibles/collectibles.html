@@ -8,5 +8,24 @@
 
 
 <ion-content padding>
+  <div class="true-center max-space background-text" *ngIf="collectibles.length === 0">
+    You don't have any collectibles... yet!
+  </div>
 
+  <ion-row wrap>
+    <ion-col width-33 *ngFor="let collectible of collectibles">
+      <ion-card [class.faded]="collectible._faded" class="collectible-card">
+        <ion-card-header>
+          <div class="expand-header class-{{ collectible.rarity }}">{{ collectible.name }} (x{{ collectible.count }})</div>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item no-padding><p>{{ collectible.storyline }}</p></ion-item>
+            <ion-item no-padding><p>{{ collectible.map }}: {{ collectible.region }}</p></ion-item>
+            <ion-item no-padding text-wrap class="collectible-description">{{ collectible.description }}</ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

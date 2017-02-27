@@ -191,6 +191,10 @@ export class Primus {
       value = _.sortBy(_.values(value), 'name');
     }
 
+    if(content.update === 'collectibles') {
+      value = { current: _.sortBy(_.values(value.current), 'name'), prior: value.prior };
+    }
+
     this.appState[content.update].next(value);
   }
 
@@ -216,6 +220,10 @@ export class Primus {
 
   requestAchievements(): void {
     this._emit('plugin:player:request:achievements');
+  }
+
+  requestCollectibles(): void {
+    this._emit('plugin:player:request:collectibles');
   }
 
   checkIfExists(): Promise<any> {
