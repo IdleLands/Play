@@ -33,7 +33,7 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     super.ngOnInit();
-    this.adventureLog = this.storage.retrieve('adventureLog');
+    this.adventureLog = this.storage.retrieve('adventureLog') || [];
 
     this.adventureLog$ = this.appState.adventureLog.subscribe(data => {
       this.adventureLog.unshift(data);
