@@ -14,7 +14,7 @@
             <player-card></player-card>
           </ion-item>
           <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-            {{ p.title }}
+            <ion-icon [name]="p.icon"></ion-icon> {{ p.title }}
           </button>
         </ion-list>
       </ion-content>

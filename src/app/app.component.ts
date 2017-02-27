@@ -29,17 +29,17 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, component: any}> = [
-    { title: 'Overview',      component: OverviewPage },
-    { title: 'Equipment',     component: EquipmentPage },
-    { title: 'Achievements',  component: AchievementsPage },
-    { title: 'Collectibles',  component: CollectiblesPage },
-    { title: 'Statistics',    component: StatisticsPage },
-    { title: 'Chat',          component: ChatPage },
-    { title: 'Map',           component: MapPage },
-    { title: 'Pets',          component: PetsPage },
-    { title: 'Premium',       component: PremiumPage },
-    { title: 'Settings',      component: SettingsPage }
+  pages: Array<{title: string, icon: string, component: any}> = [
+    { title: 'Overview',      icon: 'body',       component: OverviewPage },
+    { title: 'Equipment',     icon: 'shirt',      component: EquipmentPage },
+    { title: 'Achievements',  icon: 'ribbon',     component: AchievementsPage },
+    { title: 'Collectibles',  icon: 'magnet',     component: CollectiblesPage },
+    { title: 'Statistics',    icon: 'analytics',  component: StatisticsPage },
+    { title: 'Chat',          icon: 'chatboxes',  component: ChatPage },
+    { title: 'Map',           icon: 'globe',      component: MapPage },
+    { title: 'Pets',          icon: 'nutrition',  component: PetsPage },
+    { title: 'Premium',       icon: 'cash',       component: PremiumPage },
+    { title: 'Settings',      icon: 'cog',        component: SettingsPage }
   ];
 
   constructor(public platform: Platform, public state: AppState) {
