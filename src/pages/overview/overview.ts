@@ -79,6 +79,10 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     this.icomp.compare(playerItem, choiceItem);
   }
 
+  openLink(link) {
+    window.open(link, '_blank');
+  }
+
   viewBattle(id) {
 
   }
