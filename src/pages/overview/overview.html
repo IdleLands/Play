@@ -18,13 +18,52 @@
         <stat stat="mp" [value]="player.statCache.mp"></stat>
       </ion-col>
       <ion-col width-60 class="size-200" text-center>
-        <game-icon icon="stat-xp"></game-icon> {{ player._xp.__current | number }}/{{ player._xp.maximum | number }}
+        <game-icon icon="stat-xp"></game-icon> {{ player._xp.__current | number }}/{{ player._xp.maximum | number }} XP
       </ion-col>
     </ion-row>
 
     <ion-row>
       <ion-col *ngFor="let stat of stats" class="size-150" text-center>
         <stat [stat]="stat" [value]="player.statCache[stat]" [showColor]="true"></stat>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-slides [class.hidden]="player.choices.length > 0">
+          <ion-slide>
+            <ion-card class="choice-card">
+              <ion-card-content>
+                <h1>You don't have any choices right now. Check back later!</h1>
+              </ion-card-content>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+
+        <ion-slides [class.hidden]="player.choices.length === 0" slidesPerView="3">
+          <ion-slide *ngFor="let choice of choices; let i = index">
+            <ion-card class="choice-card">
+              <ion-card-header>
+                Choice #{{ i+1 }}/{{ player.choices.length }} (Max: {{ player._choiceLimit }})
+              </ion-card-header>
+              <ion-card-content>
+                {{ choice.message }}
+              </ion-card-content>
+              <ion-row>
+                <ion-col *ngFor="let option of choice.choices">
+                  <button ion-button clear small (click)="makeChoice(choice.id, option)">
+                    <div>{{ option }}</div>
+                  </button>
+                </ion-col>
+                <ion-col *ngIf="choice.event === 'FindItem' || choice.event === 'Merchant'">
+                  <button ion-button clear small color="secondary" (click)="moreInfo(choice)">
+                    <div>More Info</div>
+                  </button>
+                </ion-col>
+              </ion-row>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
       </ion-col>
     </ion-row>
   </ion-grid>

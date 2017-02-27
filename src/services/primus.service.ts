@@ -38,6 +38,8 @@ export class Primus {
   }
 
   _emit(event: string, data?: any, callback?: Function): void {
+    if(!this.socket) return;
+
     this.callbacks[event] = callback;
 
     if(!data) data = {};
@@ -199,6 +201,10 @@ export class Primus {
     this._emit('plugin:player:imregisteringrightnowdontkillme');
   }
 
+  requestEquipment(): void {
+    this._emit('plugin:player:request:equipment');
+  }
+
   checkIfExists(): Promise<any> {
     return new Promise((resolve, reject) => {
       const profile = this.storage.retrieve('profile');
@@ -228,5 +234,12 @@ export class Primus {
         })
         .catch(reject);
     })
+  }
+
+  makeChoice(id, response) {
+    this._emit('plugin:player:makechoice', {
+      id,
+      response
+    });
   }
 }

@@ -4,7 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-
 import { Ng2Webstorage } from 'ng2-webstorage';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
-import { AppState, Auth, Primus } from '../services';
+import { AppState, Auth, Primus, ItemCompare, ItemCompareModal } from '../services';
 
 import { RedditNewsComponent } from '../components/reddit-news.component';
 import { GameIconComponent } from '../components/gameicon.component';
@@ -42,7 +42,9 @@ const deepLinks: DeepLinkConfig = {
     RedditNewsComponent,
     GameIconComponent,
     StatComponent,
-    PlayerCardComponent
+    PlayerCardComponent,
+
+    ItemCompareModal
   ],
   imports: [
     RoundProgressModule,
@@ -56,12 +58,15 @@ const deepLinks: DeepLinkConfig = {
     ConnectPage,
     CreatePage,
     PrivacyPage,
-    OverviewPage
+    OverviewPage,
+
+    ItemCompareModal
   ],
   providers: [
     AppState,
     Auth,
     Primus,
+    ItemCompare,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

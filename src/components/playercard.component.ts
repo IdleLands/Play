@@ -54,7 +54,7 @@ const genderPositions = {
           <h3>Currently in {{ player.map }}: {{ player.mapRegion }}</h3>
         </div>
         <div>
-          <h3><stat stat="gold" [value]="player.gold"></stat> Gold</h3>
+          <h3><game-icon icon="stat-gold"></game-icon> {{ player.gold | number }} Gold</h3>
         </div>
         <div>
           <h3><game-icon icon="symbol-item"></game-icon> {{ player.statCache.itemFindRange | number }} Max Item Score</h3>

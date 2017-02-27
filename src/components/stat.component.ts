@@ -11,7 +11,7 @@ import { Component, Input } from '@angular/core';
   `],
   template: `
     <span [class.positive]="showColor && value > 0" [class.negative]="showColor && value < 0">
-      <game-icon [icon]="'stat-'+stat"></game-icon><span class="invisible">{{ stat.toUpperCase() }}</span> {{ value | number }}
+      <game-icon [icon]="'stat-'+stat"></game-icon> {{ value | number }} {{ stat.toUpperCase() }}
     </span>
   `
 })

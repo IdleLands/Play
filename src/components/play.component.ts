@@ -20,6 +20,10 @@ export class PlayComponent implements OnInit, OnDestroy {
     public navCtrl: NavController
   ) {}
 
+  setPlayer(player: Player) {
+    this.player = player;
+  }
+
   ngOnInit() {
     this.appState.showSideMenu.next(true);
 
@@ -33,7 +37,7 @@ export class PlayComponent implements OnInit, OnDestroy {
     });
 
     this.player$ = this.appState.player.subscribe(data => {
-      this.player = data;
+      this.setPlayer(data);
     });
   }
 
