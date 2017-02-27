@@ -27,7 +27,14 @@ export class Primus {
     private appState: AppState,
     private auth: Auth,
     private toastCtrl: ToastController
-  ) {}
+  ) {
+    this.loadAdventureLog();
+  }
+
+  loadAdventureLog() {
+    const advLog = this.storage.retrieve('adventureLog') || [];
+    _.each(advLog.reverse(), item => this.appState.adventureLog.next(item));
+  }
 
   _handleNotification({ message }): void {
     this.toastCtrl.create({
