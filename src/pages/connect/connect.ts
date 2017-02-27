@@ -43,6 +43,9 @@ export class ConnectPage implements OnInit, OnDestroy {
   public connectMessage$: any;
   public currentMessage = '';
 
+  public timeout$: any;
+  public _isTakingForever: boolean;
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -75,7 +78,13 @@ export class ConnectPage implements OnInit, OnDestroy {
       this.currentMessage = _.sample(messages);
     });
 
+    this.timeout$ = setTimeout(() => this._isTakingForever = true, 5000);
+
     this.primus.initSocket();
+  }
+
+  refresh() {
+    window.location.reload();
   }
 
   handleLoggedInAndStatus() {
@@ -117,6 +126,7 @@ export class ConnectPage implements OnInit, OnDestroy {
     this.onlineStatus$.unsubscribe();
     this.loggedIn$.unsubscribe();
     this.connectMessage$.unsubscribe();
+    clearTimeout(this.timeout$);
   }
 
 }
