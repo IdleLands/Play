@@ -183,12 +183,6 @@ export class Primus {
     if(object.type === 'Global' || !_.includes(object.targets, this.appState.player.getValue().name)) return;
     object.timestamp = Date.now();
     this.appState.adventureLog.next(object);
-
-    const subscription = this.appState.adventureLog.subscribe(data => {
-      this.storage.store('adventureLog', data);
-    });
-
-    subscription.unsubscribe();
   }
 
   disconnectSocket(): void {

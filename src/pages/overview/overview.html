@@ -17,7 +17,7 @@
       <ion-col width-20 class="size-200" text-center>
         <stat stat="mp" [value]="player.statCache.mp"></stat>
       </ion-col>
-      <ion-col width-60 class="size-200" text-center>
+      <ion-col width-60 class="size-200" text-right padding-right>
         <game-icon icon="stat-xp"></game-icon> {{ player._xp.__current | number }}/{{ player._xp.maximum | number }} XP
       </ion-col>
     </ion-row>
@@ -66,6 +66,37 @@
         </ion-slides>
       </ion-col>
     </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Adventure Log</ion-card-header>
+          <ion-card-content class="adventure-log" no-padding>
+            <ion-list no-padding>
+              <ion-item *ngIf="adventureLog.length === 0">
+                Your adventure log is empty.
+              </ion-item>
+              <ion-item no-padding *ngFor="let item of adventureLog; let i = index" text-wrap [color]="i % 2 === 0 ? 'darkstripe' : 'lightstripe'">
+                <ion-grid no-padding>
+                  <ion-row no-padding>
+                    <ion-col width-10 true-center text-center>
+                      <advlog-icon [icon]="item.category" class="size-400"></advlog-icon>
+                    </ion-col>
+                    <ion-col>
+                      <ion-note>
+                        <span>{{ item.timestamp | date:'medium' }}</span>
+                      </ion-note>
+                      <div>{{ item.text }}</div>
+                      <button ion-button small outline (click)="viewBattle(item.extraData.battleName)" *ngIf="item.extraData?.battleName">View Battle</button>
+                      <button ion-button small outline target="_blank" [attr.href]="item.extraData.link" *ngIf="item.extraData?.link">View Link</button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
   </ion-grid>
-  {{ player | json }}
 </ion-content>

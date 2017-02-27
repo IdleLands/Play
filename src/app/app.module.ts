@@ -8,6 +8,7 @@ import { AppState, Auth, Primus, ItemCompare, ItemCompareModal } from '../servic
 
 import { RedditNewsComponent } from '../components/reddit-news.component';
 import { GameIconComponent } from '../components/gameicon.component';
+import { AdventureLogIconComponent } from '../components/advlogicon.component';
 import { StatComponent } from '../components/stat.component';
 import { PlayerCardComponent } from '../components/playercard.component';
 
@@ -41,6 +42,7 @@ const deepLinks: DeepLinkConfig = {
 
     RedditNewsComponent,
     GameIconComponent,
+    AdventureLogIconComponent,
     StatComponent,
     PlayerCardComponent,
 

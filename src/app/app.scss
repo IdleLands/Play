@@ -43,10 +43,20 @@
   font-size: 200%;
 }
 
+.size-400 {
+  font-size: 400%;
+}
+
 .positive {
   color: #0c0;
 }
 
 .negative {
   color: #c00;
+}
+
+.true-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
