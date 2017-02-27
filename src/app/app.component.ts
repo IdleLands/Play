@@ -1,3 +1,4 @@
+
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
@@ -29,7 +30,10 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
-  pages: Array<{title: string, icon: string, component: any}> = [
+  activePage: string;
+  activePageData: string;
+
+  pages: Array<{title: string, icon: string, component: any, extraContent?: Function}> = [
     { title: 'Overview',      icon: 'body',       component: OverviewPage },
     { title: 'Equipment',     icon: 'shirt',      component: EquipmentPage },
     { title: 'Achievements',  icon: 'ribbon',     component: AchievementsPage },
@@ -54,6 +58,15 @@ export class MyApp {
 
     this.state.showSideMenu.subscribe(isLoggedIn => {
       this.showSideMenu = isLoggedIn;
+    });
+
+    this.subscribeForExtraContentChanges();
+  }
+
+  subscribeForExtraContentChanges() {
+    this.state.activePageData.subscribe(({ page, data }) => {
+      this.activePage = page.substring(0, page.length - 4);
+      this.activePageData = data;
     });
   }
 

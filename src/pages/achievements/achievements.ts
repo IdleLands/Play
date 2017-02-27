@@ -17,7 +17,6 @@ export class AchievementsPage extends PlayComponent implements OnInit, OnDestroy
 
   achievements$: any;
   public achievements: Achievement[] = [];
-  public totalTiers: number = 0;
 
   constructor(
     public appState: AppState,
@@ -33,6 +32,8 @@ export class AchievementsPage extends PlayComponent implements OnInit, OnDestroy
 
     this.achievements$ = this.appState.achievements.subscribe(data => {
       this.setAchievements(data);
+      const totalTiers = _.sumBy(data, 'tier');
+      this.updatePageData(`Total Achievements: ${data.length}<br>Total Tiers: ${totalTiers}`);
     });
 
     this.primus.requestAchievements();
@@ -46,7 +47,6 @@ export class AchievementsPage extends PlayComponent implements OnInit, OnDestroy
 
   setAchievements(achievements: Achievement[]) {
     this.achievements = achievements;
-    this.totalTiers = _.sumBy(this.achievements, 'tier');
   }
 
   viewRewards(achievement) {

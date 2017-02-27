@@ -24,8 +24,13 @@ export class PlayComponent implements OnInit, OnDestroy {
     this.player = player;
   }
 
+  updatePageData(string) {
+    this.appState.activePageData.next({ page: this.constructor.name, data: string });
+  }
+
   ngOnInit() {
     this.appState.showSideMenu.next(true);
+    this.updatePageData('');
 
     const toConnecting = () => {
       this.navCtrl.setRoot(ConnectPage, { fromPage: this.constructor.name });

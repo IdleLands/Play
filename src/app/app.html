@@ -13,8 +13,16 @@
           <ion-item color="playercard">
             <player-card></player-card>
           </ion-item>
-          <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
-            <ion-icon [name]="p.icon"></ion-icon> {{ p.title }}
+          <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" [color]="activePage === p.title ? 'extradata' : ''">
+            <ion-row no-padding>
+              <ion-col width-10 no-padding>
+                <ion-icon [name]="p.icon"></ion-icon>
+              </ion-col>
+              <ion-col no-padding>
+                <div>{{ p.title }}</div>
+                <div *ngIf="activePageData && activePage === p.title" [innerHtml]="activePageData"></div>
+              </ion-col>
+            </ion-row>
           </button>
         </ion-list>
       </ion-content>

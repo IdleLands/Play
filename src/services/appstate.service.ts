@@ -28,6 +28,7 @@ export class AppState {
   loggedIn:       BehaviorSubject<boolean> = new BehaviorSubject(undefined);
   hasCharacter:   BehaviorSubject<boolean> = new BehaviorSubject(undefined);
   showSideMenu:   BehaviorSubject<boolean> = new BehaviorSubject(false);
+  activePageData: BehaviorSubject<{ page, data }> = new BehaviorSubject({ page: '', data: '' });
   chatUsers:      BehaviorSubject<ChatUser[]> = new BehaviorSubject([]);
   chatMessages:   ReplaySubject<ChatMessage> = new ReplaySubject(200);
   adventureLog:   ReplaySubject<AdventureLog> = new ReplaySubject<AdventureLog>(50);
