@@ -5,6 +5,10 @@ page-collectibles {
 
   .collectible-card {
 
+    ion-list {
+      margin-top: 5px;
+    }
+
     ion-card-header {
       padding: 0;
 
