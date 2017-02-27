@@ -74,6 +74,10 @@ import { ItemInfo } from './';
       <ion-col>{{ itemStatString(newItem) }}</ion-col>  
     </ion-row>
     
+    <ion-row>
+      <ion-col *ngFor="let button of buttons"><button ion-button (click)="dismiss(button)" [color]="button.color">{{ button.text }}</button></ion-col>
+    </ion-row>
+    
   </ion-grid>
 </ion-content>
 `
@@ -84,19 +88,21 @@ export class ItemCompareModal implements OnInit {
 
   public currentItem: any;
   public newItem: any;
+  public buttons: any[];
 
   constructor(
     public viewCtrl: ViewController,
     public navParams: NavParams
   ) {}
 
-  dismiss() {
-    this.viewCtrl.dismiss();
+  dismiss(button) {
+    this.viewCtrl.dismiss(button);
   }
 
   ngOnInit() {
     this.currentItem = this.navParams.get('currentItem');
     this.newItem = this.navParams.get('newItem');
+    this.buttons = this.navParams.get('buttons');
   }
 
   itemStatString(item): string {
@@ -121,12 +127,12 @@ export class ItemCompare {
 
   constructor(public modalCtrl: ModalController) {}
 
-  compare(currentItem, newItem): Promise<any> {
+  compare(currentItem, newItem, buttons): Promise<any> {
     return new Promise(resolve => {
-      const icmp = this.modalCtrl.create(ItemCompareModal, { currentItem, newItem });
+      const icmp = this.modalCtrl.create(ItemCompareModal, { currentItem, newItem, buttons });
 
-      icmp.onDidDismiss(choice => {
-        resolve(choice);
+      icmp.onDidDismiss(button => {
+        resolve(button);
       });
 
       icmp.present();

@@ -76,7 +76,16 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     const choiceItem = choice.extraData.item;
     const equipment = this.appState.equipment.getValue();
     const playerItem = equipment[choiceItem.type] || { str: 0, dex: 0, con: 0, int: 0, agi: 0, luk: 0, _baseScore: 1, _calcScore: 1 };
-    this.icomp.compare(playerItem, choiceItem);
+
+    const buttons = [
+      { text: 'Equip',      color: 'primary', callback: () => this.makeChoice(choice.id, 'Yes') },
+      { text: 'Discard',    color: 'danger',  callback: () => this.makeChoice(choice.id, 'No') },
+      { text: 'Close',      color: 'light',   callback: () => {} }
+    ];
+
+    this.icomp.compare(playerItem, choiceItem, buttons).then(button => {
+      button.callback();
+    });
   }
 
   openLink(link) {
