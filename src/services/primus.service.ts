@@ -10,7 +10,7 @@ import { LocalStorageService } from 'ng2-webstorage';
 
 import { AppState, Auth, Logger } from './';
 
-const settings = window.location.hostname === 'idle.land' ?
+const settings = _.includes(window.location.hostname, 'idle.land') ?
   { port: 80, protocol: 'http', hostname: 'game.idle.land' } :
   { port: 8080, protocol: 'http', hostname: window.location.hostname };
 
