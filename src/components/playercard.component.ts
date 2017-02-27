@@ -48,7 +48,7 @@ const genderPositions = {
           <h2 *ngIf="player.title">The {{ player.title }}</h2>
         </div>
         <div>
-          <h3>The {{ player.gender }} level {{ player._level.__current }}/{{ player._level.maximum }} {{ player.professionName }}</h3>
+          <h3>The level {{ player._level.__current }}/{{ player._level.maximum }} {{ player.professionName }}</h3>
         </div>
         <div>
           <h3>@{{ player.map }}: {{ player.mapRegion }}</h3>
