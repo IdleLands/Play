@@ -11,7 +11,7 @@ import { ItemInfo } from './';
 <ion-header>
   <ion-toolbar color="primary">
     <ion-title>
-      Item Compare
+      Item Compare ({{ newItem.type }})
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -23,9 +23,6 @@ import { ItemInfo } from './';
 
 <ion-content>
   <ion-grid text-center>
-    <ion-row>
-      <ion-col><h2>Type: {{ newItem.type }}</h2></ion-col>
-    </ion-row>
     
     <ion-row margin-bottom>
       <ion-col>
@@ -57,7 +54,7 @@ import { ItemInfo } from './';
     
     <ion-row margin-bottom>
       <ion-col>
-        <strong>{{ newItemName }} (Score: 100%)</strong>
+        <strong>{{ newItemName }} (Score: {{ currentItem._calcScore }}, 100%)</strong>
       </ion-col>
     </ion-row>
     
