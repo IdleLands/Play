@@ -8,5 +8,29 @@
 
 
 <ion-content padding>
+  <ion-row>
+    <ion-col>
+      <ion-card *ngIf="statistics[0] && statistics[0].children">
+        <ion-card-header>{{ statistics[0].name }}</ion-card-header>
+        <ion-card-content>
+          <statistics-tree [treeData]="statistics[0].children" [isFirst]="true"></statistics-tree>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card *ngIf="statistics[2] && statistics[2].children">
+        <ion-card-header>{{ statistics[2].name }}</ion-card-header>
+        <ion-card-content>
+          <statistics-tree [treeData]="statistics[2].children" [isFirst]="true"></statistics-tree>
+        </ion-card-content>
+      </ion-card>
 
+      <ion-card *ngIf="statistics[1] && statistics[1].children">
+        <ion-card-header>{{ statistics[1].name }}</ion-card-header>
+        <ion-card-content>
+          <statistics-tree [treeData]="statistics[1].children" [isFirst]="true"></statistics-tree>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

@@ -6,6 +6,8 @@ import * as _ from 'lodash';
 import { Injectable } from '@angular/core';
 import { ToastController } from 'ionic-angular';
 
+import { BehaviorSubject } from 'rxjs';
+
 import { LocalStorageService } from 'ng2-webstorage';
 
 import { AppState, Auth, Logger } from './';
@@ -22,6 +24,7 @@ export class Primus {
   private socket: any;
 
   private _reconnecting: boolean;
+  private loggedIn$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
   constructor(
     private storage: LocalStorageService,
@@ -30,6 +33,14 @@ export class Primus {
     private toastCtrl: ToastController
   ) {
     this.loadAdventureLog();
+    this.watchForLogins();
+  }
+
+  watchForLogins() {
+    this.appState.loggedIn.subscribe(data => {
+      if(!data) return;
+      this.loggedIn$.next(true);
+    });
   }
 
   loadAdventureLog() {
@@ -216,15 +227,27 @@ export class Primus {
   }
 
   requestEquipment(): void {
-    this._emit('plugin:player:request:equipment');
+    this.loggedIn$.subscribe(() => {
+      this._emit('plugin:player:request:equipment');
+    });
   }
 
   requestAchievements(): void {
-    this._emit('plugin:player:request:achievements');
+    this.loggedIn$.subscribe(() => {
+      this._emit('plugin:player:request:achievements');
+    });
   }
 
   requestCollectibles(): void {
-    this._emit('plugin:player:request:collectibles');
+    this.loggedIn$.subscribe(() => {
+      this._emit('plugin:player:request:collectibles');
+    });
+  }
+
+  requestStatistics(): void {
+    this.loggedIn$.subscribe(() => {
+      this._emit('plugin:player:request:statistics');
+    });
   }
 
   checkIfExists(): Promise<any> {

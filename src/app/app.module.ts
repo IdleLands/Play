@@ -13,6 +13,7 @@ import { StatComponent } from '../components/stat.component';
 import { PlayerCardComponent } from '../components/playercard.component';
 import { ItemComponent } from '../components/item.component';
 import { AchievementIconComponent } from '../components/achievementicon.component';
+import { StatisticsTreeComponent } from '../pages/statistics/statistics-tree.component';
 
 import { MyApp } from './app.component';
 import {
@@ -79,6 +80,7 @@ const deepLinks: DeepLinkConfig = {
     PlayerCardComponent,
     ItemComponent,
     AchievementIconComponent,
+    StatisticsTreeComponent,
 
     AchievementModal,
     ItemCompareModal
