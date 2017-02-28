@@ -207,6 +207,10 @@ export class Primus {
       value = { current: _.sortBy(_.values(value.current), 'name'), prior: value.prior };
     }
 
+    if(content.update === 'petbasic') {
+      value = _.sortBy(value, 'bought').reverse();
+    }
+
     this.appState[content.update].next(value);
   }
 
@@ -247,6 +251,12 @@ export class Primus {
   requestStatistics(): void {
     this.loggedIn$.subscribe(() => {
       this._emit('plugin:player:request:statistics');
+    });
+  }
+
+  requestPets(): void {
+    this.loggedIn$.subscribe(() => {
+      this._emit('plugin:player:request:pets');
     });
   }
 
@@ -292,5 +302,53 @@ export class Primus {
       id,
       response
     });
+  }
+
+  buyPet(petType, petName) {
+    if(!petName || !petName.trim()) {
+      this._handleNotification({ message: 'Invalid pet name! '});
+      return;
+    }
+
+    if(petName.length > 20) {
+      this._handleNotification({ message: 'Your pet name is too long! '});
+      return;
+    }
+
+    this._emit('plugin:pet:buy', { petType, petName });
+  }
+
+  makePetActive(petType) {
+    this._emit('plugin:pet:swap', { petType });
+  }
+
+  changePetClass(newProfession) {
+    this._emit('plugin:pet:profession', { newProfession });
+  }
+
+  changePetAttr(newAttr) {
+    this._emit('plugin:pet:attr', { newAttr });
+  }
+
+  takePetGold() {
+    this._emit('plugin:pet:takegold');
+  }
+
+  feedPetGold(gold, maxGold) {
+    if(gold < 0 || _.isNaN(gold)) {
+      this._handleNotification({ message: 'Invalid gold value! '});
+      return;
+    }
+
+    if(gold > maxGold) {
+      this._handleNotification({ message: 'Cannot overfeed gold! '});
+      return;
+    }
+
+    this._emit('plugin:pet:feed', { gold });
+  }
+
+  upgradePetAttr(upgradeAttr) {
+    this._emit('plugin:pet:upgrade', { upgradeAttr });
   }
 }

@@ -84,5 +84,10 @@ $itemcolors: (
   font-size: 200%;
 }
 
-.class-newbie {
+.alert-radio-label {
+  white-space: normal!important;
+}
+
+.no-scroll, .no-scroll > .scroll-content {
+  overflow: hidden;
 }

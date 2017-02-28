@@ -26,6 +26,7 @@
     "@ionic/storage": "1.1.7",
     "angular-svg-round-progressbar": "^1.0.4",
     "angular2-jwt": "^0.1.28",
+    "angular2-moment": "^1.2.0",
     "auth0-lock": "^10.11.0",
     "clipboard": "^1.6.0",
     "favico.js": "github:ubershmekel/favico.js#patch-1",

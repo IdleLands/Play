@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-angular';
 
+import { MomentModule } from 'angular2-moment';
 import { Ng2Webstorage } from 'ng2-webstorage';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
@@ -10,6 +11,7 @@ import { RedditNewsComponent } from '../components/reddit-news.component';
 import { GameIconComponent } from '../components/gameicon.component';
 import { AdventureLogIconComponent } from '../components/advlogicon.component';
 import { StatComponent } from '../components/stat.component';
+import { PetCardComponent } from '../components/petcard.component';
 import { PlayerCardComponent } from '../components/playercard.component';
 import { ItemComponent } from '../components/item.component';
 import { AchievementIconComponent } from '../components/achievementicon.component';
@@ -28,7 +30,7 @@ import {
   StatisticsPage,
   ChatPage,
   MapPage,
-  PetsPage,
+  PetsPage, PetsOverviewPage, PetsItemsPage,
   PremiumPage,
   SettingsPage,
   BattlePage
@@ -48,6 +50,8 @@ const deepLinks: DeepLinkConfig = {
     { component: ChatPage,          name: 'Chat',               segment: 'chat' },
     { component: MapPage,           name: 'Map',                segment: 'map' },
     { component: PetsPage,          name: 'Pets',               segment: 'pets' },
+    { component: PetsOverviewPage,  name: 'Pet Overview',       segment: '' },
+    { component: PetsItemsPage,     name: 'Pet Items',          segment: '' },
     { component: PremiumPage,       name: 'Premium',            segment: 'premium' },
     { component: SettingsPage,      name: 'Settings',           segment: 'settings' },
     { component: BattlePage,        name: 'Battle',             segment: 'battle' }
@@ -68,7 +72,7 @@ const deepLinks: DeepLinkConfig = {
     StatisticsPage,
     ChatPage,
     MapPage,
-    PetsPage,
+    PetsPage, PetsOverviewPage, PetsItemsPage,
     PremiumPage,
     SettingsPage,
     BattlePage,
@@ -78,6 +82,7 @@ const deepLinks: DeepLinkConfig = {
     AdventureLogIconComponent,
     StatComponent,
     PlayerCardComponent,
+    PetCardComponent,
     ItemComponent,
     AchievementIconComponent,
     StatisticsTreeComponent,
@@ -86,6 +91,7 @@ const deepLinks: DeepLinkConfig = {
     ItemCompareModal
   ],
   imports: [
+    MomentModule,
     RoundProgressModule,
     Ng2Webstorage.forRoot({ prefix: 'idp', separator: '-' }),
     IonicModule.forRoot(MyApp, { locationStrategy: 'hash' }, deepLinks)
@@ -104,7 +110,7 @@ const deepLinks: DeepLinkConfig = {
     StatisticsPage,
     ChatPage,
     MapPage,
-    PetsPage,
+    PetsPage, PetsOverviewPage, PetsItemsPage,
     PremiumPage,
     SettingsPage,
     BattlePage,

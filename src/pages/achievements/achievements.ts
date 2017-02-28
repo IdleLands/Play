@@ -76,7 +76,7 @@ export class AchievementsPage extends PlayComponent implements OnInit, OnDestroy
       <ion-col>{{ achievement.desc }}</ion-col>
     </ion-row>
     <ion-row *ngFor="let reward of rewards">
-      <ion-col text-right class="bold">{{ reward.type }}</ion-col> 
+      <ion-col text-right><strong>{{ reward.type }}</strong></ion-col> 
       <ion-col text-left>{{ reward.value }}</ion-col>
     </ion-row>
   </ion-grid>
@@ -111,6 +111,9 @@ export class AchievementModal implements OnInit {
 
       } else if(reward.type === 'pet') {
         this.rewards.push({ type: 'Pet', value: reward.pet });
+
+      } else if(reward.type === 'petclass') {
+        this.rewards.push({ type: 'Pet Class', value: reward.petclass });
 
       } else if(reward.type === 'petattr') {
         this.rewards.push({ type: 'Pet Attribute', value: reward.pet });

@@ -10,6 +10,8 @@ export * from './home/home';
 export * from './map/map';
 export * from './overview/overview';
 export * from './pets/pets';
+export * from './pets/pets-overview';
+export * from './pets/pets-items';
 export * from './premium/premium';
 export * from './privacy/privacy';
 export * from './settings/settings';

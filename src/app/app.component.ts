@@ -1,4 +1,6 @@
 
+import * as _ from 'lodash';
+
 import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
@@ -35,19 +37,21 @@ export class MyApp {
   activePage: string;
   activePageData: string;
 
+  hasPet: boolean;
+
   public onlineStatusIcon: string;
   public currentStatusString = 'IdleLands';
   private clicks = 0;
 
   pages: Array<{title: string, icon: string, component: any, extraContent?: Function}> = [
     { title: 'Overview',      icon: 'body',       component: OverviewPage },
+    { title: 'Map',           icon: 'globe',      component: MapPage },
     { title: 'Equipment',     icon: 'shirt',      component: EquipmentPage },
     { title: 'Achievements',  icon: 'ribbon',     component: AchievementsPage },
     { title: 'Collectibles',  icon: 'magnet',     component: CollectiblesPage },
     { title: 'Statistics',    icon: 'analytics',  component: StatisticsPage },
-    { title: 'Chat',          icon: 'chatboxes',  component: ChatPage },
-    { title: 'Map',           icon: 'globe',      component: MapPage },
     { title: 'Pets',          icon: 'nutrition',  component: PetsPage },
+    { title: 'Chat',          icon: 'chatboxes',  component: ChatPage },
     { title: 'Premium',       icon: 'cash',       component: PremiumPage },
     { title: 'Settings',      icon: 'cog',        component: SettingsPage }
   ];
@@ -79,14 +83,23 @@ export class MyApp {
       connecting:   'reconnecting',
       offline:      'sad'
     };
+
     this.state.onlineStatus.subscribe(onlineStatus => {
       this.onlineStatusIcon = statusIcons[onlineStatus];
     });
 
     this.state.activePageData.subscribe(({ page, data }) => {
       this.activePage = page.substring(0, page.length - 4);
+      if(_.includes(this.activePage, 'Pets')) {
+        this.activePage = 'Pets';
+      }
       this.activePageData = data;
     });
+
+    this.state.petactive.subscribe(data => {
+      if(!data.name) return;
+      this.hasPet = true;
+    })
   }
 
   clickStatus() {

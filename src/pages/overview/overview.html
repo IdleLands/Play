@@ -11,23 +11,40 @@
 <ion-content padding>
   <ion-grid>
     <ion-row>
-      <ion-col class="size-200" text-center>
-        <stat stat="hp" [value]="player.statCache.hp"></stat>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Vitals</ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col class="size-150">
+                <stat stat="hp" [value]="player.statCache.hp"></stat>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="size-150">
+                <stat stat="mp" [value]="player.statCache.mp"></stat>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="size-150">
+                <game-icon icon="stat-xp"></game-icon> {{ player._xp.__current | number }}/{{ player._xp.maximum | number }} XP
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
-      <ion-col class="size-200" text-center>
-        <stat stat="mp" [value]="player.statCache.mp"></stat>
-      </ion-col>
-    </ion-row>
 
-    <ion-row>
-      <ion-col class="size-200" text-center>
-        <game-icon icon="stat-xp"></game-icon> {{ player._xp.__current | number }}/{{ player._xp.maximum | number }} XP
-      </ion-col>
-    </ion-row>
-
-    <ion-row>
-      <ion-col *ngFor="let stat of stats" class="size-150" text-center>
-        <stat [stat]="stat" [value]="player.statCache[stat]" [showColor]="true"></stat>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Attributes</ion-card-header>
+          <ion-card-content>
+            <ion-row wrap>
+              <ion-col width-50 *ngFor="let stat of stats" class="size-150">
+                <stat [stat]="stat" [value]="player.statCache[stat]" [showColor]="true"></stat>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
       </ion-col>
     </ion-row>
 

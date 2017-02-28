@@ -6,7 +6,9 @@
 
 </ion-header>
 
-
-<ion-content padding>
-
+<ion-content class="no-scroll">
+  <ion-tabs>
+    <ion-tab tabTitle="Overview" tabUrlPath='overview' tabIcon="bug" [root]="overviewRoot"></ion-tab>
+    <ion-tab tabTitle="Items" tabUrlPath='items' tabIcon="color-wand" [tabBadge]="inventoryBadge" [root]="itemsRoot"></ion-tab>
+  </ion-tabs>
 </ion-content>

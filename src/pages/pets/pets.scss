@@ -1,0 +1,13 @@
+page-pets-overview {
+  .pet-card {
+    ion-card-content {
+      min-height: 60px;
+    }
+  }
+
+  .upgrade-card {
+    ion-card-content {
+      min-height: 150px;
+    }
+  }
+}

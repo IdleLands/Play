@@ -42,7 +42,7 @@ export class AppState {
   party:          BehaviorSubject<Party> = new BehaviorSubject(new Party());
   gmdata:         BehaviorSubject<GMData> = new BehaviorSubject(new GMData());
   battle:         BehaviorSubject<Battle> = new BehaviorSubject(new Battle());
-  petbasic:       BehaviorSubject<PetBasic> = new BehaviorSubject(new PetBasic());
+  petbasic:       BehaviorSubject<PetBasic[]> = new BehaviorSubject([]);
   petbuy:         BehaviorSubject<PetBuy> = new BehaviorSubject(new PetBuy());
   petactive:      BehaviorSubject<PetActive> = new BehaviorSubject(new PetActive());
   festivals:      BehaviorSubject<Festival[]> = new BehaviorSubject([]);

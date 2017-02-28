@@ -1,0 +1,34 @@
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Pet Equipment</ion-card-header>
+          <ion-card-content>
+            <ion-row *ngFor="let item of petEquipment">
+              <ion-col>
+                <item [item]="item"></item>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="petactive.inventory">
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Pet Inventory ({{ petactive.inventory.length }}/{{ petactive.$scale.inventory[petactive.scaleLevel.inventory] }})</ion-card-header>
+          <ion-card-content>
+            <ion-row *ngFor="let item of petactive.inventory">
+              <ion-col>
+                <item [item]="item"></item>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
