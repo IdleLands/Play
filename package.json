@@ -31,7 +31,7 @@
     "clipboard": "^1.6.0",
     "favico.js": "github:ubershmekel/favico.js#patch-1",
     "gameicons-font": "github:idlelands/gameicons-font",
-    "ionic-angular": "^2.0.1-201702161925",
+    "ionic-angular": "^2.1.0-201702281739",
     "ionic-native": "2.4.1",
     "ionicons": "3.0.0",
     "linkifyjs": "^2.1.4",

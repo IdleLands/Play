@@ -1,5 +1,5 @@
 <div [class]="'theme-' + theme">
-  <ion-split-panel>
+  <ion-split-pane>
 
     <ion-menu [content]="content" [class.hidden]="!showSideMenu">
       <ion-header>
@@ -41,5 +41,5 @@
 
     <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>
 
-  </ion-split-panel>
+  </ion-split-pane>
 </div>

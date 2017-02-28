@@ -42,7 +42,7 @@ const genderPositions = {
         <img src="http://game.idle.land/maps/img/tiles.png" [style.object-position]="imgStyleFit()">
       </ion-col>
      
-      <ion-col>
+      <ion-col width-80>
         <div>
           <h1>{{ pet.name }}</h1>
           <h2 *ngIf="pet.attr">With {{ pet.attr }}</h2>
