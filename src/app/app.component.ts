@@ -7,7 +7,7 @@ import { StatusBar, Splashscreen } from 'ionic-native';
 
 import { LocalStorageService } from 'ng2-webstorage';
 
-import { AppState } from '../services';
+import { AppState, Primus } from '../services';
 
 import {
   HomePage,
@@ -59,7 +59,8 @@ export class MyApp {
   constructor(
     public platform: Platform,
     public state: AppState,
-    public storage: LocalStorageService
+    public storage: LocalStorageService,
+    public primus: Primus
   ) {
     this.initializeApp();
   }
@@ -75,6 +76,8 @@ export class MyApp {
     });
 
     this.subscribeForExtraContentChanges();
+
+    this.primus.requestPets();
   }
 
   subscribeForExtraContentChanges() {
