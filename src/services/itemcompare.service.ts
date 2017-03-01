@@ -52,7 +52,8 @@ import { ItemInfo } from './';
     
     <ion-row margin-bottom>
       <ion-col>
-        <strong>{{ newItemName }} (Score: {{ currentItem._calcScore }}, 100%)</strong>
+        <strong [class.positive]="newItem._calcScore > currentItem._calcScore"
+                [class.negative]="newItem._calcScore < currentItem._calcScore">{{ newItemName }} (Score: {{ newItem._calcScore }}, 100%)</strong>
       </ion-col>
     </ion-row>
     
