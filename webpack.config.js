@@ -2,6 +2,11 @@ var path = require('path');
 var webpack = require('webpack');
 var ionicWebpackFactory = require(process.env.IONIC_WEBPACK_FACTORY);
 
+const phaserDir = path.join(__dirname, 'node_modules/phaser/');
+const phaserlib = path.join(phaserDir, 'build/custom/phaser-split.js');
+const pixi = path.join(phaserDir, 'build/custom/pixi.js');
+const p2 = path.join(phaserDir, 'build/custom/p2.js');
+
 module.exports = {
   entry: process.env.IONIC_APP_ENTRY_POINT,
   output: {
@@ -14,7 +19,13 @@ module.exports = {
 
   resolve: {
     extensions: ['.ts', '.js', '.json'],
-    modules: [path.resolve('node_modules')]
+    modules: [path.resolve('node_modules')],
+
+    alias: {
+      phaserlib: phaserlib,
+      'pixi.js': pixi,
+      'p2.js': p2
+    }
   },
 
   devServer: {
@@ -25,11 +36,13 @@ module.exports = {
     rules: [
       {
         test: /\.json$/,
-        loader: 'json-loader'
+        loader: 'json-loader',
+        exclude: /node_modules/
       },
       {
         test: /\.ts$/,
-        loader: process.env.IONIC_WEBPACK_LOADER
+        loader: process.env.IONIC_WEBPACK_LOADER,
+        exclude: /node_modules/
       },
       {
         test: /\.woff$|\.woff2$|\.eot$|\.ttf$|\.svg$/,

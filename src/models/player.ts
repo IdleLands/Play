@@ -26,8 +26,11 @@ export class Player {
   gold: number = 0;
   ascensionLevel: number;
   mapPath: string;
-  map: string = 'Norkos';
+  map: string;
   region: string = 'Wilderness';
+
+  x: number = 0;
+  y: number = 0;
 
   _hp: RestrictedNumber = new RestrictedNumber();
   _mp: RestrictedNumber = new RestrictedNumber();

@@ -1,0 +1,20 @@
+page-map {
+  .scroll-content {
+    overflow: hidden;
+  }
+
+  .map-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    min-height: 60px;
+    z-index: 100;
+    color: #fff;
+    background-color: #000;
+    opacity: 0.75;
+    border: 1px solid #fff;
+    padding: 5px;
+  }
+
+}

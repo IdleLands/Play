@@ -2,11 +2,21 @@
 
   <ion-navbar color="primary">
     <ion-title>Map - {{ player.name }}</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="loadPersonalities($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content>
+  <div class="map-text" [innerHTML]="mapText"></div>
+  <map-renderer [player]="player"
+                [collectibleHash]="collectibleHash"
+                [otherPlayers]="otherPlayers"
+                (textUpdate)="updateText($event)"></map-renderer>
 </ion-content>

@@ -15,7 +15,13 @@ import { PetCardComponent } from '../components/petcard.component';
 import { PlayerCardComponent } from '../components/playercard.component';
 import { ItemComponent } from '../components/item.component';
 import { AchievementIconComponent } from '../components/achievementicon.component';
+
+import { MapRendererComponent } from '../pages/map/map-renderer.component';
 import { StatisticsTreeComponent } from '../pages/statistics/statistics-tree.component';
+
+(<any>window).PIXI = require('pixi.js');
+(<any>window).p2 = require('p2.js');
+(<any>window).Phaser = require('phaserlib');
 
 import { MyApp } from './app.component';
 import {
@@ -29,7 +35,7 @@ import {
   CollectiblesPage,
   StatisticsPage,
   ChatPage,
-  MapPage,
+  MapPage, PersonalityPopover,
   PetsPage, PetsOverviewPage, PetsItemsPage,
   PremiumPage,
   SettingsPage,
@@ -71,7 +77,7 @@ const deepLinks: DeepLinkConfig = {
     CollectiblesPage,
     StatisticsPage,
     ChatPage,
-    MapPage,
+    MapPage, PersonalityPopover,
     PetsPage, PetsOverviewPage, PetsItemsPage,
     PremiumPage,
     SettingsPage,
@@ -85,6 +91,8 @@ const deepLinks: DeepLinkConfig = {
     PetCardComponent,
     ItemComponent,
     AchievementIconComponent,
+
+    MapRendererComponent,
     StatisticsTreeComponent,
 
     AchievementModal,
@@ -109,7 +117,7 @@ const deepLinks: DeepLinkConfig = {
     CollectiblesPage,
     StatisticsPage,
     ChatPage,
-    MapPage,
+    MapPage, PersonalityPopover,
     PetsPage, PetsOverviewPage, PetsItemsPage,
     PremiumPage,
     SettingsPage,

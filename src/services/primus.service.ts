@@ -13,7 +13,7 @@ import { LocalStorageService } from 'ng2-webstorage';
 import { AppState, Auth, Logger } from './';
 import {AdventureLog} from "../models/adventurelog";
 
-const settings = _.includes(window.location.hostname, 'idle.land') ?
+export const settings = _.includes(window.location.hostname, 'idle.land') ?
   { port: 80, protocol: 'http', hostname: 'game.idle.land' } :
   { port: 8080, protocol: 'http', hostname: window.location.hostname };
 
@@ -204,7 +204,7 @@ export class Primus {
     }
 
     if(content.update === 'collectibles') {
-      value = { current: _.sortBy(_.values(value.current), 'name'), prior: value.prior };
+      value = { orig: value, current: _.sortBy(_.values(value.current), 'name'), prior: value.prior };
     }
 
     if(content.update === 'petbasic') {
@@ -257,6 +257,12 @@ export class Primus {
   requestPets(): void {
     this.loggedIn$.subscribe(() => {
       this._emit('plugin:player:request:pets');
+    });
+  }
+
+  requestPersonalities(): void {
+    this.loggedIn$.subscribe(() => {
+      this._emit('plugin:player:request:personalities');
     });
   }
 
@@ -350,5 +356,9 @@ export class Primus {
 
   upgradePetAttr(upgradeAttr) {
     this._emit('plugin:pet:upgrade', { upgradeAttr });
+  }
+
+  togglePersonality(personality) {
+    this._emit('plugin:player:togglepersonality', { personality });
   }
 }

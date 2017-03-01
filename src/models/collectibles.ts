@@ -14,4 +14,5 @@ export class Collectible {
 export class Collectibles {
   current: Collectible[] = [];
   prior: any = {};
+  orig: any = {};
 }
