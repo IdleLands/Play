@@ -12,8 +12,8 @@
     You don't have any achievements... yet!
   </div>
 
-  <ion-row wrap>
-    <ion-col width-33 *ngFor="let achievement of achievements">
+  <ion-list [virtualScroll]="achievements" approxItemHeight="150px" approxItemWidth="33%" bufferRatio="12">
+    <div col-sm-4 col-xs-12 *virtualItem="let achievement">
       <ion-card class="achievement-card">
         <achievement-icon class="background-icon true-center size-1000" [icon]="achievement.type"></achievement-icon>
         <ion-card-header>
@@ -27,6 +27,6 @@
           </ion-col>
         </ion-row>
       </ion-card>
-    </ion-col>
-  </ion-row>
+    </div>
+  </ion-list>
 </ion-content>

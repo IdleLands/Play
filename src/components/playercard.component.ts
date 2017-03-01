@@ -42,7 +42,7 @@ const genderPositions = {
         <img src="http://game.idle.land/maps/img/tiles.png" [style.object-position]="imgStyleFit()">
       </ion-col>
      
-      <ion-col>
+      <ion-col width-80>
         <div>
           <h1>{{ player.name }}</h1>
           <h2 *ngIf="player.title">The {{ player.title }}</h2>
