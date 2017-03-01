@@ -8,5 +8,137 @@
 
 
 <ion-content padding>
+  <ion-row wrap>
 
+    <ion-col col-md col-12>
+      <ion-card>
+        <ion-card-header>Adventurer Settings</ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item>
+              <ion-label stacked>Gender</ion-label>
+              <ion-select [(ngModel)]="player.gender" (ionChange)="changeGender($event)">
+                <ion-option *ngFor="let gender of genders">{{ gender }}</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label stacked>Title</ion-label>
+              <ion-select [(ngModel)]="player.title" (ionChange)="changeTitle($event)">
+                <ion-option value="">None</ion-option>
+                <ion-option *ngFor="let title of titles">{{ title }}</ion-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item-divider>Personalities</ion-item-divider>
+
+            <ion-item text-wrap *ngFor="let personality of personalities.earned">
+              <ion-label>
+                <h3>{{ personality.name }}</h3>
+                <p>{{ personality.description }}</p>
+              </ion-label>
+
+              <ion-checkbox [checked]="personalities.active[personality.name]" (ionChange)="togglePersonality(personality.name)"></ion-checkbox>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+
+    <ion-col col-md col-12>
+      <ion-row wrap>
+
+        <ion-col col-12>
+          <ion-card>
+            <ion-card-header>Interface Settings</ion-card-header>
+            <ion-card-content>
+              <ion-list>
+                <ion-item>
+                  <ion-label stacked>Theme</ion-label>
+                  <ion-select [(ngModel)]="theme">
+                    <ion-option *ngFor="let theme of themes" [value]="theme.val">{{ theme.name }}</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col col-12>
+          <ion-card>
+            <ion-card-header>Helpful Information</ion-card-header>
+            <ion-card-content>
+              <ion-list>
+                <ion-item>
+                  <ion-avatar item-left>
+                    <ion-icon name="bug"></ion-icon>
+                  </ion-avatar>
+                  <h3>Version {{ version }}</h3>
+                </ion-item>
+
+                <ion-item text-wrap>
+                  <ion-avatar item-left>
+                    <ion-icon name="information-circle"></ion-icon>
+                  </ion-avatar>
+                  <h3><a target="_blank" href="https://github.com/IdleLands/IdleLands/wiki">Wiki</a></h3>
+                  <p>Includes New Player Information, FAQ, Guides, and more!</p>
+                </ion-item>
+
+                <ion-item text-wrap>
+                  <ion-avatar item-left>
+                    <ion-icon name="compass"></ion-icon>
+                  </ion-avatar>
+                  <h3><a target="_blank" href="http://global.idle.land">Global IdleLands</a></h3>
+                  <p>Features player/pet/map lookup, global leaderboards, and statistics!</p>
+                </ion-item>
+
+                <ion-item text-wrap>
+                  <ion-avatar item-left>
+                    <ion-icon name="logo-rss"></ion-icon>
+                  </ion-avatar>
+                  <h3><a target="_blank" href="http://blog.idle.land">Blog</a></h3>
+                  <p>Check out the latest blog posts to keep up with the news!</p>
+                </ion-item>
+
+                <ion-item text-wrap>
+                  <ion-avatar item-left>
+                    <ion-icon name="logo-facebook"></ion-icon>
+                  </ion-avatar>
+                  <h3><a target="_blank" href="https://facebook.com/IdleLands">Facebook</a></h3>
+                  <p>Like the Facebook page for updates and pictures about the game!</p>
+                </ion-item>
+
+                <ion-item text-wrap>
+                  <ion-avatar item-left>
+                    <ion-icon name="logo-twitter"></ion-icon>
+                  </ion-avatar>
+                  <h3><a target="_blank" href="https://twitter.com/IdleLands">Twitter</a></h3>
+                  <p>Follow IdleLands on Twitter!</p>
+                </ion-item>
+
+                <ion-item text-wrap>
+                  <ion-avatar item-left>
+                    <ion-icon name="logo-reddit"></ion-icon>
+                  </ion-avatar>
+                  <h3><a target="_blank" href="http://reddit.com/r/idle_lands">Reddit</a></h3>
+                  <p>Discuss the game on reddit!</p>
+                </ion-item>
+
+                <ion-item text-wrap>
+                  <ion-avatar item-left>
+                    <ion-icon name="logo-github"></ion-icon>
+                  </ion-avatar>
+                  <h3><a target="_blank" href="https://github.com/IdleLands/IdleLands">IdleLands</a></h3>
+                  <p>File bugs or request features on GitHub!</p>
+                </ion-item>
+
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+      </ion-row>
+    </ion-col>
+
+  </ion-row>
 </ion-content>

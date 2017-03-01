@@ -2,6 +2,9 @@ var path = require('path');
 var webpack = require('webpack');
 var ionicWebpackFactory = require(process.env.IONIC_WEBPACK_FACTORY);
 
+var GitRevisionPlugin = require('git-revision-webpack-plugin');
+var gitRevisionPlugin = new GitRevisionPlugin();
+
 const phaserDir = path.join(__dirname, 'node_modules/phaser/');
 const phaserlib = path.join(phaserDir, 'build/custom/phaser-split.js');
 const pixi = path.join(phaserDir, 'build/custom/pixi.js');
@@ -57,6 +60,10 @@ module.exports = {
 
   plugins: [
     ionicWebpackFactory.getIonicEnvironmentPlugin(),
+    new webpack.DefinePlugin({
+      VERSION: JSON.stringify(gitRevisionPlugin.version()),
+      COMMITHASH: JSON.stringify(gitRevisionPlugin.commithash())
+    })
   ],
 
   // Some libraries import Node modules but don't use them in the browser.

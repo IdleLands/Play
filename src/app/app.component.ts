@@ -102,7 +102,12 @@ export class MyApp {
     this.state.petactive.subscribe(data => {
       if(!data.name) return;
       this.hasPet = true;
-    })
+    });
+
+    this.storage.observe('theme')
+      .subscribe(theme => {
+        this.theme = theme || 'default';
+      });
   }
 
   clickStatus() {

@@ -52,6 +52,7 @@
     "css-loader": "^0.26.2",
     "file-loader": "^0.10.1",
     "gh-pages": "^0.12.0",
+    "git-revision-webpack-plugin": "^2.4.1",
     "script-loader": "^0.7.0",
     "style-loader": "^0.13.2",
     "typescript": "2.0.9"

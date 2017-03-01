@@ -361,4 +361,12 @@ export class Primus {
   togglePersonality(personality) {
     this._emit('plugin:player:togglepersonality', { personality });
   }
+
+  changeGender(gender) {
+    this._emit('plugin:player:changegender', { gender });
+  }
+
+  changeTitle(title) {
+    this._emit('plugin:player:changetitle', { title });
+  }
 }

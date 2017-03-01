@@ -85,9 +85,7 @@ export class PersonalityPopover implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.personalities$ = this.appState.personalities.subscribe(data => {
-      this.personalities = data;
-    });
+    this.personalities$ = this.appState.personalities.subscribe(data => this.personalities = data);
 
     this.primus.requestPersonalities();
   }
