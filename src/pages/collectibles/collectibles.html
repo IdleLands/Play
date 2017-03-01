@@ -13,7 +13,7 @@
   </div>
 
   <ion-list [virtualScroll]="collectibles" approxItemHeight="150px" approxItemWidth="33%" bufferRatio="12">
-    <div col-sm-4 col-xs-12 *virtualItem="let collectible">
+    <div col-md-4 col-sm-6 col-xs-12 *virtualItem="let collectible">
       <ion-card [class.faded]="collectible._faded" class="collectible-card">
         <ion-card-header>
           <div class="expand-header class-{{ collectible.rarity }}">{{ collectible.name }} (x{{ collectible.count }})</div>
