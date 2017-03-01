@@ -1,3 +1,4 @@
+
 <ion-header>
 
   <ion-navbar color="primary">
@@ -6,14 +7,13 @@
 
 </ion-header>
 
-
 <ion-content padding>
   <div class="true-center max-space background-text" *ngIf="collectibles.length === 0">
     You don't have any collectibles... yet!
   </div>
 
   <ion-list [virtualScroll]="collectibles" approxItemHeight="150px" approxItemWidth="33%" bufferRatio="12">
-    <div col-md-4 col-sm-6 col-xs-12 *virtualItem="let collectible">
+    <div col-12 col-md-4 *virtualItem="let collectible">
       <ion-card [class.faded]="collectible._faded" class="collectible-card">
         <ion-card-header>
           <div class="expand-header class-{{ collectible.rarity }}">{{ collectible.name }} (x{{ collectible.count }})</div>

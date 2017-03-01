@@ -10,8 +10,8 @@
 
 <ion-content padding>
   <ion-grid>
-    <ion-row>
-      <ion-col>
+    <ion-row wrap>
+      <ion-col col-12 col-md>
         <ion-card>
           <ion-card-header>Vitals</ion-card-header>
           <ion-card-content>
@@ -34,7 +34,7 @@
         </ion-card>
       </ion-col>
 
-      <ion-col>
+      <ion-col col-12 col-md>
         <ion-card>
           <ion-card-header>Attributes</ion-card-header>
           <ion-card-content>
@@ -105,10 +105,10 @@
               <ion-item no-padding *ngFor="let item of adventureLog; let i = index" text-wrap [color]="i % 2 === 0 ? 'darkstripe' : 'lightstripe'">
                 <ion-grid no-padding>
                   <ion-row no-padding>
-                    <ion-col width-10 true-center text-center>
+                    <ion-col col-xs-4 col-md-2 true-center text-center>
                       <advlog-icon [icon]="item.category" class="size-400"></advlog-icon>
                     </ion-col>
-                    <ion-col>
+                    <ion-col col-xs-8 col-md-10>
                       <ion-note>
                         <span>{{ item.timestamp | date:'medium' }}</span>
                       </ion-note>

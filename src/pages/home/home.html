@@ -48,27 +48,14 @@
     </ion-row>
 
     <ion-row padding>
-      <ion-col width-50 offset-25>
+      <ion-col col-md-6 col-xs-12 offset-md-3>
         <reddit-news></reddit-news>
       </ion-col>
     </ion-row>
 
     <ion-row>
-      <ion-col width-33 padding>
-        <ion-card>
 
-          <ion-card-header>
-            <h1>Sign Up Now</h1>
-          </ion-card-header>
-
-          <ion-card-content>
-            <p>Registration is easy - just a few clicks and you're in the game. Plus, it's handled by Auth0, so you know it's secured with the latest technologies.</p>
-          </ion-card-content>
-
-        </ion-card>
-      </ion-col>
-
-      <ion-col width-33 padding>
+      <ion-col col-sm-12 col-sm-6 col-md-4 padding>
         <ion-card>
 
           <ion-card-header>
@@ -82,7 +69,7 @@
         </ion-card>
       </ion-col>
 
-      <ion-col width-33 padding>
+      <ion-col col-sm-12 col-sm-6 col-md-4 padding>
         <ion-card>
 
           <ion-card-header>
@@ -95,21 +82,26 @@
 
         </ion-card>
       </ion-col>
+
+      <ion-col col-sm-12 col-sm-6 col-md-4 padding>
+        <ion-card>
+
+          <ion-card-header>
+            <h1>Global Leaderboard</h1>
+          </ion-card-header>
+
+          <ion-card-content>
+            <p>Into competition? Awesome. We have a <a href="http://global.idle.land/leaderboard" target="_blank">leaderboard</a> and many other features (like game-wide <a href="http://global.idle.land/statistics" target="_blank">statistics</a>) that span the whole game. Check it out!</p>
+          </ion-card-content>
+
+        </ion-card>
+      </ion-col>
+
     </ion-row>
 
     <ion-row>
-      <ion-col padding>
-        <div padding>
-          <button ion-button icon-left color="primary" (click)="auth.login()">
-            <ion-icon name="log-in"></ion-icon> Sign Up
-          </button>
 
-          <a ion-button clear width="150" height="50" href="https://auth0.com/?utm_source=oss&amp;utm_medium=gp&amp;utm_campaign=oss" target="_blank" alt="Single Sign On &amp; Token Based Authentication - Auth0"><img width="150" height="50" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"></a>
-        </div>
-
-      </ion-col>
-
-      <ion-col width-33 padding>
+      <ion-col col-sm-12 col-sm-6 col-md-4 padding>
         <ion-card>
 
           <ion-card-header>
@@ -123,18 +115,29 @@
         </ion-card>
       </ion-col>
 
-      <ion-col width-33 padding>
+      <ion-col col-sm-12 col-sm-6 col-md-4 padding>
         <ion-card>
 
           <ion-card-header>
-            <h1>Global Leaderboard</h1>
+            <h1>Sign Up Now</h1>
           </ion-card-header>
 
           <ion-card-content>
-            <p>Into competition? Awesome. We have a <a href="http://global.idle.land/leaderboard" target="_blank">leaderboard</a> and many other features (like game-wide <a href="http://global.idle.land/statistics" target="_blank">statistics</a>) that span the whole game. Check it out!</p>
+            <p>Registration is easy - just a few clicks and you're in the game. Plus, it's handled by Auth0, so you know it's secured with the latest technologies.</p>
           </ion-card-content>
 
         </ion-card>
+      </ion-col>
+
+      <ion-col col-sm-12 col-sm-6 col-md-4 padding text-center>
+        <div padding>
+          <button ion-button icon-left color="primary" (click)="auth.login()">
+            <ion-icon name="log-in"></ion-icon> Sign Up
+          </button>
+
+          <a ion-button clear width="150" height="50" href="https://auth0.com/?utm_source=oss&amp;utm_medium=gp&amp;utm_campaign=oss" target="_blank" alt="Single Sign On &amp; Token Based Authentication - Auth0"><img width="150" height="50" alt="JWT Auth for open source projects" src="//cdn.auth0.com/oss/badges/a0-badge-light.png"></a>
+        </div>
+
       </ion-col>
     </ion-row>
   </ion-grid>

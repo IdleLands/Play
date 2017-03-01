@@ -27,7 +27,7 @@ import { Item } from '../models';
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col *ngFor="let stat of stats" padding-left>
+          <ion-col *ngFor="let stat of stats" padding-left col-6 col-sm-4 col-md-2>
             <stat [stat]="stat" [value]="item[stat]" showColor="true"></stat>
           </ion-col>
         </ion-row>

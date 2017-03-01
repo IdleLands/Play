@@ -14,10 +14,10 @@ import { Component, OnInit } from '@angular/core';
   ],
   template: `
     <ion-row>
-      <ion-col width-75 padding-left class="header">
+      <ion-col col-9 padding-left class="header">
         <h2>Latest News</h2>
       </ion-col>
-      <ion-col text-right padding-right>
+      <ion-col col-3 text-right padding-right>
        <button ion-button outline icon-left small (click)="refresh()"><ion-icon name="refresh"></ion-icon> Refresh</button>
       </ion-col>
     </ion-row>
