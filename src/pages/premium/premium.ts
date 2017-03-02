@@ -44,7 +44,7 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
   }
 
   festivalBonus(festivalBonuses) {
-    return _.map(_.keys(festivalBonuses), key => `${key.toUpperCase()}: ${festivalBonuses[key] * 100}`);
+    return _.map(_.keys(festivalBonuses), key => `${key.toUpperCase()} +${festivalBonuses[key] * 100} `);
   }
 
   setPremium(premium) {
