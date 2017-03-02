@@ -6,6 +6,13 @@ $gray-fg: #ccc;
 
 .theme-dark {
 
+  &.modal {
+    .scroll-content {
+      background-color: $gray;
+      color: $gray-fg;
+    }
+  }
+
   .xp-circle {
     circle {
       stroke: $new-light !important;

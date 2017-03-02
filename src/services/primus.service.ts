@@ -11,7 +11,8 @@ import { BehaviorSubject } from 'rxjs';
 import { LocalStorageService } from 'ng2-webstorage';
 
 import { AppState, Auth, Logger } from './';
-import {AdventureLog} from "../models/adventurelog";
+
+import { AdventureLog } from '../models/adventurelog';
 
 export const settings = _.includes(window.location.hostname, 'idle.land') ?
   { port: 80, protocol: 'http', hostname: 'game.idle.land' } :
@@ -372,5 +373,9 @@ export class Primus {
 
   changeTitle(title) {
     this._emit('plugin:player:changetitle', { title });
+  }
+
+  buyIlp(ilpBuy) {
+    this._emit('plugin:premium:buyilp', { ilpBuy });
   }
 }

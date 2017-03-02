@@ -6,7 +6,45 @@
 
 </ion-header>
 
-
 <ion-content padding>
+  <ion-grid>
+    <ion-row wrap>
 
+      <ion-col col-12 col-md>
+        <ion-card>
+          <ion-card-header>Gold -> ILP</ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngFor="let ilpGoldMargin of ilpGoldMargins">
+                {{ ilpGoldMargin | number }} ILP
+
+                <button item-right ion-button small color="primary"
+                        [disabled]="player.gold < premium.conversionRate * ilpGoldMargin"
+                        (click)="buyIlp(ilpGoldMargin)">
+                  Buy for {{ premium.conversionRate * ilpGoldMargin | number }} gold
+                </button>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-12 col-md>
+        <ion-card>
+          <ion-card-header>$ -> ILP</ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngFor="let ilpGoldMargin of ilpGoldMargins">
+                Unimplemented
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row wrap>
+
+    </ion-row>
+  </ion-grid>
 </ion-content>

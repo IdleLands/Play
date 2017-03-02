@@ -4,6 +4,12 @@ $new-light: map-get($colors, light);
 
 .theme-blackwhite {
 
+  &.modal {
+    .scroll-content {
+      background-color: #fff;
+    }
+  }
+
   .xp-circle {
     circle {
       stroke: $new-light !important;

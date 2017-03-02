@@ -113,6 +113,7 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
 
   buyPet(petType) {
     this.alertCtrl.create({
+      cssClass: this.primus.theme,
       title: 'Adopt Pet',
       message: `What would you like to call your pet ${petType}?`,
       inputs: [{
@@ -152,8 +153,9 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
     const maxGold = Math.min(Math.ceil(neededXp / xpPerGold), totalGold);
 
     this.alertCtrl.create({
+      cssClass: this.primus.theme,
       title: 'Feed your pet',
-      message: `Your pet gains ${xpPerGold} xp per gold spend and needs ${neededXp} to level up. You have ${totalGold} gold and can spend ${maxGold} maximum.`,
+      message: `Your pet gains ${xpPerGold.toLocaleString()} xp per gold spend and needs ${neededXp.toLocaleString()} to level up. You have ${totalGold.toLocaleString()} gold and can spend ${maxGold.toLocaleString()} maximum.`,
       inputs: [{
         name: 'gold',
         type: 'number',
