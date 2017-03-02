@@ -14,6 +14,11 @@ $new-light: map-get($colors, light);
     }
   }
 
+  ion-card-header {
+    background-color: $new-primary !important;
+    color: $new-light;
+  }
+
   a {
     color: $new-primary;
   }
@@ -26,8 +31,8 @@ $new-light: map-get($colors, light);
     background-color: $new-primary;
   }
 
-  .button-clear-md {
-    color: $new-primary;
+  .button-clear-md, .alert-button {
+    color: $new-primary !important;
   }
 
   .button-outline-md {
@@ -50,6 +55,29 @@ $new-light: map-get($colors, light);
   .checkbox-md .checkbox-checked {
     border-color: $new-primary;
     background-color: $new-primary;
+  }
+
+  .alert-wrapper {
+
+    .alert-head {
+      background-color: $new-primary !important;
+      color: $new-light;
+    }
+
+    [aria-checked=true] {
+
+      .alert-radio-icon {
+        border-color: $new-primary;
+      }
+
+      .alert-radio-label {
+        color: $new-primary;
+      }
+
+      .alert-radio-inner {
+        background-color: $new-primary;
+      }
+    }
   }
 
   .tabbar {
