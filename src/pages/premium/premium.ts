@@ -1,4 +1,4 @@
-// import * as _ from 'lodash';
+import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController } from 'ionic-angular';
@@ -6,7 +6,7 @@ import { NavController } from 'ionic-angular';
 import { AppState, Primus } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
-import { Premium } from '../../models';
+import { Premium, Festival } from '../../models';
 
 @Component({
   selector: 'page-premium',
@@ -18,6 +18,9 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
 
   premium$: any;
   premium: Premium = new Premium();
+
+  festivals$: any;
+  festivals: Festival[];
 
   constructor(
     public appState: AppState,
@@ -31,12 +34,17 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
     super.ngOnInit();
 
     this.premium$ = this.appState.premium.subscribe(data => this.setPremium(data));
+    this.festivals$ = this.appState.festivals.subscribe(data => this.festivals = data);
   }
 
   ngOnDestroy() {
     super.ngOnDestroy();
 
     this.premium$.unsubscribe();
+  }
+
+  festivalBonus(festivalBonuses) {
+    return _.map(_.keys(festivalBonuses), key => `${key.toUpperCase()}: ${festivalBonuses[key] * 100}`);
   }
 
   setPremium(premium) {
@@ -46,6 +54,10 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
 
   buyIlp(ilpToBuy: number) {
     this.primus.buyIlp(ilpToBuy);
+  }
+
+  buyIlpItem(item: string) {
+    this.primus.buyIlpItem(item);
   }
 
 }

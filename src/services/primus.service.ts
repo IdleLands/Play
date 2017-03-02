@@ -378,4 +378,8 @@ export class Primus {
   buyIlp(ilpBuy) {
     this._emit('plugin:premium:buyilp', { ilpBuy });
   }
+
+  buyIlpItem(itemName) {
+    this._emit('plugin:premium:buyilpitem', { itemName });
+  }
 }
