@@ -5,7 +5,7 @@ import { Component, ViewChild } from '@angular/core';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
-import { LocalStorageService } from 'ng2-webstorage';
+import { LocalStorageService, LocalStorage } from 'ng2-webstorage';
 
 import { AppState, Primus } from '../services';
 
@@ -29,7 +29,8 @@ import {
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  theme: string = 'default';
+  @LocalStorage()
+  theme: string;
   showSideMenu: boolean;
 
   rootPage: any = HomePage;
@@ -71,6 +72,8 @@ export class MyApp {
       Splashscreen.hide();
     });
 
+    if(!this.theme) this.theme = 'default';
+
     this.state.showSideMenu.subscribe(isLoggedIn => {
       this.showSideMenu = isLoggedIn;
     });
@@ -103,11 +106,6 @@ export class MyApp {
       if(!data.name) return;
       this.hasPet = true;
     });
-
-    this.storage.observe('theme')
-      .subscribe(theme => {
-        this.theme = theme || 'default';
-      });
   }
 
   clickStatus() {

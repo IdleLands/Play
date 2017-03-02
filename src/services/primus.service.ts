@@ -36,6 +36,10 @@ export class Primus {
     this.watchForLogins();
   }
 
+  get theme() {
+    return `theme-${this.storage.retrieve('theme')}`;
+  }
+
   watchForLogins() {
     this.appState.loggedIn.subscribe(data => {
       if(!data) return;

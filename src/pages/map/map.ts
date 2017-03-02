@@ -54,7 +54,7 @@ export class MapPage extends PlayComponent implements OnInit, OnDestroy {
 
   loadPersonalities($event) {
     this.popCtrl
-      .create(PersonalityPopover, {}, { showBackdrop: false, enableBackdropDismiss: false })
+      .create(PersonalityPopover, {}, { cssClass: this.primus.theme, showBackdrop: false, enableBackdropDismiss: false })
       .present({ ev: $event });
   }
 
