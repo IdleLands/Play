@@ -3811,12 +3811,223 @@ ion-icon {
   src: local("Noto Sans Bold"), local("Noto-Sans-Bold"), url("../assets/fonts/noto-sans-bold.woff") format("woff"), url("../assets/fonts/noto-sans-bold.ttf") format("truetype");
 }
 
+.theme-default.modal .scroll-content {
+  background-color: #fff;
+}
+
 .theme-default .xp-circle circle {
   stroke: #21b94e !important;
 }
 
 .theme-default .xp-circle path {
   stroke: #116329 !important;
+}
+
+.theme-blackwhite.modal .scroll-content {
+  background-color: #fff;
+}
+
+.theme-blackwhite .xp-circle circle {
+  stroke: #f4f4f4 !important;
+}
+
+.theme-blackwhite .xp-circle path {
+  stroke: #222 !important;
+}
+
+.theme-blackwhite ion-card-header {
+  background-color: #222 !important;
+  color: #f4f4f4;
+}
+
+.theme-blackwhite a {
+  color: #222;
+}
+
+.theme-blackwhite .item-md-playercard {
+  background-color: #222;
+}
+
+.theme-blackwhite .item-md-petcard {
+  background-color: #222;
+}
+
+.theme-blackwhite .button-clear-md, .theme-blackwhite .alert-button {
+  color: #222 !important;
+}
+
+.theme-blackwhite .button-outline-md {
+  border-color: #222;
+  color: #222;
+}
+
+.theme-blackwhite .toolbar-background-md {
+  background: #222 !important;
+}
+
+.theme-blackwhite .item-md-extradata {
+  background: #222 !important;
+}
+
+.theme-blackwhite .bar-button-solid-md-primary, .theme-blackwhite .button-md-primary, .theme-blackwhite .badge-md {
+  background-color: #3c3c3c !important;
+}
+
+.theme-blackwhite .checkbox-md .checkbox-checked {
+  border-color: #222;
+  background-color: #222;
+}
+
+.theme-blackwhite .alert-wrapper .alert-head {
+  background-color: #222 !important;
+  color: #f4f4f4;
+}
+
+.theme-blackwhite .alert-wrapper [aria-checked=true] .alert-radio-icon {
+  border-color: #222;
+}
+
+.theme-blackwhite .alert-wrapper [aria-checked=true] .alert-radio-label {
+  color: #222;
+}
+
+.theme-blackwhite .alert-wrapper [aria-checked=true] .alert-radio-inner {
+  background-color: #222;
+}
+
+.theme-blackwhite .tabbar {
+  background: #222 !important;
+}
+
+.theme-blackwhite .tabbar .tab-button {
+  color: #f4f4f4;
+}
+
+.theme-blackwhite .tabbar .tab-button[aria-selected=true] {
+  color: white;
+}
+
+.theme-blackwhite .tabbar .tab-button[aria-selected=true] .tab-button-icon {
+  color: #f4f4f4;
+}
+
+.theme-dark.modal .scroll-content {
+  background-color: #373a3c;
+  color: #ccc;
+}
+
+.theme-dark .xp-circle circle {
+  stroke: #f4f4f4 !important;
+}
+
+.theme-dark .xp-circle path {
+  stroke: #222 !important;
+}
+
+.theme-dark ion-content {
+  color: #ccc;
+  background-color: #373a3c;
+}
+
+.theme-dark a {
+  color: #ccc;
+}
+
+.theme-dark .item-md {
+  color: #ccc;
+  background-color: #373a3c;
+}
+
+.theme-dark .card-md {
+  background: #373a3c;
+}
+
+.theme-dark .card-md h1, .theme-dark .card-md h2, .theme-dark .card-md h3, .theme-dark .card-md h4, .theme-dark .card-md h5, .theme-dark .card-md h6, .theme-dark .card-md p, .theme-dark .card-md .card-header-md {
+  color: #ccc;
+}
+
+.theme-dark .item-md-playercard {
+  background-color: #222;
+}
+
+.theme-dark .item-md-petcard {
+  background-color: #222;
+}
+
+.theme-dark .button-clear-md {
+  color: #ccc;
+}
+
+.theme-dark .button-clear-md:hover:not(.disable-hover) {
+  color: #ccc;
+}
+
+.theme-dark .button-outline-md {
+  border-color: #f4f4f4;
+  color: #f4f4f4;
+}
+
+.theme-dark .toolbar-background-md {
+  background: #222 !important;
+}
+
+.theme-dark .item-md-extradata {
+  background: #222 !important;
+}
+
+.theme-dark .bar-button-solid-md-primary, .theme-dark .button-md-primary, .theme-dark .badge-md {
+  background-color: #3c3c3c !important;
+}
+
+.theme-dark .checkbox-md .checkbox-checked {
+  border-color: #222;
+  background-color: #222;
+}
+
+.theme-dark .tabbar {
+  background: #222 !important;
+}
+
+.theme-dark .tabbar .tab-button {
+  color: #f4f4f4;
+}
+
+.theme-dark .tabbar .tab-button[aria-selected=true] {
+  color: white;
+}
+
+.theme-dark .tabbar .tab-button[aria-selected=true] .tab-button-icon {
+  color: #f4f4f4;
+}
+
+.theme-dark .popover-content {
+  background-color: #373a3c !important;
+}
+
+.theme-dark .alert-wrapper {
+  background-color: #373a3c !important;
+  color: #ccc;
+}
+
+.theme-dark .alert-wrapper .button-inner {
+  color: #ccc;
+}
+
+.theme-dark .alert-wrapper .button-inner .alert-radio-icon {
+  color: #ccc;
+  border-color: #ccc;
+}
+
+.theme-dark .alert-wrapper .button-inner .alert-radio-label {
+  color: #ccc;
+}
+
+.theme-dark .alert-wrapper [aria-checked=true] .alert-radio-inner {
+  background-color: #f4f4f4;
+}
+
+.theme-dark .background-icon {
+  color: black !important;
 }
 
 ion-action-sheet {
