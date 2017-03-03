@@ -17,12 +17,12 @@
           <ion-card-content>
             <ion-row>
               <ion-col class="size-150">
-                <stat stat="hp" [value]="player.statCache.hp"></stat>
+                <stat stat="hp" [value]="player._hp.__current"></stat>
               </ion-col>
             </ion-row>
             <ion-row>
               <ion-col class="size-150">
-                <stat stat="mp" [value]="player.statCache.mp"></stat>
+                <stat stat="mp" [value]="player._mp.__current"></stat>
               </ion-col>
             </ion-row>
             <ion-row>
@@ -44,6 +44,15 @@
               </ion-col>
             </ion-row>
           </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="party">
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Party</ion-card-header>
+          <ion-card-content>{{ party | json }}</ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
@@ -106,7 +115,7 @@
                 <ion-grid no-padding>
                   <ion-row no-padding>
                     <ion-col col-xs-4 col-md-2 true-center text-center>
-                      <advlog-icon [icon]="item.category" class="size-400"></advlog-icon>
+                      <advlog-icon [icon]="item.category" class="size-300"></advlog-icon>
                     </ion-col>
                     <ion-col col-xs-8 col-md-10>
                       <ion-note>

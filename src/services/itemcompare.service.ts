@@ -62,7 +62,13 @@ import { Theme } from './theme.service';
     
     <ion-row>
       <ion-col *ngFor="let stat of stats">
-        <span [class.positive]="newItem[stat] > currentItem[stat]" [class.negative]="newItem[stat] < currentItem[stat]">{{ newItem[stat] | number }}</span>
+        <span>{{ newItem[stat] | number }}</span>
+      </ion-col>
+    </ion-row>
+    
+    <ion-row>
+      <ion-col *ngFor="let stat of stats">
+        <span [class.positive]="newItem[stat] > currentItem[stat]" [class.negative]="newItem[stat] < currentItem[stat]">{{ newItem[stat] - currentItem[stat] | number }}</span>
       </ion-col>
     </ion-row>
     

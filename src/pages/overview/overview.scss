@@ -2,12 +2,17 @@ page-overview {
 
   .choice-card {
     ion-card-content {
-      min-height: 100px;
+      min-height: 80px;
     }
   }
 
   .adventure-log {
     max-height: 500px;
     overflow-y: auto;
+
+    ion-label {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 }

@@ -285,6 +285,12 @@ export class Primus {
     });
   }
 
+  requestParty(): void {
+    this.loggedIn$.subscribe(() => {
+      this._emit('plugin:player:request:party');
+    });
+  }
+
   checkIfExists(): Promise<any> {
     return new Promise((resolve, reject) => {
       const profile = this.storage.retrieve('profile');

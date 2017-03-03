@@ -20,8 +20,10 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
   public choices = [];
 
   public adventureLog$: any;
-
   public adventureLog: AdventureLog[] = [];
+
+  party$: any;
+  public party: any;
 
   constructor(
     public appState: AppState,
@@ -48,7 +50,12 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
       this.storage.store('adventureLog', this.adventureLog);
     });
 
+    this.party$ = this.appState.party.subscribe(data => {
+      this.party = data;
+    });
+
     this.primus.requestEquipment();
+    this.primus.requestParty();
   }
 
   ngOnDestroy() {
