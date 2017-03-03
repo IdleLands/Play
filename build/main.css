@@ -8944,7 +8944,7 @@ ion-card-content {
 }
 
 .card-header-md {
-  padding: 16px;
+  padding: 8px;
   font-size: 1.6rem;
   color: #222;
 }
@@ -39544,6 +39544,15 @@ ion-navbar.toolbar {
 
 ion-list {
   margin-top: 0 !important;
+}
+
+.vertical-center {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .transparent-menu {
