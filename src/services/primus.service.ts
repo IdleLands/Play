@@ -291,6 +291,10 @@ export class Primus {
     });
   }
 
+  loadBattle(battleName): void {
+    this._emit('plugin:combat:retrieve', { battleName });
+  }
+
   checkIfExists(): Promise<any> {
     return new Promise((resolve, reject) => {
       const profile = this.storage.retrieve('profile');

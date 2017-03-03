@@ -8,6 +8,8 @@ import { LocalStorageService } from 'ng2-webstorage';
 import { AppState, Primus, ItemCompare, ItemInfo } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
+import { BattlePage } from '../';
+
 import { AdventureLog } from '../../models';
 
 @Component({
@@ -107,7 +109,7 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
   }
 
   viewBattle(id) {
-
+    this.navCtrl.push(BattlePage, { battleName: id });
   }
 
 }

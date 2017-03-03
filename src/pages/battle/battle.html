@@ -1,7 +1,7 @@
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Battle</ion-title>
+  <ion-navbar color="primary">
+    <ion-title>Battle Log</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,4 +9,63 @@
 
 <ion-content padding>
 
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <h1>{{ battle.name || 'Loading...' }}</h1>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col text-center>
+        <ion-note>{{ battle.happenedAt | amTimeAgo }}</ion-note>
+      </ion-col>
+    </ion-row>
+
+    <ion-row wrap>
+      <ion-col col-md col-6 *ngFor="let party of battle.parties">
+        <ion-card>
+          <ion-card-header>{{ party.name }}</ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngFor="let member of party.players">
+                <h2>{{ member.name }}</h2>
+                <p>Level {{ member.level }} {{ member.profession }}</p>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="battle.messageData.length > 0">
+      <ion-col>
+        <ion-list>
+          <ion-item text-wrap *ngFor="let message of battle.messageData">
+            <h3>{{ message.message }}</h3>
+
+            <div *ngIf="message.data">
+              <ion-row *ngFor="let party of message.data">
+                <ion-card>
+                  <ion-card-header>{{ party.name }}</ion-card-header>
+                  <ion-card-content>
+                    <ion-list>
+                      <ion-item text-wrap *ngFor="let member of party.players">
+                        <h2>{{ member.name }} (Level {{ member.level }} {{ member.profession }})</h2>
+                        <h3>
+                          <span>HP: {{ member.hp.__current | number }}/{{ member.hp.maximum | number }}</span>,
+                          <span>MP: {{ member.mp.__current | number }}/{{ member.mp.maximum | number }}</span>
+                          <span *ngIf="member.special && member.special.name">, {{ member.special.name }}: {{ member.special.__current | number }}/{{ member.special.maximum | number }}</span>
+                        </h3>
+                      </ion-item>
+                    </ion-list>
+                  </ion-card-content>
+                </ion-card>
+              </ion-row>
+            </div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
