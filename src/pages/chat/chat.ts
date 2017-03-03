@@ -113,7 +113,10 @@ export class ChatPage extends PlayComponent implements OnInit, OnDestroy {
 
     const isPm = _.includes(message.route, ':pm:');
 
-    if(!this.isChannelActive(channel) && !message.hidden && (isPm || message.timestamp > this.lastMessageSeen)) {
+    if(!this.isChannelActive(channel)
+    && !message.hidden
+    && (this.player.name && message.playerName !== this.player.name)
+    && (isPm || message.timestamp > this.lastMessageSeen)) {
       this.incrementMissedMessages(message.route);
 
       if(isPm) {

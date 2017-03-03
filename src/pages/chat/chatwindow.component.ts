@@ -10,7 +10,7 @@ import { AppState, Primus } from '../../services';
 
 import { Player, ChatMessage } from '../../models';
 
-const AUTOSCROLL_THRESHOLD = 100;
+const AUTOSCROLL_THRESHOLD = 200;
 
 @Component({
   selector: 'chat-window',
@@ -44,10 +44,6 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     this.chatMessages$ = this.appState.chatMessages.subscribe(data => this.receiveMessage(data));
     this.baseHeight = this.outputWindow.nativeElement.scrollHeight;
-
-    setTimeout(() => {
-      this.scrollToBottom();
-    });
   }
 
   ngOnDestroy() {
@@ -89,7 +85,7 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
 
   scrollToBottom() {
     this.showScrollButton = false;
-    this.outputWindow.nativeElement.scrollTop = this.outputWindow.nativeElement.scrollHeight;
+    this.outputWindow.nativeElement.scrollTop = this.outputWindow.nativeElement.scrollHeight + AUTOSCROLL_THRESHOLD;
   }
 
   saveLog() {
@@ -107,6 +103,8 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
     this.channelUpdate.emit(message);
 
     this.saveLog();
+
+    if(message.route !== this.channel.route) return;
 
     if(this.atBottomish()) {
       this.showScrollButton = false;

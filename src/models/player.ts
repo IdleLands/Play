@@ -13,7 +13,7 @@ export class Choice {
 }
 
 export class Player {
-  name: string = '???';
+  name: string = '';
   nameEdit: string;
 
   title: string;

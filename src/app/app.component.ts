@@ -79,9 +79,7 @@ export class MyApp {
     if(!this.theme) this.theme = 'default';
 
     this.state.showSideMenu.subscribe(isLoggedIn => {
-      setTimeout(() => {
-        this.showSideMenu = isLoggedIn;
-      });
+      this.showSideMenu = isLoggedIn;
     });
 
     this.subscribeForExtraContentChanges();
