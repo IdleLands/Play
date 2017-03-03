@@ -133,4 +133,8 @@ $gray-fg: #ccc;
   .background-icon {
     color: darken($gray, 50%) !important;
   }
+
+  .chat-message {
+    color: $gray-fg;
+  }
 }

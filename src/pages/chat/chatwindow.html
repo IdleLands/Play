@@ -8,7 +8,7 @@
         <span>{{ message.playerName }}</span><span *ngIf="message.title">, the {{ message.title }}</span>
         <small>{{ message.timestamp | amTimeAgo }}</small>
       </h2>
-      <p [innerHTML]="message.text | linkify"></p>
+      <p class="chat-message" [innerHTML]="message.text | linkify"></p>
     </ion-item>
   </ion-list>
 
