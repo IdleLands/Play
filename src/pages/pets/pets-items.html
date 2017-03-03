@@ -6,11 +6,11 @@
         <ion-card>
           <ion-card-header>Pet Equipment</ion-card-header>
           <ion-card-content>
-            <ion-row *ngFor="let item of petEquipment">
-              <ion-col>
+            <ion-list>
+              <ion-item *ngFor="let item of petEquipment">
                 <item [item]="item"></item>
-              </ion-col>
-            </ion-row>
+              </ion-item>
+            </ion-list>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -21,11 +21,11 @@
         <ion-card>
           <ion-card-header>Pet Inventory ({{ petactive.inventory.length }}/{{ petactive.$scale.inventory[petactive.scaleLevel.inventory] }})</ion-card-header>
           <ion-card-content>
-            <ion-row *ngFor="let item of petactive.inventory">
-              <ion-col>
+            <ion-list>
+              <ion-item *ngFor="let item of petactive.inventory">
                 <item [item]="item"></item>
-              </ion-col>
-            </ion-row>
+              </ion-item>
+            </ion-list>
           </ion-card-content>
         </ion-card>
       </ion-col>
