@@ -39560,6 +39560,10 @@ ion-list {
   pointer-events: none;
 }
 
+.transparent-menu .popover-content {
+  pointer-events: visiblepainted;
+}
+
 page-achievements .achievement-card {
   position: relative;
   z-index: 10;
