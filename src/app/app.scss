@@ -108,4 +108,8 @@ ion-list {
 .transparent-menu {
   opacity: 0.7;
   pointer-events: none;
+
+  .popover-content {
+    pointer-events: visiblepainted;
+  }
 }
