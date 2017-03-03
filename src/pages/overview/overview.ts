@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 import { LocalStorageService } from 'ng2-webstorage';
@@ -24,6 +24,8 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
 
   party$: any;
   public party: any;
+
+  @ViewChild('choiceSlides') public choiceSlides;
 
   constructor(
     public appState: AppState,

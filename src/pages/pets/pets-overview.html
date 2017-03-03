@@ -5,13 +5,20 @@
       <ion-col>
         <ion-card>
           <ion-card-header no-padding padding-left padding-top padding-right>
-            <ion-row>
-              <ion-col>
-                <span>Pets</span>
-                <ion-note>Swipe or use arrow keys to navigate</ion-note>
+            <ion-row no-padding>
+              <ion-col no-padding class="vertical-center">
+                <span>Choice Log</span>
+                <ion-note padding-left>Swipe or use arrow keys to navigate</ion-note>
               </ion-col>
-              <ion-col text-right>
+
+              <ion-col no-padding text-right>
                 <button no-margin ion-button small clear (click)="hidePets = !hidePets">Toggle</button>
+                <button ion-button small icon-only color="primary" (click)="petSlides.slidePrev()" *ngIf="petbasic.length > 3">
+                  <ion-icon name="arrow-back"></ion-icon>
+                </button>
+                <button ion-button small icon-only color="primary" (click)="petSlides.slideNext()" *ngIf="petbasic.length > 3">
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </button>
               </ion-col>
             </ion-row>
 
@@ -29,7 +36,7 @@
               </ion-slide>
             </ion-slides>
 
-            <ion-slides [class.hidden]="petbasic.length === 0" slidesPerView="3">
+            <ion-slides [class.hidden]="petbasic.length === 0" slidesPerView="3" #petSlides>
               <ion-slide *ngFor="let petOption of petbasic">
                 <ion-card class="pet-card">
 

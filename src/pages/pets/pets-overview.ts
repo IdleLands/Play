@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 
 import { AppState, Primus, ItemInfo, Theme } from '../../services';
@@ -20,6 +20,8 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
 
   @LocalStorage()
   public hidePets: boolean;
+
+  @ViewChild('petSlides') public petSlides;
 
   petbasic$: any;
   petbasic: PetBasic[] = [];

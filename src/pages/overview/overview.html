@@ -71,7 +71,24 @@
     <ion-row>
       <ion-col>
         <ion-card>
-          <ion-card-header>Choice Log <ion-note>Swipe or use arrow keys to navigate</ion-note></ion-card-header>
+          <ion-card-header>
+            <ion-row no-padding>
+              <ion-col no-padding class="vertical-center">
+                <span>Choice Log</span>
+                <ion-note padding-left>Swipe or use arrow keys to navigate</ion-note>
+              </ion-col>
+
+              <ion-col no-padding text-right *ngIf="choices.length > 3">
+                <button ion-button small icon-only color="primary" (click)="choiceSlides.slidePrev()">
+                  <ion-icon name="arrow-back"></ion-icon>
+                </button>
+                <button ion-button small icon-only color="primary" (click)="choiceSlides.slideNext()">
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+
+          </ion-card-header>
           <ion-card-content no-padding>
 
             <ion-slides [class.hidden]="choices.length > 0">
@@ -84,7 +101,7 @@
               </ion-slide>
             </ion-slides>
 
-            <ion-slides [class.hidden]="choices.length === 0" slidesPerView="3">
+            <ion-slides [class.hidden]="choices.length === 0" slidesPerView="3" #choiceSlides>
               <ion-slide *ngFor="let choice of choices; let i = index">
                 <ion-card class="choice-card">
                   <ion-card-header>
