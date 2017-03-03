@@ -1,7 +1,7 @@
 
 <div class="output-window" #outputWindow>
-  <ion-list>
-    <ion-item text-wrap *ngFor="let message of chatLog | currentChannel:channel.route">
+  <ion-list [virtualScroll]="chatLog | currentChannel:channel.route">
+    <ion-item text-wrap *virtualItem="let message">
       <h2>
         <ascension-level [level]="message.ascensionLevel"></ascension-level>
         <ion-icon *ngIf="message.isMod" name="star"></ion-icon>
