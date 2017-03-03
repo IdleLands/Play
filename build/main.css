@@ -3975,8 +3975,9 @@ ion-icon {
   background: #222 !important;
 }
 
-.theme-dark .bar-button-solid-md-primary, .theme-dark .button-md-primary, .theme-dark .badge-md {
+.theme-dark .bar-button-solid-md-primary, .theme-dark .button-md-primary, .theme-dark .badge-md, .theme-dark .bar-button-default-md, .theme-dark .bar-button-md-primary {
   background-color: #3c3c3c !important;
+  color: #ccc !important;
 }
 
 .theme-dark .checkbox-md .checkbox-checked {
@@ -38932,6 +38933,12 @@ ion-navbar.toolbar {
   align-items: center;
 }
 
+.space-around {
+  -webkit-justify-content: space-around;
+  -ms-flex-pack: distribute;
+  justify-content: space-around;
+}
+
 .max-space {
   width: 100%;
   height: 100%;
@@ -38965,6 +38972,41 @@ page-achievements .achievement-card .background-icon {
 
 page-achievements .achievement-card ion-card-content {
   min-height: 100px;
+}
+
+page-chat .chat-container {
+  width: 100%;
+  height: 100%;
+}
+
+page-chat .chat-user {
+  padding-left: 0;
+}
+
+chat-window {
+  height: 100%;
+}
+
+chat-window .output-window {
+  height: calc(100% - 42px);
+  overflow-y: auto;
+  position: relative;
+}
+
+chat-window .output-window .scroll-button {
+  position: fixed;
+  right: 10px;
+  bottom: 50px;
+}
+
+chat-window .input-window {
+  height: 42px;
+  border-top: 1px solid #dedede;
+}
+
+chat-window .input-window .send-button {
+  height: 100%;
+  margin: 0;
 }
 
 page-collectibles .faded {
