@@ -17,20 +17,34 @@
 
       <ion-content>
         <ion-list class="sidenav-list">
+
           <ion-item color="playercard">
             <player-card></player-card>
           </ion-item>
+
           <ion-item color="petcard" *ngIf="hasPet">
             <pet-card></pet-card>
           </ion-item>
+
           <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" [color]="activePage === p.title ? 'extradata' : ''">
             <ion-row no-padding>
               <ion-col width-10 no-padding>
                 <ion-icon [name]="p.icon"></ion-icon>
               </ion-col>
               <ion-col no-padding>
-                <div>{{ p.title }}</div>
-                <div *ngIf="activePageData && activePage === p.title" [innerHtml]="activePageData"></div>
+                <h3>{{ p.title }}</h3>
+                <p *ngIf="activePageData && activePage === p.title" [innerHtml]="activePageData"></p>
+              </ion-col>
+            </ion-row>
+          </button>
+
+          <button ion-item (click)="logout()">
+            <ion-row no-padding>
+              <ion-col width-10 no-padding>
+                <ion-icon name="log-out"></ion-icon>
+              </ion-col>
+              <ion-col no-padding>
+                <h3>Log out</h3>
               </ion-col>
             </ion-row>
           </button>

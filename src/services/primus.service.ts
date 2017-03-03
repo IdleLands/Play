@@ -85,7 +85,7 @@ export class Primus {
       this.socket.emit(event, data);
     };
 
-    if(!this.auth.authenticated) {
+    if(!data.skipRenew && !this.auth.authenticated) {
       this.auth.renew().then(next);
       return;
     }
@@ -245,7 +245,8 @@ export class Primus {
   disconnectSocket(): void {
     if(!this.socket) return;
 
-    this._emit('plugin:player:logout');
+    this._emit('plugin:player:logout', { skipRenew: true });
+    this.socket = null;
   }
 
   requestNoKill(): void {
