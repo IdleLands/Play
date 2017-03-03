@@ -10,14 +10,14 @@ import { Player } from '../models';
     :host round-progress {
       position: absolute;
       left: 1rem;
-      top: 3.5rem;
+      top: 4rem;
     }
   `],
   template: `
   <ion-grid>
     <ion-row>
       <ion-col width-20 class="true-center">
-        <!-- <round-progress class="xp-circle" [radius]="25" [stroke]="5" [current]="player._xp.__current" [max]="player._xp.maximum"></round-progress> -->
+        <round-progress class="xp-circle" [radius]="25" [stroke]="5" [current]="player._xp.__current" [max]="player._xp.maximum"></round-progress>
         <gendervatar [gender]="player.gender"></gendervatar>
       </ion-col>
      
