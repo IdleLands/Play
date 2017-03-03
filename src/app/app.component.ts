@@ -44,15 +44,18 @@ export class MyApp {
   public currentStatusString = 'IdleLands';
   private clicks = 0;
 
-  pages: Array<{title: string, icon: string, component: any, extraContent?: Function}> = [
-    { title: 'Overview',      icon: 'body',       component: OverviewPage },
+  public choices: number = 0;
+  public latestMessages: number = 0;
+
+  pages: Array<{title: string, icon: string, component: any, extraContent?: Function, showBadge?: Function, badge?: Function}> = [
+    { title: 'Overview',      icon: 'body',       component: OverviewPage, showBadge: () => this.choices > 0, badge: () => this.choices },
     { title: 'Map',           icon: 'globe',      component: MapPage },
     { title: 'Equipment',     icon: 'shirt',      component: EquipmentPage },
     { title: 'Achievements',  icon: 'ribbon',     component: AchievementsPage },
     { title: 'Collectibles',  icon: 'magnet',     component: CollectiblesPage },
     { title: 'Statistics',    icon: 'analytics',  component: StatisticsPage },
     { title: 'Pets',          icon: 'nutrition',  component: PetsPage },
-    { title: 'Chat',          icon: 'chatboxes',  component: ChatPage },
+    { title: 'Chat',          icon: 'chatboxes',  component: ChatPage, showBadge: () => this.latestMessages > 0, badge: () => this.latestMessages },
     { title: 'Premium',       icon: 'cash',       component: PremiumPage },
     { title: 'Settings',      icon: 'cog',        component: SettingsPage }
   ];
@@ -103,11 +106,25 @@ export class MyApp {
         this.activePage = 'Pets';
       }
       this.activePageData = data;
+
+      if(this.activePage === 'Chat') {
+        this.latestMessages = 0;
+      }
     });
 
     this.state.petactive.subscribe(data => {
       if(!data.name) return;
       this.hasPet = true;
+    });
+
+    this.state.player.subscribe(data => {
+      this.choices = data.choices.length;
+    });
+
+    const now = Date.now();
+    this.state.chatMessages.subscribe(data => {
+      if(data.hidden || data.timestamp < now || this.activePage === 'Chat') return;
+      this.latestMessages++;
     });
   }
 

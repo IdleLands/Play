@@ -32,7 +32,7 @@
                 <ion-icon [name]="p.icon"></ion-icon>
               </ion-col>
               <ion-col no-padding>
-                <h3>{{ p.title }}</h3>
+                <h3>{{ p.title }} <ion-badge color="secondary" *ngIf="p.showBadge && p.showBadge()">{{ p.badge() }}</ion-badge></h3>
                 <p *ngIf="activePageData && activePage === p.title" [innerHtml]="activePageData"></p>
               </ion-col>
             </ion-row>
