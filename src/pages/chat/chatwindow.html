@@ -1,0 +1,56 @@
+
+<div class="output-window" #outputWindow>
+  <ion-list>
+    <ion-item *ngFor="let message of chatLog | currentChannel:channel.route">
+      <h2>
+        <ascension-level [level]="message.ascensionLevel"></ascension-level>
+        <ion-icon *ngIf="message.isMod" name="star"></ion-icon>
+        <span>{{ message.playerName }}</span>
+        <span *ngIf="message.title">, the {{ message.title }}</span>
+        <small>{{ message.timestamp | amTimeAgo }}</small>
+      </h2>
+      <p>{{ message.text }}</p>
+    </ion-item>
+  </ion-list>
+
+  <button ion-button icon-left color="secondary" class="scroll-button" *ngIf="showScrollButton" (click)="scrollToBottom()">
+    <ion-icon name="arrow-round-down"></ion-icon>
+    Scroll to Bottom
+  </button>
+</div>
+
+<div class="input-window">
+  <form (ngSubmit)="sendMessage()">
+    <ion-row no-padding>
+      <ion-col no-padding col-9>
+        <ion-input [ngModelOptions]="{standalone: true}"
+                   [(ngModel)]="currentMessage"
+                   type="text"
+                   clearInput="true"
+                   [placeholder]="'Send message to ' + channelName(channel)"></ion-input>
+      </ion-col>
+
+      <ion-col no-padding col-3 text-right>
+        <button ion-button
+                icon-left
+                color="primary"
+                big
+                class="send-button"
+                [disabled]="!currentMessage"
+                (click)="sendMessage()">
+          <ion-icon name="send"></ion-icon>
+          Send
+        </button>
+        <button ion-button
+                icon-only
+                color="danger"
+                big
+                class="send-button"
+                *ngIf="channel.route !== 'chat:channel:General'"
+                (click)="doChannelRemove(channel)">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-col>
+    </ion-row>
+  </form>
+</div>

@@ -12,7 +12,7 @@ import { LocalStorageService } from 'ng2-webstorage';
 
 import { AppState, Auth, Logger } from './';
 
-import { AdventureLog } from '../models/adventurelog';
+import { AdventureLog, ChatMessage } from '../models';
 
 export const settings = _.includes(window.location.hostname, 'idle.land') ?
   { port: 80, protocol: 'http', hostname: 'game.idle.land' } :
@@ -34,11 +34,17 @@ export class Primus {
     private toastCtrl: ToastController
   ) {
     this.loadAdventureLog();
+    this.loadChatMessages();
     this.watchForLogins();
   }
 
   get theme() {
     return `theme-${this.storage.retrieve('theme')}`;
+  }
+
+  get playerName() {
+    const player = this.appState.player.getValue();
+    return player.nameEdit || player.name;
   }
 
   watchForLogins() {
@@ -51,6 +57,11 @@ export class Primus {
   loadAdventureLog() {
     const advLog = this.storage.retrieve('adventureLog') || [];
     _.each(advLog.reverse(), item => this.appState.adventureLog.next(item));
+  }
+
+  loadChatMessages() {
+    const chatLog = this.storage.retrieve('chatLog') || [];
+    _.each(chatLog, item => this.appState.chatMessages.next(item));
   }
 
   _handleNotification({ message }): void {
@@ -192,12 +203,18 @@ export class Primus {
     operations[data.playerListOperation]();
   }
 
-  handleChatMessage(message, fromPrimus = false) {
-    const player = this.appState.player.getValue();
-    const playerName = player.nameEdit ? player.nameEdit : player.name;
+  handleChatMessage(message: ChatMessage, fromPrimus = false) {
+    const playerName = this.playerName;
     if(fromPrimus && message.playerName === playerName) return;
     if(!message.timestamp) message.timestamp = Date.now();
     this.appState.chatMessages.next(message);
+  }
+
+  sendChatMessage(messageObject: ChatMessage) {
+    this._emit('plugin:chat:sendmessage', messageObject);
+
+    messageObject.playerName = this.playerName;
+    this.handleChatMessage(messageObject);
   }
 
   handleContentUpdate(content) {

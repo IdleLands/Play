@@ -15,9 +15,12 @@ import { PetCardComponent } from '../components/petcard.component';
 import { PlayerCardComponent } from '../components/playercard.component';
 import { ItemComponent } from '../components/item.component';
 import { AchievementIconComponent } from '../components/achievementicon.component';
+import { GendervatarComponent } from '../components/gendervatar.component';
+import { AscensionLevelComponent } from '../components/ascensionlevel.component';
 
 import { MapRendererComponent } from '../pages/map/map-renderer.component';
 import { StatisticsTreeComponent } from '../pages/statistics/statistics-tree.component';
+import { ChatWindowComponent, CurrentChannelPipe, LinkifyPipe } from '../pages/chat/chatwindow.component';
 
 (<any>window).PIXI = require('pixi.js');
 (<any>window).p2 = require('p2.js');
@@ -76,7 +79,7 @@ const deepLinks: DeepLinkConfig = {
     AchievementsPage,
     CollectiblesPage,
     StatisticsPage,
-    ChatPage,
+    ChatPage, ChatWindowComponent,
     MapPage, PersonalityPopover,
     PetsPage, PetsOverviewPage, PetsItemsPage,
     PremiumPage,
@@ -91,12 +94,17 @@ const deepLinks: DeepLinkConfig = {
     PetCardComponent,
     ItemComponent,
     AchievementIconComponent,
+    GendervatarComponent,
+    AscensionLevelComponent,
 
     MapRendererComponent,
     StatisticsTreeComponent,
 
     AchievementModal,
-    ItemCompareModal
+    ItemCompareModal,
+
+    CurrentChannelPipe,
+    LinkifyPipe
   ],
   imports: [
     MomentModule,

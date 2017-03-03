@@ -4,42 +4,21 @@ import { AppState } from '../services';
 
 import { PetActive } from '../models';
 
-const genderPositions = {
-  blue:                   { x: 2,   y: 1 },
-  male:                   { x: 3,   y: 1 },
-  female:                 { x: 4,   y: 1 },
-  glowcloud:              { x: 8,   y: 6 },
-  'not a bear':           { x: 0,   y: 8 },
-  'astronomical entity':  { x: 1,   y: 8 },
-  'boss monster':         { x: 7,   y: 2 }
-};
-
 @Component({
   selector: 'pet-card',
   styles: [`
     :host round-progress {
       position: absolute;
-    }
-    
-    :host [img-container] {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    :host img {
-      width: 16px;
-      height: 16px;
-      object-fit: none;
-      transform: scale(2, 2);
+      left: 1rem;
+      top: 4.5rem;
     }
   `],
   template: `
   <ion-grid>
     <ion-row>
-      <ion-col width-20 img-container>
+      <ion-col width-20 class="true-center">
         <round-progress class="xp-circle" [radius]="25" [stroke]="5" [current]="pet._xp.__current" [max]="pet._xp.maximum"></round-progress>
-        <img src="http://game.idle.land/maps/img/tiles.png" [style.object-position]="imgStyleFit()">
+        <gendervatar [gender]="pet.gender"></gendervatar>
       </ion-col>
      
       <ion-col width-80>
@@ -73,11 +52,6 @@ export class PetCardComponent implements OnInit, OnDestroy {
 
   currentXp(): number {
     return ~~(this.pet._xp.__current / this.pet._xp.maximum);
-  }
-
-  imgStyleFit(): string {
-    const pos = genderPositions[this.pet.gender] || { x: 5, y: 1 };
-    return `-${pos.x*16}px -${pos.y*16}px`;
   }
 
   ngOnInit() {
