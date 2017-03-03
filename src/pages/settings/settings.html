@@ -17,14 +17,14 @@
           <ion-list>
             <ion-item>
               <ion-label stacked>Gender</ion-label>
-              <ion-select [(ngModel)]="player.gender" [selectOptions]="{ cssClass: theme.currentTheme }" (ionChange)="changeGender($event)">
+              <ion-select [(ngModel)]="player.gender" [selectOptions]="{ cssClass: 'theme-' + theme }" (ionChange)="changeGender($event)">
                 <ion-option *ngFor="let gender of genders">{{ gender }}</ion-option>
               </ion-select>
             </ion-item>
 
             <ion-item>
               <ion-label stacked>Title</ion-label>
-              <ion-select [(ngModel)]="player.title" [selectOptions]="{ cssClass: theme.currentTheme }" (ionChange)="changeTitle($event)">
+              <ion-select [(ngModel)]="player.title" [selectOptions]="{ cssClass: 'theme-' + theme }" (ionChange)="changeTitle($event)">
                 <ion-option value="">None</ion-option>
                 <ion-option *ngFor="let title of titles">{{ title }}</ion-option>
               </ion-select>
@@ -55,7 +55,7 @@
               <ion-list>
                 <ion-item>
                   <ion-label stacked>Theme</ion-label>
-                  <ion-select [(ngModel)]="theme" [selectOptions]="{ cssClass: theme.currentTheme }">
+                  <ion-select [(ngModel)]="theme" [selectOptions]="{ cssClass: 'theme-' + theme }">
                     <ion-option *ngFor="let theme of themes" [value]="theme.val">{{ theme.name }}</ion-option>
                   </ion-select>
                 </ion-item>

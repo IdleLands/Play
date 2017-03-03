@@ -45,7 +45,7 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
   constructor(
     public appState: AppState,
     public primus: Primus,
-    public navCtrl: NavController
+    public navCtrl: NavController,
   ) {
     super(appState, primus, navCtrl);
   }
