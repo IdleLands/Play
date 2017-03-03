@@ -3,7 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-
 
 import { MomentModule } from 'angular2-moment';
 import { Ng2Webstorage } from 'ng2-webstorage';
-import { RoundProgressModule } from 'angular-svg-round-progressbar';
+// import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
 import { AppState, Auth, Primus, ItemCompare, ItemCompareModal } from '../services';
 
@@ -17,6 +17,8 @@ import { ItemComponent } from '../components/item.component';
 import { AchievementIconComponent } from '../components/achievementicon.component';
 import { GendervatarComponent } from '../components/gendervatar.component';
 import { AscensionLevelComponent } from '../components/ascensionlevel.component';
+
+import { PlayComponent } from '../components/play.component';
 
 import { MapRendererComponent } from '../pages/map/map-renderer.component';
 import { StatisticsTreeComponent } from '../pages/statistics/statistics-tree.component';
@@ -86,6 +88,8 @@ const deepLinks: DeepLinkConfig = {
     SettingsPage,
     BattlePage,
 
+    PlayComponent,
+
     RedditNewsComponent,
     GameIconComponent,
     AdventureLogIconComponent,
@@ -108,7 +112,7 @@ const deepLinks: DeepLinkConfig = {
   ],
   imports: [
     MomentModule,
-    RoundProgressModule,
+    // RoundProgressModule,
     Ng2Webstorage.forRoot({ prefix: 'idp', separator: '-' }),
     IonicModule.forRoot(MyApp, { locationStrategy: 'hash' }, deepLinks)
   ],

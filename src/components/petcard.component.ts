@@ -17,7 +17,7 @@ import { PetActive } from '../models';
   <ion-grid>
     <ion-row>
       <ion-col width-20 class="true-center">
-        <round-progress class="xp-circle" [radius]="25" [stroke]="5" [current]="pet._xp.__current" [max]="pet._xp.maximum"></round-progress>
+        <!-- <round-progress class="xp-circle" [radius]="25" [stroke]="5" [current]="pet._xp.__current" [max]="pet._xp.maximum"></round-progress> -->
         <gendervatar [gender]="pet.gender"></gendervatar>
       </ion-col>
      

@@ -5,7 +5,7 @@ import { AppState, Primus } from '../services';
 
 import { Player } from '../models';
 
-@Component({})
+@Component({ template: '' })
 export class PlayComponent implements OnInit, OnDestroy {
 
   public player$: any;
