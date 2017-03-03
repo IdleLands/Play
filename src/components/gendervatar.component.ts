@@ -18,7 +18,7 @@ const genderPositions = {
   styles:[`
     :host img {
       width: 16px;
-      height: 16px;
+      height: 15px;
       object-fit: none;
       transform: scale(2, 2);
     }
