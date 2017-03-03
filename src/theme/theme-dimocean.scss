@@ -1,0 +1,151 @@
+
+$new-primary: #03a9f4;
+$new-light: map-get($colors, light);
+$faded-blue: #b2dfdb;
+$gray-fg: #555;
+
+.theme-dimocean {
+
+  &.modal {
+    .scroll-content {
+      background-color: $faded-blue;
+      color: $gray-fg;
+    }
+  }
+
+  .xp-circle {
+    circle {
+      stroke: $new-light !important;
+    }
+
+    path {
+      stroke: $new-primary !important;
+    }
+  }
+
+  ion-content {
+    color: $gray-fg;
+    background-color: $faded-blue;
+  }
+
+  a {
+    color: $gray-fg;
+  }
+
+  .item-md-extradata p {
+    color: $gray-fg;
+  }
+
+  .item-md {
+    color: $gray-fg;
+    background-color: $faded-blue;
+  }
+
+  .card-md {
+    background: $faded-blue;
+
+    h1, h2, h3, h4, h5, h6, p, .card-header-md {
+      color: $gray-fg;
+    }
+  }
+
+  .item-md-playercard {
+    background-color: $new-primary;
+  }
+
+  .item-md-petcard {
+    background-color: $new-primary;
+  }
+
+  .button-clear-md {
+    color: $gray-fg;
+
+    &:hover:not(.disable-hover) {
+      color: $gray-fg;
+    }
+  }
+
+  .button-outline-md {
+    border-color: $new-light;
+    color: $new-light;
+  }
+
+  .toolbar-background-md {
+    background: $new-primary !important;
+  }
+
+  .item-md-extradata {
+    background: $new-primary !important;
+  }
+
+  .bar-button-solid-md-primary, .button-md-primary, .badge-md, .bar-button-default-md, .bar-button-md-primary {
+    background-color: lighten($new-primary, 10%) !important;
+    color: $gray-fg !important;
+  }
+
+  .checkbox-md {
+
+    .checkbox-icon {
+      background-color: $faded-blue;
+    }
+
+    .checkbox-checked {
+      border-color: $new-primary;
+      background-color: $new-primary;
+    }
+  }
+
+  .tabbar {
+    background: $new-primary !important;
+
+    .tab-button {
+
+      color: $new-light;
+
+      &[aria-selected=true] {
+        color: lighten($new-light, 10%);
+
+        .tab-button-icon {
+          color: $new-light;
+        }
+      }
+    }
+  }
+
+  .popover-content {
+    background-color: $faded-blue !important;
+  }
+
+  .alert-wrapper {
+    background-color: $faded-blue !important;
+    color: $gray-fg;
+
+    .button-inner {
+
+      color: $gray-fg;
+
+      .alert-radio-icon {
+        color: $new-primary;
+        border-color: $new-primary;
+      }
+
+      .alert-radio-label {
+        color: $gray-fg;
+      }
+    }
+
+    [aria-checked=true] {
+      .alert-radio-inner {
+        background-color: $new-primary;
+      }
+    }
+  }
+
+  .background-icon {
+    color: darken($faded-blue, 50%) !important;
+  }
+
+  .chat-message {
+    color: $gray-fg;
+  }
+}

@@ -95,3 +95,7 @@ $itemcolors: (
 .no-scroll, .no-scroll > .scroll-content {
   overflow: hidden;
 }
+
+ion-list {
+  margin-top: 0 !important;
+}

@@ -45,6 +45,10 @@ export class Auth {
     private alertCtrl: AlertController
   ) {}
 
+  get theme() {
+    return `theme-${this.storage.retrieve('theme')}`;
+  }
+
   login(): Promise<any> {
     return new Promise((resolve, reject) => {
       lock.on('authenticated', (authResult) => {
@@ -76,6 +80,7 @@ export class Auth {
   logout(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.alertCtrl.create({
+        cssClass: this.theme,
         title: 'Log out?',
         message: 'Are you sure you want to log out?',
         buttons: [

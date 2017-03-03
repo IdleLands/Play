@@ -195,6 +195,7 @@ export class MyApp {
       .then(() => {
         this.primus.disconnectSocket();
         this.nav.setRoot(HomePage);
-      });
+      })
+      .catch(() => {});
   }
 }

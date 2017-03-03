@@ -33,14 +33,13 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
 
   themes = [
     { name: 'Default',        val: 'default' },
-    { name: 'Dark',           val: 'dark' },
     { name: 'AMOLED Black',   val: 'amoled' },
-    { name: 'Orangina',       val: 'orangina' },
-    { name: 'Dim Ocean',      val: 'dimocean' },
     { name: 'Black & White',  val: 'blackwhite' },
+    { name: 'Dark',           val: 'dark' },
+    { name: 'Dim Ocean',      val: 'dimocean' },
     { name: 'Green Machine',  val: 'greenmachine' },
     { name: 'Majestic',       val: 'majestic' },
-    { name: 'Simple',         val: 'simple' }
+    { name: 'Orangina',       val: 'orangina' }
   ];
 
   constructor(
