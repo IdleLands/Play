@@ -65,8 +65,6 @@ export class ChatPage extends PlayComponent implements OnInit, OnDestroy {
     }, 1000);
   }
 
-  // TODO when hiding a channel hide all prior messages from that channel and dont show the channel on login if the message is hidden
-
   ngOnDestroy() {
     super.ngOnDestroy();
 
@@ -113,10 +111,12 @@ export class ChatPage extends PlayComponent implements OnInit, OnDestroy {
     const channel = { route: message.route, name: message.channel };
     this.tryToAddChannel(channel);
 
-    if(!this.isChannelActive(channel) && !message.hidden && message.timestamp > this.lastMessageSeen) {
+    const isPm = _.includes(message.route, ':pm:');
+
+    if(!this.isChannelActive(channel) && !message.hidden && (isPm || message.timestamp > this.lastMessageSeen)) {
       this.incrementMissedMessages(message.route);
 
-      if(_.includes(message.route, ':pm:')) {
+      if(isPm) {
         this.missedMessagesCount++;
       }
     }

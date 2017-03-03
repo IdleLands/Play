@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import { Component, EventEmitter, Input, Output, OnInit, OnDestroy, Pipe, PipeTransform, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, OnChanges, OnDestroy, Pipe, PipeTransform, ViewChild } from '@angular/core';
 // import { NavController, MenuController } from 'ionic-angular';
 
 import { LocalStorage, LocalStorageService } from 'ng2-webstorage';
@@ -16,7 +16,7 @@ const AUTOSCROLL_THRESHOLD = 100;
   selector: 'chat-window',
   templateUrl: 'chatwindow.html'
 })
-export class ChatWindowComponent implements OnInit, OnDestroy {
+export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
 
   @Input() public channel: { route: string, name: string };
   @Input() public player: Player = new Player();
@@ -52,6 +52,14 @@ export class ChatWindowComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.chatMessages$.unsubscribe();
+  }
+
+  ngOnChanges(changes) {
+    if(changes.channel) {
+      setTimeout(() => {
+        this.scrollToBottom();
+      });
+    }
   }
 
   doChannelRemove(channel) {
