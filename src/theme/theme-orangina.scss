@@ -11,6 +11,10 @@ $new-light: map-get($colors, light);
     }
   }
 
+  .spinner-md-secondary.spinner-crescent circle {
+    stroke: $new-light !important;
+  }
+
   .xp-circle {
     circle {
       stroke: $new-light !important;

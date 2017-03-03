@@ -8,7 +8,7 @@
 
           <ion-buttons end>
             <button ion-button icon-only solid color="primary" (click)="clickStatus()">
-              <ion-spinner *ngIf="onlineStatusIcon === 'reconnecting'"></ion-spinner>
+              <ion-spinner *ngIf="onlineStatusIcon === 'reconnecting'" color="secondary"></ion-spinner>
               <ion-icon [name]="onlineStatusIcon" *ngIf="onlineStatusIcon !== 'reconnecting'"></ion-icon>
             </button>
           </ion-buttons>
