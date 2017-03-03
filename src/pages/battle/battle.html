@@ -40,8 +40,8 @@
 
     <ion-row *ngIf="battle.messageData.length > 0">
       <ion-col>
-        <ion-list>
-          <ion-item text-wrap *ngFor="let message of battle.messageData">
+        <ion-list [virtualScroll]="battle.messageData" approxItemHeight="45px" bufferRatio="30">
+          <ion-item text-wrap *virtualItem="let message">
             <h3>{{ message.message }}</h3>
 
             <div *ngIf="message.data">
