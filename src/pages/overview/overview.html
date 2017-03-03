@@ -48,11 +48,22 @@
       </ion-col>
     </ion-row>
 
-    <ion-row *ngIf="party">
+    <ion-row *ngIf="party.name && party.players.length > 1">
       <ion-col>
         <ion-card>
-          <ion-card-header>Party</ion-card-header>
-          <ion-card-content>{{ party | json }}</ion-card-content>
+          <ion-card-header>Party - {{ party.name }}</ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col col-4 col-xs *ngFor="let member of party.players" [class.hidden]="member.shortName === player.name">
+                <ion-card class="party-card">
+                  <ion-card-header>{{ member.name }}</ion-card-header>
+                  <ion-card-content>
+                    Level {{ member.level }} {{ member.profession }}
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
         </ion-card>
       </ion-col>
     </ion-row>
