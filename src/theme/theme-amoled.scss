@@ -1,5 +1,6 @@
 
 $new-primary: #000;
+$light-primary: lighten($new-primary, 10%);
 $new-light: map-get($colors, light);
 $gray-fg: #ccc;
 
@@ -34,6 +35,10 @@ $gray-fg: #ccc;
   .item-md {
     color: $gray-fg;
     background-color: $new-primary;
+
+    &.activated {
+      background-color: $light-primary;
+    }
   }
 
   .card-md {

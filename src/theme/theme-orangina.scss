@@ -30,8 +30,12 @@ $new-light: map-get($colors, light);
     color: $new-primary;
   }
 
-  .item-md-extradata p {
-    color: $new-light;
+  .item-md-extradata {
+    p {
+      color: $new-light;
+    }
+
+    background: $new-primary !important;
   }
 
   .item-md-playercard {
@@ -52,10 +56,6 @@ $new-light: map-get($colors, light);
   }
 
   .toolbar-background-md {
-    background: $new-primary !important;
-  }
-
-  .item-md-extradata {
     background: $new-primary !important;
   }
 

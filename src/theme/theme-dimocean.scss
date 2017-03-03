@@ -1,5 +1,6 @@
 
 $new-primary: #03a9f4;
+$light-primary: lighten($new-primary, 10%);
 $new-light: map-get($colors, light);
 $faded-blue: #b2dfdb;
 $gray-fg: #555;
@@ -32,13 +33,21 @@ $gray-fg: #555;
     color: $gray-fg;
   }
 
-  .item-md-extradata p {
-    color: $gray-fg;
+  .item-md-extradata {
+    p {
+      color: $gray-fg;
+    }
+
+    background: $new-primary !important;
   }
 
   .item-md {
     color: $gray-fg;
     background-color: $faded-blue;
+
+    &.activated {
+      background-color: $light-primary;
+    }
   }
 
   .card-md {
@@ -71,10 +80,6 @@ $gray-fg: #555;
   }
 
   .toolbar-background-md {
-    background: $new-primary !important;
-  }
-
-  .item-md-extradata {
     background: $new-primary !important;
   }
 
