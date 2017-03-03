@@ -85,7 +85,7 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
 
   scrollToBottom() {
     this.showScrollButton = false;
-    this.outputWindow.nativeElement.scrollTop = this.outputWindow.nativeElement.scrollHeight + AUTOSCROLL_THRESHOLD;
+    this.outputWindow.nativeElement.scrollTop = this.outputWindow.nativeElement.scrollHeight;
   }
 
   saveLog() {
