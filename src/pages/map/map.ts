@@ -22,6 +22,8 @@ export class MapPage extends PlayComponent implements OnInit, OnDestroy {
 
   public mapText: string;
 
+  private popover: any;
+
   constructor(
     public appState: AppState,
     public primus: Primus,
@@ -46,6 +48,10 @@ export class MapPage extends PlayComponent implements OnInit, OnDestroy {
 
     this.collectibles$.unsubscribe();
     this.otherPlayers$.unsubscribe();
+
+    if(this.popover) {
+      this.popover.dismiss();
+    }
   }
 
   updateText(text) {
@@ -53,9 +59,9 @@ export class MapPage extends PlayComponent implements OnInit, OnDestroy {
   }
 
   loadPersonalities($event) {
-    this.popCtrl
+    this.popover = this.popCtrl
       .create(PersonalityPopover, {}, { cssClass: `${this.theme.currentTheme} transparent-menu`, showBackdrop: false, enableBackdropDismiss: false })
-      .present({ ev: $event });
+    this.popover.present({ ev: $event });
   }
 
 }
