@@ -5,8 +5,7 @@
       <h2>
         <ascension-level [level]="message.ascensionLevel"></ascension-level>
         <ion-icon *ngIf="message.isMod" name="star"></ion-icon>
-        <span>{{ message.playerName }}</span>
-        <span *ngIf="message.title">, the {{ message.title }}</span>
+        <span>{{ message.playerName }}</span><span *ngIf="message.title">, the {{ message.title }}</span>
         <small>{{ message.timestamp | amTimeAgo }}</small>
       </h2>
       <p [innerHTML]="message.text | linkify"></p>
