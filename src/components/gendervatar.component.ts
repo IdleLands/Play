@@ -44,6 +44,6 @@ export class GendervatarComponent {
 
   imgStyleFit(): string {
     const pos = genderPositions[this.gender] || { x: 5, y: 1 };
-    return `-${pos.x*16}px -${pos.y*16}px`;
+    return `-${pos.x*16}px -${(pos.y*16)+1}px`;
   }
 }
