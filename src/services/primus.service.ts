@@ -38,10 +38,6 @@ export class Primus {
     this.watchForLogins();
   }
 
-  get theme() {
-    return `theme-${this.storage.retrieve('theme')}`;
-  }
-
   get playerName() {
     const player = this.appState.player.getValue();
     return player.nameEdit || player.name;
@@ -399,5 +395,25 @@ export class Primus {
 
   buyIlpItem(itemName) {
     this._emit('plugin:premium:buyilpitem', { itemName });
+  }
+
+  sellItemFromPet(itemId) {
+    this._emit('plugin:pet:sell', { itemId });
+  }
+
+  equipItemOnPet(itemId) {
+    this._emit('plugin:pet:equip', { itemId });
+  }
+
+  unequipItemFromPet(itemId) {
+    this._emit('plugin:pet:unequip', { itemId });
+  }
+
+  giveItemToPet(itemId) {
+    this._emit('plugin:pet:giveitem', { itemId });
+  }
+
+  giveItemToPlayer(itemId) {
+    this._emit('plugin:pet:takeitem', { itemId });
   }
 }

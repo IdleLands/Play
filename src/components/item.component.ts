@@ -2,8 +2,9 @@
 import * as _ from 'lodash';
 
 import { Component, Input, OnInit } from '@angular/core';
+import { ViewController, NavParams, PopoverController } from 'ionic-angular';
 
-import { ItemInfo } from '../services';
+import { ItemInfo, Theme } from '../services';
 import { Item } from '../models';
 
 @Component({
@@ -12,6 +13,9 @@ import { Item } from '../models';
     <ion-row margin-bottom>
       <ion-col width-20 text-center no-padding>
         <div class="class-{{ item.itemClass }}">{{ item.type }}</div>
+        <button ion-button outline color="primary" small *ngIf="buttons && buttons.length > 0" (click)="openItemPopover($event)">
+          Actions
+        </button>
       </ion-col>
       
       <ion-col no-padding>
@@ -47,6 +51,11 @@ export class ItemComponent implements OnInit {
   @Input() public item: Item;
   @Input() public buttons: Array<{ icon: string, callback: Function }>;
 
+  constructor(
+    public popCtrl: PopoverController,
+    public theme: Theme
+  ) {}
+
   ngOnInit() {
     this.stats = ItemInfo.statOrder;
   }
@@ -58,5 +67,41 @@ export class ItemComponent implements OnInit {
 
   public extraStats(item: Item) {
     return ItemInfo.getSpecialStatString(item);
+  }
+
+  public openItemPopover($event) {
+    this.popCtrl
+      .create(ItemPopover, { buttons: this.buttons, item: this.item }, { cssClass: this.theme.currentTheme })
+      .present({ ev: $event });
+  }
+}
+
+@Component({
+  template: `
+    <ion-list>
+      <button ion-item *ngFor="let button of buttons" (click)="doCallback(button)">
+        <ion-label>{{ button.name }}</ion-label>
+      </button>
+    </ion-list>
+  `
+})
+export class ItemPopover implements OnInit {
+
+  buttons: any[] = [];
+  item: Item;
+
+  constructor(
+    public viewCtrl: ViewController,
+    public navParams: NavParams
+  ) {}
+
+  doCallback(button) {
+    button.callback(this.item);
+    this.viewCtrl.dismiss();
+  }
+
+  ngOnInit() {
+    this.buttons = this.navParams.get('buttons');
+    this.item = this.navParams.get('item');
   }
 }

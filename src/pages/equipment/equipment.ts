@@ -16,6 +16,10 @@ export class EquipmentPage extends PlayComponent implements OnInit, OnDestroy {
   public equipment: any;
   public iterationOrder: string[];
 
+  equippedItemButtons = [
+    { name: 'To Pet', callback: (item) => this.primus.giveItemToPet(item.id) }
+  ];
+
   constructor(
     public appState: AppState,
     public primus: Primus,

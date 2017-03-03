@@ -6,7 +6,7 @@ import { ModalController, ViewController, NavController, NavParams } from 'ionic
 
 import { LocalStorageService } from 'ng2-webstorage';
 
-import { AppState, Primus } from '../../services';
+import { AppState, Primus, Theme } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
 import { Achievement } from '../../models';
@@ -59,7 +59,7 @@ export class AchievementsPage extends PlayComponent implements OnInit, OnDestroy
 
 @Component({
   template: `
-<ion-header class="modal {{ theme }}">
+<ion-header class="modal {{ theme.currentTheme }}">
   <ion-toolbar color="primary">
     <ion-title>
       {{ achievement.name }} Rewards
@@ -72,7 +72,7 @@ export class AchievementsPage extends PlayComponent implements OnInit, OnDestroy
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="modal {{ theme }}">
+<ion-content class="modal {{ theme.currentTheme }}">
   <ion-grid text-center>
     <ion-row>
       <ion-col>{{ achievement.desc }}</ion-col>
@@ -93,12 +93,9 @@ export class AchievementModal implements OnInit {
   constructor(
     public viewCtrl: ViewController,
     public navParams: NavParams,
-    public storage: LocalStorageService
+    public storage: LocalStorageService,
+    public theme: Theme
   ) {}
-
-  get theme () {
-    return `theme-${this.storage.retrieve('theme')}`;
-  }
 
   ngOnInit() {
     this.achievement = this.navParams.get('achievement');

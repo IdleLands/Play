@@ -8,7 +8,7 @@
           <ion-card-content>
             <ion-list>
               <ion-item *ngFor="let item of petEquipment">
-                <item [item]="item"></item>
+                <item [item]="item" [buttons]="equippedItemButtons"></item>
               </ion-item>
             </ion-list>
           </ion-card-content>
@@ -23,7 +23,7 @@
           <ion-card-content>
             <ion-list>
               <ion-item *ngFor="let item of petactive.inventory">
-                <item [item]="item"></item>
+                <item [item]="item" [buttons]="inventoryButtons"></item>
               </ion-item>
             </ion-list>
           </ion-card-content>

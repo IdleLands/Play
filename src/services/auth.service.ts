@@ -10,6 +10,7 @@ import { AlertController } from 'ionic-angular';
 import { LocalStorageService } from 'ng2-webstorage';
 
 import { AppState } from './';
+import { Theme } from './theme.service';
 
 const lockOptions = {
   autoclose: true,
@@ -42,12 +43,9 @@ export class Auth {
   constructor(
     private storage: LocalStorageService,
     private appState: AppState,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private theme: Theme
   ) {}
-
-  get theme() {
-    return `theme-${this.storage.retrieve('theme')}`;
-  }
 
   login(): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -80,7 +78,7 @@ export class Auth {
   logout(): Promise<any> {
     return new Promise((resolve, reject) => {
       this.alertCtrl.create({
-        cssClass: this.theme,
+        cssClass: this.theme.currentTheme,
         title: 'Log out?',
         message: 'Are you sure you want to log out?',
         buttons: [

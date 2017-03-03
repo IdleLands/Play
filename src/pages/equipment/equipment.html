@@ -11,7 +11,7 @@
   <ion-grid>
     <ion-row *ngFor="let slot of iterationOrder">
       <ion-col>
-        <item [item]="equipment[slot]"></item>
+        <item [item]="equipment[slot]" [buttons]="equippedItemButtons"></item>
       </ion-col>
     </ion-row>
   </ion-grid>

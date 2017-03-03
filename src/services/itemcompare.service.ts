@@ -5,10 +5,11 @@ import { ModalController, ViewController, NavParams } from 'ionic-angular';
 import { LocalStorageService } from 'ng2-webstorage';
 
 import { ItemInfo } from './';
+import { Theme } from './theme.service';
 
 @Component({
   template: `
-<ion-header class="modal {{ theme }}">
+<ion-header class="modal {{ theme.currentTheme }}">
   <ion-toolbar color="primary">
     <ion-title>
       Item Compare ({{ newItem.type }})
@@ -21,7 +22,7 @@ import { ItemInfo } from './';
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="modal {{ theme }}">
+<ion-content class="modal {{ theme.currentTheme }}">
   <ion-grid text-center>
     
     <ion-row margin-bottom>
@@ -94,12 +95,9 @@ export class ItemCompareModal implements OnInit {
   constructor(
     public viewCtrl: ViewController,
     public navParams: NavParams,
-    public storage: LocalStorageService
+    public storage: LocalStorageService,
+    public theme: Theme
   ) {}
-
-  get theme () {
-    return `theme-${this.storage.retrieve('theme')}`;
-  }
 
   dismiss(button) {
     this.viewCtrl.dismiss(button);

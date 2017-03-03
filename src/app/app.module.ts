@@ -5,7 +5,7 @@ import { MomentModule } from 'angular2-moment';
 import { Ng2Webstorage } from 'ng2-webstorage';
 import { RoundProgressModule } from 'angular-svg-round-progressbar';
 
-import { AppState, Auth, Primus, ItemCompare, ItemCompareModal } from '../services';
+import { AppState, Auth, Primus, ItemCompare, ItemCompareModal, Theme } from '../services';
 
 import { RedditNewsComponent } from '../components/reddit-news.component';
 import { GameIconComponent } from '../components/gameicon.component';
@@ -13,7 +13,7 @@ import { AdventureLogIconComponent } from '../components/advlogicon.component';
 import { StatComponent } from '../components/stat.component';
 import { PetCardComponent } from '../components/petcard.component';
 import { PlayerCardComponent } from '../components/playercard.component';
-import { ItemComponent } from '../components/item.component';
+import { ItemComponent, ItemPopover } from '../components/item.component';
 import { AchievementIconComponent } from '../components/achievementicon.component';
 import { GendervatarComponent } from '../components/gendervatar.component';
 import { AscensionLevelComponent } from '../components/ascensionlevel.component';
@@ -96,7 +96,7 @@ const deepLinks: DeepLinkConfig = {
     StatComponent,
     PlayerCardComponent,
     PetCardComponent,
-    ItemComponent,
+    ItemComponent, ItemPopover,
     AchievementIconComponent,
     GendervatarComponent,
     AscensionLevelComponent,
@@ -135,6 +135,8 @@ const deepLinks: DeepLinkConfig = {
     SettingsPage,
     BattlePage,
 
+    ItemPopover,
+
     AchievementModal,
     ItemCompareModal
   ],
@@ -143,6 +145,7 @@ const deepLinks: DeepLinkConfig = {
     Auth,
     Primus,
     ItemCompare,
+    Theme,
     { provide: ErrorHandler, useClass: IonicErrorHandler }
   ]
 })

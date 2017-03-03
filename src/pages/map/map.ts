@@ -3,11 +3,10 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController, PopoverController, ViewController } from 'ionic-angular';
 
-import { AppState, Primus } from '../../services';
+import { AppState, Primus, Theme } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
-import { ChatUser } from '../../models';
-import {Personalities} from "../../models/personalities";
+import { ChatUser, Personalities } from '../../models';
 
 @Component({
   selector: 'page-map',
@@ -27,7 +26,8 @@ export class MapPage extends PlayComponent implements OnInit, OnDestroy {
     public appState: AppState,
     public primus: Primus,
     public navCtrl: NavController,
-    public popCtrl: PopoverController
+    public popCtrl: PopoverController,
+    public theme: Theme
   ) {
     super(appState, primus, navCtrl);
   }
@@ -54,7 +54,7 @@ export class MapPage extends PlayComponent implements OnInit, OnDestroy {
 
   loadPersonalities($event) {
     this.popCtrl
-      .create(PersonalityPopover, {}, { cssClass: this.primus.theme, showBackdrop: false, enableBackdropDismiss: false })
+      .create(PersonalityPopover, {}, { cssClass: this.theme.currentTheme, showBackdrop: false, enableBackdropDismiss: false })
       .present({ ev: $event });
   }
 

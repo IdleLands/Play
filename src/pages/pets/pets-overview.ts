@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 
-import { AppState, Primus, ItemInfo } from '../../services';
+import { AppState, Primus, ItemInfo, Theme } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
 import { LocalStorage } from 'ng2-webstorage';
@@ -59,7 +59,8 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
     public appState: AppState,
     public primus: Primus,
     public navCtrl: NavController,
-    public alertCtrl: AlertController
+    public alertCtrl: AlertController,
+    public theme: Theme
   ) {
     super(appState, primus, navCtrl);
   }
@@ -113,7 +114,7 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
 
   buyPet(petType) {
     this.alertCtrl.create({
-      cssClass: this.primus.theme,
+      cssClass: this.theme.currentTheme,
       title: 'Adopt Pet',
       message: `What would you like to call your pet ${petType}?`,
       inputs: [{
@@ -153,7 +154,7 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
     const maxGold = Math.min(Math.ceil(neededXp / xpPerGold), totalGold);
 
     this.alertCtrl.create({
-      cssClass: this.primus.theme,
+      cssClass: this.theme.currentTheme,
       title: 'Feed your pet',
       message: `Your pet gains ${xpPerGold.toLocaleString()} xp per gold spend and needs ${neededXp.toLocaleString()} to level up. You have ${totalGold.toLocaleString()} gold and can spend ${maxGold.toLocaleString()} maximum.`,
       inputs: [{

@@ -113,7 +113,7 @@
       <ion-col col-12 col-md>
         <ion-item>
           <ion-label stacked>Attribute</ion-label>
-          <ion-select [(ngModel)]="petactive.attr" [selectOptions]="{ cssClass: primus.theme }" (ionChange)="changeAttr($event)">
+          <ion-select [(ngModel)]="petactive.attr" [selectOptions]="{ cssClass: theme.currentTheme }" (ionChange)="changeAttr($event)">
             <ion-option value="">None</ion-option>
             <ion-option *ngFor="let attr of petAttrs">{{ attr }}</ion-option>
           </ion-select>
@@ -122,7 +122,7 @@
       <ion-col col-12 col-md>
         <ion-item>
           <ion-label stacked>Class</ion-label>
-          <ion-select [(ngModel)]="petactive.professionName" [selectOptions]="{ cssClass: primus.theme }" (ionChange)="changeClass($event)">
+          <ion-select [(ngModel)]="petactive.professionName" [selectOptions]="{ cssClass: theme.currentTheme }" (ionChange)="changeClass($event)">
             <ion-option *ngFor="let class of petClasses">{{ class }}</ion-option>
           </ion-select>
         </ion-item>
