@@ -75,7 +75,7 @@
               <ion-item text-wrap *ngFor="let festival of festivals">
                 <h2>{{ festival.name }}</h2>
                 <p>Ends {{ festival.endDate | amTimeAgo }}</p>
-                <small *ngFor="let bonus of festivalBonus(festival.bonuses)">{{ bonus }}%</small>
+                <small *ngFor="let bonus of festivalBonus(festival.bonuses)">{{ bonus }}% </small>
               </ion-item>
             </ion-list>
           </ion-card-content>
