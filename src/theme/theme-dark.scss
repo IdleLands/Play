@@ -84,9 +84,16 @@ $gray-fg: #ccc;
     color: $gray-fg !important;
   }
 
-  .checkbox-md .checkbox-checked {
-    border-color: $new-primary;
-    background-color: $new-primary;
+  .checkbox-md {
+
+    .checkbox-icon {
+      background-color: $new-primary;
+    }
+
+    .checkbox-checked {
+      border-color: $new-primary;
+      background-color: $new-primary;
+    }
   }
 
   .tabbar {
