@@ -307,7 +307,7 @@ export class Primus {
     });
   }
 
-  login(): Promise<any> {
+  login(registerArgs: any = {}): Promise<any> {
     return new Promise((resolve, reject) => {
       const isLoggedIn = this.appState.loggedIn.getValue();
       if(isLoggedIn) return reject(new Error('Already logged in'));
@@ -317,7 +317,8 @@ export class Primus {
 
       return this.auth.renew()
         .then(() => {
-          this._emit('plugin:player:login', { userId: profile.user_id }, res => {
+          registerArgs.userId = profile.user_id;
+          this._emit('plugin:player:login', registerArgs, res => {
             if(!res.ok) return;
             this.appState.loggedIn.next(true);
             resolve(res);
@@ -331,6 +332,10 @@ export class Primus {
           reject(e);
         });
     })
+  }
+
+  register(args) {
+    return this.login(args);
   }
 
   makeChoice(id, response) {

@@ -9,5 +9,44 @@
 
 
 <ion-content padding>
+  <ion-list>
+    <ion-item-divider>Character Name</ion-item-divider>
 
+    <ion-item>
+      <ion-input [(ngModel)]="character.name" placeholder="Character Name" type="text" maxlength="20" minlength="0"></ion-input>
+    </ion-item>
+
+  </ion-list>
+
+  <ion-list radio-group [(ngModel)]="character.professionName">
+    <ion-item-divider>Character Class</ion-item-divider>
+    <ion-item *ngFor="let class of baseClasses">
+      <ion-label>
+        <h3>{{ class.name }}</h3>
+        <p>{{ class.desc }}</p>
+      </ion-label>
+      <ion-radio [value]="class.name"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <ion-list radio-group [(ngModel)]="character.gender">
+    <ion-item-divider>Character Gender</ion-item-divider>
+    <ion-item *ngFor="let gender of baseGenders">
+      <ion-label>
+        <h3>{{ gender.name }}</h3>
+      </ion-label>
+      <ion-radio [value]="gender.value"></ion-radio>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <button text-center
+            ion-item
+            block
+            color="primary"
+            [disabled]="!character.name || !character.gender || !character.professionName"
+            (click)="doRegister()">
+      Create Character
+    </button>
+  </ion-list>
 </ion-content>

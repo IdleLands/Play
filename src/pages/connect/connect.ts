@@ -111,12 +111,11 @@ export class ConnectPage implements OnInit, OnDestroy {
     if(_.isUndefined(this.loggedIn)
     || _.isUndefined(this.isOnline)
     || _.isUndefined(this.hasCharacter)
-    || !this.isOnline
-    || !this.loggedIn) return;
+    || !this.isOnline) return;
 
     if(!this.hasCharacter) {
       this.navCtrl.push(CreatePage);
-    } else {
+    } else if(this.loggedIn) {
       const ref = this.navParams.get('fromPage') || 'OverviewPage';
       this.navCtrl.setRoot(backrefPages[ref]);
     }
