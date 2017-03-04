@@ -31,6 +31,7 @@ export class AppState {
   activePageData: BehaviorSubject<{ page, data }> = new BehaviorSubject({ page: '', data: '' });
   chatUsers:      BehaviorSubject<ChatUser[]> = new BehaviorSubject([]);
   chatMessages:   ReplaySubject<ChatMessage> = new ReplaySubject<ChatMessage>(200);
+  _chatLength:    BehaviorSubject<number> = new BehaviorSubject(0);
   adventureLog:   ReplaySubject<AdventureLog> = new ReplaySubject<AdventureLog>(50);
 
   player:         BehaviorSubject<Player> = new BehaviorSubject(new Player());

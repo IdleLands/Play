@@ -57,6 +57,7 @@ export class Primus {
 
   loadChatMessages() {
     const chatLog = this.storage.retrieve('chatLog') || [];
+    this.appState._chatLength.next(chatLog.length);
     _.each(chatLog, item => this.appState.chatMessages.next(item));
   }
 

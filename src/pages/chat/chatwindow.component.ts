@@ -35,6 +35,9 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
   public chatMessages$: any;
   public chatLog: ChatMessage[] = [];
 
+  chatLength$: any;
+  private baseChatLength: number;
+
   constructor(
     public appState: AppState,
     public primus: Primus,
@@ -43,7 +46,10 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnInit() {
     this.chatMessages$ = this.appState.chatMessages.subscribe(data => this.receiveMessage(data));
+    this.chatLength$ = this.appState._chatLength.subscribe(data => this.baseChatLength = data);
     this.baseHeight = this.outputWindow.nativeElement.scrollHeight;
+
+    setTimeout(() => this.scrollToBottom(), 1000);
   }
 
   ngOnDestroy() {
@@ -52,9 +58,7 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes) {
     if(changes.channel) {
-      setTimeout(() => {
-        this.scrollToBottom();
-      });
+      setTimeout(() => this.scrollToBottom());
     }
   }
 
@@ -111,6 +115,10 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
       setTimeout(() => this.scrollToBottom());
     } else {
       this.showScrollButton = true;
+    }
+
+    if(this.chatLog.length === this.baseChatLength) {
+      setTimeout(() => this.scrollToBottom());
     }
   }
 
