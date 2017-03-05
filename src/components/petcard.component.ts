@@ -36,7 +36,7 @@ import { PetActive } from '../models';
           <h3><game-icon icon="stat-gold"></game-icon> {{ pet.gold.__current | number }}/{{ pet.gold.maximum | number }} Gold</h3>
         </div>
         <div>
-          <h3><game-icon icon="symbol-item"></game-icon> {{ pet.statCache.itemFindRange | number }} Max Item Score</h3>
+          <h3><game-icon icon="symbol-item"></game-icon> {{ pet.inventory.length }}/{{ pet.$scale.inventory[pet.scaleLevel.inventory] }} Items</h3>
         </div>
       </ion-col>
     </ion-row> 
