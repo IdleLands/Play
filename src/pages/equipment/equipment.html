@@ -8,11 +8,11 @@
 
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row *ngFor="let slot of iterationOrder">
-      <ion-col>
-        <item [item]="equipment[slot]" [buttons]="equippedItemButtons"></item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+
+  <ion-list>
+    <ion-item text-wrap *ngFor="let slot of iterationOrder">
+      <item [item]="equipment[slot]" [buttons]="equippedItemButtons"></item>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
