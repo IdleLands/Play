@@ -38,7 +38,7 @@ export class PetsItemsPage extends PlayComponent {
       ];
 
       const playerItem = this.playerEquipment[item.type] || { name: 'nothing', type: item.type, str: 0, dex: 0, con: 0, int: 0, agi: 0, luk: 0, _baseScore: 1, _calcScore: 1 };
-      this.icomp.compare(item, playerItem, buttons).then(button => {
+      this.icomp.compare(playerItem, item, buttons).then(button => {
         if(!button) return;
         button.callback();
       });
