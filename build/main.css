@@ -39654,6 +39654,10 @@ page-connect .connecting-container {
   margin-bottom: 5%;
 }
 
+page-equipment .input-wrapper .label.label-md {
+  margin: 0;
+}
+
 page-map .scroll-content {
   overflow: hidden;
 }
