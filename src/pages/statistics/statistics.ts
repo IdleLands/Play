@@ -42,8 +42,6 @@ export class StatisticsPage extends PlayComponent implements OnInit, OnDestroy {
   }
 
   setStatistics(data: Statistics) {
-    let value = 0;
-
     const recurse = (obj) => {
       return _.map(obj, (val, key) => {
         const baseObj: any = {};
@@ -53,7 +51,6 @@ export class StatisticsPage extends PlayComponent implements OnInit, OnDestroy {
         if(_.isObject(val)) {
           baseObj.children = recurse(val);
         } else {
-          value += val;
           baseObj.val = val;
         }
 
@@ -72,7 +69,6 @@ export class StatisticsPage extends PlayComponent implements OnInit, OnDestroy {
     };
 
     this.statistics = _.reject(sortAll(recurse(data)), item => item.val);
-    this.updatePageData(`Total Statistics: ${value.toLocaleString()}`);
   }
 
 }
