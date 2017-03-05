@@ -120,7 +120,7 @@ export class AchievementModal implements OnInit {
         this.rewards.push({ type: 'Pet Class', value: reward.petclass });
 
       } else if(reward.type === 'petattr') {
-        this.rewards.push({ type: 'Pet Attribute', value: reward.pet });
+        this.rewards.push({ type: 'Pet Attribute', value: reward.petattr });
 
       } else if(reward.type === 'title') {
         this.rewards.push({ type: 'Title', value: reward.title });

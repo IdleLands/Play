@@ -3,7 +3,7 @@ import { IonicApp, IonicModule, IonicErrorHandler, DeepLinkConfig } from 'ionic-
 
 import { MomentModule } from 'angular2-moment';
 import { Ng2Webstorage } from 'ng2-webstorage';
-import { RoundProgressModule } from 'angular-svg-round-progressbar';
+import { RoundProgressModule } from 'angular-svg-round-progressbar/dist/index';
 
 import { AppState, Auth, Primus, ItemCompare, ItemCompareModal, Theme } from '../services';
 
