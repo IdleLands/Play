@@ -10,7 +10,7 @@ import { PetActive } from '../models';
     :host round-progress {
       position: absolute;
       left: 1rem;
-      top: 4.5rem;
+      top: 3.5rem;
     }
   `],
   template: `
@@ -24,7 +24,6 @@ import { PetActive } from '../models';
       <ion-col width-80>
         <div>
           <h1>{{ pet.name }}</h1>
-          <h2 *ngIf="pet.attr">With {{ pet.attr }}</h2>
         </div>
         <div>
           <h3>The level {{ pet._level.__current }}/{{ pet._level.maximum }} {{ pet.professionName }} {{ pet.$petId }}</h3>
