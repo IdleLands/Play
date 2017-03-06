@@ -3948,6 +3948,11 @@ ion-icon {
   color: #ccc;
 }
 
+.theme-amoled .highlighted-text {
+  background-color: #ccc;
+  color: #000;
+}
+
 .theme-blackwhite.modal .scroll-content {
   background-color: #fff;
 }
@@ -4038,6 +4043,11 @@ ion-icon {
 
 .theme-blackwhite .tabbar .tab-button[aria-selected=true] .tab-button-icon {
   color: #f4f4f4;
+}
+
+.theme-blackwhite .highlighted-text {
+  background-color: #ccc;
+  color: #222;
 }
 
 .theme-dark.modal .scroll-content {
@@ -4176,6 +4186,11 @@ ion-icon {
   color: #ccc;
 }
 
+.theme-dark .highlighted-text {
+  background-color: #ccc;
+  color: #222;
+}
+
 .theme-default.modal .scroll-content {
   background-color: #fff;
 }
@@ -4186,6 +4201,11 @@ ion-icon {
 
 .theme-default .xp-circle path {
   stroke: #116329 !important;
+}
+
+.theme-default .highlighted-text {
+  background-color: #000;
+  color: #fff;
 }
 
 .theme-dimocean.modal .scroll-content {
@@ -4321,11 +4341,32 @@ ion-icon {
 }
 
 .theme-dimocean .background-icon {
-  color: #2b6762 !important;
+  color: #8ed0ca !important;
 }
 
 .theme-dimocean .chat-message {
   color: #555;
+}
+
+.theme-dimocean .chat-message-container:nth-child(2n) {
+  background-color: #03a9f4;
+}
+
+.theme-dimocean .chat-message-container:nth-child(2n) .item-inner {
+  border-bottom: 0;
+}
+
+.theme-dimocean .item-md-darkstripe {
+  background-color: #03a9f4;
+}
+
+.theme-dimocean ion-note {
+  color: #888888;
+}
+
+.theme-dimocean .highlighted-text {
+  background-color: #555;
+  color: #03a9f4;
 }
 
 .theme-greenmachine.modal .scroll-content {
@@ -4421,6 +4462,29 @@ ion-icon {
 }
 
 .theme-greenmachine .tabbar .tab-button[aria-selected=true] .tab-button-icon {
+  color: #f4f4f4;
+}
+
+.theme-greenmachine .chat-message-container:nth-child(2n) {
+  background-color: #198e3c;
+  color: #f4f4f4;
+}
+
+.theme-greenmachine .chat-message-container:nth-child(2n) .chat-message {
+  color: #f4f4f4;
+}
+
+.theme-greenmachine .chat-message-container:nth-child(2n) .item-inner {
+  border-bottom: 0;
+}
+
+.theme-greenmachine .item-md-darkstripe {
+  background-color: #198e3c;
+  color: #f4f4f4;
+}
+
+.theme-greenmachine .highlighted-text {
+  background-color: #32db64;
   color: #f4f4f4;
 }
 
@@ -4520,6 +4584,29 @@ ion-icon {
   color: #f4f4f4;
 }
 
+.theme-majestic .chat-message-container:nth-child(2n) {
+  background-color: #643de4;
+  color: #f4f4f4;
+}
+
+.theme-majestic .chat-message-container:nth-child(2n) .chat-message {
+  color: #f4f4f4;
+}
+
+.theme-majestic .chat-message-container:nth-child(2n) .item-inner {
+  border-bottom: 0;
+}
+
+.theme-majestic .item-md-darkstripe {
+  background-color: #643de4;
+  color: #f4f4f4;
+}
+
+.theme-majestic .highlighted-text {
+  background-color: #886aea;
+  color: #f4f4f4;
+}
+
 .theme-orangina.modal .scroll-content {
   background-color: #fff;
 }
@@ -4613,6 +4700,29 @@ ion-icon {
 }
 
 .theme-orangina .tabbar .tab-button[aria-selected=true] .tab-button-icon {
+  color: #f4f4f4;
+}
+
+.theme-orangina .chat-message-container:nth-child(2n) {
+  background-color: #f29000;
+  color: #f4f4f4;
+}
+
+.theme-orangina .chat-message-container:nth-child(2n) .chat-message {
+  color: #f4f4f4;
+}
+
+.theme-orangina .chat-message-container:nth-child(2n) .item-inner {
+  border-bottom: 0;
+}
+
+.theme-orangina .item-md-darkstripe {
+  background-color: #f29000;
+  color: #f4f4f4;
+}
+
+.theme-orangina .highlighted-text {
+  background-color: #ffa726;
   color: #f4f4f4;
 }
 
@@ -39564,6 +39674,16 @@ ion-list {
   pointer-events: visiblepainted;
 }
 
+.item-no-margin > .item-inner > .input-wrapper > .label {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.sidenav-scroll-list {
+  overflow-y: auto;
+  height: calc(100% - 272px);
+}
+
 page-achievements .achievement-card {
   position: relative;
   z-index: 10;
@@ -39598,6 +39718,18 @@ chat-window .output-window {
   height: calc(100% - 42px);
   overflow-y: auto;
   position: relative;
+}
+
+chat-window .output-window .chat-message-container.compressed {
+  min-height: 3rem;
+}
+
+chat-window .output-window .chat-message-container.compressed .item-inner {
+  border-bottom: 0;
+}
+
+chat-window .output-window .chat-message-container.compressed .label {
+  margin: 0;
 }
 
 chat-window .output-window .scroll-button {
