@@ -65,7 +65,8 @@ const deepLinks: DeepLinkConfig = {
     { component: PetsItemsPage,     name: 'Pet Items',          segment: '' },
     { component: PremiumPage,       name: 'Premium',            segment: 'premium' },
     { component: SettingsPage,      name: 'Settings',           segment: 'settings' },
-    { component: BattlePage,        name: 'Battle',             segment: 'battle/:battleName' }
+    { component: BattlePage,        name: 'Battle',             segment: 'overview' }
+    // { component: BattlePage,        name: 'Battle',             segment: 'battle/:battleName' }
   ]
 };
 
