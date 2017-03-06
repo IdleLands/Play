@@ -12,10 +12,12 @@
               <ion-icon [name]="onlineStatusIcon" *ngIf="onlineStatusIcon !== 'reconnecting'"></ion-icon>
             </button>
           </ion-buttons>
+
         </ion-toolbar>
       </ion-header>
 
       <ion-content>
+
         <ion-list class="sidenav-list">
 
           <ion-item color="playercard" class="item-no-margin">
@@ -25,6 +27,10 @@
           <ion-item color="petcard" class="item-no-margin" *ngIf="hasPet">
             <pet-card></pet-card>
           </ion-item>
+
+        </ion-list>
+
+        <ion-list class="sidenav-list">
 
           <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" [color]="activePage === p.title ? 'extradata' : ''">
             <ion-row no-padding>
@@ -48,7 +54,9 @@
               </ion-col>
             </ion-row>
           </button>
+
         </ion-list>
+
       </ion-content>
 
     </ion-menu>
