@@ -124,6 +124,8 @@ export class MyApp {
       if(data.hidden || data.timestamp < now || this.activePage === 'Chat') return;
       this.latestMessages++;
     });
+
+    this.primus.requestPets();
   }
 
   clickStatus() {
