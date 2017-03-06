@@ -53,8 +53,8 @@
         <ion-card>
           <ion-card-header>Party - {{ party.name }}</ion-card-header>
           <ion-card-content>
-            <ion-row>
-              <ion-col col-4 col-xs *ngFor="let member of party.players" [class.hidden]="member.shortName === player.name">
+            <ion-row wrap>
+              <ion-col col-xs-4 col-md *ngFor="let member of party.players" [class.hidden]="member.shortName === player.name">
                 <ion-card class="party-card">
                   <ion-card-header>{{ member.name }}</ion-card-header>
                   <ion-card-content>
