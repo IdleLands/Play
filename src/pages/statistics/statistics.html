@@ -8,30 +8,55 @@
 
 
 <ion-content padding>
+
   <ion-row>
+
     <ion-col col-12 col-sm>
-      <ion-card *ngIf="statistics[0] && statistics[0].children">
-        <ion-card-header>{{ statistics[0].name }}</ion-card-header>
+      <ion-card *ngIf="statistics.Game">
+        <ion-card-header>Game</ion-card-header>
         <ion-card-content>
-          <statistics-tree [treeData]="statistics[0].children" [isFirst]="true"></statistics-tree>
+          <statistics-tree [treeData]="statistics.Game.children" [isFirst]="true"></statistics-tree>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="statistics.Character">
+        <ion-card-header>Character</ion-card-header>
+        <ion-card-content>
+          <statistics-tree [treeData]="statistics.Character.children" [isFirst]="true"></statistics-tree>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="statistics.Maps">
+        <ion-card-header>Maps</ion-card-header>
+        <ion-card-content>
+          <statistics-tree [treeData]="statistics.Maps.children" [isFirst]="true"></statistics-tree>
         </ion-card-content>
       </ion-card>
     </ion-col>
 
     <ion-col col-12 col-sm>
-      <ion-card *ngIf="statistics[2] && statistics[2].children">
-        <ion-card-header>{{ statistics[2].name }}</ion-card-header>
+      <ion-card *ngIf="statistics.BossKills">
+        <ion-card-header>Boss Kills</ion-card-header>
         <ion-card-content>
-          <statistics-tree [treeData]="statistics[2].children" [isFirst]="true"></statistics-tree>
+          <statistics-tree [treeData]="statistics.BossKills.children" [isFirst]="true"></statistics-tree>
         </ion-card-content>
       </ion-card>
 
-      <ion-card *ngIf="statistics[1] && statistics[1].children">
-        <ion-card-header>{{ statistics[1].name }}</ion-card-header>
+      <ion-card *ngIf="statistics.Combat">
+        <ion-card-header>Combat</ion-card-header>
         <ion-card-content>
-          <statistics-tree [treeData]="statistics[1].children" [isFirst]="true"></statistics-tree>
+          <statistics-tree [treeData]="statistics.Combat.children" [isFirst]="true"></statistics-tree>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card *ngIf="statistics.Regions">
+        <ion-card-header>Regions</ion-card-header>
+        <ion-card-content>
+          <statistics-tree [treeData]="statistics.Regions.children" [isFirst]="true"></statistics-tree>
         </ion-card-content>
       </ion-card>
     </ion-col>
+
   </ion-row>
+
 </ion-content>
