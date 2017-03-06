@@ -9,6 +9,8 @@ import { LocalStorageService, LocalStorage } from 'ng2-webstorage';
 
 import { AppState, Primus, Auth } from '../services';
 
+import Tinycon from 'tinycon';
+
 import {
   HomePage,
   OverviewPage,
@@ -46,6 +48,9 @@ export class MyApp {
 
   public choices: number = 0;
   public latestMessages: number = 0;
+
+  private badgeMessages: number = 0;
+  private isHidden: boolean;
 
   pages: Array<{title: string, icon: string, component: any, extraContent?: Function, showBadge?: Function, badge?: Function}> = [
     { title: 'Overview',      icon: 'body',       component: OverviewPage, showBadge: () => this.choices > 0, badge: () => this.choices },
@@ -107,6 +112,7 @@ export class MyApp {
 
       if(this.activePage === 'Chat') {
         this.latestMessages = 0;
+        Tinycon.setBubble(0);
       }
     });
 
@@ -121,11 +127,35 @@ export class MyApp {
 
     const now = Date.now();
     this.state.chatMessages.subscribe(data => {
-      if(data.hidden || data.timestamp < now || this.activePage === 'Chat') return;
-      this.latestMessages++;
+
+      const showFaviconNotif = this.showFaviconNotifications();
+      if(data.hidden || data.timestamp < now || (!showFaviconNotif && this.activePage === 'Chat')) {
+        return;
+      }
+
+      if(this.activePage !== 'Chat') {
+        this.latestMessages++;
+      }
+
+      if(showFaviconNotif) {
+        this.latestMessages = 0;
+        Tinycon.setBubble(++this.badgeMessages);
+      }
     });
 
     this.primus.requestPets();
+
+    document.addEventListener('visibilitychange', () => {
+      this.isHidden = document.hidden;
+
+      if(!this.isHidden) {
+        Tinycon.setBubble(0);
+      }
+    });
+  }
+
+  showFaviconNotifications() {
+    return this.isHidden && this.storage.retrieve('faviconNotifications');
   }
 
   clickStatus() {

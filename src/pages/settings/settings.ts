@@ -31,6 +31,9 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
   @LocalStorage()
   theme: string;
 
+  @LocalStorage()
+  faviconNotifications: boolean;
+
   themes = [
     { name: 'Default',        val: 'default' },
     { name: 'AMOLED Black',   val: 'amoled' },

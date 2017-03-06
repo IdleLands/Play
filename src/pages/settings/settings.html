@@ -59,6 +59,11 @@
                     <ion-option *ngFor="let theme of themes" [value]="theme.val">{{ theme.name }}</ion-option>
                   </ion-select>
                 </ion-item>
+
+                <ion-item>
+                  <ion-label>Show Favicon Notifications</ion-label>
+                  <ion-checkbox [(ngModel)]="faviconNotifications"></ion-checkbox>
+                </ion-item>
               </ion-list>
             </ion-card-content>
           </ion-card>
