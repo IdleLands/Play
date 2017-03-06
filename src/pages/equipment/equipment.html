@@ -10,6 +10,9 @@
 <ion-content padding>
 
   <ion-list>
+    <ion-item text-wrap>
+      <item [item]="equipment.total"></item>
+    </ion-item>
     <ion-item text-wrap *ngFor="let slot of iterationOrder">
       <item [item]="equipment[slot]" [buttons]="equippedItemButtons"></item>
     </ion-item>

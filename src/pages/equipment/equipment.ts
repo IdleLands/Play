@@ -42,9 +42,32 @@ export class EquipmentPage extends PlayComponent implements OnInit, OnDestroy {
     this.equipment$.unsubscribe();
   }
 
+  getTotalItem() {
+    const totalItem = {
+      name: 'Equipment Totals',
+      type: 'total',
+      itemClass: 'newbie'
+    };
+
+    _.each(this.equipment, item => {
+      const keys = _.reject(_.keys(item), key => {
+        return !_.isNumber(item[key]) || key === 'foundAt';
+      });
+
+      _.each(keys, key => {
+        if(!totalItem[key]) totalItem[key] = 0;
+        totalItem[key] += item[key];
+      });
+    });
+
+    return totalItem;
+  }
+
   setEquipment(data) {
     this.equipment = data;
     this.iterationOrder = _.sortBy(_.keys(data));
+
+    this.equipment.total = this.getTotalItem();
   }
 
 }
