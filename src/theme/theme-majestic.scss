@@ -111,4 +111,22 @@ $new-light: map-get($colors, light);
       }
     }
   }
+
+  .chat-message-container:nth-child(2n) {
+    background-color: $new-primary;
+    color: $new-light;
+
+    .chat-message {
+      color: $new-light;
+    }
+
+    .item-inner {
+      border-bottom: 0;
+    }
+  }
+
+  .item-md-darkstripe {
+    background-color: $new-primary;
+    color: $new-light;
+  }
 }

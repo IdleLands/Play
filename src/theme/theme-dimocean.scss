@@ -151,10 +151,26 @@ $gray-fg: #555;
   }
 
   .background-icon {
-    color: darken($faded-blue, 50%) !important;
+    color: darken($faded-blue, 10%) !important;
   }
 
   .chat-message {
     color: $gray-fg;
+  }
+
+  .chat-message-container:nth-child(2n) {
+    background-color: $new-primary;
+
+    .item-inner {
+      border-bottom: 0;
+    }
+  }
+
+  .item-md-darkstripe {
+    background-color: $new-primary;
+  }
+
+  ion-note {
+    color: lighten($gray-fg, 20%);
   }
 }
