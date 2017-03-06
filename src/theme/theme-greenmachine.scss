@@ -129,4 +129,9 @@ $new-light: map-get($colors, light);
     background-color: $new-primary;
     color: $new-light;
   }
+
+  .highlighted-text {
+    background-color: $base-green;
+    color: $new-light;
+  }
 }

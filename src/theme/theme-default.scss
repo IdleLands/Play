@@ -16,4 +16,9 @@
       stroke: darken(map-get($colors, playercard), 30%) !important;
     }
   }
+
+  .highlighted-text {
+    background-color: #000;
+    color: #fff;
+  }
 }

@@ -173,4 +173,9 @@ $gray-fg: #555;
   ion-note {
     color: lighten($gray-fg, 20%);
   }
+
+  .highlighted-text {
+    background-color: $gray-fg;
+    color: $new-primary;
+  }
 }

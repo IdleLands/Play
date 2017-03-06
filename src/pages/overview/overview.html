@@ -150,8 +150,8 @@
                         <span>{{ item.timestamp | date:'medium' }}</span>
                       </ion-note>
                       <div>{{ item.text }}</div>
-                      <button ion-button small outline (click)="viewBattle(item.extraData.battleName)" *ngIf="item.extraData?.battleName">View Battle</button>
-                      <button ion-button small outline (click)="openLink(item.extraData.link)" *ngIf="item.extraData?.link">View Link</button>
+                      <button ion-button small color="primary" (click)="viewBattle(item.extraData.battleName)" *ngIf="item.extraData?.battleName">View Battle</button>
+                      <button ion-button small color="primary" (click)="openLink(item.extraData.link)" *ngIf="item.extraData?.link">View Link</button>
                     </ion-col>
                   </ion-row>
                 </ion-grid>

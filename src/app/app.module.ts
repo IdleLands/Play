@@ -44,7 +44,7 @@ import {
   PetsPage, PetsOverviewPage, PetsItemsPage,
   PremiumPage,
   SettingsPage,
-  BattlePage
+  BattlePage, HighlightPipe
 } from '../pages';
 
 const deepLinks: DeepLinkConfig = {
@@ -109,7 +109,8 @@ const deepLinks: DeepLinkConfig = {
     ItemCompareModal,
 
     CurrentChannelPipe,
-    LinkifyPipe
+    LinkifyPipe,
+    HighlightPipe
   ],
   imports: [
     MomentModule,

@@ -42,7 +42,7 @@
       <ion-col>
         <ion-list [virtualScroll]="battle.messageData" approxItemHeight="50px" bufferRatio="50">
           <ion-item text-wrap *virtualItem="let message">
-            <h3>{{ message.message }}</h3>
+            <h3 [innerHTML]="message.message | highlight:player.name | highlight:petName"></h3>
 
             <div *ngIf="message.data">
               <ion-row *ngFor="let party of message.data">

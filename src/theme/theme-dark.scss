@@ -153,4 +153,9 @@ $gray-fg: #ccc;
   .chat-message {
     color: $gray-fg;
   }
+
+  .highlighted-text {
+    background-color: $gray-fg;
+    color: $new-primary;
+  }
 }
