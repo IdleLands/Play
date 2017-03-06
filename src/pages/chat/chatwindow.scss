@@ -6,6 +6,19 @@ chat-window {
     overflow-y: auto;
     position: relative;
 
+    .chat-message-container.compressed {
+
+      min-height: 3rem;
+
+      .item-inner {
+        border-bottom: 0;
+      }
+
+      .label {
+        margin: 0;
+      }
+    }
+
     .scroll-button {
       position: fixed;
       right: 10px;

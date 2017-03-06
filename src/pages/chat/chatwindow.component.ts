@@ -62,6 +62,10 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
     }
   }
 
+  get isCompressedChat() {
+    return this.storage.retrieve('compressChat');
+  }
+
   doChannelRemove(channel) {
     _.each(this.chatLog, message => {
       if(message.route !== channel.route) return;
