@@ -34,13 +34,37 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
     super.ngOnInit();
 
     this.premium$ = this.appState.premium.subscribe(data => this.setPremium(data));
-    this.festivals$ = this.appState.festivals.subscribe(data => this.festivals = data);
+    this.festivals$ = this.appState.festivals.subscribe(data => this.setFestivals(data));
   }
 
   ngOnDestroy() {
     super.ngOnDestroy();
 
     this.premium$.unsubscribe();
+  }
+
+  getTotalFestival(): Festival {
+    const base = {
+      name: 'All Festivals',
+      endDate: _.maxBy(this.festivals, fest => new Date(fest.endDate).getMilliseconds()).endDate,
+      bonuses: {}
+    };
+
+    _.each(this.festivals, fest => {
+      _.each(_.keys(fest.bonuses), bonusKey => {
+        if(!base.bonuses[bonusKey]) base.bonuses[bonusKey] = 0;
+        base.bonuses[bonusKey] += fest.bonuses[bonusKey];
+      });
+    });
+
+    return base;
+  }
+
+  setFestivals(festivals) {
+    this.festivals = festivals;
+    if(this.festivals.length > 0) {
+      this.festivals.unshift(this.getTotalFestival());
+    }
   }
 
   festivalBonus(festivalBonuses) {
