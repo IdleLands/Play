@@ -118,3 +118,8 @@ ion-list {
   margin-top: 0;
   margin-bottom: 0;
 }
+
+.sidenav-scroll-list {
+  overflow-y: auto;
+  height: calc(100% - 272px);
+}

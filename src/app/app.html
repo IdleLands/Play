@@ -16,9 +16,9 @@
         </ion-toolbar>
       </ion-header>
 
-      <ion-content>
+      <ion-content class="no-scroll">
 
-        <ion-list class="sidenav-list">
+        <ion-list class="sidenav-list" no-margin>
 
           <ion-item color="playercard" class="item-no-margin">
             <player-card></player-card>
@@ -30,7 +30,7 @@
 
         </ion-list>
 
-        <ion-list class="sidenav-list">
+        <ion-list class="sidenav-list sidenav-scroll-list">
 
           <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" [color]="activePage === p.title ? 'extradata' : ''">
             <ion-row no-padding>
