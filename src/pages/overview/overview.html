@@ -101,7 +101,7 @@
               </ion-slide>
             </ion-slides>
 
-            <ion-slides [class.hidden]="choices.length === 0" slidesPerView="3" #choiceSlides>
+            <ion-slides [class.hidden]="choices.length === 0" [slidesPerView]="numSlides" #choiceSlides>
               <ion-slide *ngFor="let choice of choices; let i = index">
                 <ion-card class="choice-card">
                   <ion-card-header>

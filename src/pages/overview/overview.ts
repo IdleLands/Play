@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Platform } from 'ionic-angular';
 
 import { LocalStorageService } from 'ng2-webstorage';
 
@@ -34,7 +34,8 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     public primus: Primus,
     public navCtrl: NavController,
     public icomp: ItemCompare,
-    public storage: LocalStorageService
+    public storage: LocalStorageService,
+    public platform: Platform
   ) {
     super(appState, primus, navCtrl);
   }
@@ -64,6 +65,10 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.adventureLog$.unsubscribe();
+  }
+
+  get numSlides() {
+    return this.platform.is('ios') || this.platform.is('android') ? 1 : 3;
   }
 
   setPlayer(player) {

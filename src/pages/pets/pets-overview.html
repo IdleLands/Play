@@ -36,7 +36,7 @@
               </ion-slide>
             </ion-slides>
 
-            <ion-slides [class.hidden]="petbasic.length === 0" slidesPerView="3" #petSlides>
+            <ion-slides [class.hidden]="petbasic.length === 0" [slidesPerView]="numSlides" #petSlides>
               <ion-slide *ngFor="let petOption of petbasic">
                 <ion-card class="pet-card">
 

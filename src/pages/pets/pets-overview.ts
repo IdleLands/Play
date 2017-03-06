@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { NavController, AlertController, Platform } from 'ionic-angular';
 
 import { AppState, Primus, ItemInfo, Theme } from '../../services';
 import { PlayComponent } from '../../components/play.component';
@@ -62,7 +62,8 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
     public primus: Primus,
     public navCtrl: NavController,
     public alertCtrl: AlertController,
-    public theme: Theme
+    public theme: Theme,
+    public platform: Platform
   ) {
     super(appState, primus, navCtrl);
   }
@@ -88,6 +89,10 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
     this.petbuy$.unsubscribe();
     this.petactive$.unsubscribe();
     this.achievements$.unsubscribe();
+  }
+
+  get numSlides() {
+    return this.platform.is('ios') || this.platform.is('android') ? 1 : 3;
   }
 
   setPetActive(petactive) {
