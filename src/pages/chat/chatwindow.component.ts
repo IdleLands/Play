@@ -110,8 +110,6 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
 
     this.channelUpdate.emit(message);
 
-    this.saveLog();
-
     if(message.route !== this.channel.route) return;
 
     if(this.atBottomish()) {

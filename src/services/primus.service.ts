@@ -27,6 +27,9 @@ export class Primus {
   private _reconnecting: boolean;
   private loggedIn$: BehaviorSubject<boolean> = new BehaviorSubject(false);
 
+  private chatLog: ChatMessage[] = [];
+  private advLog: AdventureLog[] = [];
+
   constructor(
     private storage: LocalStorageService,
     private appState: AppState,
@@ -50,15 +53,36 @@ export class Primus {
     });
   }
 
+  saveAdventureLog() {
+    if(this.advLog.length > 50) {
+      this.advLog.length = 50;
+    }
+    this.storage.store('adventureLog', this.advLog);
+  }
+
+  saveChatLog() {
+    while(this.chatLog.length > 200) {
+      this.chatLog.shift();
+    }
+
+    this.storage.store('chatLog', this.chatLog);
+  }
+
   loadAdventureLog() {
     const advLog = this.storage.retrieve('adventureLog') || [];
-    _.each(advLog.reverse(), item => this.appState.adventureLog.next(item));
+    _.each(advLog.reverse(), item => {
+      this.appState.adventureLog.next(item);
+      this.advLog.unshift(item);
+    });
   }
 
   loadChatMessages() {
     const chatLog = this.storage.retrieve('chatLog') || [];
     this.appState._chatLength.next(chatLog.length);
-    _.each(chatLog, item => this.appState.chatMessages.next(item));
+    _.each(chatLog, item => {
+      this.appState.chatMessages.next(item);
+      this.chatLog.push(item);
+    });
   }
 
   _handleNotification({ message }): void {
@@ -205,6 +229,9 @@ export class Primus {
     if(fromPrimus && message.playerName === playerName) return;
     if(!message.timestamp) message.timestamp = Date.now();
     this.appState.chatMessages.next(message);
+
+    this.chatLog.push(message);
+    this.saveChatLog();
   }
 
   sendChatMessage(messageObject: ChatMessage) {
@@ -237,6 +264,9 @@ export class Primus {
     if(!_.includes(object.targets, this.appState.player.getValue().name)) return;
     object.timestamp = Date.now();
     this.appState.adventureLog.next(object);
+
+    this.advLog.unshift(object);
+    this.saveAdventureLog();
   }
 
   disconnectSocket(): void {

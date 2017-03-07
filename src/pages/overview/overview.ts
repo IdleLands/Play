@@ -3,8 +3,6 @@ import * as _ from 'lodash';
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { NavController, Platform } from 'ionic-angular';
 
-import { LocalStorageService } from 'ng2-webstorage';
-
 import { AppState, Primus, ItemCompare, ItemInfo } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
@@ -34,7 +32,6 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     public primus: Primus,
     public navCtrl: NavController,
     public icomp: ItemCompare,
-    public storage: LocalStorageService,
     public platform: Platform
   ) {
     super(appState, primus, navCtrl);
@@ -52,7 +49,6 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
       if(this.adventureLog.length > 50) {
         this.adventureLog.length = 50;
       }
-      this.storage.store('adventureLog', this.adventureLog);
     });
 
     this.party$ = this.appState.party.subscribe(data => {
