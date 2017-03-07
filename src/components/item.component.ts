@@ -13,8 +13,8 @@ import { Item } from '../models';
     <ion-row margin-bottom>
       <ion-col width-20 text-center no-padding>
         <div class="class-{{ item.itemClass }}">{{ item.type }}</div>
-        <button ion-button outline color="primary" small *ngIf="buttons && buttons.length > 0" (click)="openItemPopover($event)">
-          Actions
+        <button ion-button icon-only outline color="primary" small *ngIf="buttons && buttons.length > 0" (click)="openItemPopover($event)">
+          <ion-icon name="more"></ion-icon>
         </button>
       </ion-col>
       
