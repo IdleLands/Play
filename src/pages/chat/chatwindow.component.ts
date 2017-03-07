@@ -23,8 +23,13 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterV
   @Output() public channelUpdate = new EventEmitter();
   @Output() public removeChannel = new EventEmitter();
 
-  @ViewChild('outputWindow') public outputWindow;
+  @ViewChild('outputWindow')
+  public outputWindow;
+
   public baseHeight: number = 200;
+
+  @ViewChild('typeHere')
+  public textInput;
 
   public showScrollButton: boolean;
 
@@ -36,6 +41,8 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterV
 
   chatLength$: any;
   private baseChatLength: number;
+
+  private firstTime = true;
 
   constructor(
     public appState: AppState,
@@ -62,6 +69,12 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterV
   }
 
   ngAfterViewChecked() {
+    if(this.firstTime) {
+      this.firstTime = false;
+      setTimeout(() => {
+        this.textInput.setFocus();
+      }, 150);
+    }
     if(this.showScrollButton) return;
 
     if(this.atBottomish()) {

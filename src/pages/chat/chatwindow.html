@@ -39,6 +39,8 @@
         <ion-input [ngModelOptions]="{standalone: true}"
                    [(ngModel)]="currentMessage"
                    type="text"
+                   #typeHere
+                   autofocus
                    clearInput="true"
                    [placeholder]="'Send message to ' + channelName(channel)"></ion-input>
       </ion-col>
