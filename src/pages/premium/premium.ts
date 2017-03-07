@@ -61,14 +61,14 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
   }
 
   setFestivals(festivals) {
-    this.festivals = festivals;
+    this.festivals = _.cloneDeep(festivals);
     if(this.festivals.length > 0) {
       this.festivals.unshift(this.getTotalFestival());
     }
   }
 
   festivalBonus(festivalBonuses) {
-    return _.map(_.keys(festivalBonuses), key => `${key.toUpperCase()} +${festivalBonuses[key] * 100}`);
+    return _.map(_.keys(festivalBonuses), key => `${key.toUpperCase()} +${(festivalBonuses[key] * 100).toFixed(0)}`);
   }
 
   setPremium(premium) {
