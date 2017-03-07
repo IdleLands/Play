@@ -63,11 +63,15 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   setBaseHeight() {
-    this.baseHeight = this.outputWindow.nativeElement.scrollHeight;
+    this.baseHeight = this.outputElement.scrollHeight;
   }
 
   get isCompressedChat() {
     return this.storage.retrieve('compressChat');
+  }
+
+  get outputElement() {
+    return this.outputWindow.nativeElement;
   }
 
   doChannelRemove(channel) {
@@ -91,13 +95,13 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
   }
 
   atBottomish() {
-    return this.outputWindow.nativeElement.scrollTop >
-           this.outputWindow.nativeElement.scrollHeight - this.baseHeight - AUTOSCROLL_THRESHOLD;
+    return this.outputElement.scrollTop >
+           this.outputElement.scrollHeight - this.outputElement.offsetHeight - AUTOSCROLL_THRESHOLD;
   }
 
   scrollToBottom() {
     this.showScrollButton = false;
-    this.outputWindow.nativeElement.scrollTop = this.outputWindow.nativeElement.scrollHeight;
+    this.outputElement.scrollTop = this.outputElement.scrollHeight;
   }
 
   saveLog() {
