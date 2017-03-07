@@ -47,7 +47,7 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
   ngOnInit() {
     this.chatMessages$ = this.appState.chatMessages.subscribe(data => this.receiveMessage(data));
     this.chatLength$ = this.appState._chatLength.subscribe(data => this.baseChatLength = data);
-    this.baseHeight = this.outputWindow.nativeElement.scrollHeight;
+    this.setBaseHeight();
 
     setTimeout(() => this.scrollToBottom(), 1000);
   }
@@ -60,6 +60,10 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
     if(changes.channel) {
       setTimeout(() => this.scrollToBottom());
     }
+  }
+
+  setBaseHeight() {
+    this.baseHeight = this.outputWindow.nativeElement.scrollHeight;
   }
 
   get isCompressedChat() {
@@ -122,6 +126,8 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
     if(this.chatLog.length === this.baseChatLength) {
       setTimeout(() => this.scrollToBottom());
     }
+
+    this.setBaseHeight();
   }
 
   sendMessage() {
