@@ -147,7 +147,6 @@ export class MyApp {
       }
 
       if(showFaviconNotif) {
-        this.latestMessages = 0;
         Tinycon.setBubble(++this.badgeMessages);
       }
     });
