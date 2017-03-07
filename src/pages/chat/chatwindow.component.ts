@@ -1,6 +1,6 @@
 import * as _ from 'lodash';
 
-import { Component, EventEmitter, Input, Output, OnInit, OnChanges, OnDestroy, Pipe, PipeTransform, ViewChild, ChangeDetectionStrategy } from '@angular/core';
+import { Component, EventEmitter, Input, Output, OnInit, OnChanges, OnDestroy, Pipe, PipeTransform, ViewChild } from '@angular/core';
 // import { NavController, MenuController } from 'ionic-angular';
 
 import { LocalStorage, LocalStorageService } from 'ng2-webstorage';
@@ -14,8 +14,7 @@ const AUTOSCROLL_THRESHOLD = 200;
 
 @Component({
   selector: 'chat-window',
-  templateUrl: 'chatwindow.html',
-  changeDetection: ChangeDetectionStrategy.OnPush
+  templateUrl: 'chatwindow.html'
 })
 export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
 
