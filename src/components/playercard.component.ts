@@ -35,9 +35,6 @@ import { Player } from '../models';
         <div>
           <h3><game-icon icon="stat-gold"></game-icon> {{ player.gold | number }} Gold</h3>
         </div>
-        <div>
-          <h3><game-icon icon="symbol-item"></game-icon> {{ player.statCache.itemFindRange | number }} Max Item Score</h3>
-        </div>
       </ion-col>
     </ion-row> 
   </ion-grid>

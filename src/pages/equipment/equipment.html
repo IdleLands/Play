@@ -9,13 +9,18 @@
 
 <ion-content padding>
 
-  <ion-list>
-    <ion-item text-wrap>
-      <item [item]="equipment.total"></item>
-    </ion-item>
-    <ion-item text-wrap *ngFor="let slot of iterationOrder">
-      <item [item]="equipment[slot]" [buttons]="equippedItemButtons"></item>
-    </ion-item>
-  </ion-list>
+  <ion-card>
+    <ion-card-header>Adventurer Equipment (Max Item Score: {{ player.statCache.itemFindRange | number }})</ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item text-wrap>
+          <item [item]="equipment.total"></item>
+        </ion-item>
+        <ion-item text-wrap *ngFor="let slot of iterationOrder">
+          <item [item]="equipment[slot]" [buttons]="equippedItemButtons"></item>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

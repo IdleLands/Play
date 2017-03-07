@@ -4,7 +4,7 @@
     <ion-row>
       <ion-col>
         <ion-card>
-          <ion-card-header>Pet Equipment</ion-card-header>
+          <ion-card-header>Pet Equipment (Max Item Score: {{ petactive.statCache.itemFindRange | number }})</ion-card-header>
           <ion-card-content>
             <ion-list>
               <ion-item text-wrap *ngFor="let item of petEquipment">
