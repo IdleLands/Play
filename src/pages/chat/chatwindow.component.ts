@@ -1,7 +1,6 @@
 import * as _ from 'lodash';
 
-import { Component, EventEmitter, Input, Output, OnInit, OnChanges, OnDestroy, Pipe, PipeTransform, ViewChild } from '@angular/core';
-// import { NavController, MenuController } from 'ionic-angular';
+import { Component, EventEmitter, Input, Output, OnInit, OnChanges, AfterViewChecked, OnDestroy, Pipe, PipeTransform, ViewChild } from '@angular/core';
 
 import { LocalStorage, LocalStorageService } from 'ng2-webstorage';
 import linkify from 'linkifyjs/string';
@@ -16,7 +15,7 @@ const AUTOSCROLL_THRESHOLD = 200;
   selector: 'chat-window',
   templateUrl: 'chatwindow.html'
 })
-export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
+export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterViewChecked {
 
   @Input() public channel: { route: string, name: string };
   @Input() public player: Player = new Player();
@@ -58,7 +57,15 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
 
   ngOnChanges(changes) {
     if(changes.channel) {
-      setTimeout(() => this.scrollToBottom());
+      this.scrollToBottom();
+    }
+  }
+
+  ngAfterViewChecked() {
+    if(this.showScrollButton) return;
+
+    if(this.atBottomish()) {
+      this.scrollToBottom();
     }
   }
 
@@ -120,17 +127,7 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy {
 
     if(message.route !== this.channel.route) return;
 
-    if(this.atBottomish()) {
-      this.showScrollButton = false;
-      setTimeout(() => this.scrollToBottom());
-    } else {
-      this.showScrollButton = true;
-    }
-
-    if(this.chatLog.length === this.baseChatLength) {
-      setTimeout(() => this.scrollToBottom());
-    }
-
+    this.showScrollButton = !this.atBottomish();
     this.setBaseHeight();
   }
 
