@@ -1,0 +1,134 @@
+// http://ionicframework.com/docs/v2/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.hidden {
+  display: none !important;
+}
+
+.unbold {
+  font-weight: 300;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.scroll-content {
+  user-select: text;
+}
+
+$sizes: 125 150 175 200 250 300 350 400 1000;
+
+@each $size in $sizes {
+  .size-#{$size} {
+    font-size: $size + 0%;
+  }
+}
+
+$itemcolors: (
+  newbie:     teal,
+  basic:      gray,
+  guardian:   blue,
+  pro:        purple,
+  godly:      black
+);
+
+@each $class, $color in $itemcolors {
+  .class-#{$class} {
+    background-color: $color;
+    color: #fff;
+  }
+}
+
+.class-idle {
+  background: linear-gradient(to right, red, orange, green, blue, indigo, violet);
+  color: #fff;
+  text-shadow: 1px 0 0 black, 0 -1px 0 black, 0 1px 0 black, -1px 0 0 black;
+}
+
+.positive {
+  color: #0c0;
+}
+
+.negative {
+  color: #c00;
+}
+
+.true-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.space-around {
+  justify-content: space-around;
+}
+
+.max-space {
+  width: 100%;
+  height: 100%;
+}
+
+.background-text {
+  color: #ccc;
+  font-size: 200%;
+}
+
+.alert-radio-label {
+  white-space: normal!important;
+}
+
+.no-scroll, .no-scroll > .scroll-content {
+  overflow: hidden;
+}
+
+ion-list {
+  margin-top: 0 !important;
+}
+
+.vertical-center {
+  display: flex;
+  align-items: center;
+}
+
+.transparent-menu {
+  opacity: 0.7;
+  pointer-events: none;
+
+  .popover-content {
+    pointer-events: visiblepainted;
+  }
+}
+
+.item-no-margin > .item-inner > .input-wrapper > .label {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.item-less-margin > .item-inner > .input-wrapper > .label {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.sidenav-scroll-list {
+  overflow-y: auto;
+  height: calc(100% - 128px);
+
+  &.has-pet {
+    height: calc(100% - 253px);
+  }
+}

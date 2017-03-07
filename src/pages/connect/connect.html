@@ -1,0 +1,35 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Connecting to Server...</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col>
+        <div class="connecting-container">
+          <div>Connecting to Server...</div>
+          <div>{{ currentMessage }}...</div>
+          <br>
+          <div *ngIf="_isTakingForever">
+            <div>Hmmm... this is taking a while.</div>
+            <div><button ion-button outline color="primary" (click)="refresh()">Shall we try this again?</button></div>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row padding>
+      <ion-col col-md-6 col-xs-12 offset-md-3>
+        <reddit-news></reddit-news>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,24 @@
+
+.theme-default {
+
+  &.modal {
+    .scroll-content {
+      background-color: #fff;
+    }
+  }
+
+  .xp-circle {
+    circle {
+      stroke: darken(map-get($colors, playercard), 10%) !important;
+    }
+
+    path {
+      stroke: darken(map-get($colors, playercard), 30%) !important;
+    }
+  }
+
+  .highlighted-text {
+    background-color: #000;
+    color: #fff;
+  }
+}

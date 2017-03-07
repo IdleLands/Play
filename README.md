@@ -1,11 +1,18 @@
-# IdleLandsPlay [![Build Status](https://travis-ci.org/IdleLands/Play.svg?branch=master)](https://travis-ci.org/IdleLands/Play)
+IdleLands Play
+=====================
 
-## Running IdleLandsPlay
+This project is the frontend for Web and Mobile IdleLands
 
-* clone the repo
-* `npm install`
-* `npm start`
+## Using this project
 
-### Working on IdleLandsPlay
+You'll need the Ionic CLI with support for v2 apps:
 
-* play around in `src`
+```bash
+npm install -g ionic
+```
+
+Then run:
+
+```bash
+npm install
+```

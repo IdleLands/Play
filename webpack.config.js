@@ -1,88 +1,76 @@
 var path = require('path');
-var GitRevisionPlugin = require('git-revision-webpack-plugin');
 var webpack = require('webpack');
+var ionicWebpackFactory = require(process.env.IONIC_WEBPACK_FACTORY);
 
-var phaserModule = path.join(__dirname, '/node_modules/phaser/');
-var phaser = path.join(phaserModule, 'build/custom/phaser-split.js');
-var pixi = path.join(phaserModule, 'build/custom/pixi.js');
-var p2 = path.join(phaserModule, 'build/custom/p2.js');
+var GitRevisionPlugin = require('git-revision-webpack-plugin');
 var gitRevisionPlugin = new GitRevisionPlugin();
 
+const phaserDir = path.join(__dirname, 'node_modules/phaser/');
+const phaserlib = path.join(phaserDir, 'build/custom/phaser-split.js');
+const pixi = path.join(phaserDir, 'build/custom/pixi.js');
+const p2 = path.join(phaserDir, 'build/custom/p2.js');
+
 module.exports = {
-  context: path.join(__dirname, 'src'),
-  entry:  {
-    bootstrap: './bootstrap.js'
-  },
+  entry: process.env.IONIC_APP_ENTRY_POINT,
   output: {
-    path: path.join(__dirname, 'dist'),
-    filename: '[name].js'
+    path: '{{BUILD}}',
+    publicPath: 'build/',
+    filename: process.env.IONIC_OUTPUT_JS_FILE_NAME,
+    devtoolModuleFilenameTemplate: ionicWebpackFactory.getSourceMapperFunction(),
   },
-  devtool: 'source-map',
+  devtool: process.env.IONIC_SOURCE_MAP_TYPE,
+
+  resolve: {
+    extensions: ['.ts', '.js', '.json'],
+    modules: [ path.join(__dirname, "node_modules") ],
+
+    alias: {
+      phaserlib: phaserlib,
+      'pixi.js': pixi,
+      'p2.js': p2
+    }
+  },
+
+  devServer: {
+    historyApiFallback: true
+  },
+
   module: {
-    loaders: [
+    rules: [
       {
-        test: /pnotify.*\.js$/,
-        loader: 'imports?define=>false,global=>window'
-      },
-      {
-        test: /node_modules[\\\/]auth0-lock[\\\/].*\.js$/,
-        loaders: ['transform?brfs', 'transform?packageify']
-      },
-      {
-        test: /node_modules[\\\/]auth0-lock[\\\/].*\.ejs$/,
-        loader: 'transform?ejsify'
-      },
-      {
-        test: /\.js$/,
-        loaders: ['babel-loader', 'eslint-loader'],
+        test: /\.json$/,
+        loader: 'json-loader',
         exclude: /node_modules/
       },
       {
-        test: /\.css/,
-        loader: 'style!css'
+        test: /\.ts$/,
+        loader: process.env.IONIC_WEBPACK_LOADER,
+        exclude: /node_modules/
       },
       {
-        test: /\.less/,
-        loader: 'style!css!less'
+        test: /\.woff$|\.woff2$|\.eot$|\.ttf$|\.svg$/,
+        loader: 'file-loader'
       },
       {
-        test: /\.json/,
-        loader: 'json'
-      },
-      {
-        test: /\.png|\.ico|\.xml/,
-        loader:'file-loader?name=favicon/[path][name].[ext]&context=./favicon'
-      },
-      {
-        test: /\.woff|\.woff2|\.svg|.eot|\.ttf/,
-        loader: 'file'
-      },
-      {
-        test: /\.html/,
-        loader: 'html?caseSensitive=true&minimize=false'
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
-  resolve: {
-    alias: {
-      'phaser': phaser,
-      'pixi.js': pixi,
-      'p2': p2
-    }
-  },
-  devServer: {
-    port: 9002,
-    historyApiFallback: {
-      index: 'index.html'
-    }
-  },
-  node: {
-    fs: 'empty'
-  },
+
   plugins: [
+    ionicWebpackFactory.getIonicEnvironmentPlugin(),
     new webpack.DefinePlugin({
-      'VERSION': JSON.stringify(gitRevisionPlugin.version()),
-      'COMMITHASH': JSON.stringify(gitRevisionPlugin.commithash()),
+      VERSION: JSON.stringify(gitRevisionPlugin.version()),
+      COMMITHASH: JSON.stringify(gitRevisionPlugin.commithash())
     })
-  ]
+  ],
+
+  // Some libraries import Node modules but don't use them in the browser.
+  // Tell Webpack to provide empty mocks for them so importing them works.
+  node: {
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  }
 };

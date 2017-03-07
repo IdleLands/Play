@@ -1,0 +1,114 @@
+
+$new-primary: map-get($colors, dark);
+$new-light: map-get($colors, light);
+
+.theme-blackwhite {
+
+  &.modal {
+    .scroll-content {
+      background-color: #fff;
+    }
+  }
+
+  .spinner-md-secondary.spinner-crescent circle {
+    stroke: $new-light !important;
+  }
+
+  .xp-circle {
+    circle {
+      stroke: $new-light !important;
+    }
+
+    path {
+      stroke: $new-primary !important;
+    }
+  }
+
+  ion-card-header {
+    background-color: $new-primary !important;
+    color: $new-light;
+  }
+
+  a {
+    color: $new-primary;
+  }
+
+  .item-md-playercard {
+    background-color: $new-primary;
+  }
+
+  .item-md-petcard {
+    background-color: $new-primary;
+  }
+
+  .button-clear-md, .alert-button {
+    color: $new-primary !important;
+  }
+
+  .button-outline-md {
+    border-color: $new-primary;
+    color: $new-primary;
+  }
+
+  .toolbar-background-md {
+    background: $new-primary !important;
+  }
+
+  .item-md-extradata {
+    background: $new-primary !important;
+  }
+
+  .bar-button-solid-md-primary, .button-md-primary, .badge-md {
+    background-color: lighten($new-primary, 10%) !important;
+  }
+
+  .checkbox-md .checkbox-checked {
+    border-color: $new-primary;
+    background-color: $new-primary;
+  }
+
+  .alert-wrapper {
+
+    .alert-head {
+      background-color: $new-primary !important;
+      color: $new-light;
+    }
+
+    [aria-checked=true] {
+
+      .alert-radio-icon {
+        border-color: $new-primary;
+      }
+
+      .alert-radio-label {
+        color: $new-primary;
+      }
+
+      .alert-radio-inner {
+        background-color: $new-primary;
+      }
+    }
+  }
+
+  .tabbar {
+    background: $new-primary !important;
+
+    .tab-button {
+
+      color: $new-light;
+
+      &[aria-selected=true] {
+        color: lighten($new-light, 10%);
+
+        .tab-button-icon {
+          color: $new-light;
+        }
+      }
+    }
+  }
+
+  .highlighted-text {
+    background-color: $gray-fg;
+    color: $new-primary;
+  }
+}

@@ -1,0 +1,171 @@
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header no-padding padding-left padding-top padding-right>
+            <ion-row no-padding>
+              <ion-col no-padding class="vertical-center">
+                <span>Pets</span>
+                <ion-note padding-left>Swipe or use arrow keys to navigate</ion-note>
+              </ion-col>
+
+              <ion-col no-padding text-right>
+                <button no-margin ion-button small color="primary" (click)="hidePets = !hidePets">Toggle</button>
+                <button ion-button small icon-only color="primary" (click)="petSlides.slidePrev()" *ngIf="petbasic.length > 3">
+                  <ion-icon name="arrow-back"></ion-icon>
+                </button>
+                <button ion-button small icon-only color="primary" (click)="petSlides.slideNext()" *ngIf="petbasic.length > 3">
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+
+          </ion-card-header>
+
+          <ion-card-content no-padding *ngIf="!hidePets">
+
+            <ion-slides [class.hidden]="petbasic.length > 0">
+              <ion-slide>
+                <ion-card class="pet-card">
+                  <ion-card-content>
+                    <h1>You don't have any pets right now. Check back later!</h1>
+                  </ion-card-content>
+                </ion-card>
+              </ion-slide>
+            </ion-slides>
+
+            <ion-slides [class.hidden]="petbasic.length === 0" [slidesPerView]="numSlides" #petSlides>
+              <ion-slide *ngFor="let petOption of petbasic">
+                <ion-card class="pet-card">
+
+                  <ion-card-header *ngIf="!petOption.bought">
+                    {{ petOption.name }}
+                  </ion-card-header>
+
+                  <ion-card-header *ngIf="petOption.bought">
+                    {{ petOption.petName }}
+                  </ion-card-header>
+
+                  <ion-card-content *ngIf="!petOption.bought">
+                    <div>Cost: {{ petbuy[petOption.name].cost | number }} Gold</div>
+                    <p>{{ petbuy[petOption.name].description }}</p>
+                  </ion-card-content>
+
+                  <ion-card-content *ngIf="petOption.bought">
+                    <div>{{ petOption.name }}</div>
+                    <p>Level {{ petOption.level }} {{ petOption.profession }}</p>
+                  </ion-card-content>
+
+                  <ion-row>
+                    <ion-col *ngIf="petOption.bought">
+                      <button ion-button clear small color="primary" (click)="makeActive(petOption.name)" [disabled]="petactive.$petId === petOption.name">
+                        Make Active
+                      </button>
+                    </ion-col>
+                    <ion-col *ngIf="!petOption.bought">
+                      <button ion-button clear small color="primary" (click)="buyPet(petOption.name)" [disabled]="player.gold < petbuy[petOption.name].cost">
+                        Buy Pet
+                      </button>
+                    </ion-col>
+                  </ion-row>
+                </ion-card>
+              </ion-slide>
+            </ion-slides>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row wrap>
+      <ion-col col-12 col-md>
+        <ion-card>
+          <ion-card-header>Vitals</ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col class="size-150">
+                <stat stat="hp" [value]="petactive._hp.__current"></stat>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="size-150">
+                <stat stat="mp" [value]="petactive._mp.__current"></stat>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="size-150">
+                <game-icon icon="stat-xp"></game-icon> {{ petactive._xp.__current | number }}/{{ petactive._xp.maximum | number }} XP
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-12 col-md>
+        <ion-card>
+          <ion-card-header>Attributes</ion-card-header>
+          <ion-card-content>
+            <ion-row wrap>
+              <ion-col width-50 *ngFor="let stat of stats" class="size-150">
+                <stat [stat]="stat" [value]="petactive.statCache[stat]" [showColor]="true"></stat>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col col-12 col-md>
+        <ion-item>
+          <ion-label stacked>Attribute</ion-label>
+          <ion-select [(ngModel)]="petactive.attr" [selectOptions]="{ cssClass: theme.currentTheme }" (ionChange)="changeAttr($event)">
+            <ion-option value="">None</ion-option>
+            <ion-option *ngFor="let attr of petAttrs">{{ attr }}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12 col-md>
+        <ion-item>
+          <ion-label stacked>Class</ion-label>
+          <ion-select [(ngModel)]="petactive.professionName" [selectOptions]="{ cssClass: theme.currentTheme }" (ionChange)="changeClass($event)">
+            <ion-option *ngFor="let class of petClasses">{{ class }}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col col-12 col-md class="true-center">
+        <button ion-button color="primary" [disabled]="petactive.gold.__current === 0" (click)="takeGold()">Take Gold</button>
+        <button ion-button color="primary"
+                *ngIf="petactive.$scale"
+                [disabled]="petactive._level.__current === petactive._level.maximum
+                         || player._level.__current < petactive._level.__current
+                         || petactive.$scale.xpPerGold[petactive.scaleLevel.xpPerGold] === 0" (click)="feedGold()">Feed Gold</button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row wrap *ngIf="petactive.scaleLevel && petactive.$scale && petactive.$scaleCost">
+      <ion-col *ngFor="let upgrade of upgrades" class="upgrade-card" col-12 col-md-4>
+        <ion-card>
+          <ion-card-header>{{ upgrade.name }}</ion-card-header>
+          <ion-card-content text-center>
+            <div>
+              Level {{ petactive.scaleLevel[upgrade.stat]+1 }}/{{ petactive.$scale[upgrade.stat].length }}
+            </div>
+            <div>
+              {{ upgrade.info(petactive.$scale[upgrade.stat][petactive.scaleLevel[upgrade.stat]]) }}
+            </div>
+
+            <ion-row *ngIf="petactive.scaleLevel[upgrade.stat]+1 !== petactive.$scale[upgrade.stat].length">
+              <ion-col text-center>
+                <button ion-button clear color="primary" (click)="upgradeAttr(upgrade.stat)">
+                  Buy for {{ petactive.$scaleCost[upgrade.stat][petactive.scaleLevel[upgrade.stat]+1].toLocaleString() }} gold
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

@@ -1,0 +1,33 @@
+page-collectibles {
+  .faded {
+    opacity: 0.4;
+  }
+
+  .collectible-card {
+
+    ion-list {
+      margin-top: 5px;
+    }
+
+    ion-card-header {
+      padding: 0;
+
+      .expand-header {
+        padding: 16px;
+      }
+    }
+
+    [no-padding] {
+      min-height: 2.2rem;
+
+      ion-label {
+        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+      }
+    }
+
+    .collectible-description {
+      min-height: 150px;
+    }
+  }
+}

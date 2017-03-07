@@ -1,0 +1,38 @@
+chat-window {
+  height: 100%;
+
+  .output-window {
+    height: calc(100% - 42px);
+    overflow-y: auto;
+    position: relative;
+
+    .chat-message-container.compressed {
+
+      min-height: 3rem;
+
+      .item-inner {
+        border-bottom: 0;
+      }
+
+      .label {
+        margin: 0;
+      }
+    }
+
+    .scroll-button {
+      position: fixed;
+      right: 10px;
+      bottom: 50px;
+    }
+  }
+
+  .input-window {
+    height: 42px;
+    border-top: 1px solid #dedede;
+
+    .send-button {
+      height: 100%;
+      margin: 0;
+    }
+  }
+}

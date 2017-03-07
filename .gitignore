@@ -1,5 +1,5 @@
 node_modules/
-npm-debug.log
+npm-debug.log*
 .DS_Store
 loki.json
 .config.js
@@ -8,3 +8,4 @@ loki.json
 dist
 .publish
 primus.gen.js
+www

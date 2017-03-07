@@ -1,0 +1,19 @@
+page-achievements {
+  .achievement-card {
+
+    position: relative;
+    z-index: 10;
+
+    .background-icon {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      color: #eee;
+    }
+
+    ion-card-content {
+      min-height: 100px;
+    }
+  }
+}

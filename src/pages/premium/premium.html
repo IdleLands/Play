@@ -1,0 +1,100 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>IdleLands Premium - {{ player.nameEdit || player.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row wrap>
+
+      <ion-col col-12 col-md>
+        <ion-card>
+          <ion-card-header>Gold -> ILP</ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngFor="let ilpGoldMargin of ilpGoldMargins">
+                {{ ilpGoldMargin | number }} ILP
+
+                <button item-right ion-button small color="primary"
+                        [disabled]="player.gold < premium.conversionRate * ilpGoldMargin"
+                        (click)="buyIlp(ilpGoldMargin)">
+                  Buy for {{ premium.conversionRate * ilpGoldMargin | number }} gold
+                </button>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-12 col-md>
+        <ion-card>
+          <ion-card-header>$ -> ILP</ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngFor="let ilpGoldMargin of ilpGoldMargins">
+                Unimplemented
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row wrap>
+      <ion-col col-12 col-md>
+        <ion-card>
+          <ion-card-header>Buy ILP Items</ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item text-wrap *ngFor="let item of premium.buyable">
+                <h2>{{ item.name }}</h2>
+                <p>{{ item.description }}</p>
+
+                <button item-right ion-button small color="primary"
+                        [disabled]="premium.ilp < item.cost || premium.bought[item.name]"
+                        (click)="buyIlpItem(item.name)">
+                  Buy for {{ item.cost | number }} ILP
+                </button>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-12 col-md>
+        <ion-card>
+          <ion-card-header>
+            <ion-row no-padding>
+              <ion-col no-padding class="vertical-center">
+                <span>Festivals ({{ festivals.length }})</span>
+              </ion-col>
+
+              <ion-col no-padding text-right>
+                <button no-margin ion-button small outline (click)="createFestival()" *ngIf="player.isMod">Create</button>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngIf="festivals.length === 0">
+                No festivals! :(
+              </ion-item>
+              <ion-item text-wrap *ngFor="let festival of festivals">
+                <h2>{{ festival.name }}</h2>
+                <p>Ends {{ festival.endDate | amTimeAgo }}</p>
+                <small *ngFor="let bonus of festivalBonus(festival.bonuses)">{{ bonus }}% </small>
+
+                <button ion-button item-right clear icon-only color="danger" (click)="cancelFestival(festival)">
+                  <ion-icon name="close"></ion-icon>
+                </button>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

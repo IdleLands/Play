@@ -1,0 +1,67 @@
+<div [class]="'theme-' + theme">
+  <ion-split-pane>
+
+    <ion-menu [content]="content" [class.hidden]="!showSideMenu">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>{{ currentStatusString }}</ion-title>
+
+          <ion-buttons end>
+            <button ion-button icon-only solid color="primary" (click)="clickStatus()">
+              <ion-spinner *ngIf="onlineStatusIcon === 'reconnecting'" color="secondary"></ion-spinner>
+              <ion-icon [name]="onlineStatusIcon" *ngIf="onlineStatusIcon !== 'reconnecting'"></ion-icon>
+            </button>
+          </ion-buttons>
+
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content #attachStyleToMe class="no-scroll">
+
+        <ion-list class="sidenav-list" no-margin>
+
+          <ion-item color="playercard" class="item-no-margin">
+            <player-card></player-card>
+          </ion-item>
+
+          <ion-item color="petcard" class="item-no-margin" *ngIf="hasPet">
+            <pet-card></pet-card>
+          </ion-item>
+
+        </ion-list>
+
+        <ion-list class="sidenav-list sidenav-scroll-list" [class.has-pet]="hasPet">
+
+          <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" [color]="activePage === p.title ? 'extradata' : ''">
+            <ion-row no-padding>
+              <ion-col width-10 no-padding>
+                <ion-icon [name]="p.icon"></ion-icon>
+              </ion-col>
+              <ion-col no-padding>
+                <h3>{{ p.title }} <ion-badge color="secondary" *ngIf="p.showBadge && p.showBadge()">{{ p.badge() }}</ion-badge></h3>
+                <p *ngIf="activePageData && activePage === p.title" [innerHtml]="activePageData"></p>
+              </ion-col>
+            </ion-row>
+          </button>
+
+          <button ion-item (click)="logout()">
+            <ion-row no-padding>
+              <ion-col width-10 no-padding>
+                <ion-icon name="log-out"></ion-icon>
+              </ion-col>
+              <ion-col no-padding>
+                <h3>Log out</h3>
+              </ion-col>
+            </ion-row>
+          </button>
+
+        </ion-list>
+
+      </ion-content>
+
+    </ion-menu>
+
+    <ion-nav [root]="rootPage" #content swipeBackEnabled="false" main></ion-nav>
+
+  </ion-split-pane>
+</div>

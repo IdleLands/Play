@@ -1,0 +1,31 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>IdleLands Collectibles - {{ player.nameEdit || player.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <div class="true-center max-space background-text" *ngIf="collectibles.length === 0">
+    You don't have any collectibles... yet!
+  </div>
+
+  <ion-list [virtualScroll]="collectibles" approxItemHeight="150px" approxItemWidth="33%" bufferRatio="12">
+    <div col-12 col-md-4 *virtualItem="let collectible">
+      <ion-card [class.faded]="collectible._faded" class="collectible-card">
+        <ion-card-header>
+          <div class="expand-header class-{{ collectible.rarity }}">{{ collectible.name }} (x{{ collectible.count }})</div>
+        </ion-card-header>
+        <ion-card-content>
+          <ion-list>
+            <ion-item no-padding><p>{{ collectible.storyline }}</p></ion-item>
+            <ion-item no-padding><p>{{ collectible.map }}: {{ collectible.region }}</p></ion-item>
+            <ion-item no-padding text-wrap class="collectible-description">{{ collectible.description }}</ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ion-list>
+</ion-content>

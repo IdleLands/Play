@@ -1,0 +1,165 @@
+
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>IdleLands Overview - {{ player.nameEdit || player.name }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row wrap>
+      <ion-col col-12 col-md>
+        <ion-card>
+          <ion-card-header>Vitals</ion-card-header>
+          <ion-card-content>
+            <ion-row>
+              <ion-col class="size-150">
+                <stat stat="hp" [value]="player._hp.__current"></stat>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="size-150">
+                <stat stat="mp" [value]="player._mp.__current"></stat>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="size-150">
+                <game-icon icon="stat-xp"></game-icon> {{ player._xp.__current | number }}/{{ player._xp.maximum | number }} XP
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+
+      <ion-col col-12 col-md>
+        <ion-card>
+          <ion-card-header>Attributes</ion-card-header>
+          <ion-card-content>
+            <ion-row wrap>
+              <ion-col width-50 *ngFor="let stat of stats" class="size-150">
+                <stat [stat]="stat" [value]="player.statCache[stat]" [showColor]="true"></stat>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="party.name && party.players.length > 1">
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Party - {{ party.name }}</ion-card-header>
+          <ion-card-content>
+            <ion-row wrap>
+              <ion-col col-12 col-md *ngFor="let member of party.players">
+                <ion-card class="party-card">
+                  <ion-card-header>{{ member.name }}</ion-card-header>
+                  <ion-card-content>
+                    Level {{ member.level }} {{ member.profession }}
+                  </ion-card-content>
+                </ion-card>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            <ion-row no-padding>
+              <ion-col no-padding class="vertical-center">
+                <span>Choice Log</span>
+                <ion-note padding-left>Swipe or use arrow keys to navigate</ion-note>
+              </ion-col>
+
+              <ion-col no-padding text-right *ngIf="choices.length > 3">
+                <button ion-button small icon-only color="primary" (click)="choiceSlides.slidePrev()">
+                  <ion-icon name="arrow-back"></ion-icon>
+                </button>
+                <button ion-button small icon-only color="primary" (click)="choiceSlides.slideNext()">
+                  <ion-icon name="arrow-forward"></ion-icon>
+                </button>
+              </ion-col>
+            </ion-row>
+
+          </ion-card-header>
+          <ion-card-content no-padding>
+
+            <ion-slides [class.hidden]="choices.length > 0">
+              <ion-slide>
+                <ion-card class="choice-card">
+                  <ion-card-content>
+                    <h1>You don't have any choices right now. Check back later!</h1>
+                  </ion-card-content>
+                </ion-card>
+              </ion-slide>
+            </ion-slides>
+
+            <ion-slides [class.hidden]="choices.length === 0" [slidesPerView]="numSlides" #choiceSlides>
+              <ion-slide *ngFor="let choice of choices; let i = index">
+                <ion-card class="choice-card">
+                  <ion-card-header>
+                    Choice #{{ i+1 }}/{{ choices.length }} (Max: {{ player._choiceLimit }})
+                  </ion-card-header>
+                  <ion-card-content>
+                    {{ choice.message }}
+                  </ion-card-content>
+                  <ion-row>
+                    <ion-col *ngFor="let option of choice.choices">
+                      <button ion-button clear small (click)="makeChoice(choice.id, option)">
+                        <div>{{ option }}</div>
+                      </button>
+                    </ion-col>
+                    <ion-col *ngIf="choice.event === 'FindItem' || choice.event === 'Merchant'">
+                      <button ion-button clear small color="secondary" (click)="moreInfo(choice)">
+                        <div>More Info</div>
+                      </button>
+                    </ion-col>
+                  </ion-row>
+                </ion-card>
+              </ion-slide>
+            </ion-slides>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <ion-card>
+          <ion-card-header>Adventure Log</ion-card-header>
+          <ion-card-content class="adventure-log" no-padding>
+            <ion-list no-padding>
+              <ion-item *ngIf="adventureLog && adventureLog.length === 0">
+                Your adventure log is empty.
+              </ion-item>
+              <ion-item no-padding *ngFor="let item of adventureLog; let i = index" text-wrap [color]="i % 2 === 0 ? 'darkstripe' : 'lightstripe'">
+                <ion-grid no-padding>
+                  <ion-row no-padding>
+                    <ion-col col-xs-4 col-md-2 true-center text-center>
+                      <advlog-icon [icon]="item.category" class="size-300"></advlog-icon>
+                    </ion-col>
+                    <ion-col col-xs-8 col-md-10>
+                      <ion-note>
+                        <span>{{ item.timestamp | date:'medium' }}</span>
+                      </ion-note>
+                      <div>{{ item.text }}</div>
+                      <button ion-button small color="primary" (click)="viewBattle(item.extraData.battleName)" *ngIf="item.extraData?.battleName">View Battle</button>
+                      <button ion-button small color="primary" (click)="openLink(item.extraData.link)" *ngIf="item.extraData?.link">View Link</button>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
