@@ -157,6 +157,7 @@ export class MyApp {
       this.isHidden = document.hidden;
 
       if(!this.isHidden) {
+        this.badgeMessages = 0;
         Tinycon.setBubble(0);
       }
     });
