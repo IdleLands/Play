@@ -125,6 +125,10 @@ $gray-fg: #ccc;
     background-color: $new-primary !important;
     color: $gray-fg;
 
+    .alert-message, .alert-input {
+      color: $gray-fg;
+    }
+
     .button-inner {
 
       color: $gray-fg;

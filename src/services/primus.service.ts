@@ -432,4 +432,53 @@ export class Primus {
   giveItemToPlayer(itemId) {
     this._emit('plugin:pet:takeitem', { itemId });
   }
+
+  // GM
+  mute(targetName) {
+    this._emit('plugin:chat:togglemute', { targetName });
+  }
+
+  ban(targetName) {
+    this._emit('plugin:chat:toggleban', { targetName });
+  }
+
+  pardon(targetName) {
+    this._emit('plugin:chat:togglepardon', { targetName });
+  }
+
+  toggleModerator(targetName) {
+    this._emit('plugin:gm:togglemod', { targetName });
+  }
+
+  rename(targetName, newName) {
+    this._emit('plugin:player:changename', { targetName, newName });
+  }
+
+  relevel(targetName, targetLevel) {
+    this._emit('plugin:gm:setlevel', { targetName, targetLevel });
+  }
+
+  giveItem(targetName, targetItemString) {
+    this._emit('plugin:gm:giveitem', { targetName, targetItemString });
+  }
+
+  giveGold(targetName, bonusGold) {
+    this._emit('plugin:gm:givegold', { targetName, bonusGold });
+  }
+
+  giveILP(targetName, bonusIlp) {
+    this._emit('plugin:gm:giveilp', { targetName, bonusIlp });
+  }
+
+  teleport(targetName, teleData) {
+    this._emit('plugin:gm:teleport', { targetName, teleData });
+  }
+
+  toggleAchievement(targetName, achievement) {
+    this._emit('plugin:gm:toggleachievement', { targetName, achievement });
+  }
+
+  event(targetName, targetEvent) {
+    this._emit('plugin:gm:giveevent', { targetName, targetEvent });
+  }
 }

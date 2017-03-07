@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>IdleLands Chat - {{ player.name }} ({{ activeChannel.name }})</ion-title>
+    <ion-title>IdleLands Chat - {{ player.nameEdit || player.name }} ({{ activeChannel.name }})</ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="toggleChatMenu()" class="chat-toggle">
@@ -35,7 +35,14 @@
         </button>
 
         <ion-item-divider margin-top>Players ({{ chatUsers.length }} online)</ion-item-divider>
-        <button ion-item color="primary" class="chat-user" *ngFor="let user of chatUsers" (click)="messageUser(user)" [disabled]="user.name === player.name">
+
+        <button ion-item
+                color="primary"
+                class="chat-user item-less-margin"
+                *ngFor="let user of chatUsers"
+                (click)="user.name !== player.name && messageUser(user)"
+                (press)="player.isMod && openGMCommands(user, $event)"
+                (contextmenu)="player.isMod && openGMCommands(user, $event)">
           <ion-row no-padding>
             <ion-col no-padding width-20 class="true-center">
               <gendervatar [gender]="user.gender" scale="1.5"></gendervatar>
@@ -46,7 +53,7 @@
                 <ascension-level [level]="user.ascensionLevel"></ascension-level>
                 <ion-icon *ngIf="user.isMod" name="star"></ion-icon>
                 <ion-icon *ngIf="user.isMuted" name="close-circle"></ion-icon>
-                <span>{{ user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
+                <span>{{ user.nameEdit || user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
               </h3>
               <p *ngIf="player.isMod">{{ user.$shard }}~{{ user.$currentIp }}</p>
               <p>Level {{ user.level }} {{ user.professionName }}</p>

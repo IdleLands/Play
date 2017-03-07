@@ -8,7 +8,7 @@
       </button>
     </ion-buttons>
 
-    <ion-title>IdleLands Map - {{ player.name }}</ion-title>
+    <ion-title>IdleLands Map - {{ player.nameEdit || player.name }}</ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="loadPersonalities($event)">

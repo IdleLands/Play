@@ -129,6 +129,10 @@ $gray-fg: #555;
     background-color: $faded-blue !important;
     color: $gray-fg;
 
+    .alert-message, .alert-input {
+      color: $gray-fg;
+    }
+
     .button-inner {
 
       color: $gray-fg;

@@ -119,6 +119,11 @@ ion-list {
   margin-bottom: 0;
 }
 
+.item-less-margin > .item-inner > .input-wrapper > .label {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
 .sidenav-scroll-list {
   overflow-y: auto;
   height: calc(100% - 272px);

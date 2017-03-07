@@ -23,7 +23,7 @@ import { Player } from '../models';
      
       <ion-col width-80>
         <div>
-          <h1>{{ player.name }}</h1>
+          <h1>{{ player.nameEdit || player.name }}</h1>
           <h2 *ngIf="player.title">The {{ player.title }}</h2>
         </div>
         <div>
