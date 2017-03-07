@@ -39698,7 +39698,11 @@ ion-list {
 
 .sidenav-scroll-list {
   overflow-y: auto;
-  height: calc(100% - 272px);
+  height: calc(100% - 128px);
+}
+
+.sidenav-scroll-list.has-pet {
+  height: calc(100% - 253px);
 }
 
 page-achievements .achievement-card {
