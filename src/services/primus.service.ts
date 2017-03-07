@@ -338,11 +338,54 @@ export class Primus {
     return this.login(args);
   }
 
+  // PLAYER
   makeChoice(id, response) {
     this._emit('plugin:player:makechoice', {
       id,
       response
     });
+  }
+
+  togglePersonality(personality) {
+    this._emit('plugin:player:togglepersonality', { personality });
+  }
+
+  changeGender(gender) {
+    this._emit('plugin:player:changegender', { gender });
+  }
+
+  changeTitle(title) {
+    this._emit('plugin:player:changetitle', { title });
+  }
+
+  // PREMIUM
+  buyIlp(ilpBuy) {
+    this._emit('plugin:premium:buyilp', { ilpBuy });
+  }
+
+  buyIlpItem(itemName) {
+    this._emit('plugin:premium:buyilpitem', { itemName });
+  }
+
+  // PET
+  sellItemFromPet(itemId) {
+    this._emit('plugin:pet:sell', { itemId });
+  }
+
+  equipItemOnPet(itemId) {
+    this._emit('plugin:pet:equip', { itemId });
+  }
+
+  unequipItemFromPet(itemId) {
+    this._emit('plugin:pet:unequip', { itemId });
+  }
+
+  giveItemToPet(itemId) {
+    this._emit('plugin:pet:giveitem', { itemId });
+  }
+
+  giveItemToPlayer(itemId) {
+    this._emit('plugin:pet:takeitem', { itemId });
   }
 
   buyPet(petType, petName) {
@@ -391,46 +434,6 @@ export class Primus {
 
   upgradePetAttr(upgradeAttr) {
     this._emit('plugin:pet:upgrade', { upgradeAttr });
-  }
-
-  togglePersonality(personality) {
-    this._emit('plugin:player:togglepersonality', { personality });
-  }
-
-  changeGender(gender) {
-    this._emit('plugin:player:changegender', { gender });
-  }
-
-  changeTitle(title) {
-    this._emit('plugin:player:changetitle', { title });
-  }
-
-  buyIlp(ilpBuy) {
-    this._emit('plugin:premium:buyilp', { ilpBuy });
-  }
-
-  buyIlpItem(itemName) {
-    this._emit('plugin:premium:buyilpitem', { itemName });
-  }
-
-  sellItemFromPet(itemId) {
-    this._emit('plugin:pet:sell', { itemId });
-  }
-
-  equipItemOnPet(itemId) {
-    this._emit('plugin:pet:equip', { itemId });
-  }
-
-  unequipItemFromPet(itemId) {
-    this._emit('plugin:pet:unequip', { itemId });
-  }
-
-  giveItemToPet(itemId) {
-    this._emit('plugin:pet:giveitem', { itemId });
-  }
-
-  giveItemToPlayer(itemId) {
-    this._emit('plugin:pet:takeitem', { itemId });
   }
 
   // GM
