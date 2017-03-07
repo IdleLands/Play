@@ -25,6 +25,7 @@ import { Player } from '../models';
         <div>
           <h1>{{ player.nameEdit || player.name }}</h1>
           <h2 *ngIf="player.title">The {{ player.title }}</h2>
+          <h2 *ngIf="!player.title">&nbsp;</h2>
         </div>
         <div>
           <h3>The level {{ player._level.__current }}/{{ player._level.maximum }} {{ player.professionName }}</h3>

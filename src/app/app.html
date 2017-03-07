@@ -30,7 +30,7 @@
 
         </ion-list>
 
-        <ion-list class="sidenav-list sidenav-scroll-list">
+        <ion-list class="sidenav-list sidenav-scroll-list" [class.has-pet]="hasPet">
 
           <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)" [color]="activePage === p.title ? 'extradata' : ''">
             <ion-row no-padding>
