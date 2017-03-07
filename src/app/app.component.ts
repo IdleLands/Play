@@ -31,6 +31,8 @@ import {
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  @ViewChild('attachStyleToMe') needsStyle: any;
+
   @LocalStorage()
   theme: string;
   showSideMenu: boolean;
@@ -105,6 +107,13 @@ export class MyApp {
 
     this.state.activePageData.subscribe(({ page, data }) => {
       this.activePage = page.substring(0, page.length - 4);
+
+      if(this.activePage && this.needsStyle && !_.includes(['Home', 'Privacy'], this.activePage)) {
+        const nodes = this.needsStyle._elementRef.nativeElement.childNodes;
+        nodes[0].style.marginTop = '56px';
+        nodes[1].style.marginTop = '56px';
+      }
+
       if(_.includes(this.activePage, 'Pets')) {
         this.activePage = 'Pets';
       }
