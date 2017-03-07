@@ -514,4 +514,12 @@ export class Primus {
   event(targetName, targetEvent) {
     this._emit('plugin:gm:giveevent', { targetName, targetEvent });
   }
+
+  createFestival(targetFestivalString) {
+    this._emit('plugin:festival:create', { targetFestivalString });
+  }
+
+  cancelFestival(festivalId) {
+    this._emit('plugin:festival:cancel', { festivalId });
+  }
 }

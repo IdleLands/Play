@@ -1,9 +1,9 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
-import { AppState, Primus } from '../../services';
+import { AppState, Primus, Theme } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
 import { Premium, Festival } from '../../models';
@@ -25,7 +25,9 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
   constructor(
     public appState: AppState,
     public primus: Primus,
-    public navCtrl: NavController
+    public navCtrl: NavController,
+    public alertCtrl: AlertController,
+    public theme: Theme
   ) {
     super(appState, primus, navCtrl);
   }
@@ -46,7 +48,7 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
   getTotalFestival(): Festival {
     const base = {
       name: 'All Festivals',
-      endDate: _.maxBy(this.festivals, fest => new Date(fest.endDate).getMilliseconds()).endDate,
+      endDate: _.maxBy(this.festivals, fest => new Date(fest.endDate).getTime()).endDate,
       bonuses: {}
     };
 
@@ -77,11 +79,62 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
   }
 
   buyIlp(ilpToBuy: number) {
-    this.primus.buyIlp(ilpToBuy);
+    this.alertCtrl.create({
+      cssClass: this.theme.currentTheme,
+      title: `Buy ILP`,
+      message: `Are you sure you want to buy ${ilpToBuy.toLocaleString()} ILP?`,
+      buttons: [
+        { text: 'Cancel' },
+        { text: 'Yes, Please!', handler: () => {
+          this.primus.buyIlp(ilpToBuy);
+        } }
+      ]
+    }).present();
   }
 
   buyIlpItem(item: string) {
-    this.primus.buyIlpItem(item);
+    this.alertCtrl.create({
+      cssClass: this.theme.currentTheme,
+      title: `Buy ${item}`,
+      message: `Are you sure you want to buy ${item}?`,
+      buttons: [
+        { text: 'Cancel' },
+        { text: 'Yes, Please!', handler: () => {
+          this.primus.buyIlpItem(item);
+        } }
+      ]
+    }).present();
+  }
+
+  createFestival() {
+    this.alertCtrl.create({
+      cssClass: this.theme.currentTheme,
+      title: `Create Festival`,
+      message: 'Enter the festival text here. Don\'t forget the bonuses and the hour duration!',
+      inputs: [
+        { type: 'text', name: 'festival', placeholder: '"Festival Name" xp=0.15 hours=24' }
+      ],
+      buttons: [
+        { text: 'Cancel' },
+        { text: 'Create Festival', handler: (data) => {
+          this.primus.createFestival(data.festival);
+        } }
+      ]
+    }).present();
+  }
+
+  cancelFestival(festival) {
+    this.alertCtrl.create({
+      cssClass: this.theme.currentTheme,
+      title: 'Cancel Festival',
+      message: 'Are you sure you want to do this? The players will be very sad :(',
+      buttons: [
+        { text: 'No, Keep It' },
+        { text: 'Yes, Cancel It', handler: () => {
+          this.primus.cancelFestival(festival._id);
+        } }
+      ]
+    }).present();
   }
 
 }

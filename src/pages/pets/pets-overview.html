@@ -12,7 +12,7 @@
               </ion-col>
 
               <ion-col no-padding text-right>
-                <button no-margin ion-button small clear (click)="hidePets = !hidePets">Toggle</button>
+                <button no-margin ion-button small outline (click)="hidePets = !hidePets">Toggle</button>
                 <button ion-button small icon-only color="primary" (click)="petSlides.slidePrev()" *ngIf="petbasic.length > 3">
                   <ion-icon name="arrow-back"></ion-icon>
                 </button>

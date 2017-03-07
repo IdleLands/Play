@@ -66,7 +66,17 @@
 
       <ion-col col-12 col-md>
         <ion-card>
-          <ion-card-header>Festivals ({{ festivals.length }})</ion-card-header>
+          <ion-card-header>
+            <ion-row no-padding>
+              <ion-col no-padding class="vertical-center">
+                <span>Festivals ({{ festivals.length }})</span>
+              </ion-col>
+
+              <ion-col no-padding text-right>
+                <button no-margin ion-button small outline (click)="createFestival()" *ngIf="player.isMod">Create</button>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
           <ion-card-content>
             <ion-list>
               <ion-item *ngIf="festivals.length === 0">
@@ -76,6 +86,10 @@
                 <h2>{{ festival.name }}</h2>
                 <p>Ends {{ festival.endDate | amTimeAgo }}</p>
                 <small *ngFor="let bonus of festivalBonus(festival.bonuses)">{{ bonus }}% </small>
+
+                <button ion-button item-right clear icon-only color="danger" (click)="cancelFestival(festival)">
+                  <ion-icon name="close"></ion-icon>
+                </button>
               </ion-item>
             </ion-list>
           </ion-card-content>
