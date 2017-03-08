@@ -402,6 +402,10 @@ export class Primus {
     this._emit('plugin:pet:sell', { itemId });
   }
 
+  sellAllItemsFromPet() {
+    this._emit('plugin:pet:sellall');
+  }
+
   equipItemOnPet(itemId) {
     this._emit('plugin:pet:equip', { itemId });
   }

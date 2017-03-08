@@ -2,9 +2,9 @@
 import * as _ from 'lodash';
 
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
-import { AppState, Primus, ItemCompare } from '../../services';
+import { AppState, Primus, ItemCompare, Theme } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
 import { PetActive, Equipment, Item } from '../../models';
@@ -49,7 +49,9 @@ export class PetsItemsPage extends PlayComponent {
     public appState: AppState,
     public primus: Primus,
     public navCtrl: NavController,
-    public icomp: ItemCompare
+    public icomp: ItemCompare,
+    public alertCtrl: AlertController,
+    public theme: Theme
   ) {
     super(appState, primus, navCtrl);
   }
@@ -74,6 +76,20 @@ export class PetsItemsPage extends PlayComponent {
   setPetActive(petactive) {
     this.petactive = petactive;
     this.petEquipment = _.sortBy(_.flatten(_.values(petactive.equipment)), 'type');
+  }
+
+  sellAll() {
+    this.alertCtrl.create({
+      cssClass: this.theme.currentTheme,
+      title: 'Sell All Pet Items',
+      message: `Are you sure you want to sell all of your pet items?`,
+      buttons: [
+        { text: 'Cancel' },
+        { text: 'Yes, get rid of them!', handler: () => {
+          this.primus.sellAllItemsFromPet();
+        } }
+      ]
+    }).present()
   }
 
 }

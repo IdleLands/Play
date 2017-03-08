@@ -19,9 +19,22 @@
     <ion-row *ngIf="petactive.inventory">
       <ion-col>
         <ion-card>
-          <ion-card-header>Pet Inventory ({{ petactive.inventory.length }}/{{ petactive.$scale.inventory[petactive.scaleLevel.inventory] }})</ion-card-header>
+          <ion-card-header>
+            <ion-row no-padding>
+              <ion-col no-padding class="vertical-center">
+                <span>Pet Inventory ({{ petactive.inventory.length }}/{{ petactive.$scale.inventory[petactive.scaleLevel.inventory] }})</span>
+              </ion-col>
+
+              <ion-col no-padding text-right>
+                <button no-margin ion-button small color="primary" (click)="sellAll()" [disabled]="petactive.inventory.length === 0">Sell All</button>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
           <ion-card-content>
             <ion-list>
+              <ion-item *ngIf="petactive.inventory.length === 0">
+                Your pet has no items :(
+              </ion-item>
               <ion-item text-wrap *ngFor="let item of petactive.inventory">
                 <item [item]="item" [buttons]="inventoryButtons"></item>
               </ion-item>
