@@ -158,20 +158,23 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
     const totalGold = this.player.gold;
     const xpPerGold = this.petactive.$scale.xpPerGold[this.petactive.scaleLevel.xpPerGold];
 
-    const maxGold = Math.min(Math.ceil(neededXp / xpPerGold), totalGold);
+    const maxGold = Math.min(Math.ceil(neededXp * xpPerGold), totalGold);
 
     this.alertCtrl.create({
       cssClass: this.theme.currentTheme,
       title: 'Feed your pet',
-      message: `Your pet gains ${xpPerGold.toLocaleString()} xp per gold spend and needs ${neededXp.toLocaleString()} to level up. You have ${totalGold.toLocaleString()} gold and can spend ${maxGold.toLocaleString()} maximum.`,
+      message: `Your pet gains ${xpPerGold.toLocaleString()} xp per gold spent and needs ${neededXp.toLocaleString()} xp to level up. You have ${totalGold.toLocaleString()} gold and can spend ${maxGold.toLocaleString()} maximum.`,
       inputs: [{
         name: 'gold',
         type: 'number',
         value: ''+maxGold,
         placeholder: 'Gold to spend'
       }],
-      buttons:[
+      buttons: [
         { text: 'Cancel' },
+        { text: 'Feed Max', handler: () => {
+          this.primus.feedMax();
+        } },
         { text: 'Feed', handler: data => {
           const gold = +data.gold;
           this.primus.feedPetGold(gold, maxGold);

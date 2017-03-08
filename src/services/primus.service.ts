@@ -471,6 +471,10 @@ export class Primus {
     this._emit('plugin:pet:feed', { gold });
   }
 
+  feedMax() {
+    this._emit('plugin:pet:feedmax');
+  }
+
   upgradePetAttr(upgradeAttr) {
     this._emit('plugin:pet:upgrade', { upgradeAttr });
   }
