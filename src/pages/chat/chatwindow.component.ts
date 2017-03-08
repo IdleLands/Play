@@ -34,7 +34,7 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterV
   public showScrollButton: boolean;
 
   @LocalStorage()
-  public currentMessage: string = '';
+  public currentMessage: string;
 
   public chatMessages$: any;
   public chatLog: ChatMessage[] = [];
