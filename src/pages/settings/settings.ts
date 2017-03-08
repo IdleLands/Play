@@ -64,6 +64,17 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
     return COMMITHASH;
   }
 
+  get thanks() {
+    return [
+      { name: 'Darkblizer', reason: 'Art' },
+      { name: 'Sedgwick', reason: 'Donation, Maps' },
+      { name: 'Yngvildr', reason: 'Development' },
+      { name: 'Therealtahu', reason: 'Support, Development, Stability' },
+      { name: 'Anexes', reason: 'Development' },
+      { name: 'Ascended', reason: 'Content, Development, Donation' }
+    ];
+  }
+
   ngOnInit() {
     super.ngOnInit();
 
