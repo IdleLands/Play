@@ -49,7 +49,8 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
     const base = {
       name: 'All Festivals',
       endDate: _.maxBy(this.festivals, fest => new Date(fest.endDate).getTime()).endDate,
-      bonuses: {}
+      bonuses: {},
+      uncloseable: true
     };
 
     _.each(this.festivals, fest => {
