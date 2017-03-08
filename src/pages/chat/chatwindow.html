@@ -55,7 +55,7 @@
                 color="primary"
                 big
                 class="send-button"
-                [disabled]="!currentMessage"
+                [disabled]="!currentMessage || !isOnline"
                 (click)="sendMessage()">
           <ion-icon name="send"></ion-icon>
           Send

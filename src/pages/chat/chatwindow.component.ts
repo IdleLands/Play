@@ -44,6 +44,9 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterV
 
   private firstTime = true;
 
+  private isOnline$: any;
+  public isOnline: boolean;
+
   constructor(
     public appState: AppState,
     public primus: Primus,
@@ -53,6 +56,7 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterV
   ngOnInit() {
     this.chatMessages$ = this.appState.chatMessages.subscribe(data => this.receiveMessage(data));
     this.chatLength$ = this.appState._chatLength.subscribe(data => this.baseChatLength = data);
+    this.isOnline$ = this.appState.onlineStatus.subscribe(data => this.isOnline = data === 'online');
     this.setBaseHeight();
 
     setTimeout(() => this.scrollToBottom(), 1000);
@@ -60,6 +64,8 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterV
 
   ngOnDestroy() {
     this.chatMessages$.unsubscribe();
+    this.chatLength$.unsubscribe();
+    this.isOnline$.unsubscribe();
   }
 
   ngOnChanges(changes) {
