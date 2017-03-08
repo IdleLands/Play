@@ -24,13 +24,20 @@ export class PetsItemsPage extends PlayComponent {
   petEquipment: Item[];
 
   equippedItemButtons = [
-    { name: 'Unequip Item', callback: (item) => this.primus.unequipItemFromPet(item.id) }
+    { name: 'Unequip Item',
+      disable: () => this.petactive.inventory.length === this.petactive.$scale.inventory[this.petactive.scaleLevel.inventory],
+      callback: (item) => this.primus.unequipItemFromPet(item.id) }
   ];
 
   inventoryButtons = [
     { name: 'Sell Item', callback: (item) => this.primus.sellItemFromPet(item.id) },
-    { name: 'Equip Item (Pet)', callback: (item) => this.primus.equipItemOnPet(item.id) },
-    { name: 'Equip Item (Player)', callback: (item) => {
+    { name: 'Equip Item (Pet)',
+      disable: (item) => item._calcScore > this.petactive.statCache.itemFindRange,
+      callback: (item) => this.primus.equipItemOnPet(item.id)
+    },
+    { name: 'Equip Item (Player)',
+      disable: (item) => item._calcScore > this.player.statCache.itemFindRange,
+      callback: (item) => {
 
       const buttons = [
         { text: 'Equip',      color: 'primary', callback: () => this.primus.giveItemToPlayer(item.id) },

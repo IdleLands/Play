@@ -79,7 +79,7 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     this.choices.push(...add);
     this.choices = _.reject(this.choices, choice => _.includes(remove, choice.id));
 
-    if(choices.length < 4) {
+    if(this.choices.length < 4 && this.choices.length > 0) {
       this.choiceSlides.slideTo(0);
     }
   }

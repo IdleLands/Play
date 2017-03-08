@@ -79,7 +79,7 @@ export class ItemComponent implements OnInit {
 @Component({
   template: `
     <ion-list>
-      <button ion-item *ngFor="let button of buttons" (click)="doCallback(button)">
+      <button ion-item *ngFor="let button of buttons" (click)="doCallback(button)" [disabled]="button.disable()">
         <ion-label>{{ button.name }}</ion-label>
       </button>
     </ion-list>
