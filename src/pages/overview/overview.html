@@ -10,6 +10,10 @@
 
 <ion-content padding>
   <ion-grid>
+    <ion-row *ngIf="player.lastAscension" text-center>
+      <ion-col>You last ascended on {{ player.lastAscension | date:'medium' }} ({{ player.lastAscension | amTimeAgo }})</ion-col>
+    </ion-row>
+
     <ion-row wrap>
       <ion-col col-12 col-md>
         <ion-card>
