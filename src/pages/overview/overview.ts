@@ -82,7 +82,7 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     if(this.choices.length < 4 && this.choices.length > 0) {
       try {
         this.choiceSlides.slideTo(0);
-      } catch() {}
+      } catch(e) {}
     }
   }
 
