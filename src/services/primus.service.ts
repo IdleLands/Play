@@ -397,6 +397,10 @@ export class Primus {
     this._emit('plugin:player:partyleave');
   }
 
+  ascend() {
+    this._emit('plugin:player:ascend');
+  }
+
   // PREMIUM
   buyIlp(ilpBuy) {
     this._emit('plugin:premium:buyilp', { ilpBuy });

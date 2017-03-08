@@ -123,4 +123,8 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     this.primus.leaveParty();
   }
 
+  ascend() {
+    this.primus.ascend();
+  }
+
 }

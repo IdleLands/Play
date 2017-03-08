@@ -14,6 +14,12 @@
       <ion-col>You last ascended on {{ player.lastAscension | date:'medium' }} ({{ player.lastAscension | amTimeAgo }})</ion-col>
     </ion-row>
 
+    <ion-row *ngIf="player._level.__current === player._level.maximum">
+      <ion-col>
+        <button ion-button block color="primary" (click)="ascend()">Are you ready to ascend?</button>
+      </ion-col>
+    </ion-row>
+
     <ion-row wrap>
       <ion-col col-12 col-md>
         <ion-card>
