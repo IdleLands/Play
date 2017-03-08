@@ -3948,6 +3948,14 @@ ion-icon {
   color: black !important;
 }
 
+.theme-amoled .chat-user h3 {
+  color: #f4f4f4;
+}
+
+.theme-amoled .chat-user p {
+  color: #ccc;
+}
+
 .theme-amoled .chat-message {
   color: #ccc;
 }
@@ -4190,6 +4198,14 @@ ion-icon {
   color: black !important;
 }
 
+.theme-dark .chat-user h3 {
+  color: #f4f4f4;
+}
+
+.theme-dark .chat-user p {
+  color: #ccc;
+}
+
 .theme-dark .chat-message {
   color: #ccc;
 }
@@ -4354,6 +4370,14 @@ ion-icon {
 
 .theme-dimocean .background-icon {
   color: #8ed0ca !important;
+}
+
+.theme-dimocean .chat-user h3 {
+  color: #555;
+}
+
+.theme-dimocean .chat-user p {
+  color: #555;
 }
 
 .theme-dimocean .chat-message {
@@ -39612,6 +39636,10 @@ ion-navbar.toolbar {
 .class-godly {
   background-color: black;
   color: #fff;
+}
+
+.class-godly {
+  border: 1px solid #fff;
 }
 
 .class-idle {
