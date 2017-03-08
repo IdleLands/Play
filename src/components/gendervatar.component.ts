@@ -1,7 +1,6 @@
 
 import { Component, Input } from '@angular/core';
-import { AppState } from '../services';
-
+import { AppState, settings } from '../services';
 
 const genderPositions = {
   blue:                   { x: 2,   y: 1 },
@@ -24,7 +23,7 @@ const genderPositions = {
     }
   `],
   template: `
-    <img src="http://game.idle.land/maps/img/tiles.png" [style.object-position]="imgStyleFit()" [style.transform]="scaleStyle()">
+    <img [src]="baseUrl" [style.object-position]="imgStyleFit()" [style.transform]="scaleStyle()">
   `
 })
 export class GendervatarComponent {
@@ -33,6 +32,10 @@ export class GendervatarComponent {
   @Input() public scale: number = 2;
 
   constructor(public appState: AppState) {}
+
+  get baseUrl() {
+    return `${settings.protocol}://${settings.hostname}:${settings.port}/maps/img/tiles.png`;
+  }
 
   get genderPositions() {
     return genderPositions;
