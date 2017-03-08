@@ -206,9 +206,14 @@ export class Primus {
         this.appState.chatUsers.next(data.data);
       },
       update: () => {
-        const userList = this.appState.chatUsers.getValue();
+        let userList = this.appState.chatUsers.getValue();
         const player = _.find(userList, { name: data.data.name });
-        _.extend(player, data.data);
+        if(player) {
+          _.extend(player, data.data);
+        } else {
+          userList.push(data.data);
+          userList = _.sortBy(userList, 'name');
+        }
         this.appState.chatUsers.next(userList);
       },
       updateMass: () => {
