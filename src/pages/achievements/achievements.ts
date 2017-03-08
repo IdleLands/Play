@@ -105,12 +105,22 @@ export class AchievementModal implements OnInit {
         _.each(reward, (val, key) => {
           if(key === 'type') return;
 
-          const newReward = {
-            type: key.split('Display').join('').toUpperCase(),
-            value: val || reward[`${key}Display`]
-          };
+          const statType = key.split('Display').join('').toUpperCase();
+          const statValue = val || reward[`${key}Display`];
 
-          this.rewards.push(newReward);
+          const existing = _.find(this.rewards, { type: statType });
+
+          if(existing) {
+            existing.value += statValue;
+
+          } else {
+            const newReward = {
+              type: statType,
+              value: statValue
+            };
+
+            this.rewards.push(newReward);
+          }
         });
 
       } else if(reward.type === 'pet') {
