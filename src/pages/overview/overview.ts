@@ -117,4 +117,8 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     this.navCtrl.push(BattlePage, { battleName: id });
   }
 
+  leaveParty() {
+    this.primus.leaveParty();
+  }
+
 }

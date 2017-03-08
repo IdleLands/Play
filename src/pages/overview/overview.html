@@ -55,7 +55,17 @@
     <ion-row *ngIf="party.name && party.players.length > 1">
       <ion-col>
         <ion-card>
-          <ion-card-header>Party - {{ party.name }}</ion-card-header>
+          <ion-card-header>
+            <ion-row no-padding>
+              <ion-col no-padding class="vertical-center">
+                <span>Party - {{ party.name }}</span>
+              </ion-col>
+
+              <ion-col no-padding text-right>
+                <button no-margin ion-button small color="primary" (click)="leaveParty()">Leave Party</button>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
           <ion-card-content>
             <ion-row wrap>
               <ion-col col-12 col-md *ngFor="let member of party.players">

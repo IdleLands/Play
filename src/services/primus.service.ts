@@ -393,6 +393,10 @@ export class Primus {
     this._emit('plugin:player:changetitle', { title });
   }
 
+  leaveParty() {
+    this._emit('plugin:player:partyleave');
+  }
+
   // PREMIUM
   buyIlp(ilpBuy) {
     this._emit('plugin:premium:buyilp', { ilpBuy });
