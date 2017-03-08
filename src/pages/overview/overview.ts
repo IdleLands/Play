@@ -78,6 +78,10 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     const remove = _.map(_.differenceBy(this.choices, choices, 'id'), 'id');
     this.choices.push(...add);
     this.choices = _.reject(this.choices, choice => _.includes(remove, choice.id));
+
+    if(choices.length < 4) {
+      this.choiceSlides.slideTo(0);
+    }
   }
 
   makeChoice(id, choice) {
