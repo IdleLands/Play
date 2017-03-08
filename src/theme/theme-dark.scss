@@ -154,6 +154,16 @@ $gray-fg: #ccc;
     color: darken($gray, 50%) !important;
   }
 
+  .chat-user {
+    h3 {
+      color: $new-light;
+    }
+
+    p {
+      color: $gray-fg;
+    }
+  }
+
   .chat-message {
     color: $gray-fg;
   }
