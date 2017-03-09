@@ -61,10 +61,13 @@ export class Primus {
   }
 
   saveChatLog() {
-    while(this.chatLog.length > 200) {
-      this.chatLog.shift();
-    }
+    const overLength = this.chatLog.length - 200;
+    const overMessages = this.chatLog.slice(0, overLength);
+    const removeMessages = _.filter(overMessages, msg => {
+      return msg.hidden || !_.includes(msg.route, ':pm:');
+    });
 
+    this.chatLog = _.difference(this.chatLog, removeMessages);
     this.storage.store('chatLog', this.chatLog);
   }
 

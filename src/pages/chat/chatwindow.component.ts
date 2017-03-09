@@ -138,9 +138,13 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterV
     if(message.hidden) return;
     this.chatLog.push(message);
 
-    while(this.chatLog.length > 200) {
-      this.chatLog.shift();
-    }
+    const overLength = this.chatLog.length - 200;
+    const overMessages = this.chatLog.slice(0, overLength);
+    const removeMessages = _.filter(overMessages, msg => {
+      return msg.hidden || !_.includes(msg.route, ':pm:');
+    });
+
+    this.chatLog = _.difference(this.chatLog, removeMessages);
 
     this.channelUpdate.emit(message);
 
