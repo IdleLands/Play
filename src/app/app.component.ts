@@ -56,13 +56,13 @@ export class MyApp {
 
   pages: Array<{title: string, icon: string, component: any, extraContent?: Function, showBadge?: Function, badge?: Function}> = [
     { title: 'Overview',      icon: 'body',       component: OverviewPage, showBadge: () => this.choices > 0, badge: () => this.choices },
+    { title: 'Pets',          icon: 'nutrition',  component: PetsPage },
+    { title: 'Chat',          icon: 'chatboxes',  component: ChatPage, showBadge: () => this.latestMessages > 0, badge: () => this.latestMessages },
     { title: 'Map',           icon: 'globe',      component: MapPage },
     { title: 'Equipment',     icon: 'shirt',      component: EquipmentPage },
     { title: 'Achievements',  icon: 'ribbon',     component: AchievementsPage },
     { title: 'Collectibles',  icon: 'magnet',     component: CollectiblesPage },
     { title: 'Statistics',    icon: 'analytics',  component: StatisticsPage },
-    { title: 'Pets',          icon: 'nutrition',  component: PetsPage },
-    { title: 'Chat',          icon: 'chatboxes',  component: ChatPage, showBadge: () => this.latestMessages > 0, badge: () => this.latestMessages },
     { title: 'Premium',       icon: 'cash',       component: PremiumPage },
     { title: 'Settings',      icon: 'cog',        component: SettingsPage }
   ];
