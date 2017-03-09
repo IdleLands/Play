@@ -39733,6 +39733,10 @@ ion-list {
   height: calc(100% - 253px);
 }
 
+[menuToggle] {
+  display: inline;
+}
+
 page-achievements .achievement-card {
   position: relative;
   z-index: 10;
