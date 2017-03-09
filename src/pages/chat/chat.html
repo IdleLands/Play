@@ -1,7 +1,12 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>IdleLands Chat - {{ player.nameEdit || player.name }} ({{ activeChannel.name }})</ion-title>
+    <ion-title>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      IdleLands Chat - {{ player.nameEdit || player.name }} ({{ activeChannel.name }})
+    </ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="toggleChatMenu()" class="chat-toggle">

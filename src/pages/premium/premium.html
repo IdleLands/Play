@@ -1,7 +1,12 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title>IdleLands Premium - {{ player.nameEdit || player.name }}</ion-title>
+    <ion-title>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      IdleLands Premium - {{ player.nameEdit || player.name }}
+    </ion-title>
   </ion-navbar>
 
 </ion-header>

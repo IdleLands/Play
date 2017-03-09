@@ -8,7 +8,12 @@
       </button>
     </ion-buttons>
 
-    <ion-title>IdleLands Map - {{ player.nameEdit || player.name }}</ion-title>
+    <ion-title>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      IdleLands Map - {{ player.nameEdit || player.name }}
+    </ion-title>
 
     <ion-buttons end>
       <button ion-button icon-only (click)="loadPersonalities($event)">
