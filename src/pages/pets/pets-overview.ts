@@ -158,7 +158,7 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
     const totalGold = this.player.gold;
     const xpPerGold = this.petactive.$scale.xpPerGold[this.petactive.scaleLevel.xpPerGold];
 
-    const maxGold = Math.min(Math.ceil(neededXp * xpPerGold), totalGold);
+    const maxGold = Math.min(Math.ceil(neededXp / xpPerGold), totalGold);
 
     this.alertCtrl.create({
       cssClass: this.theme.currentTheme,
