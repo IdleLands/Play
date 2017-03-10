@@ -128,6 +128,8 @@ export class Primus {
       }
     });
 
+    (<any>window).socket = this.socket;
+
     this.socket.on('error', e => { Logger.error(e); });
 
     this.socket.on('close', () => {
@@ -513,6 +515,10 @@ export class Primus {
 
   relevel(targetName, targetLevel) {
     this._emit('plugin:gm:setlevel', { targetName, targetLevel });
+  }
+
+  restat(targetName, targetStat, targetValue) {
+    this._emit('plugin:gm:setstat', { targetName, targetStat, targetValue });
   }
 
   giveItem(targetName, targetItemString) {

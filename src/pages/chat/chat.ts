@@ -177,9 +177,11 @@ export class ChatPage extends PlayComponent implements OnInit, OnDestroy {
       
       <button ion-item (click)="toggleMod()">{{ player.isMod ? 'Take' : 'Make' }} Moderator</button>
       
-      <button ion-item (click)="teleport()">Teleport to...</button>
+      <button ion-item (click)="teleport()">Teleport To...</button>
       
       <button ion-item (click)="toggleAchievement()">Toggle Achievement</button>
+      
+      <button ion-item (click)="statistics()">Set Statistic</button>
       
       <ion-row>
         <ion-col no-padding>
@@ -346,6 +348,26 @@ export class GMCommandsPopover implements OnInit, OnDestroy {
 
   teleport() {
     this.teleports.open();
+  }
+
+  statistics() {
+    this.alertCtrl.create({
+      cssClass: this.theme.currentTheme,
+      title: `Change ${this.player.name}'s Statistics`,
+      message: 'Enter a stat and a value.',
+      inputs: [
+        { type: 'string', name: 'stat',  placeholder: 'Statistic' },
+        { type: 'number', name: 'value', placeholder: 'Value' }
+      ],
+      buttons: [
+        { text: 'Cancel' },
+        { text: 'Restat Player', handler: (data) => {
+          console.log(data.stat, data.value, +data.value);
+          this.primus.restat(this.player.name, data.stat, data.value);
+          this.dismiss();
+        } }
+      ]
+    }).present();
   }
 
   _chooseAchievement(data) {
