@@ -70,7 +70,7 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterV
 
   ngOnChanges(changes) {
     if(changes.channel) {
-      this.scrollToBottom();
+      setTimeout(() => this.scrollToBottom());
     }
   }
 
