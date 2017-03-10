@@ -362,8 +362,7 @@ export class GMCommandsPopover implements OnInit, OnDestroy {
       buttons: [
         { text: 'Cancel' },
         { text: 'Restat Player', handler: (data) => {
-          console.log(data.stat, data.value, +data.value);
-          this.primus.restat(this.player.name, data.stat, data.value);
+          this.primus.restat(this.player.name, data.stat, +data.value);
           this.dismiss();
         } }
       ]
