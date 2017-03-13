@@ -44,6 +44,7 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
     { name: 'Dark',           val: 'dark' },
     { name: 'Dim Ocean',      val: 'dimocean' },
     { name: 'Green Machine',  val: 'greenmachine' },
+    { name: 'l33t h4x0r',     val: 'hacker' },
     { name: 'Majestic',       val: 'majestic' },
     { name: 'Orangina',       val: 'orangina' }
   ];
