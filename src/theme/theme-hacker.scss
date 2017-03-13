@@ -180,4 +180,8 @@ $green-fg: #20c20e;
     background-color: $green-fg;
     color: $new-primary;
   }
+
+  .reversed-split-pane ion-menu {
+    border-left: 1px solid $green-fg;
+  }
 }

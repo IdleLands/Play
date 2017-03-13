@@ -178,4 +178,8 @@ $gray-fg: #ccc;
     background-color: $gray-fg;
     color: $new-primary;
   }
+
+  .reversed-split-pane ion-menu {
+    border-left: 1px solid $gray-fg;
+  }
 }

@@ -36,6 +36,9 @@ export class ChatPage extends PlayComponent implements OnInit, OnDestroy {
     { name: 'General', route: 'chat:channel:General' }
   ];
 
+  @ViewChild('chatPageContent')
+  public chatPageContent;
+
   constructor(
     public appState: AppState,
     public primus: Primus,
@@ -73,6 +76,10 @@ export class ChatPage extends PlayComponent implements OnInit, OnDestroy {
     this.onlineStatus$.unsubscribe();
 
     clearInterval(this.timeoutId);
+  }
+
+  get shouldShowChatUsers() {
+    return this.chatPageContent._elementRef.nativeElement.offsetWidth > 768;
   }
 
   removeChannel(channel) {

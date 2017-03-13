@@ -12,4 +12,12 @@ page-chat {
   .virtual-list {
     height: 100%;
   }
+
+  .reversed-split-pane {
+    flex-direction: row-reverse;
+
+    ion-menu {
+      border-right: none !important;
+    }
+  }
 }

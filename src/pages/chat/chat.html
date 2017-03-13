@@ -18,62 +18,66 @@
 
 </ion-header>
 
-<ion-content class="no-scroll">
+<ion-content class="no-scroll" #chatPageContent>
 
-  <ion-menu [content]="chatPage" side="right" id="chat" type="overlay">
-    <ion-header>
-      <ion-toolbar color="primary">
-        <ion-title>Channels & Users</ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <ion-split-pane class="reversed-split-pane" [when]="shouldShowChatUsers">
 
-    <ion-content>
-      <ion-list no-margin>
-        <ion-item-divider>Channels</ion-item-divider>
-        <button ion-item color="primary" *ngFor="let channel of channels" (click)="switchChannel(channel)" [disabled]="activeChannel.name === channel.name">
-          <ion-row no-padding>
-            <ion-col col-10>{{ channelName(channel) }}</ion-col>
-            <ion-col col-2>
-              <ion-badge color="secondary" *ngIf="missedMessagesHash[channel.route] > 0">{{ missedMessagesHash[channel.route] }}</ion-badge>
-            </ion-col>
-          </ion-row>
-        </button>
+    <div class="chat-container" #chatPage main>
+      <chat-window [channel]="activeChannel" [player]="player" (channelUpdate)="channelReceivedMessage($event)" (removeChannel)="removeChannel($event)"></chat-window>
+    </div>
 
-        <ion-item-divider>Players ({{ chatUsers.length }} online)</ion-item-divider>
-      </ion-list>
+    <ion-menu [content]="chatPage" side="right" id="chat" type="overlay">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Channels & Users</ion-title>
+        </ion-toolbar>
+      </ion-header>
 
-      <ion-list [virtualScroll]="chatUsers" approxItemHeight="60px" bufferRatio="3" class="virtual-list">
+      <ion-content>
+        <ion-list no-margin>
+          <ion-item-divider>Channels</ion-item-divider>
+          <button ion-item color="primary" *ngFor="let channel of channels" (click)="switchChannel(channel)" [disabled]="activeChannel.name === channel.name">
+            <ion-row no-padding>
+              <ion-col col-10>{{ channelName(channel) }}</ion-col>
+              <ion-col col-2>
+                <ion-badge color="secondary" *ngIf="missedMessagesHash[channel.route] > 0">{{ missedMessagesHash[channel.route] }}</ion-badge>
+              </ion-col>
+            </ion-row>
+          </button>
 
-        <button ion-item
-                color="primary"
-                class="chat-user item-less-margin"
-                *virtualItem="let user"
-                (click)="user.name !== player.name && messageUser(user)"
-                (press)="player.isMod && openGMCommands(user, $event)"
-                (contextmenu)="player.isMod && openGMCommands(user, $event)">
-          <ion-row no-padding>
-            <ion-col no-padding width-20 class="true-center">
-              <gendervatar [gender]="user.gender" scale="1.5"></gendervatar>
-            </ion-col>
+          <ion-item-divider>Players ({{ chatUsers.length }} online)</ion-item-divider>
+        </ion-list>
 
-            <ion-col no-padding width-80>
-              <h3>
-                <ascension-level [level]="user.ascensionLevel"></ascension-level>
-                <ion-icon *ngIf="user.isMod" name="star"></ion-icon>
-                <ion-icon *ngIf="user.isMuted" name="close-circle"></ion-icon>
-                <span>{{ user.nameEdit || user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
-              </h3>
-              <p *ngIf="player.isMod">{{ user.$shard }}~{{ user.$currentIp }}</p>
-              <p>Level {{ user.level }} {{ user.professionName }}</p>
-            </ion-col>
-          </ion-row>
-        </button>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
+        <ion-list [virtualScroll]="chatUsers" approxItemHeight="63px" bufferRatio="2" class="virtual-list">
 
-  <div class="chat-container" #chatPage>
-    <chat-window [channel]="activeChannel" [player]="player" (channelUpdate)="channelReceivedMessage($event)" (removeChannel)="removeChannel($event)"></chat-window>
-  </div>
+          <button ion-item
+                  color="primary"
+                  class="chat-user item-less-margin"
+                  *virtualItem="let user"
+                  (click)="user.name !== player.name && messageUser(user)"
+                  (press)="player.isMod && openGMCommands(user, $event)"
+                  (contextmenu)="player.isMod && openGMCommands(user, $event)">
+            <ion-row no-padding>
+              <ion-col no-padding width-20 class="true-center">
+                <gendervatar [gender]="user.gender" scale="1.5"></gendervatar>
+              </ion-col>
+
+              <ion-col no-padding width-80>
+                <h3>
+                  <ascension-level [level]="user.ascensionLevel"></ascension-level>
+                  <ion-icon *ngIf="user.isMod" name="star"></ion-icon>
+                  <ion-icon *ngIf="user.isMuted" name="close-circle"></ion-icon>
+                  <span>{{ user.nameEdit || user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
+                </h3>
+                <p *ngIf="player.isMod">{{ user.$shard }}~{{ user.$currentIp }}</p>
+                <p>Level {{ user.level }} {{ user.professionName }}</p>
+              </ion-col>
+            </ion-row>
+          </button>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+  </ion-split-pane>
 
 </ion-content>

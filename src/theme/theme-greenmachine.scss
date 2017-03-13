@@ -134,4 +134,8 @@ $new-light: map-get($colors, light);
     background-color: $base-green;
     color: $new-light;
   }
+
+  .reversed-split-pane ion-menu {
+    border-left: 1px solid $base-green;
+  }
 }
