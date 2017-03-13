@@ -41,6 +41,7 @@ export class PetsItemsPage extends PlayComponent {
 
       const buttons = [
         { text: 'Equip',      color: 'primary', callback: () => this.primus.giveItemToPlayer(item.id) },
+        { text: 'Sell',       color: 'danger',  callback: () => this.primus.sellItemFromPet(item.id) },
         { text: 'Close',      color: 'light',   callback: () => {} }
       ];
 
