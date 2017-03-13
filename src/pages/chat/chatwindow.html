@@ -39,37 +39,35 @@
 <div class="input-window">
   <form (ngSubmit)="sendMessage()">
     <ion-row no-padding>
-      <ion-col no-padding col-9>
-        <ion-input [ngModelOptions]="{standalone: true}"
-                   [(ngModel)]="currentMessage"
-                   type="text"
-                   #typeHere
-                   autofocus
-                   clearInput="true"
-                   [placeholder]="'Send message to ' + channelName(channel)"></ion-input>
-      </ion-col>
+      <ion-input [ngModelOptions]="{standalone: true}"
+                 [(ngModel)]="currentMessage"
+                 type="text"
+                 #typeHere
+                 autofocus
+                 clearInput="true"
+                 [placeholder]="'Send message to ' + channelName(channel)"></ion-input>
 
-      <ion-col no-padding col-3 text-right>
-        <button ion-button
-                icon-left
-                color="primary"
-                big
-                class="send-button"
-                [disabled]="!currentMessage || !isOnline"
-                (click)="sendMessage()">
-          <ion-icon name="send"></ion-icon>
-          Send
-        </button>
-        <button ion-button
-                icon-only
-                color="danger"
-                big
-                class="send-button"
-                *ngIf="channel.route !== 'chat:channel:General'"
-                (click)="doChannelRemove(channel)">
-          <ion-icon name="close"></ion-icon>
-        </button>
-      </ion-col>
+      <button ion-button
+              icon-left
+              color="primary"
+              big
+              class="send-button"
+              [disabled]="!currentMessage || !isOnline"
+              (click)="sendMessage()">
+        <ion-icon name="send"></ion-icon>
+        Send
+      </button>
+
+      <button ion-button
+              icon-only
+              color="danger"
+              big
+              class="send-button"
+              *ngIf="channel.route !== 'chat:channel:General'"
+              (click)="doChannelRemove(channel)">
+        <ion-icon name="close"></ion-icon>
+      </button>
+
     </ion-row>
   </form>
 </div>
