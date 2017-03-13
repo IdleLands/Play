@@ -61,6 +61,7 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.adventureLog$.unsubscribe();
+    this.party$.unsubscribe();
   }
 
   get numSlides() {
