@@ -44,6 +44,7 @@ export class BattlePage extends PlayComponent implements OnInit, OnDestroy {
 
     this.appState.battle.next(new Battle());
     this.battle$.unsubscribe();
+    this.pet$.unsubscribe();
   }
 
 }

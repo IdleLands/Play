@@ -43,6 +43,7 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
     super.ngOnDestroy();
 
     this.premium$.unsubscribe();
+    this.festivals$.unsubscribe();
   }
 
   getTotalFestival(): Festival {
