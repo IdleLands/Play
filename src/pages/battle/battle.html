@@ -22,48 +22,36 @@
       </ion-col>
     </ion-row>
 
-    <ion-row wrap>
-      <ion-col col-md col-6 *ngFor="let party of battle.parties">
-        <ion-card>
-          <ion-card-header>{{ party.name }}</ion-card-header>
-          <ion-card-content>
-            <ion-list>
-              <ion-item *ngFor="let member of party.players">
-                <h2>{{ member.name }}</h2>
-                <p>Level {{ member.level }} {{ member.profession }}</p>
-              </ion-item>
-            </ion-list>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
     <ion-row *ngIf="battle.messageData.length > 0">
       <ion-col>
-        <ion-list [virtualScroll]="battle.messageData" approxItemHeight="50px" bufferRatio="50">
+        <ion-list [virtualScroll]="battle.messageData" approxItemHeight="50px" bufferRatio="30" [headerFn]="battleHeader">
+
+          <ion-item-divider *virtualHeader="let header">
+            <ion-row *ngFor="let party of header">
+              <ion-card>
+                <ion-card-header>{{ party.name }}</ion-card-header>
+                <ion-card-content no-padding>
+                  <ion-row no-padding wrap>
+                    <ion-col no-padding col-12 col-md-6 *ngFor="let member of party.players">
+                      <ion-card>
+                        <ion-card-header>{{ member.name }} (Level {{ member.level }} {{ member.profession }})</ion-card-header>
+                        <ion-card-content>
+                          <span>HP: {{ member.hp.__current | number }}/{{ member.hp.maximum | number }}</span>,
+                          <span>MP: {{ member.mp.__current | number }}/{{ member.mp.maximum | number }}</span>
+                          <span *ngIf="member.special && member.special.name">, {{ member.special.name }}: {{ member.special.__current | number }}/{{ member.special.maximum | number }}</span>
+                        </ion-card-content>
+                      </ion-card>
+                    </ion-col>
+                  </ion-row>
+                </ion-card-content>
+              </ion-card>
+            </ion-row>
+          </ion-item-divider>
+
           <ion-item text-wrap *virtualItem="let message">
             <h3 [innerHTML]="message.message | highlight:player.name | highlight:petName"></h3>
 
-            <div *ngIf="message.data">
-              <ion-row *ngFor="let party of message.data">
-                <ion-card>
-                  <ion-card-header>{{ party.name }}</ion-card-header>
-                  <ion-card-content no-padding>
-                    <ion-row no-padding wrap>
-                      <ion-col no-padding col-12 col-md-6 *ngFor="let member of party.players">
-                        <ion-card>
-                          <ion-card-header>{{ member.name }} (Level {{ member.level }} {{ member.profession }})</ion-card-header>
-                          <ion-card-content>
-                            <span>HP: {{ member.hp.__current | number }}/{{ member.hp.maximum | number }}</span>,
-                            <span>MP: {{ member.mp.__current | number }}/{{ member.mp.maximum | number }}</span>
-                            <span *ngIf="member.special && member.special.name">, {{ member.special.name }}: {{ member.special.__current | number }}/{{ member.special.maximum | number }}</span>
-                          </ion-card-content>
-                        </ion-card>
-                      </ion-col>
-                    </ion-row>
-                  </ion-card-content>
-                </ion-card>
-              </ion-row>
+            <div *ngIf="message.data && false">
             </div>
           </ion-item>
         </ion-list>

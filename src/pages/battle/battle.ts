@@ -33,7 +33,10 @@ export class BattlePage extends PlayComponent implements OnInit, OnDestroy {
     super.ngOnInit();
 
     const battleName = this.navParams.get('battleName');
-    this.battle$ = this.appState.battle.subscribe(battle => this.battle = battle);
+    this.battle$ = this.appState.battle.subscribe(battle => {
+      console.log(battle);
+      this.battle = battle
+    });
     this.pet$ = this.appState.petactive.subscribe(pet => this.petName = pet.name);
 
     this.primus.loadBattle(battleName);
@@ -45,6 +48,13 @@ export class BattlePage extends PlayComponent implements OnInit, OnDestroy {
     this.appState.battle.next(new Battle());
     this.battle$.unsubscribe();
     this.pet$.unsubscribe();
+  }
+
+  battleHeader(item, itemIndex, items) {
+    if(!item.data) return null;
+
+    return item.data;
+
   }
 
 }
