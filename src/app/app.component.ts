@@ -48,6 +48,7 @@ export class MyApp {
   public currentStatusString = 'IdleLands';
   private clicks = 0;
 
+  public petItems: string;
   public choices: number = 0;
   public latestMessages: number = 0;
 
@@ -55,9 +56,9 @@ export class MyApp {
   private isHidden: boolean;
 
   pages: Array<{title: string, icon: string, component: any, extraContent?: Function, showBadge?: Function, badge?: Function}> = [
-    { title: 'Overview',      icon: 'body',       component: OverviewPage, showBadge: () => this.choices > 0, badge: () => this.choices },
-    { title: 'Pets',          icon: 'nutrition',  component: PetsPage },
-    { title: 'Chat',          icon: 'chatboxes',  component: ChatPage, showBadge: () => this.latestMessages > 0, badge: () => this.latestMessages },
+    { title: 'Overview',      icon: 'body',       component: OverviewPage, showBadge: () => this.choices > 0, badge: () => `${this.choices} Choices` },
+    { title: 'Pets',          icon: 'nutrition',  component: PetsPage, showBadge: () => this.petItems, badge: () => `${this.petItems} Items` },
+    { title: 'Chat',          icon: 'chatboxes',  component: ChatPage, showBadge: () => this.latestMessages > 0, badge: () => `${this.latestMessages} Messages` },
     { title: 'Map',           icon: 'globe',      component: MapPage },
     { title: 'Equipment',     icon: 'shirt',      component: EquipmentPage },
     { title: 'Achievements',  icon: 'ribbon',     component: AchievementsPage },
@@ -128,6 +129,7 @@ export class MyApp {
     this.state.petactive.subscribe(data => {
       if(!data.name) return;
       this.hasPet = true;
+      this.petItems = `${data.inventory.length }/${data.$scale.inventory[data.scaleLevel.inventory]}`;
     });
 
     this.state.player.subscribe(data => {
