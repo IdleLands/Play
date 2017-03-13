@@ -40,6 +40,11 @@ class GameText {
       string += '<br>';
     }
 
+    if(item.flavorText) {
+      string += `"${item.flavorText}"`;
+      string += '<br>';
+    }
+
     const baseRequirements = [
       { key: 'Achievement' },
       { key: 'Boss', display: 'Boss Kill' },
