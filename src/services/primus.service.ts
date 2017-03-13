@@ -492,6 +492,10 @@ export class Primus {
     this._emit('plugin:pet:upgrade', { upgradeAttr });
   }
 
+  togglePetSmart(setting) {
+    this._emit('plugin:pet:smart', { setting });
+  }
+
   // GM
   mute(targetName) {
     this._emit('plugin:chat:togglemute', { targetName });

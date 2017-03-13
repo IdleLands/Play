@@ -78,7 +78,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row wrap>
+    <ion-row wrap *ngIf="hasPet">
       <ion-col col-12 col-md>
         <ion-card>
           <ion-card-header>Vitals</ion-card-header>
@@ -116,7 +116,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row>
+    <ion-row *ngIf="hasPet">
       <ion-col col-12 col-md>
         <ion-item>
           <ion-label stacked>Attribute</ion-label>
@@ -144,7 +144,30 @@
       </ion-col>
     </ion-row>
 
-    <ion-row wrap *ngIf="petactive.scaleLevel && petactive.$scale && petactive.$scaleCost">
+    <ion-row *ngIf="hasPet">
+      <ion-col col-12 col-md>
+        <ion-item>
+          <ion-label stacked>Auto-upgrade Self</ion-label>
+          <ion-checkbox [checked]="petactive.smart.self" (ionChange)="toggleSmart('self')"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+
+      <ion-col col-12 col-md>
+        <ion-item>
+          <ion-label stacked>Auto-sell Worst Items</ion-label>
+          <ion-checkbox [checked]="petactive.smart.sell" (ionChange)="toggleSmart('sell')"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+
+      <ion-col col-12 col-md>
+        <ion-item>
+          <ion-label stacked>Auto-equip Best Items</ion-label>
+          <ion-checkbox [checked]="petactive.smart.equip" (ionChange)="toggleSmart('equip')"></ion-checkbox>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row wrap *ngIf="hasPet && petactive.scaleLevel && petactive.$scale && petactive.$scaleCost">
       <ion-col *ngFor="let upgrade of upgrades" class="upgrade-card" col-12 col-md-4>
         <ion-card>
           <ion-card-header>{{ upgrade.name }}</ion-card-header>
