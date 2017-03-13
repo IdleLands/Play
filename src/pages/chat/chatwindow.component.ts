@@ -70,6 +70,7 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterV
 
   ngOnChanges(changes) {
     if(changes.channel) {
+      this.markAllAsRead();
       setTimeout(() => this.scrollToBottom());
     }
   }
@@ -86,6 +87,10 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterV
     if(this.atBottomish()) {
       this.scrollToBottom();
     }
+  }
+
+  markAllAsRead() {
+    _.each(this.chatLog, message => message.seen = true);
   }
 
   setBaseHeight() {
