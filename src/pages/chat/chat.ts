@@ -142,6 +142,7 @@ export class ChatPage extends PlayComponent implements OnInit, OnDestroy {
   switchChannel(channel) {
     if(this.isChannelActive(channel)) return;
     this.activeChannel = channel;
+    this.missedMessagesCount -= this.missedMessagesHash[channel.route] || 0;
     this.missedMessagesHash[channel.route] = 0;
 
     this.closeMenu();
