@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content class="no-scroll">
-  <ion-tabs>
+  <ion-tabs #tabs tabsLayout="icon-left" (ionChange)="changeTab($event)" [selectedIndex]="defaultTab">
     <ion-tab tabTitle="Overview" tabUrlPath='overview' tabIcon="leaf" [root]="overviewRoot"></ion-tab>
     <ion-tab tabTitle="Items" tabUrlPath='items' tabIcon="color-wand" [tabBadge]="inventoryBadge" [root]="itemsRoot"></ion-tab>
   </ion-tabs>
