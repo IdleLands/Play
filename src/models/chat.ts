@@ -10,6 +10,7 @@ export class ChatMessage {
   ascensionLevel: number;
   ip: string = '<self>';
   hidden?: boolean;
+  seen?: boolean;
 }
 
 export class ChatUser {

@@ -83,8 +83,14 @@ $gray-fg: #ccc;
     background: $new-primary !important;
   }
 
-  .bar-button-solid-md-primary, .button-md-primary, .badge-md, .bar-button-default-md, .bar-button-md-primary {
+  .bar-button-solid-md-primary, .button-md-primary, .bar-button-default-md, .bar-button-md-primary {
     background-color: lighten($new-primary, 10%) !important;
+    color: $gray-fg !important;
+  }
+
+  .badge-md {
+    background-color: darken($new-primary, 20%) !important;
+    border: 1px solid $gray-fg;
     color: $gray-fg !important;
   }
 

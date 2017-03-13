@@ -116,6 +116,7 @@ export class ChatPage extends PlayComponent implements OnInit, OnDestroy {
 
     if(!this.isChannelActive(channel)
     && !message.hidden
+    && !message.seen
     && (this.player.name && message.playerName !== this.player.name)
     && (isPm || message.timestamp > this.lastMessageSeen)) {
       this.incrementMissedMessages(message.route);
