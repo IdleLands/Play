@@ -25,6 +25,15 @@
           <statistics-tree [treeData]="statistics.Character.children" [isFirst]="true"></statistics-tree>
         </ion-card-content>
       </ion-card>
+    </ion-col>
+
+    <ion-col col-12 col-sm>
+      <ion-card *ngIf="statistics.Regions">
+        <ion-card-header>Regions</ion-card-header>
+        <ion-card-content>
+          <statistics-tree [treeData]="statistics.Regions.children" [isFirst]="true"></statistics-tree>
+        </ion-card-content>
+      </ion-card>
 
       <ion-card *ngIf="statistics.Maps">
         <ion-card-header>Maps</ion-card-header>
@@ -46,13 +55,6 @@
         <ion-card-header>Combat</ion-card-header>
         <ion-card-content>
           <statistics-tree [treeData]="statistics.Combat.children" [isFirst]="true"></statistics-tree>
-        </ion-card-content>
-      </ion-card>
-
-      <ion-card *ngIf="statistics.Regions">
-        <ion-card-header>Regions</ion-card-header>
-        <ion-card-content>
-          <statistics-tree [treeData]="statistics.Regions.children" [isFirst]="true"></statistics-tree>
         </ion-card-content>
       </ion-card>
     </ion-col>
