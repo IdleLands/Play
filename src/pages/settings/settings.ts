@@ -93,6 +93,8 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
     super.ngOnDestroy();
 
     this.personalities$.unsubscribe();
+    this.genders$.unsubscribe();
+    this.achievements$.unsubscribe();
   }
 
   parseTitles(achievements) {
