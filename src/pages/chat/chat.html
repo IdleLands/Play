@@ -28,7 +28,7 @@
     </ion-header>
 
     <ion-content>
-      <ion-list>
+      <ion-list no-margin>
         <ion-item-divider>Channels</ion-item-divider>
         <button ion-item color="primary" *ngFor="let channel of channels" (click)="switchChannel(channel)" [disabled]="activeChannel.name === channel.name">
           <ion-row no-padding>
@@ -39,12 +39,15 @@
           </ion-row>
         </button>
 
-        <ion-item-divider margin-top>Players ({{ chatUsers.length }} online)</ion-item-divider>
+        <ion-item-divider>Players ({{ chatUsers.length }} online)</ion-item-divider>
+      </ion-list>
+
+      <ion-list [virtualScroll]="chatUsers" approxItemHeight="60px" bufferRatio="3" class="virtual-list">
 
         <button ion-item
                 color="primary"
                 class="chat-user item-less-margin"
-                *ngFor="let user of chatUsers"
+                *virtualItem="let user"
                 (click)="user.name !== player.name && messageUser(user)"
                 (press)="player.isMod && openGMCommands(user, $event)"
                 (contextmenu)="player.isMod && openGMCommands(user, $event)">
