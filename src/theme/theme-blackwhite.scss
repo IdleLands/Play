@@ -108,7 +108,7 @@ $new-light: map-get($colors, light);
   }
 
   .highlighted-text {
-    background-color: $gray-fg;
-    color: $new-primary;
+    background-color: $new-primary;
+    color: $new-light;
   }
 }
