@@ -3884,8 +3884,14 @@ ion-icon {
   background: #000 !important;
 }
 
-.theme-amoled .bar-button-solid-md-primary, .theme-amoled .button-md-primary, .theme-amoled .badge-md, .theme-amoled .bar-button-default-md, .theme-amoled .bar-button-md-primary {
+.theme-amoled .bar-button-solid-md-primary, .theme-amoled .button-md-primary, .theme-amoled .bar-button-default-md, .theme-amoled .bar-button-md-primary {
   background-color: #1a1a1a !important;
+  color: #ccc !important;
+}
+
+.theme-amoled .badge-md {
+  background-color: black !important;
+  border: 1px solid #ccc;
   color: #ccc !important;
 }
 
@@ -3963,6 +3969,10 @@ ion-icon {
 .theme-amoled .highlighted-text {
   background-color: #ccc;
   color: #000;
+}
+
+.theme-amoled .reversed-split-pane ion-menu {
+  border-left: 1px solid #ccc;
 }
 
 .theme-blackwhite.modal .scroll-content {
@@ -4058,8 +4068,12 @@ ion-icon {
 }
 
 .theme-blackwhite .highlighted-text {
-  background-color: #ccc;
-  color: #222;
+  background-color: #222;
+  color: #f4f4f4;
+}
+
+.theme-blackwhite .reversed-split-pane ion-menu {
+  border-left: 1px solid #f4f4f4;
 }
 
 .theme-dark.modal .scroll-content {
@@ -4134,8 +4148,14 @@ ion-icon {
   background: #222 !important;
 }
 
-.theme-dark .bar-button-solid-md-primary, .theme-dark .button-md-primary, .theme-dark .badge-md, .theme-dark .bar-button-default-md, .theme-dark .bar-button-md-primary {
+.theme-dark .bar-button-solid-md-primary, .theme-dark .button-md-primary, .theme-dark .bar-button-default-md, .theme-dark .bar-button-md-primary {
   background-color: #222 !important;
+  color: #ccc !important;
+}
+
+.theme-dark .badge-md {
+  background-color: black !important;
+  border: 1px solid #ccc;
   color: #ccc !important;
 }
 
@@ -4215,6 +4235,10 @@ ion-icon {
   color: #222;
 }
 
+.theme-dark .reversed-split-pane ion-menu {
+  border-left: 1px solid #ccc;
+}
+
 .theme-default.modal .scroll-content {
   background-color: #fff;
 }
@@ -4230,6 +4254,10 @@ ion-icon {
 .theme-default .highlighted-text {
   background-color: #000;
   color: #fff;
+}
+
+.theme-default .reversed-split-pane ion-menu {
+  border-left: 1px solid #dedede;
 }
 
 .theme-dimocean.modal .scroll-content {
@@ -4405,6 +4433,10 @@ ion-icon {
   color: #03a9f4;
 }
 
+.theme-dimocean .reversed-split-pane ion-menu {
+  border-left: 1px solid #555;
+}
+
 .theme-greenmachine.modal .scroll-content {
   background-color: #fff;
 }
@@ -4522,6 +4554,178 @@ ion-icon {
 .theme-greenmachine .highlighted-text {
   background-color: #32db64;
   color: #f4f4f4;
+}
+
+.theme-greenmachine .reversed-split-pane ion-menu {
+  border-left: 1px solid #32db64;
+}
+
+.theme-hacker {
+  font-family: monospace;
+}
+
+.theme-hacker.modal .scroll-content {
+  background-color: #000;
+  color: #20c20e;
+}
+
+.theme-hacker .spinner-md-secondary.spinner-crescent circle {
+  stroke: #20c20e !important;
+}
+
+.theme-hacker .xp-circle circle {
+  stroke: #20c20e !important;
+}
+
+.theme-hacker .xp-circle path {
+  stroke: #000 !important;
+}
+
+.theme-hacker ion-content {
+  color: #20c20e;
+  background-color: #000;
+}
+
+.theme-hacker a {
+  color: #20c20e;
+}
+
+.theme-hacker .item-md {
+  color: #20c20e;
+  background-color: #000;
+}
+
+.theme-hacker .item-md.activated {
+  background-color: #1a1a1a;
+}
+
+.theme-hacker .card-md {
+  background: #000;
+  border: 1px solid #20c20e;
+}
+
+.theme-hacker .card-md h1, .theme-hacker .card-md h2, .theme-hacker .card-md h3, .theme-hacker .card-md h4, .theme-hacker .card-md h5, .theme-hacker .card-md h6, .theme-hacker .card-md p, .theme-hacker .card-md .card-header-md {
+  color: #20c20e;
+}
+
+.theme-hacker .item-md-playercard {
+  background-color: #000;
+}
+
+.theme-hacker .item-md-petcard {
+  background-color: #000;
+}
+
+.theme-hacker .button-clear-md {
+  color: #20c20e;
+}
+
+.theme-hacker .button-clear-md:hover:not(.disable-hover) {
+  color: #20c20e;
+}
+
+.theme-hacker .button-outline-md {
+  border-color: #f4f4f4;
+  color: #f4f4f4;
+}
+
+.theme-hacker .toolbar-background-md {
+  background: #000 !important;
+}
+
+.theme-hacker .item-md-extradata {
+  background: #000 !important;
+}
+
+.theme-hacker .bar-button-solid-md-primary, .theme-hacker .button-md-primary, .theme-hacker .bar-button-default-md, .theme-hacker .bar-button-md-primary {
+  background-color: #1a1a1a !important;
+  color: #20c20e !important;
+}
+
+.theme-hacker .badge-md {
+  background-color: black !important;
+  border: 1px solid #20c20e;
+  color: #20c20e !important;
+}
+
+.theme-hacker .checkbox-md .checkbox-icon {
+  background-color: #000;
+}
+
+.theme-hacker .checkbox-md .checkbox-checked {
+  border-color: #20c20e;
+  background-color: #000;
+}
+
+.theme-hacker .tabbar {
+  background: #000 !important;
+}
+
+.theme-hacker .tabbar .tab-button {
+  color: #f4f4f4;
+}
+
+.theme-hacker .tabbar .tab-button[aria-selected=true] {
+  color: white;
+}
+
+.theme-hacker .tabbar .tab-button[aria-selected=true] .tab-button-icon {
+  color: #f4f4f4;
+}
+
+.theme-hacker .popover-content {
+  background-color: #000 !important;
+}
+
+.theme-hacker .alert-wrapper {
+  background-color: #000 !important;
+  color: #20c20e;
+}
+
+.theme-hacker .alert-wrapper .alert-message, .theme-hacker .alert-wrapper .alert-input {
+  color: #20c20e;
+}
+
+.theme-hacker .alert-wrapper .button-inner {
+  color: #20c20e;
+}
+
+.theme-hacker .alert-wrapper .button-inner .alert-radio-icon {
+  color: #20c20e;
+  border-color: #20c20e;
+}
+
+.theme-hacker .alert-wrapper .button-inner .alert-radio-label {
+  color: #20c20e;
+}
+
+.theme-hacker .alert-wrapper [aria-checked=true] .alert-radio-inner {
+  background-color: #20c20e;
+}
+
+.theme-hacker .background-icon {
+  color: black !important;
+}
+
+.theme-hacker .chat-user h3 {
+  color: #f4f4f4;
+}
+
+.theme-hacker .chat-user p {
+  color: #20c20e;
+}
+
+.theme-hacker .chat-message {
+  color: #20c20e;
+}
+
+.theme-hacker .highlighted-text {
+  background-color: #20c20e;
+  color: #000;
+}
+
+.theme-hacker .reversed-split-pane ion-menu {
+  border-left: 1px solid #20c20e;
 }
 
 .theme-majestic.modal .scroll-content {
@@ -4643,6 +4847,10 @@ ion-icon {
   color: #f4f4f4;
 }
 
+.theme-majestic .reversed-split-pane ion-menu {
+  border-left: 1px solid #886aea;
+}
+
 .theme-orangina.modal .scroll-content {
   background-color: #fff;
 }
@@ -4760,6 +4968,10 @@ ion-icon {
 .theme-orangina .highlighted-text {
   background-color: #ffa726;
   color: #f4f4f4;
+}
+
+.theme-orangina .reversed-split-pane ion-menu {
+  border-left: 1px solid #ffa726;
 }
 
 ion-action-sheet {
@@ -5724,10 +5936,6 @@ textarea {
 }
 
 textarea::-webkit-input-placeholder {
-  padding-left: 2px;
-}
-
-textarea::-moz-placeholder {
   padding-left: 2px;
 }
 
@@ -24405,7 +24613,7 @@ ion-split-pane {
 
 .tabs-ios .tab-button {
   padding: 0 2px;
-  max-width: 110px;
+  max-width: 240px;
   min-height: 49px;
   font-size: 10px;
   color: #8c8c8c;
@@ -39737,6 +39945,11 @@ ion-list {
   display: inline;
 }
 
+.highlighted-text {
+  padding: 2px;
+  line-height: 1.5;
+}
+
 page-achievements .achievement-card {
   position: relative;
   z-index: 10;
@@ -39761,6 +39974,20 @@ page-chat .chat-container {
 
 page-chat .chat-user {
   padding-left: 0;
+}
+
+page-chat .virtual-list {
+  height: 100%;
+}
+
+page-chat .reversed-split-pane {
+  -webkit-flex-direction: row-reverse;
+  -ms-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+page-chat .reversed-split-pane ion-menu {
+  border-right: none !important;
 }
 
 chat-window {
@@ -39797,8 +40024,14 @@ chat-window .input-window {
 }
 
 chat-window .input-window .send-button {
-  height: 100%;
+  height: 42px;
   margin: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  -webkit-flex-shrink: 0;
+  -ms-flex-negative: 0;
+  flex-shrink: 0;
 }
 
 page-collectibles .faded {
@@ -39881,5 +40114,5 @@ page-pets-overview .pet-card ion-card-content {
 }
 
 page-pets-overview .upgrade-card ion-card-content {
-  min-height: 150px;
+  min-height: 110px;
 }
