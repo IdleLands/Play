@@ -20,6 +20,7 @@ export class PetsPage extends PlayComponent {
 
   petactive$: any;
   inventoryBadge: string = '';
+  hasPet: boolean;
 
   public defaultTab = 0;
 
@@ -35,7 +36,10 @@ export class PetsPage extends PlayComponent {
   ngOnInit() {
     super.ngOnInit();
 
-    this.petactive$ = this.appState.petactive.subscribe(data => this.inventoryBadge = this.setBadge(data));
+    this.petactive$ = this.appState.petactive.subscribe(data => {
+      this.inventoryBadge = this.setBadge(data);
+      this.hasPet = !!data.name;
+    });
 
     const tab = this.storage.retrieve('currentPetTab');
     this.defaultTab = tab;

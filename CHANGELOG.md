@@ -24,6 +24,7 @@
 
 * **chat:** chat user list will show up if the screen is wide enough, else it is collapsed ([3881d3e](https://github.com/IdleLands/Play/commit/3881d3e))
 * **pet:** can now sell items from pet item compare screen ([fdc5485](https://github.com/IdleLands/Play/commit/fdc5485)), closes [#178](https://github.com/IdleLands/Play/issues/178)
+* **pet:** you can now rename pets with a rename tag ([2700b8a](https://github.com/IdleLands/Play/commit/2700b8a))
 * **pets:** pet tab is now remembered between navigation ([724258d](https://github.com/IdleLands/Play/commit/724258d)), closes [#181](https://github.com/IdleLands/Play/issues/181)
 * **pets:** smart settings are back ([262738d](https://github.com/IdleLands/Play/commit/262738d)), closes [#201](https://github.com/IdleLands/Play/issues/201)
 * **premium:** consumable premiums now show quanitity ([8ee701f](https://github.com/IdleLands/Play/commit/8ee701f))
