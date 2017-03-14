@@ -26,6 +26,7 @@
 * **pet:** can now sell items from pet item compare screen ([fdc5485](https://github.com/IdleLands/Play/commit/fdc5485)), closes [#178](https://github.com/IdleLands/Play/issues/178)
 * **pets:** pet tab is now remembered between navigation ([724258d](https://github.com/IdleLands/Play/commit/724258d)), closes [#181](https://github.com/IdleLands/Play/issues/181)
 * **pets:** smart settings are back ([262738d](https://github.com/IdleLands/Play/commit/262738d)), closes [#201](https://github.com/IdleLands/Play/issues/201)
+* **premium:** consumable premiums now show quanitity ([8ee701f](https://github.com/IdleLands/Play/commit/8ee701f))
 * **theme:** add hacker theme ([d6bf549](https://github.com/IdleLands/Play/commit/d6bf549)), closes [#167](https://github.com/IdleLands/Play/issues/167)
 
 

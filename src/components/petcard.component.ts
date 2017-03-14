@@ -10,7 +10,7 @@ import { PetActive } from '../models';
     :host round-progress {
       position: absolute;
       left: 1rem;
-      top: 3.5rem;
+      top: 2rem;
     }
   `],
   template: `
