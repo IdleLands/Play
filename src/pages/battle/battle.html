@@ -22,7 +22,7 @@
       </ion-col>
     </ion-row>
 
-    <ion-row *ngIf="battle.messageData.length > 0">
+    <ion-row>
       <ion-col>
         <ion-list [virtualScroll]="battle.messageData" approxItemHeight="50px" bufferRatio="30" [headerFn]="battleHeader">
 
