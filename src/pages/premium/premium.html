@@ -57,6 +57,7 @@
               <ion-item text-wrap *ngFor="let item of premium.buyable">
                 <h2>{{ item.name }}</h2>
                 <p>{{ item.description }}</p>
+                <p *ngIf="item.consumableKey && premium.consumables[item.consumableKey]"><em>You have {{ premium.consumables[item.consumableKey] }} of these.</em></p>
 
                 <button item-right ion-button small color="primary"
                         [disabled]="premium.ilp < item.cost || premium.bought[item.name]"
