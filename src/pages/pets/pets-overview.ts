@@ -8,7 +8,7 @@ import { PlayComponent } from '../../components/play.component';
 
 import { LocalStorage } from 'ng2-webstorage';
 
-import { PetBasic, PetBuy, PetActive, Equipment, Item } from '../../models';
+import { PetBasic, PetBuy, PetActive, Equipment, Item, Premium } from '../../models';
 
 import * as defaultPetAttrs from './petattrs.json';
 
@@ -31,6 +31,9 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
 
   petbuy$: any;
   petbuy: PetBuy = {};
+
+  premium$: any;
+  premium: Premium = new Premium();
 
   equipment$: any;
   playerEquipment: Equipment;
@@ -76,6 +79,7 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
     this.petbuy$ = this.appState.petbuy.subscribe(data => this.petbuy = data);
     this.petactive$ = this.appState.petactive.subscribe(data => this.setPetActive(data));
     this.achievements$ = this.appState.achievements.subscribe(data => this.parseAchievements(data));
+    this.premium$ = this.appState.premium.subscribe(data => this.premium = data);
 
     this.primus.requestPets();
     this.primus.requestAchievements();
@@ -89,6 +93,7 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
     this.petbuy$.unsubscribe();
     this.petactive$.unsubscribe();
     this.achievements$.unsubscribe();
+    this.premium$.unsubscribe();
   }
 
   get hasPet() {
@@ -101,6 +106,25 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
 
   toggleSmart(smart) {
     this.primus.togglePetSmart(smart);
+  }
+
+  renamePet(petType, currentName) {
+    this.alertCtrl.create({
+      cssClass: this.theme.currentTheme,
+      title: 'Rename Pet',
+      message: `What would you like to call your pet ${petType}?`,
+      inputs: [{
+        name: 'name',
+        placeholder: 'Pet Name',
+        value: currentName
+      }],
+      buttons: [
+        { text: 'Cancel' },
+        { text: 'Rename', handler: data => {
+          this.primus.renamePet(petType, data.name);
+        } }
+      ]
+    }).present()
   }
 
   setPetActive(petactive) {

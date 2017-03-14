@@ -64,6 +64,11 @@
                         Make Active
                       </button>
                     </ion-col>
+                    <ion-col *ngIf="petOption.bought && premium.consumables.renameTagPet > 0">
+                      <button ion-button clear small color="primary" (click)="renamePet(petOption.name, petOption.petName)">
+                        Rename
+                      </button>
+                    </ion-col>
                     <ion-col *ngIf="!petOption.bought">
                       <button ion-button clear small color="primary" (click)="buyPet(petOption.name)" [disabled]="player.gold < petbuy[petOption.name].cost">
                         Buy Pet

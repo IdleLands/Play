@@ -496,6 +496,10 @@ export class Primus {
     this._emit('plugin:pet:smart', { setting });
   }
 
+  renamePet(petId, newName) {
+    this._emit('plugin:pet:rename', { petId, newName });
+  }
+
   // GM
   mute(targetName) {
     this._emit('plugin:chat:togglemute', { targetName });
