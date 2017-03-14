@@ -72,6 +72,7 @@ export class PetsItemsPage extends PlayComponent {
 
     this.primus.requestPets();
     this.primus.requestAchievements();
+    this.primus.requestEquipment();
   }
 
   ngOnDestroy() {

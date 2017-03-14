@@ -17,6 +17,7 @@
 * **pet:** pet upgrade cards are now 40px shorter ([47f26cb](https://github.com/IdleLands/Play/commit/47f26cb)), closes [#199](https://github.com/IdleLands/Play/issues/199)
 * **pets:** pet inventory moved to sidebar ([7e3801c](https://github.com/IdleLands/Play/commit/7e3801c)), closes [#185](https://github.com/IdleLands/Play/issues/185)
 * **settings:** donate button now opens in a new tab ([5388069](https://github.com/IdleLands/Play/commit/5388069)), closes [#193](https://github.com/IdleLands/Play/issues/193)
+* **sidebar:** sidebar now has the correct height to compensate for the loss of some info in pet card ([8b11e78](https://github.com/IdleLands/Play/commit/8b11e78))
 * **statistics:** stats are now split into 3 columns ([df425c8](https://github.com/IdleLands/Play/commit/df425c8)), closes [#197](https://github.com/IdleLands/Play/issues/197)
 
 
