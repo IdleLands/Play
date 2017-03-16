@@ -39976,6 +39976,10 @@ page-chat .chat-user {
   padding-left: 0;
 }
 
+page-chat .chat-message {
+  word-break: break-all;
+}
+
 page-chat .virtual-list {
   height: 100%;
 }
