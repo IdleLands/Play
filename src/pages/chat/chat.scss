@@ -9,6 +9,10 @@ page-chat {
     padding-left: 0;
   }
 
+  .chat-message {
+    word-break: break-all;
+  }
+
   .virtual-list {
     height: 100%;
   }
