@@ -14,6 +14,7 @@
 * **chat:** make pm indicator more visible in darker themes ([56c55bf](https://github.com/IdleLands/Play/commit/56c55bf)), closes [#192](https://github.com/IdleLands/Play/issues/192)
 * **chat:** unread chat message indicator should be more reliable ([f322de5](https://github.com/IdleLands/Play/commit/f322de5)), closes [#191](https://github.com/IdleLands/Play/issues/191)
 * **chat:** unread notifier decrements properly on channel change ([422da5e](https://github.com/IdleLands/Play/commit/422da5e))
+* **logout:** actually reset the entire game on logout ([5fdd22a](https://github.com/IdleLands/Play/commit/5fdd22a)), closes [#204](https://github.com/IdleLands/Play/issues/204)
 * **map:** flavor text now shows up ([1d91a63](https://github.com/IdleLands/Play/commit/1d91a63)), closes [#188](https://github.com/IdleLands/Play/issues/188)
 * **party:** unsubscribe from party observable when closing overview ([c44bb55](https://github.com/IdleLands/Play/commit/c44bb55)), closes [#195](https://github.com/IdleLands/Play/issues/195)
 * **pet:** pet upgrade cards are now 40px shorter ([47f26cb](https://github.com/IdleLands/Play/commit/47f26cb)), closes [#199](https://github.com/IdleLands/Play/issues/199)

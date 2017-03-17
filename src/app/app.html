@@ -4,7 +4,7 @@
     <ion-menu [content]="content" [class.hidden]="!showSideMenu">
       <ion-header>
         <ion-toolbar color="primary">
-          <ion-title>{{ currentStatusString }}</ion-title>
+          <ion-title>{{ currentStatusString }} <span *ngIf="updateAvailable">(Refresh to Update)</span></ion-title>
 
           <ion-buttons end>
             <button ion-button icon-only solid color="primary" (click)="clickStatus()">

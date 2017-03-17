@@ -10,7 +10,6 @@ import { PlayComponent } from '../../components/play.component';
 
 import { Personalities } from '../../models';
 
-declare var COMMITHASH: string;
 declare var VERSION: string;
 
 @Component({
@@ -59,10 +58,6 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
 
   get version() {
     return VERSION;
-  }
-
-  get commitHash() {
-    return COMMITHASH;
   }
 
   get thanks() {

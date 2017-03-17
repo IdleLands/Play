@@ -2,6 +2,8 @@
 import * as _ from 'lodash';
 
 import { Component, ViewChild } from '@angular/core';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs';
 import { Nav, Platform } from 'ionic-angular';
 import { StatusBar, Splashscreen } from 'ionic-native';
 
@@ -24,6 +26,8 @@ import {
   PremiumPage,
   SettingsPage
 } from '../pages';
+
+declare var COMMITHASH: string;
 
 @Component({
   templateUrl: 'app.html'
@@ -55,6 +59,12 @@ export class MyApp {
   private badgeMessages: number = 0;
   private isHidden: boolean;
 
+  public updateAvailable: boolean;
+
+  get commitHash() {
+    return COMMITHASH;
+  }
+
   pages: Array<{title: string, icon: string, component: any, extraContent?: Function, showBadge?: Function, badge?: Function}> = [
     { title: 'Overview',      icon: 'body',       component: OverviewPage, showBadge: () => this.choices > 0, badge: () => `${this.choices} Choices` },
     { title: 'Pets',          icon: 'nutrition',  component: PetsPage, showBadge: () => this.petItems, badge: () => `${this.petItems} Items` },
@@ -73,7 +83,8 @@ export class MyApp {
     public state: AppState,
     public storage: LocalStorageService,
     public primus: Primus,
-    public auth: Auth
+    public auth: Auth,
+    public http: Http
   ) {
     this.initializeApp();
   }
@@ -93,6 +104,15 @@ export class MyApp {
     this.subscribeForExtraContentChanges();
 
     this.primus.requestPets();
+
+    // check for updates every 2h
+    Observable.timer(0, 7200000)
+      .flatMap(() => {
+        return this.http.get('https://api.github.com/repos/IdleLands/Play/commits').map(data => data.json());
+      }).subscribe(commits => {
+        if(!commits || commits.length < 1) return;
+        this.updateAvailable = commits[0].sha !== this.commitHash;
+      });
   }
 
   subscribeForExtraContentChanges() {
