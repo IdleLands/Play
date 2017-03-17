@@ -5,6 +5,7 @@
 ### Bug Fixes
 
 * **all:** lots of memory leak patches ([f5ba28e](https://github.com/IdleLands/Play/commit/f5ba28e))
+* **analytics:** re-add google analytics ([0b76fc7](https://github.com/IdleLands/Play/commit/0b76fc7))
 * **battle:** do not show previous battle upon subsequent loads of battle screen ([7a44624](https://github.com/IdleLands/Play/commit/7a44624)), closes [#179](https://github.com/IdleLands/Play/issues/179)
 * **battle:** highlight text is more readable ([2577d1b](https://github.com/IdleLands/Play/commit/2577d1b))
 * **battles:** battles should render properly and better now ([7c1eb04](https://github.com/IdleLands/Play/commit/7c1eb04)), closes [#202](https://github.com/IdleLands/Play/issues/202)

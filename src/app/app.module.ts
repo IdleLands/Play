@@ -27,6 +27,7 @@ import { ChatWindowComponent, CurrentChannelPipe, LinkifyPipe } from '../pages/c
 (<any>window).PIXI = require('pixi.js');
 (<any>window).p2 = require('p2.js');
 (<any>window).Phaser = require('phaserlib');
+(<any>window).PhaserGlobal = { hideBanner: true };
 
 import { MyApp } from './app.component';
 import {
