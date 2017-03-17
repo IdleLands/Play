@@ -5,6 +5,8 @@ import { Player, ChatUser } from '../../models';
 
 import { settings } from '../../services/primus.service';
 
+import * as moment from 'moment';
+
 class GameText {
   static hoverText(phaser) {
     if(!phaser) return '';
@@ -24,7 +26,7 @@ class GameText {
     ].join('<br>');
   }
 
-  static itemText(item, collectibleHash = {}) {
+  static itemText(item, collectibleHash = {}, bossTimers = {}) {
     let string = '';
 
     const nameKey = item.teleportMap ? 'teleportMap' : 'name';
@@ -35,6 +37,10 @@ class GameText {
 
       if(item.realtype === 'Collectible' && collectibleHash[item[nameKey]]) {
         string = `${string} (Owned)`;
+      }
+
+      if(item.realtype === 'Boss' && bossTimers[item[nameKey]]) {
+        string = `${string} (Dead; respawns ${moment(bossTimers[item[nameKey]]).fromNow()})`
       }
 
       string += '<br>';
@@ -91,6 +97,8 @@ export class Game {
 
   private collectibleHash: any;
 
+  private bossTimers: any;
+
   private needsMapUpdate: boolean;
 
   constructor(player, updateText) {
@@ -131,6 +139,10 @@ export class Game {
   setOtherPlayers(otherPlayers) {
     const drawPlayers = _.filter(otherPlayers, player => player.map === this.map || player.name === this.player.name);
     this.otherPlayers = drawPlayers;
+  }
+
+  setBossTimers(bossTimers) {
+    this.bossTimers = bossTimers;
   }
 
   updateOtherPlayers() {
@@ -239,7 +251,7 @@ export class Game {
       object.inputEnabled = true;
 
       object.events.onInputOver.add(() => {
-        this.setAfterText(GameText.itemText(object, this.collectibleHash));
+        this.setAfterText(GameText.itemText(object, this.collectibleHash, this.bossTimers));
       });
 
       object.events.onInputOut.add(() => {

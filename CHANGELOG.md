@@ -29,6 +29,7 @@
 
 ### Features
 
+* **app:** show an update thinger if your current version is outdated ([dc51919](https://github.com/IdleLands/Play/commit/dc51919)), closes [#206](https://github.com/IdleLands/Play/issues/206)
 * **chat:** chat user list will show up if the screen is wide enough, else it is collapsed ([3881d3e](https://github.com/IdleLands/Play/commit/3881d3e))
 * **pet:** can now sell items from pet item compare screen ([fdc5485](https://github.com/IdleLands/Play/commit/fdc5485)), closes [#178](https://github.com/IdleLands/Play/issues/178)
 * **pet:** you can now rename pets with a rename tag ([2700b8a](https://github.com/IdleLands/Play/commit/2700b8a))

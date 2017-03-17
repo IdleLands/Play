@@ -49,6 +49,7 @@ export class AppState {
   festivals:      BehaviorSubject<Festival[]> = new BehaviorSubject([]);
   genders:        BehaviorSubject<string[]> = new BehaviorSubject([]);
   premium:        BehaviorSubject<Premium> = new BehaviorSubject(new Premium());
+  bosstimers:     BehaviorSubject<any> = new BehaviorSubject({});
 
   reset() {
     this.onlineStatus.next('offline');

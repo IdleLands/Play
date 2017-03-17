@@ -21,6 +21,7 @@ export class MapRendererComponent implements OnDestroy, OnChanges {
   @Input() public player: Player = new Player();
   @Input() public collectibleHash: any = {};
   @Input() public otherPlayers = [];
+  @Input() public bossTimers = {};
 
   @Output() public textUpdate = new EventEmitter();
 
@@ -55,5 +56,6 @@ export class MapRendererComponent implements OnDestroy, OnChanges {
     this.game.setPlayer(this.player);
     this.game.setCollectibleHash(this.collectibleHash);
     this.game.setOtherPlayers(this.otherPlayers);
+    this.game.setBossTimers(this.bossTimers);
   }
 }

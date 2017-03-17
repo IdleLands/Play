@@ -332,6 +332,12 @@ export class Primus {
     });
   }
 
+  requestBossTimers(): void {
+    this.loggedIn$.subscribe(() => {
+      this._emit('plugin:player:request:bosstimers');
+    })
+  }
+
   loadBattle(battleName): void {
     this._emit('plugin:combat:retrieve', { battleName });
   }

@@ -20,6 +20,9 @@ export class MapPage extends PlayComponent implements OnInit, OnDestroy {
   otherPlayers$: any;
   otherPlayers: ChatUser[];
 
+  bosstimers$: any;
+  bosstimers: any;
+
   public mapText: string;
 
   private popover: any;
@@ -39,8 +42,10 @@ export class MapPage extends PlayComponent implements OnInit, OnDestroy {
 
     this.collectibles$ = this.appState.collectibles.subscribe(data => this.collectibleHash = data.orig.current);
     this.otherPlayers$ = this.appState.chatUsers.subscribe(data => this.otherPlayers = data);
+    this.bosstimers$ = this.appState.bosstimers.subscribe(data => this.bosstimers = data);
 
     this.primus.requestCollectibles();
+    this.primus.requestBossTimers();
   }
 
   ngOnDestroy() {
@@ -48,6 +53,7 @@ export class MapPage extends PlayComponent implements OnInit, OnDestroy {
 
     this.collectibles$.unsubscribe();
     this.otherPlayers$.unsubscribe();
+    this.bosstimers$.unsubscribe();
 
     if(this.popover) {
       this.popover.dismiss();
