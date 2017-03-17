@@ -16,6 +16,7 @@
 * **chat:** unread notifier decrements properly on channel change ([422da5e](https://github.com/IdleLands/Play/commit/422da5e))
 * **logout:** actually reset the entire game on logout ([5fdd22a](https://github.com/IdleLands/Play/commit/5fdd22a)), closes [#204](https://github.com/IdleLands/Play/issues/204)
 * **map:** flavor text now shows up ([1d91a63](https://github.com/IdleLands/Play/commit/1d91a63)), closes [#188](https://github.com/IdleLands/Play/issues/188)
+* **maps:** hide phaser banner ([7c33786](https://github.com/IdleLands/Play/commit/7c33786)), closes [#203](https://github.com/IdleLands/Play/issues/203)
 * **party:** unsubscribe from party observable when closing overview ([c44bb55](https://github.com/IdleLands/Play/commit/c44bb55)), closes [#195](https://github.com/IdleLands/Play/issues/195)
 * **pet:** pet upgrade cards are now 40px shorter ([47f26cb](https://github.com/IdleLands/Play/commit/47f26cb)), closes [#199](https://github.com/IdleLands/Play/issues/199)
 * **pet:** request player equipment on pet item tab to get up-to-date equipment for comparisons ([47cbbe4](https://github.com/IdleLands/Play/commit/47cbbe4))

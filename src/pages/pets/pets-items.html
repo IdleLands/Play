@@ -44,4 +44,11 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+
+  <ion-item class="hidden">
+    <ion-label>Other Pet</ion-label>
+    <ion-select #pets (ionChange)="_chooseOtherPet($event)">
+      <ion-option *ngFor="let pet of boughtPets" [value]="pet.name">{{ pet.petName }} ({{ pet.name }})</ion-option>
+    </ion-select>
+  </ion-item>
 </ion-content>

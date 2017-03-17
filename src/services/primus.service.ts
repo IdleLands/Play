@@ -500,6 +500,10 @@ export class Primus {
     this._emit('plugin:pet:rename', { petId, newName });
   }
 
+  giveItemToOtherPet(itemId, petId) {
+    this._emit('plugin:pet:pass', { itemId, petId });
+  }
+
   // GM
   mute(targetName) {
     this._emit('plugin:chat:togglemute', { targetName });

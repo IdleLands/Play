@@ -1,13 +1,13 @@
 
 import * as _ from 'lodash';
 
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 
 import { AppState, Primus, ItemCompare, Theme } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
-import { PetActive, Equipment, Item } from '../../models';
+import { PetActive, PetBasic, Equipment, Item } from '../../models';
 
 @Component({
   selector: 'page-pets-items',
@@ -18,10 +18,18 @@ export class PetsItemsPage extends PlayComponent {
   petactive$: any;
   petactive: PetActive = new PetActive();
 
+  petbasic$: any;
+  boughtPets: PetBasic[];
+
   equipment$: any;
   playerEquipment: Equipment;
 
   petEquipment: Item[];
+
+  private currentItemId: string;
+
+  @ViewChild('pets')
+  public pets;
 
   equippedItemButtons = [
     { name: 'Unequip Item',
@@ -31,6 +39,10 @@ export class PetsItemsPage extends PlayComponent {
 
   inventoryButtons = [
     { name: 'Sell Item', callback: (item) => this.primus.sellItemFromPet(item.id) },
+    { name: 'Give To Other Pet', callback: (item) => {
+      this.currentItemId = item.id;
+      this.pets.open();
+    } },
     { name: 'Equip Item (Pet)',
       disable: (item) => item._calcScore > this.petactive.statCache.itemFindRange,
       callback: (item) => this.primus.equipItemOnPet(item.id)
@@ -67,8 +79,18 @@ export class PetsItemsPage extends PlayComponent {
   ngOnInit() {
     super.ngOnInit();
 
+    this.pets.selectOptions = { cssClass: this.theme.currentTheme };
+
     this.equipment$ = this.appState.equipment.subscribe(data => this.playerEquipment = data);
-    this.petactive$ = this.appState.petactive.subscribe(data => this.setPetActive(data));
+    this.petactive$ = this.appState.petactive.subscribe(activeData => {
+      this.setPetActive(activeData);
+
+      if(this.petbasic$) this.petbasic$.unsubscribe();
+
+      this.petbasic$ = this.appState.petbasic.subscribe(basicData => this.boughtPets = _.filter(basicData, pet => {
+        return pet.bought && pet.name !== activeData.$petId;
+      }));
+    });
 
     this.primus.requestPets();
     this.primus.requestAchievements();
@@ -80,6 +102,11 @@ export class PetsItemsPage extends PlayComponent {
 
     this.equipment$.unsubscribe();
     this.petactive$.unsubscribe();
+    this.petbasic$.unsubscribe();
+  }
+
+  _chooseOtherPet(petId) {
+    this.primus.giveItemToOtherPet(this.currentItemId, petId);
   }
 
   setPetActive(petactive) {
