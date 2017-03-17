@@ -124,7 +124,7 @@
     <ion-row *ngIf="hasPet">
       <ion-col col-12 col-md>
         <ion-item>
-          <ion-label stacked>Attribute</ion-label>
+          <ion-label stacked>Descriptor</ion-label>
           <ion-select [(ngModel)]="petactive.attr" [selectOptions]="{ cssClass: theme.currentTheme }" (ionChange)="changeAttr($event)">
             <ion-option value="">None</ion-option>
             <ion-option *ngFor="let attr of petAttrs">{{ attr }}</ion-option>
