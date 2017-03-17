@@ -56,5 +56,19 @@ export class AppState {
     this.hasCharacter.next(undefined);
     this.showSideMenu.next(false);
     this.chatUsers.next([]);
+
+    this.player.next(new Player());
+    this.statistics.next(new Statistics());
+    this.achievements.next([]);
+    this.collectibles.next(new Collectibles());
+    this.equipment.next(new Equipment());
+    this.personalities.next(new Personalities());
+    this.party.next(new Party());
+    this.gmdata.next(new GMData());
+    this.petbasic.next([]);
+    this.petbuy.next(new PetBuy());
+    this.petactive.next(new PetActive());
+    this.genders.next([]);
+    this.premium.next(new Premium());
   }
 }

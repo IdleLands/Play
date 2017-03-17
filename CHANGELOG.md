@@ -1,5 +1,5 @@
 <a name=""></a>
-# [](https://github.com/IdleLands/Play/compare/0.9.0...v) (2017-03-16)
+# [](https://github.com/IdleLands/Play/compare/0.9.0...v) (2017-03-17)
 
 
 ### Bug Fixes
@@ -9,6 +9,7 @@
 * **battle:** highlight text is more readable ([2577d1b](https://github.com/IdleLands/Play/commit/2577d1b))
 * **battles:** battles should render properly and better now ([7c1eb04](https://github.com/IdleLands/Play/commit/7c1eb04)), closes [#202](https://github.com/IdleLands/Play/issues/202)
 * **chat:** chat input now takes mostly full width ([f5982da](https://github.com/IdleLands/Play/commit/f5982da)), closes [#190](https://github.com/IdleLands/Play/issues/190)
+* **chat:** chat messages that are too long don't break stuff anymore ([7b97d55](https://github.com/IdleLands/Play/commit/7b97d55))
 * **chat:** make pm indicator more visible in darker themes ([56c55bf](https://github.com/IdleLands/Play/commit/56c55bf)), closes [#192](https://github.com/IdleLands/Play/issues/192)
 * **chat:** unread chat message indicator should be more reliable ([f322de5](https://github.com/IdleLands/Play/commit/f322de5)), closes [#191](https://github.com/IdleLands/Play/issues/191)
 * **chat:** unread notifier decrements properly on channel change ([422da5e](https://github.com/IdleLands/Play/commit/422da5e))
