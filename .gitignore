@@ -9,3 +9,4 @@ dist
 .publish
 primus.gen.js
 www
+config/prod.json

@@ -10,6 +10,9 @@ const phaserlib = path.join(phaserDir, 'build/custom/phaser-split.js');
 const pixi = path.join(phaserDir, 'build/custom/pixi.js');
 const p2 = path.join(phaserDir, 'build/custom/p2.js');
 
+const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
+const envVars = require(`./config/${env}.json`);
+
 module.exports = {
   entry: process.env.IONIC_APP_ENTRY_POINT,
   output: {
@@ -62,7 +65,8 @@ module.exports = {
     ionicWebpackFactory.getIonicEnvironmentPlugin(),
     new webpack.DefinePlugin({
       VERSION: JSON.stringify(gitRevisionPlugin.version()),
-      COMMITHASH: JSON.stringify(gitRevisionPlugin.commithash())
+      COMMITHASH: JSON.stringify(gitRevisionPlugin.commithash()),
+      AUTH0_CLIENT_ID: JSON.stringify(envVars.AUTH0_CLIENT_ID)
     })
   ],
 

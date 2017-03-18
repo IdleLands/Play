@@ -24,9 +24,10 @@ const lockOptions = {
   }
 };
 
-const CLIENT_ID = 'eeZLr1IQYWDYgxUtEAAiibI4617kIfT9';
+declare var AUTH0_CLIENT_ID: string;
+
 const DOMAIN = 'idlelands.auth0.com';
-const lock = new Auth0Lock(CLIENT_ID, DOMAIN, lockOptions);
+const lock = new Auth0Lock(AUTH0_CLIENT_ID, DOMAIN, lockOptions);
 
 lock.on('authorization_error', (error) => {
   lock.show({
@@ -118,7 +119,7 @@ export class Auth {
         return reject(new Error('No refresh token in storage'));
       }
 
-      const auth0 = new (<any>window).Auth0({ clientID: CLIENT_ID, domain: DOMAIN, responseType: 'token' });
+      const auth0 = new (<any>window).Auth0({ clientID: AUTH0_CLIENT_ID, domain: DOMAIN, responseType: 'token' });
 
       auth0.refreshToken(refreshToken, (err, authData) => {
         if(err) {
