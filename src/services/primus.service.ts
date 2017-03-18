@@ -170,6 +170,12 @@ export class Primus {
     });
 
     this.socket.on('data', data => {
+
+      if(data.notify) {
+        this._handleNotification({ message: data.notify });
+        if(data.type === 'error') return;
+      }
+
       if(data.playerListOperation) return this.handleUserListUpdate(data);
 
       if(data.route && data.channel && data.text) return this.handleChatMessage(data, true);
@@ -181,10 +187,6 @@ export class Primus {
       if(!data.event) {
         Logger.error(new Error('no event specified' + JSON.parse(data)));
         return;
-      }
-
-      if(data.notify) {
-        this._handleNotification({ message: data.notify });
       }
 
       if(!this.callbacks[data.event]) return;

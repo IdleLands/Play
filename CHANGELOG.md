@@ -14,6 +14,7 @@
 * **chat:** make pm indicator more visible in darker themes ([56c55bf](https://github.com/IdleLands/Play/commit/56c55bf)), closes [#192](https://github.com/IdleLands/Play/issues/192)
 * **chat:** unread chat message indicator should be more reliable ([f322de5](https://github.com/IdleLands/Play/commit/f322de5)), closes [#191](https://github.com/IdleLands/Play/issues/191)
 * **chat:** unread notifier decrements properly on channel change ([422da5e](https://github.com/IdleLands/Play/commit/422da5e))
+* **item:** item buttons now show disable reason where possible ([4c499ab](https://github.com/IdleLands/Play/commit/4c499ab))
 * **logout:** actually reset the entire game on logout ([5fdd22a](https://github.com/IdleLands/Play/commit/5fdd22a)), closes [#204](https://github.com/IdleLands/Play/issues/204)
 * **map:** flavor text now shows up ([1d91a63](https://github.com/IdleLands/Play/commit/1d91a63)), closes [#188](https://github.com/IdleLands/Play/issues/188)
 * **maps:** hide phaser banner ([7c33786](https://github.com/IdleLands/Play/commit/7c33786)), closes [#203](https://github.com/IdleLands/Play/issues/203)
