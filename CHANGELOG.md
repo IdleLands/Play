@@ -33,6 +33,7 @@
 * **app:** show an update thinger if your current version is outdated ([dc51919](https://github.com/IdleLands/Play/commit/dc51919)), closes [#206](https://github.com/IdleLands/Play/issues/206)
 * **chat:** chat user list will show up if the screen is wide enough, else it is collapsed ([3881d3e](https://github.com/IdleLands/Play/commit/3881d3e))
 * **map:** bosses now show when they respawn ([82983db](https://github.com/IdleLands/Play/commit/82983db)), closes [#136](https://github.com/IdleLands/Play/issues/136)
+* **overview:** you can now buy items from a shop depending on the region you're in ([1b52ddf](https://github.com/IdleLands/Play/commit/1b52ddf))
 * **pet:** can now sell items from pet item compare screen ([fdc5485](https://github.com/IdleLands/Play/commit/fdc5485)), closes [#178](https://github.com/IdleLands/Play/issues/178)
 * **pet:** you can now rename pets with a rename tag ([2700b8a](https://github.com/IdleLands/Play/commit/2700b8a))
 * **pets:** can now give items to other pets ([fd61198](https://github.com/IdleLands/Play/commit/fd61198)), closes [#152](https://github.com/IdleLands/Play/issues/152)
