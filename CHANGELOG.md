@@ -1,5 +1,5 @@
 <a name=""></a>
-# [](https://github.com/IdleLands/Play/compare/0.9.0...v) (2017-03-17)
+# [](https://github.com/IdleLands/Play/compare/0.9.0...v) (2017-03-18)
 
 
 ### Bug Fixes
@@ -19,6 +19,7 @@
 * **maps:** hide phaser banner ([7c33786](https://github.com/IdleLands/Play/commit/7c33786)), closes [#203](https://github.com/IdleLands/Play/issues/203)
 * **party:** unsubscribe from party observable when closing overview ([c44bb55](https://github.com/IdleLands/Play/commit/c44bb55)), closes [#195](https://github.com/IdleLands/Play/issues/195)
 * **pet:** pet upgrade cards are now 40px shorter ([47f26cb](https://github.com/IdleLands/Play/commit/47f26cb)), closes [#199](https://github.com/IdleLands/Play/issues/199)
+* **pet:** rename Attribute to Descriptor ([5c6e9c9](https://github.com/IdleLands/Play/commit/5c6e9c9))
 * **pet:** request player equipment on pet item tab to get up-to-date equipment for comparisons ([47cbbe4](https://github.com/IdleLands/Play/commit/47cbbe4))
 * **pets:** if you have no pet it will no longer allow you to visit the items tab ([ea57918](https://github.com/IdleLands/Play/commit/ea57918))
 * **pets:** pet inventory moved to sidebar ([7e3801c](https://github.com/IdleLands/Play/commit/7e3801c)), closes [#185](https://github.com/IdleLands/Play/issues/185)

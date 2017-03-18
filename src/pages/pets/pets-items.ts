@@ -34,6 +34,7 @@ export class PetsItemsPage extends PlayComponent {
   equippedItemButtons = [
     { name: 'Unequip Item',
       disable: () => this.petactive.inventory.length === this.petactive.$scale.inventory[this.petactive.scaleLevel.inventory],
+      disableReason: 'Inventory full',
       callback: (item) => this.primus.unequipItemFromPet(item.id) }
   ];
 
@@ -45,10 +46,12 @@ export class PetsItemsPage extends PlayComponent {
     } },
     { name: 'Equip Item (Pet)',
       disable: (item) => item._calcScore > this.petactive.statCache.itemFindRange,
+      disableReason: 'Pet max score too low',
       callback: (item) => this.primus.equipItemOnPet(item.id)
     },
     { name: 'Equip Item (Player)',
       disable: (item) => item._calcScore > this.player.statCache.itemFindRange,
+      disableReason: 'Player max score too low',
       callback: (item) => {
 
       const buttons = [

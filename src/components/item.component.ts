@@ -13,7 +13,9 @@ import { Item } from '../models';
     <ion-row margin-bottom>
       <ion-col width-20 text-center no-padding>
         <div class="class-{{ item.itemClass }}">{{ item.type }}</div>
-        <button ion-button icon-only outline color="primary" small *ngIf="buttons && buttons.length > 0 && item.name !== 'nothing'" (click)="openItemPopover($event)">
+        <button ion-button icon-only outline color="primary" small 
+                *ngIf="buttons && buttons.length > 0 && item.name !== 'nothing'" 
+                (click)="openItemPopover($event)">
           <ion-icon name="more"></ion-icon>
         </button>
       </ion-col>
@@ -79,8 +81,11 @@ export class ItemComponent implements OnInit {
 @Component({
   template: `
     <ion-list>
-      <button ion-item *ngFor="let button of buttons" (click)="doCallback(button)">
-        <ion-label>{{ button.name }}</ion-label>
+      <button ion-item 
+              *ngFor="let button of buttons" 
+              [disabled]="button.disable && button.disable(item)"
+              (click)="doCallback(button)">
+        <ion-label>{{ button.name }}<span *ngIf="button.disable && button.disable(item)"><br>{{ button.disableReason }}</span></ion-label>
       </button>
     </ion-list>
   `

@@ -64,7 +64,7 @@ export class EquipmentPage extends PlayComponent implements OnInit, OnDestroy {
   }
 
   setEquipment(data) {
-    this.equipment = data;
+    this.equipment = data || {};
     this.iterationOrder = _.sortBy(_.keys(data));
 
     this.equipment.total = this.getTotalItem();
