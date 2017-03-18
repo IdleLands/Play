@@ -18,6 +18,7 @@ import {
   PetBasic,
   PetBuy,
   Premium,
+  Shop,
   Statistics
 } from '../models';
 
@@ -35,10 +36,11 @@ export class AppState {
   adventureLog:   ReplaySubject<AdventureLog> = new ReplaySubject<AdventureLog>(50);
 
   player:         BehaviorSubject<Player> = new BehaviorSubject(new Player());
+  shop:           BehaviorSubject<Shop> = new BehaviorSubject(new Shop());
   statistics:     BehaviorSubject<Statistics> = new BehaviorSubject(new Statistics());
   achievements:   BehaviorSubject<Achievement[]> = new BehaviorSubject([]);
   collectibles:   BehaviorSubject<Collectibles> = new BehaviorSubject(new Collectibles());
-  equipment:      BehaviorSubject<Equipment> = new BehaviorSubject(new Equipment());
+  equipment:      BehaviorSubject<Equipment> = new BehaviorSubject(null);
   personalities:  BehaviorSubject<Personalities> = new BehaviorSubject(new Personalities());
   party:          BehaviorSubject<Party> = new BehaviorSubject(new Party());
   gmdata:         BehaviorSubject<GMData> = new BehaviorSubject(new GMData());
@@ -59,6 +61,7 @@ export class AppState {
     this.chatUsers.next([]);
 
     this.player.next(new Player());
+    this.shop.next(new Shop());
     this.statistics.next(new Statistics());
     this.achievements.next([]);
     this.collectibles.next(new Collectibles());

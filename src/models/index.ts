@@ -12,4 +12,5 @@ export * from './pet';
 export * from './player';
 export * from './personalities';
 export * from './premium';
+export * from './shop';
 export * from './statistics';

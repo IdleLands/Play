@@ -8,7 +8,7 @@ import { PlayComponent } from '../../components/play.component';
 
 import { BattlePage } from '../';
 
-import { AdventureLog } from '../../models';
+import { AdventureLog, Shop } from '../../models';
 
 @Component({
   selector: 'page-overview',
@@ -22,10 +22,27 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
   public adventureLog$: any;
   public adventureLog: AdventureLog[] = [];
 
+  public shop$: any;
+  public shop: Shop;
+
   party$: any;
   public party: any;
 
   @ViewChild('choiceSlides') public choiceSlides;
+
+  shopButtons = [
+    { name: 'Buy', callback: (item) => {
+      const equipment = this.appState.equipment.getValue();
+      const buttons = [
+        { text: `Buy for ${item.price.toLocaleString()} gold`, color: 'primary', callback: () => this.primus.buyShopItem(item.id) },
+        { text: 'Close', color: 'light', callback: () => {} }
+      ];
+      this.icomp.compare(equipment[item.type], item, buttons).then(button => {
+        if(!button) return;
+        button.callback();
+      });
+    } }
+  ];
 
   constructor(
     public appState: AppState,
@@ -51,17 +68,25 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
       }
     });
 
+    this.shop$ = this.appState.shop.subscribe(data => this.shop = data);
+
     this.party$ = this.appState.party.subscribe(data => {
       this.party = data;
     });
 
     this.primus.requestEquipment();
     this.primus.requestParty();
+    this.primus.requestShop();
   }
 
   ngOnDestroy() {
     this.adventureLog$.unsubscribe();
     this.party$.unsubscribe();
+    this.shop$.unsubscribe();
+  }
+
+  get equipment() {
+    return this.appState.equipment.getValue();
   }
 
   get numSlides() {

@@ -63,6 +63,23 @@
       </ion-col>
     </ion-row>
 
+    <ion-row *ngIf="equipment && shop.slots.length > 0">
+      <ion-col>
+        <ion-card>
+          <ion-card-header>
+            Shop - {{ shop.region }}
+          </ion-card-header>
+          <ion-card-content>
+            <ion-row *ngFor="let item of shop.slots">
+              <ion-col>
+                <item [item]="item" [buttons]="shopButtons"></item>
+              </ion-col>
+            </ion-row>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+
     <ion-row *ngIf="party.name && party.players.length > 1">
       <ion-col>
         <ion-card>

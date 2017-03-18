@@ -338,6 +338,12 @@ export class Primus {
     })
   }
 
+  requestShop(): void {
+    this.loggedIn$.subscribe(() => {
+      this._emit('plugin:player:request:shop');
+    });
+  }
+
   loadBattle(battleName): void {
     this._emit('plugin:combat:retrieve', { battleName });
   }
@@ -410,6 +416,10 @@ export class Primus {
 
   ascend() {
     this._emit('plugin:player:ascend');
+  }
+
+  buyShopItem(itemId) {
+    this._emit('plugin:player:buyshopitem', { itemId });
   }
 
   // PREMIUM
