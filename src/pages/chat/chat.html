@@ -48,7 +48,7 @@
           <ion-item-divider>Players ({{ chatUsers.length }} online)</ion-item-divider>
         </ion-list>
 
-        <ion-list [virtualScroll]="chatUsers" approxItemHeight="63px" bufferRatio="2" class="virtual-list">
+        <ion-list [virtualScroll]="chatUsers" approxItemHeight="63px" bufferRatio="20" class="virtual-list">
 
           <button ion-item
                   color="primary"
@@ -69,7 +69,8 @@
                   <ion-icon *ngIf="user.isMuted" name="close-circle"></ion-icon>
                   <span>{{ user.nameEdit || user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>
                 </h3>
-                <p *ngIf="player.isMod">{{ user.$shard }}~{{ user.$currentIp }}</p>
+                <p [class.hideme]="!user.guildName" class="guild-tag">{{ user.guildName }} [{{ user.guildTag }}]</p>
+              <p *ngIf="player.isMod">{{ user.$shard }}~{{ user.$currentIp }}</p>
                 <p>Level {{ user.level }} {{ user.professionName }}</p>
               </ion-col>
             </ion-row>

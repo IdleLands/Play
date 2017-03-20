@@ -7,6 +7,7 @@ export * from './collectibles';
 export * from './equipment';
 export * from './festival';
 export * from './gm';
+export * from './guild';
 export * from './party';
 export * from './pet';
 export * from './player';

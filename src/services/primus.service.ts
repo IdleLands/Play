@@ -250,6 +250,7 @@ export class Primus {
     this._emit('plugin:chat:sendmessage', messageObject);
 
     messageObject.playerName = this.playerName;
+    messageObject.guildTag = this.appState.guild.getValue().tag;
     this.handleChatMessage(messageObject);
   }
 
@@ -343,6 +344,12 @@ export class Primus {
   requestShop(): void {
     this.loggedIn$.subscribe(() => {
       this._emit('plugin:player:request:shop');
+    });
+  }
+
+  requestGuild(): void {
+    this.loggedIn$.subscribe(() => {
+      this._emit('plugin:player:request:guild');
     });
   }
 
@@ -520,6 +527,63 @@ export class Primus {
 
   giveItemToOtherPet(itemId, petId) {
     this._emit('plugin:pet:pass', { itemId, petId });
+  }
+
+  // GUILD
+  createGuild(name, tag) {
+    this._emit('plugin:guild:create', { name, tag });
+  }
+
+  changeMOTD(motd) {
+    this._emit('plugin:guild:motd', { motd });
+  }
+
+  updatePlayerTaxRate(newRate) {
+    this._emit('plugin:guild:player:tax', { newRate });
+  }
+
+  updateGuildTaxRate(newRate) {
+    this._emit('plugin:guild:tax', { newRate });
+  }
+
+  donateGuildGold(gold) {
+    this._emit('plugin:guild:donate', { gold });
+  }
+
+  inviteGuildMember(newMemberName) {
+    this._emit('plugin:guild:invite', { newMemberName });
+  }
+
+  kickGuildMember(memberName) {
+    this._emit('plugin:guild:kick', { memberName });
+  }
+
+  acceptGuildInvite() {
+    this._emit('plugin:guild:invite:accept');
+  }
+
+  rejectGuildInvite() {
+    this._emit('plugin:guild:invite:reject');
+  }
+
+  leaveGuild() {
+    this._emit('plugin:guild:leave');
+  }
+
+  disbandGuild() {
+    this._emit('plugin:guild:disband');
+  }
+
+  guildPromote(memberName) {
+    this._emit('plugin:guild:promote', { memberName });
+  }
+
+  guildDemote(memberName) {
+    this._emit('plugin:guild:demote', { memberName });
+  }
+
+  renameRetagGuild(name, tag) {
+    this._emit('plugin:guild:renameretag', { name, tag });
   }
 
   // GM

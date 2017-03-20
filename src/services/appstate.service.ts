@@ -11,6 +11,7 @@ import {
   Equipment,
   Festival,
   GMData,
+  Guild,
   Party,
   Player,
   Personalities,
@@ -36,6 +37,7 @@ export class AppState {
   adventureLog:   ReplaySubject<AdventureLog> = new ReplaySubject<AdventureLog>(50);
 
   player:         BehaviorSubject<Player> = new BehaviorSubject(new Player());
+  guild:          BehaviorSubject<Guild> = new BehaviorSubject(new Guild());
   shop:           BehaviorSubject<Shop> = new BehaviorSubject(new Shop());
   statistics:     BehaviorSubject<Statistics> = new BehaviorSubject(new Statistics());
   achievements:   BehaviorSubject<Achievement[]> = new BehaviorSubject([]);
@@ -61,6 +63,7 @@ export class AppState {
     this.chatUsers.next([]);
 
     this.player.next(new Player());
+    this.guild.next(new Guild());
     this.shop.next(new Shop());
     this.statistics.next(new Statistics());
     this.achievements.next([]);

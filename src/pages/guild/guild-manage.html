@@ -1,0 +1,46 @@
+
+<ion-content padding>
+
+  <div *ngIf="guild.$noGuild" class="max-space">
+    <div class="true-center max-space background-text">
+      You have no guild. Get off this page!
+    </div>
+  </div>
+
+  <ion-list *ngIf="guild.$me && !guild.$noGuild">
+    <button ion-item icon-left (click)="inviteMember()">
+      <ion-icon name="person-add"></ion-icon>
+      Invite Member
+    </button>
+
+    <button ion-item icon-left (click)="disbandGuild()" [disabled]="guild.$me.rank !== 1">
+      <ion-icon name="cut"></ion-icon>
+      Disband Guild
+    </button>
+
+    <button ion-item icon-left (click)="renameGuild()" [disabled]="!premium.consumables.renameTagGuild || premium.consumables.renameTagGuild <= 0">
+      <ion-icon name="pricetag"></ion-icon>
+      Rename/Retag Guild
+    </button>
+
+    <button ion-item icon-left (click)="changeMOTD()">
+      <ion-icon name="calendar"></ion-icon>
+      Change MOTD
+    </button>
+
+    <ion-list-header no-margin>
+      Tax Rate
+      <ion-badge item-right color="secondary">{{ guild.taxRate }}%</ion-badge>
+    </ion-list-header>
+
+    <ion-item>
+      <ion-range [(ngModel)]="guild.taxRate"
+                 min="0" max="15"
+                 pin="true"
+                 debounce="300"
+                 color="primary"
+                 snaps="true"
+                 (ionChange)="updateGuildTax($event)"></ion-range>
+    </ion-item>
+  </ion-list>
+</ion-content>

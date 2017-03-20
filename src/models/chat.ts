@@ -11,6 +11,7 @@ export class ChatMessage {
   ip: string = '<self>';
   hidden?: boolean;
   seen?: boolean;
+  guildTag?: string;
 }
 
 export class ChatUser {
@@ -27,5 +28,6 @@ export class ChatUser {
   map: string;
   x: number;
   y: number;
-
+  guild: string;
+  guildTag: string;
 }

@@ -63,6 +63,8 @@ export class ChatPage extends PlayComponent implements OnInit, OnDestroy {
     this.chatUsers$ = this.appState.chatUsers.subscribe(data => this.chatUsers = _.sortBy(data, p => p.name.toLowerCase()));
     this.onlineStatus$ = this.appState.onlineStatus.subscribe(data => this.onlineStatus = data);
 
+    this.primus.requestGuild();
+
     this.timeoutId = setInterval(() => {
       if(document.hidden) return;
       this.lastMessageSeen = Date.now();
@@ -76,6 +78,20 @@ export class ChatPage extends PlayComponent implements OnInit, OnDestroy {
     this.onlineStatus$.unsubscribe();
 
     clearInterval(this.timeoutId);
+  }
+
+  setPlayer(player) {
+    super.setPlayer(player);
+
+    const guildChannel = _.find(this.channels, ch => _.includes(ch.route, 'chat:channel:Guild:'));
+
+    if(player.guildName && !guildChannel) {
+      this.tryToAddChannel({ name: 'Guild Chat', route: `chat:channel:Guild:${player.guildName}` });
+
+    } else if(!player.guildName && guildChannel) {
+      this.channels = _.without(this.channels, guildChannel);
+
+    }
   }
 
   get shouldShowChatUsers() {

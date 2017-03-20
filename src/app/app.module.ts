@@ -45,6 +45,7 @@ import {
   PetsPage, PetsOverviewPage, PetsItemsPage,
   PremiumPage,
   SettingsPage,
+  GuildPage, GuildOverviewPage, GuildMembersPage, GuildManagePage,
   BattlePage, HighlightPipe
 } from '../pages';
 
@@ -60,6 +61,10 @@ const deepLinks: DeepLinkConfig = {
     { component: CollectiblesPage,  name: 'Collectibles',       segment: 'collectibles' },
     { component: StatisticsPage,    name: 'Statistics',         segment: 'statistics' },
     { component: ChatPage,          name: 'Chat',               segment: 'chat' },
+    { component: GuildPage,         name: 'Guild',              segment: 'guild' },
+    { component: GuildOverviewPage, name: 'Guild',              segment: '' },
+    { component: GuildMembersPage,  name: 'Guild',              segment: '' },
+    { component: GuildManagePage,   name: 'Guild',              segment: '' },
     { component: MapPage,           name: 'Map',                segment: 'map' },
     { component: PetsPage,          name: 'Pets',               segment: 'pets' },
     { component: PetsOverviewPage,  name: 'Pet Overview',       segment: '' },
@@ -89,6 +94,7 @@ const deepLinks: DeepLinkConfig = {
     PremiumPage,
     SettingsPage,
     BattlePage,
+    GuildPage, GuildOverviewPage, GuildMembersPage, GuildManagePage,
 
     PlayComponent,
 
@@ -137,6 +143,7 @@ const deepLinks: DeepLinkConfig = {
     PremiumPage,
     SettingsPage,
     BattlePage,
+    GuildPage, GuildOverviewPage, GuildMembersPage, GuildManagePage,
 
     ItemPopover,
 

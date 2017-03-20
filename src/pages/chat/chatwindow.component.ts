@@ -139,6 +139,10 @@ export class ChatWindowComponent implements OnInit, OnChanges, OnDestroy, AfterV
     this.storage.store('chatLog', this.chatLog);
   }
 
+  canClose(channel) {
+    return _.includes(channel.route, ':pm:');
+  }
+
   receiveMessage(message) {
     if(message.hidden) return;
     this.chatLog.push(message);

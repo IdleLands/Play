@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>
+      <button ion-button icon-only menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      IdleLands Guild - {{ guild.name || player.nameEdit || player.name }} <span *ngIf="guild.tag">[{{ guild.tag }}]</span>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="no-scroll">
+  <ion-tabs #tabs tabsLayout="icon-left" (ionChange)="changeTab($event)" [selectedIndex]="defaultTab">
+
+    <ion-tab tabTitle="Overview" tabUrlPath='overview' tabIcon="cube" [root]="overviewRoot"></ion-tab>
+
+    <ion-tab tabTitle="Members"
+             tabUrlPath='members'
+             tabIcon="people"
+             [tabBadge]="memberBadge"
+             [enabled]="!guild.$noGuild && !player.guildInvite"
+             [root]="membersRoot"></ion-tab>
+
+    <ion-tab tabTitle="Manage"
+             tabUrlPath='manage'
+             tabIcon="cog"
+             [enabled]="!guild.$noGuild && !player.guildInvite && guild.$me && guild.$me.rank <= 3"
+             [root]="manageRoot"></ion-tab>
+  </ion-tabs>
+</ion-content>

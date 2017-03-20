@@ -1,0 +1,118 @@
+
+<ion-content padding>
+
+  <div *ngIf="!guild.$noGuild && !guild.name && !player.guildInvite" class="max-space">
+    <div class="true-center max-space background-text">
+      Loading...
+    </div>
+  </div>
+
+  <div *ngIf="guild.$noGuild && !player.guildInvite" class="max-space">
+    <div class="true-center max-space background-text">
+      You do not have a guild.
+      <span *ngIf="player.gold >= 100000000">Would you like to create one for 100,000,000 gold?</span>
+      <span *ngIf="player.gold < 100000000">You need 100,000,000 gold to create a guild.</span>
+      <br>
+
+      <button ion-button color="primary" [disabled]="player.gold < 100000000" (click)="createGuild()">Create Guild</button>
+    </div>
+  </div>
+
+  <div *ngIf="player.guildInvite" class="max-space">
+    <div class="true-center text-center max-space background-text" text-center>
+      <h1>You have a pending guild invitation since {{ player.guildInvite.invitedAt | amTimeAgo }}!</h1>
+      <h1>{{ player.guildInvite.name }} [{{ player.guildInvite.tag }}]</h1>
+      <h3>Led by {{ player.guildInvite.leader }} (with {{ player.guildInvite.members }} members)</h3>
+      <h3>Founded on {{ player.guildInvite.founded | date:'medium' }}</h3>
+      <h3>Invited by {{ player.guildInvite.inviter }}</h3>
+
+      <button ion-button color="primary" (click)="acceptInvite()">Accept Invite</button>
+      <button ion-button color="danger" (click)="rejectInvite()">Reject Invite</button>
+    </div>
+  </div>
+
+  <div *ngIf="guild.name">
+    <ion-grid>
+      <ion-row wrap>
+        <ion-col col-6>
+          <ion-card>
+            <ion-card-header>
+              Guild Information
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list>
+                <ion-item>
+                  Led by {{ guild.leader }}
+                </ion-item>
+                <ion-item>
+                  Founded on {{ guild.founded | date:'medium' }}
+                </ion-item>
+                <ion-item>
+                  Guild Level: {{ guild.level | number }}
+                </ion-item>
+                <ion-item>
+                  Coffers: {{ guild.gold | number }} gold
+                </ion-item>
+                <ion-item>
+                  Tax Rate: {{ guild.taxRate }}%
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+
+        <ion-col col-6>
+          <ion-card>
+            <ion-card-header>Message of the Day</ion-card-header>
+            <ion-card-content>
+              {{ guild.motd }}
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6>
+          <ion-card>
+            <ion-card-header>Guild Actions</ion-card-header>
+            <ion-card-content>
+              <ion-list>
+                <button ion-item icon-left (click)="leaveGuild()" color="danger">
+                  <ion-icon name="person"></ion-icon>
+                  Leave Guild
+                </button>
+
+                <button ion-item icon-left (click)="donateToGuild()" color="primary">
+                  <ion-icon name="cash"></ion-icon>
+                  Donate Gold
+                </button>
+
+                <ion-list-header no-margin>
+                  Self-Tax Rate
+                  <ion-badge item-right color="secondary">{{ player.guildTaxRate }}%</ion-badge>
+                </ion-list-header>
+
+                <ion-item>
+                  <ion-range [(ngModel)]="player.guildTaxRate"
+                             min="0" max="85"
+                             pin="true"
+                             debounce="300"
+                             color="primary"
+                             (ionChange)="updatePlayerTax($event)"></ion-range>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col col-6>
+          <ion-card>
+            <ion-card-header>Guild Buffs</ion-card-header>
+            <ion-card-content>
+              Not Yet Implemented
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>

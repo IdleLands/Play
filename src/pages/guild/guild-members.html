@@ -1,0 +1,23 @@
+
+<ion-content padding>
+
+  <div *ngIf="guild.$noGuild" class="max-space">
+    <div class="true-center max-space background-text">
+      You have no guild. Get off this page!
+    </div>
+  </div>
+
+  <ion-list *ngIf="guild.$me && !guild.$noGuild">
+    <ion-item *ngFor="let member of sortedMembers">
+      <ion-icon item-left [name]="rankToIcon(member.rank)"></ion-icon>
+      <h3><ascension-level [level]="member.ascensionLevel"></ascension-level> {{ member.name }}<span *ngIf="member.title">, the {{ member.title }}</span></h3>
+      <p *ngIf="member.unacceptedInvite"><em>Invitation Pending</em></p>
+      <p *ngIf="!member.unacceptedInvite">Level {{ member.level }} {{ member.profession }}</p>
+      <p *ngIf="member.lastSeen === 0"><em>Online</em></p>
+      <p *ngIf="member.lastSeen !== 0"><em>Last seen {{ member.lastSeen | amTimeAgo }}</em></p>
+      <button ion-button item-right *ngIf="canPromote(member)" color="secondary" (click)="promote(member)">Promote</button>
+      <button ion-button item-right *ngIf="canDemote(member)" color="secondary" (click)="demote(member)">Demote</button>
+      <button ion-button item-right *ngIf="canKick(member)" color="danger" (click)="kick(member)">Kick</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

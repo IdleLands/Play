@@ -20,10 +20,16 @@ class GameText {
   }
 
   static otherPlayerText(otherPlayer) {
-    return [
+    const base = [
       `Player: ${otherPlayer.nameEdit || otherPlayer.name}`,
       `Level ${otherPlayer.level || otherPlayer._level.__current} ${otherPlayer.professionName}`
-    ].join('<br>');
+    ];
+
+    if(otherPlayer.guildName) {
+      base.push(`Guild: ${otherPlayer.guildName} [${otherPlayer.guildTag}]`);
+    }
+
+    return base.join('<br>');
   }
 
   static itemText(item, collectibleHash = {}, bossTimers = {}) {

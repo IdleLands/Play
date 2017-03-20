@@ -24,7 +24,8 @@ import {
   MapPage,
   PetsPage,
   PremiumPage,
-  SettingsPage
+  SettingsPage,
+  GuildPage
 } from '../pages';
 
 declare var COMMITHASH: string;
@@ -69,6 +70,7 @@ export class MyApp {
     { title: 'Overview',      icon: 'body',       component: OverviewPage, showBadge: () => this.choices > 0, badge: () => `${this.choices} Choices` },
     { title: 'Pets',          icon: 'nutrition',  component: PetsPage, showBadge: () => this.petItems, badge: () => `${this.petItems} Items` },
     { title: 'Chat',          icon: 'chatboxes',  component: ChatPage, showBadge: () => this.latestMessages > 0, badge: () => `${this.latestMessages} Messages` },
+    { title: 'Guild',         icon: 'people',     component: GuildPage },
     { title: 'Map',           icon: 'globe',      component: MapPage },
     { title: 'Equipment',     icon: 'shirt',      component: EquipmentPage },
     { title: 'Achievements',  icon: 'ribbon',     component: AchievementsPage },
@@ -138,6 +140,11 @@ export class MyApp {
       if(_.includes(this.activePage, 'Pets')) {
         this.activePage = 'Pets';
       }
+
+      if(_.includes(this.activePage, 'Guild')) {
+        this.activePage = 'Guild';
+      }
+
       this.activePageData = data;
 
       if(this.activePage === 'Chat') {

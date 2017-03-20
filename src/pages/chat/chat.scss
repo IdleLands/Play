@@ -7,6 +7,14 @@ page-chat {
 
   .chat-user {
     padding-left: 0;
+
+    .guild-tag {
+      min-height: 17px;
+
+      &.hideme {
+        visibility: hidden;
+      }
+    }
   }
 
   .chat-message {
