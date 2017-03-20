@@ -1,5 +1,14 @@
+# Change Log
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+<a name="0.10.1"></a>
+## [0.10.1](https://github.com/IdleLands/Play/compare/0.10.0...v0.10.1) (2017-03-20)
+
+
+
 <a name=""></a>
-# [](https://github.com/IdleLands/Play/compare/0.9.0...v) (2017-03-18)
+# [](https://github.com/IdleLands/Play/compare/0.9.0...v) (2017-03-20)
 
 
 ### Bug Fixes
@@ -25,6 +34,7 @@
 * **pet:** request player equipment on pet item tab to get up-to-date equipment for comparisons ([47cbbe4](https://github.com/IdleLands/Play/commit/47cbbe4))
 * **pets:** if you have no pet it will no longer allow you to visit the items tab ([ea57918](https://github.com/IdleLands/Play/commit/ea57918))
 * **pets:** pet inventory moved to sidebar ([7e3801c](https://github.com/IdleLands/Play/commit/7e3801c)), closes [#185](https://github.com/IdleLands/Play/issues/185)
+* **primus:** do notifications first, and return if type is error ([525bc3a](https://github.com/IdleLands/Play/commit/525bc3a))
 * **settings:** donate button now opens in a new tab ([5388069](https://github.com/IdleLands/Play/commit/5388069)), closes [#193](https://github.com/IdleLands/Play/issues/193)
 * **sidebar:** sidebar now has the correct height to compensate for the loss of some info in pet card ([8b11e78](https://github.com/IdleLands/Play/commit/8b11e78))
 * **statistics:** stats are now split into 3 columns ([df425c8](https://github.com/IdleLands/Play/commit/df425c8)), closes [#197](https://github.com/IdleLands/Play/issues/197)
@@ -53,6 +63,3 @@
 
 <a name="0.0.1"></a>
 ## 0.0.1 (2016-06-27)
-
-
-
