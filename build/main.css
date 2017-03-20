@@ -39874,6 +39874,9 @@ ion-navbar.toolbar {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .space-around {
@@ -39974,6 +39977,14 @@ page-chat .chat-container {
 
 page-chat .chat-user {
   padding-left: 0;
+}
+
+page-chat .chat-user .guild-tag {
+  min-height: 17px;
+}
+
+page-chat .chat-user .guild-tag.hideme {
+  visibility: hidden;
 }
 
 page-chat .chat-message {
