@@ -28,7 +28,7 @@ import { Item } from '../models';
               <span>{{ item.name }}</span>
             </strong>
             <ion-note>
-              <span *ngIf="item.foundAt">Found {{ item.foundAt | date:'medium' }}; </span>Score: {{ item._calcScore | number }} ({{ scoreRating(item) | number }}%)
+              <span *ngIf="item.foundAt">Found {{ item.foundAt | date:'medium' }}; </span>Score: {{ item._calcScore | number }} [Base: {{ item._baseScore | number }}] ({{ scoreRating(item) | number }}%)
             </ion-note>
           </ion-col>
         </ion-row>
