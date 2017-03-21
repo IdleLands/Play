@@ -17,8 +17,8 @@
     "deploy:pages": "gh-pages -d www",
     "deploy": "npm run build && npm run deploy:pages",
     "deploy:prod": "npm run build:prod && npm run deploy:pages",
-    "prerelease": "npm run build",
-    "release": "standard-version --no-verify",
+    "prerelease": "standard-version --no-verify",
+    "release": "npm run build",
     "postrelease": "npm run deploy:pages"
   },
   "dependencies": {
