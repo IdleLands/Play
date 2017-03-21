@@ -1,9 +1,9 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { NavController, Platform } from 'ionic-angular';
+import { NavController, AlertController, Platform } from 'ionic-angular';
 
-import { AppState, Primus, ItemCompare, ItemInfo } from '../../services';
+import { AppState, Primus, ItemCompare, ItemInfo, Theme } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
 import { BattlePage } from '../';
@@ -49,6 +49,8 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     public primus: Primus,
     public navCtrl: NavController,
     public icomp: ItemCompare,
+    public alertCtrl: AlertController,
+    public theme: Theme,
     public platform: Platform
   ) {
     super(appState, primus, navCtrl);
@@ -150,7 +152,24 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
   }
 
   ascend() {
-    this.primus.ascend();
+
+    this.alertCtrl.create({
+      cssClass: this.theme.currentTheme,
+      title: 'Ascension Confirmation',
+      message: `Are you sure you want to ascend? <br><br>You will: go back to level 1, 
+                lose all of your items, lose all of your pet items, lose all of your gold, lose all of your pet gold, 
+                and lose all of your collectibles. <br><br>In return, you will: increase your maximum level to 250, have a bonus to gold find and xp gain,
+                go up one ascension level, and create an experience and gold festival for all players. Your collectibles will be remembered.`,
+      buttons: [
+        { text: 'No, Nevermind' },
+        {
+          text: 'Yes, Ascend',
+          handler: () => {
+            this.primus.ascend();
+          }
+        }
+      ]
+    }).present();
   }
 
 }
