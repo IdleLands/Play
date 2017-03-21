@@ -50,7 +50,7 @@ export class PetsItemsPage extends PlayComponent {
       callback: (item) => this.primus.equipItemOnPet(item.id)
     },
     { name: 'Equip Item (Player)',
-      disable: (item) => item._calcScore > this.player.statCache.itemFindRange,
+      disable: (item) => item._calcScore > this.player.statCache.itemFindRange && !item._wasEquipped,
       disableReason: 'Player max score too low',
       callback: (item) => {
 
