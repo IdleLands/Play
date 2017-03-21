@@ -46,7 +46,8 @@ class GameText {
       }
 
       if(item.realtype === 'Boss' && bossTimers[item[nameKey]]) {
-        string = `${string} (Dead; respawns ${moment(bossTimers[item[nameKey]]).fromNow()})`
+        const aliveOrDead = Date.now() > bossTimers[item[nameKey]] ? '(Alive)' : `(Dead; respawns ${moment(bossTimers[item[nameKey]]).fromNow()})`;
+        string = `${string} ${aliveOrDead}`
       }
 
       string += '<br>';
