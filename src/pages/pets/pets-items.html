@@ -26,7 +26,19 @@
               </ion-col>
 
               <ion-col no-padding text-right>
-                <button no-margin ion-button small color="primary" (click)="sellAll()" [disabled]="petactive.inventory.length === 0">Sell All</button>
+                <button no-margin
+                        ion-button
+                        small
+                        color="primary"
+                        (click)="salvageAll()"
+                        *ngIf="petactive.$scale.salvage[petactive.scaleLevel.salvage] > 0">Salvage All</button>
+
+                <button no-margin
+                        ion-button
+                        small
+                        color="primary"
+                        (click)="sellAll()"
+                        [disabled]="petactive.inventory.length === 0">Sell All</button>
               </ion-col>
             </ion-row>
           </ion-card-header>

@@ -25,5 +25,7 @@ export class Guild {
   motd: string;
   taxRate: number;
 
+  resources: any = { stone: 0, wood: 0, clay: 0, astralium: 0 };
+
   $me?: GuildMember;
 }

@@ -150,16 +150,16 @@
     </ion-row>
 
     <ion-row *ngIf="hasPet">
-      <ion-col col-12 col-md>
+      <ion-col col-12 col-md *ngIf="petactive.$scale.salvage[petactive.scaleLevel.salvage] > 0">
         <ion-item>
-          <ion-label stacked>Auto-upgrade Self</ion-label>
-          <ion-checkbox [checked]="petactive.smart.self" (ionChange)="toggleSmart('self')"></ion-checkbox>
+          <ion-label stacked>Auto-salvage Instead of Sell</ion-label>
+          <ion-checkbox [checked]="petactive.smart.salvage" (ionChange)="toggleSmart('salvage')"></ion-checkbox>
         </ion-item>
       </ion-col>
 
       <ion-col col-12 col-md>
         <ion-item>
-          <ion-label stacked>Auto-sell Worst Items</ion-label>
+          <ion-label stacked>Auto-sell/salvage Worst Items</ion-label>
           <ion-checkbox [checked]="petactive.smart.sell" (ionChange)="toggleSmart('sell')"></ion-checkbox>
         </ion-item>
       </ion-col>

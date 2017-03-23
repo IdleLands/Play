@@ -445,8 +445,16 @@ export class Primus {
     this._emit('plugin:pet:sell', { itemId });
   }
 
+  salvageItemFromPet(itemId) {
+    this._emit('plugin:pet:salvage', { itemId });
+  }
+
   sellAllItemsFromPet() {
     this._emit('plugin:pet:sellall');
+  }
+
+  salvageAllItemsFromPet() {
+    this._emit('plugin:pet:salvageall');
   }
 
   equipItemOnPet(itemId) {

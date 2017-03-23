@@ -51,9 +51,6 @@
                   Guild Level: {{ guild.level | number }}
                 </ion-item>
                 <ion-item>
-                  Coffers: {{ guild.gold | number }} gold
-                </ion-item>
-                <ion-item>
                   Tax Rate: {{ guild.taxRate }}%
                 </ion-item>
               </ion-list>
@@ -106,9 +103,25 @@
         </ion-col>
         <ion-col col-6>
           <ion-card>
-            <ion-card-header>Guild Buffs</ion-card-header>
+            <ion-card-header>Guild Resources</ion-card-header>
             <ion-card-content>
-              Not Yet Implemented
+              <ion-list>
+                <ion-item>
+                  Gold: {{ guild.gold | number }}
+                </ion-item>
+                <ion-item>
+                  Wood: {{ guild.resources.wood | number }}
+                </ion-item>
+                <ion-item>
+                  Clay: {{ guild.resources.clay | number }}
+                </ion-item>
+                <ion-item>
+                  Stone: {{ guild.resources.stone | number }}
+                </ion-item>
+                <ion-item>
+                  Astralium: {{ guild.resources.astralium | number }}
+                </ion-item>
+              </ion-list>
             </ion-card-content>
           </ion-card>
         </ion-col>

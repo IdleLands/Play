@@ -40,6 +40,7 @@ export class PetsItemsPage extends PlayComponent {
 
   inventoryButtons = [
     { name: 'Sell Item', callback: (item) => this.primus.sellItemFromPet(item.id) },
+    { name: 'Salvage Item', callback: (item) => this.primus.salvageItemFromPet(item.id) },
     { name: 'Give To Other Pet', callback: (item) => {
       this.currentItemId = item.id;
       this.pets.open();
@@ -126,6 +127,20 @@ export class PetsItemsPage extends PlayComponent {
         { text: 'Cancel' },
         { text: 'Yes, get rid of them!', handler: () => {
           this.primus.sellAllItemsFromPet();
+        } }
+      ]
+    }).present()
+  }
+
+  salvageAll() {
+    this.alertCtrl.create({
+      cssClass: this.theme.currentTheme,
+      title: 'Salvage All Pet Items',
+      message: `Are you sure you want to salvage all of your pet items?`,
+      buttons: [
+        { text: 'Cancel' },
+        { text: 'Yes, give me Astralium!', handler: () => {
+          this.primus.salvageAllItemsFromPet();
         } }
       ]
     }).present()
