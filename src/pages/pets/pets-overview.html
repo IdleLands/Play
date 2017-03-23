@@ -159,7 +159,7 @@
 
       <ion-col col-12 col-md>
         <ion-item>
-          <ion-label stacked>Auto-sell/salvage Worst Items</ion-label>
+          <ion-label stacked>Auto-sell<span *ngIf="petactive.$scale.salvage[petactive.scaleLevel.salvage] > 0">/salvage</span> Worst Items</ion-label>
           <ion-checkbox [checked]="petactive.smart.sell" (ionChange)="toggleSmart('sell')"></ion-checkbox>
         </ion-item>
       </ion-col>

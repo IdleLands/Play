@@ -40,7 +40,10 @@ export class PetsItemsPage extends PlayComponent {
 
   inventoryButtons = [
     { name: 'Sell Item', callback: (item) => this.primus.sellItemFromPet(item.id) },
-    { name: 'Salvage Item', callback: (item) => this.primus.salvageItemFromPet(item.id) },
+    { name: 'Salvage Item',
+      disable: () => this.petactive.$scale.salvage[this.petactive.scaleLevel.salvage] === 0,
+      disableReason: 'Pet cannot salvage',
+      callback: (item) => this.primus.salvageItemFromPet(item.id) },
     { name: 'Give To Other Pet', callback: (item) => {
       this.currentItemId = item.id;
       this.pets.open();
