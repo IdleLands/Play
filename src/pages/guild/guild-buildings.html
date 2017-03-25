@@ -25,8 +25,8 @@
   </ion-list>
 
   <ion-list no-lines *ngFor="let building of guildbuildings.buildingInfo">
-    <ion-list-header no-margin>{{ building.name }} [{{ building.size }}] (Level {{ guildbuildings.buildings.levels[building.name] || 0 }})</ion-list-header>
-    <ion-item><strong>{{ building.desc }}</strong></ion-item>
+    <ion-list-header no-margin><strong>{{ building.name }} [{{ building.size }}] (Level {{ guildbuildings.buildings.levels[building.name] || 0 }})</strong></ion-list-header>
+    <ion-item>{{ building.desc }}</ion-item>
 
     <ion-item *ngFor="let prop of building.properties">
       <ion-row>
