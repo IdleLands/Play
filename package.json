@@ -2,7 +2,7 @@
   "name": "IdleLands",
   "author": "IdleLands <hi@idle.land>",
   "homepage": "http://idle.land",
-  "version": "0.10.2",
+  "version": "0.11.0",
   "private": true,
   "scripts": {
     "clean": "ionic-app-scripts clean",

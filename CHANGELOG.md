@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.11.0"></a>
+# [0.11.0](https://github.com/IdleLands/Play/compare/v0.10.2...v0.11.0) (2017-03-25)
+
+
+### Bug Fixes
+
+* **guild:** guild self tax goes up to 100 now ([6243b24](https://github.com/IdleLands/Play/commit/6243b24))
+* **map:** show alive if boss is alive ([286d222](https://github.com/IdleLands/Play/commit/286d222)), closes [#213](https://github.com/IdleLands/Play/issues/213)
+* **overview:** there is now an ascension confirmation dialog ([4e75a8a](https://github.com/IdleLands/Play/commit/4e75a8a)), closes [#215](https://github.com/IdleLands/Play/issues/215)
+* **pet:** _wasEquipped check for pet items ([0c83966](https://github.com/IdleLands/Play/commit/0c83966)), closes [#211](https://github.com/IdleLands/Play/issues/211)
+* **pet:** display fixes for salvage-related options ([4c5abd6](https://github.com/IdleLands/Play/commit/4c5abd6))
+* **premium:** show if you own a 1-time item ([ea0a963](https://github.com/IdleLands/Play/commit/ea0a963)), closes [#216](https://github.com/IdleLands/Play/issues/216)
+
+
+### Features
+
+* **guild:** guild base ui ([173abb5](https://github.com/IdleLands/Play/commit/173abb5))
+* **guild:** new display for resources, new pet actions where applicable ([dcd533f](https://github.com/IdleLands/Play/commit/dcd533f))
+* **item:** show base score on item cards ([fbf8dc7](https://github.com/IdleLands/Play/commit/fbf8dc7)), closes [#210](https://github.com/IdleLands/Play/issues/210)
+
+
+
 <a name="0.10.2"></a>
 ## [0.10.2](https://github.com/IdleLands/Play/compare/v0.10.1...v0.10.2) (2017-03-21)
 
