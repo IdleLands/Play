@@ -8,6 +8,7 @@ export * from './create/create';
 export * from './equipment/equipment';
 export * from './home/home';
 export * from './guild/guild';
+export * from './guild/guild-buildings';
 export * from './guild/guild-overview';
 export * from './guild/guild-members';
 export * from './guild/guild-manage';

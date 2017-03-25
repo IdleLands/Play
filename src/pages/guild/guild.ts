@@ -8,6 +8,7 @@ import { AppState, Primus } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
 import { GuildOverviewPage } from './guild-overview';
+import { GuildBuildingsPage } from './guild-buildings';
 import { GuildMembersPage } from './guild-members';
 import { GuildManagePage } from './guild-manage';
 
@@ -27,6 +28,7 @@ export class GuildPage extends PlayComponent implements OnInit, OnDestroy {
   public memberBadge = '';
 
   public overviewRoot = GuildOverviewPage;
+  public buildingsRoot = GuildBuildingsPage;
   public membersRoot = GuildMembersPage;
   public manageRoot = GuildManagePage;
 

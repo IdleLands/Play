@@ -1,0 +1,79 @@
+
+<ion-content padding>
+
+  <div *ngIf="guild.$noGuild" class="max-space">
+    <div class="true-center max-space background-text">
+      You have no guild. Get off this page!
+    </div>
+  </div>
+
+  <ion-list no-lines>
+    <ion-item>
+      <ion-row wrap>
+        <ion-col *ngFor="let otherBase of guildbuildings.otherBases">
+          <button ion-button
+                  small
+                  block
+                  color="primary"
+                  (click)="moveBase(otherBase.name)"
+                  [disabled]="guild.gold < otherBase.moveInCost || guild.baseLocation === otherBase.name">
+            Move to {{ otherBase.name }} for {{ otherBase.moveInCost | number }} gold
+          </button>
+        </ion-col>
+      </ion-row>
+    </ion-item>
+  </ion-list>
+
+  <ion-list no-lines *ngFor="let building of guildbuildings.buildingInfo">
+    <ion-list-header no-margin>{{ building.name }} [{{ building.size }}] (Level {{ guildbuildings.buildings.levels[building.name] || 0 }})</ion-list-header>
+    <ion-item><strong>{{ building.desc }}</strong></ion-item>
+
+    <ion-item *ngFor="let prop of building.properties">
+      <ion-row>
+
+      </ion-row>
+      <ion-label stacked>{{ prop.name }}</ion-label>
+      <ion-input [(ngModel)]="guildbuildings.buildings.properties[building.name + '-' + prop.name]"
+                 [placeholder]="'Enter ' + prop.name + '...'"
+                 type="text"
+                 maxlength="50"
+                 *ngIf="prop.type === 'text'"></ion-input>
+
+      <button item-right
+              ion-button
+              color="primary"
+              *ngIf="prop.type === 'text'"
+              (click)="saveProp(building.name, prop.name)">Save</button>
+
+      <ion-select [(ngModel)]="guildbuildings.buildings.properties[building.name + '-' + prop.name]"
+                  [selectOptions]="selectOptions"
+                  (ionChange)="saveProp(building.name, prop.name)"
+                  *ngIf="prop.type === 'select'">
+        <ion-option *ngFor="let option of prop.values">{{ option }}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item *ngIf="isBuilt(building.name, building.size)">
+      <button ion-button block color="primary" [disabled]="cantUpgrade(building.nextLevelCost)" (click)="upgradeBuilding(building.name)">
+        <span padding-horizontal>Upgrade for</span>
+        <span padding-horizontal *ngIf="building.nextLevelCost.wood > 0">{{ building.nextLevelCost.wood | number }} wood,</span>
+        <span padding-horizontal *ngIf="building.nextLevelCost.clay > 0">{{ building.nextLevelCost.clay | number }} clay,</span>
+        <span padding-horizontal *ngIf="building.nextLevelCost.stone > 0">{{ building.nextLevelCost.stone | number }} stone,</span>
+        <span padding-horizontal *ngIf="building.nextLevelCost.astralium > 0">{{ building.nextLevelCost.astralium | number }} astralium,</span>
+        <span padding-horizontal *ngIf="building.nextLevelCost.gold > 0">{{ building.nextLevelCost.gold  | number}} gold</span>
+      </button>
+    </ion-item>
+
+    <ion-item *ngIf="!isBuilt(building.name, building.size)">
+      <button ion-button
+              color="primary"
+              *ngFor="let slot of slots(building.size)"
+              [disabled]="guild.gold < guildbuildings.hallCosts.build[building.size]"
+              (click)="buildBuilding(building.name, slot)">
+        <span>Build in {{ building.size }} Slot {{ slot+1 }}</span>
+        <span padding-left *ngIf="guildbuildings.buildings.currentlyBuilt[building.size][slot]">(Occupied by {{ guildbuildings.buildings.currentlyBuilt[building.size][slot] }})</span>
+      </button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

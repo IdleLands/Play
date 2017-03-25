@@ -23,6 +23,12 @@
              [enabled]="!guild.$noGuild && !player.guildInvite"
              [root]="membersRoot"></ion-tab>
 
+    <ion-tab tabTitle="Buildings"
+             tabUrlPath='buildings'
+             tabIcon="home"
+             [enabled]="!guild.$noGuild && !player.guildInvite && guild.$me && guild.$me.rank <= 3"
+             [root]="buildingsRoot"></ion-tab>
+
     <ion-tab tabTitle="Manage"
              tabUrlPath='manage'
              tabIcon="cog"

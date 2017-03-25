@@ -353,6 +353,12 @@ export class Primus {
     });
   }
 
+  requestGuildBuildings(): void {
+    this.loggedIn$.subscribe(() => {
+      this._emit('plugin:player:request:guildbuildings');
+    });
+  }
+
   loadBattle(battleName): void {
     this._emit('plugin:combat:retrieve', { battleName });
   }
@@ -592,6 +598,22 @@ export class Primus {
 
   renameRetagGuild(name, tag) {
     this._emit('plugin:guild:renameretag', { name, tag });
+  }
+
+  buildBuilding(buildingName, slot) {
+    this._emit('plugin:guild:building:build', { buildingName, slot });
+  }
+
+  upgradeBuilding(buildingName) {
+    this._emit('plugin:guild:building:upgrade', { buildingName });
+  }
+
+  moveBase(newBase) {
+    this._emit('plugin:guild:building:movebase', { newBase });
+  }
+
+  updateGuildProp(buildingName, propName, propValue) {
+    this._emit('plugin:guild:building:updateprop', { buildingName, propName, propValue });
   }
 
   // GM

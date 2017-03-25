@@ -12,6 +12,7 @@ import {
   Festival,
   GMData,
   Guild,
+  GuildBuildings,
   Party,
   Player,
   Personalities,
@@ -38,6 +39,7 @@ export class AppState {
 
   player:         BehaviorSubject<Player> = new BehaviorSubject(new Player());
   guild:          BehaviorSubject<Guild> = new BehaviorSubject(new Guild());
+  guildbuildings: BehaviorSubject<GuildBuildings> = new BehaviorSubject(new GuildBuildings());
   shop:           BehaviorSubject<Shop> = new BehaviorSubject(new Shop());
   statistics:     BehaviorSubject<Statistics> = new BehaviorSubject(new Statistics());
   achievements:   BehaviorSubject<Achievement[]> = new BehaviorSubject([]);
@@ -64,6 +66,7 @@ export class AppState {
 
     this.player.next(new Player());
     this.guild.next(new Guild());
+    this.guildbuildings.next(new GuildBuildings());
     this.shop.next(new Shop());
     this.statistics.next(new Statistics());
     this.achievements.next([]);
