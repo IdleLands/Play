@@ -25,7 +25,7 @@ module.exports = {
 
   resolve: {
     extensions: ['.ts', '.js', '.json'],
-    modules: [ path.join(__dirname, "node_modules") ],
+    modules: [path.resolve('node_modules')],
 
     alias: {
       phaserlib: phaserlib,
