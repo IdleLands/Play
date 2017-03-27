@@ -158,7 +158,7 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
       title: 'Ascension Confirmation',
       message: `Are you sure you want to ascend? <br><br>You will: go back to level 1, 
                 lose all of your items, lose all of your pet items, lose all of your gold, lose all of your pet gold, 
-                and lose all of your collectibles. <br><br>In return, you will: increase your maximum level to 250, have a bonus to gold find and xp gain,
+                and lose all of your collectibles. <br><br>In return, you will: increase your maximum level by 50, have a bonus to gold find and xp gain,
                 go up one ascension level, and create an experience and gold festival for all players. Your collectibles will be remembered.`,
       buttons: [
         { text: 'No, Nevermind' },
