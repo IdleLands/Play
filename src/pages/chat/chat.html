@@ -20,7 +20,7 @@
 
 <ion-content class="no-scroll" #chatPageContent>
 
-  <ion-split-pane class="reversed-split-pane" [when]="shouldShowChatUsers">
+  <ion-split-pane [when]="shouldShowChatUsers" side="right">
 
     <div class="chat-container" #chatPage main>
       <chat-window [channel]="activeChannel" [player]="player" (channelUpdate)="channelReceivedMessage($event)" (removeChannel)="removeChannel($event)"></chat-window>

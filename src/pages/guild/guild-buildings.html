@@ -29,7 +29,6 @@
     <ion-item>{{ building.desc }}</ion-item>
 
     <ion-item *ngFor="let prop of building.properties" [hidden]="!isBuilt(building.name, building.size)">
-
       <ion-label stacked>{{ prop.name }}</ion-label>
       <ion-input [(ngModel)]="guildbuildings.buildings.properties[building.name + '-' + prop.name]"
                  [placeholder]="'Enter ' + prop.name + '...'"
