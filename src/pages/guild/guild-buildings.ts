@@ -57,6 +57,10 @@ export class GuildBuildingsPage extends PlayComponent implements OnInit, OnDestr
     this.guildbuildings = data;
   }
 
+  isMod() {
+    return this.guild.$me && this.guild.$me.rank <= 3;
+  }
+
   isBuilt(buildingName, buildingSize) {
     return _.includes(this.guildbuildings.buildings.currentlyBuilt[buildingSize], buildingName)
   }

@@ -7,7 +7,7 @@
     </div>
   </div>
 
-  <ion-list no-lines>
+  <ion-list no-lines *ngIf="isMod()">
     <ion-item>
       <ion-row wrap>
         <ion-col *ngFor="let otherBase of guildbuildings.otherBases">
@@ -32,6 +32,7 @@
       <ion-label stacked>{{ prop.name }}</ion-label>
       <ion-input [(ngModel)]="guildbuildings.buildings.properties[building.name + '-' + prop.name]"
                  [placeholder]="'Enter ' + prop.name + '...'"
+                 [disabled]="!isMod()"
                  type="text"
                  maxlength="50"
                  *ngIf="prop.type === 'text'"></ion-input>
@@ -39,18 +40,19 @@
       <button item-right
               ion-button
               color="primary"
-              *ngIf="prop.type === 'text'"
+              *ngIf="prop.type === 'text' && isMod()"
               (click)="saveProp(building.name, prop.name)">Save</button>
 
       <ion-select [(ngModel)]="guildbuildings.buildings.properties[building.name + '-' + prop.name]"
                   [selectOptions]="selectOptions"
+                  [disabled]="!isMod()"
                   (ionChange)="saveProp(building.name, prop.name)"
                   *ngIf="prop.type === 'select'">
         <ion-option *ngFor="let option of prop.values">{{ option }}</ion-option>
       </ion-select>
     </ion-item>
 
-    <ion-item *ngIf="isBuilt(building.name, building.size)">
+    <ion-item *ngIf="isMod() && isBuilt(building.name, building.size)">
       <button ion-button block color="primary" [disabled]="cantUpgrade(building.nextLevelCost)" (click)="upgradeBuilding(building.name)">
         <span padding-horizontal>Upgrade for</span>
         <span padding-horizontal *ngIf="building.nextLevelCost.wood > 0">{{ building.nextLevelCost.wood | number }} wood,</span>
@@ -61,7 +63,7 @@
       </button>
     </ion-item>
 
-    <ion-item *ngIf="!isBuilt(building.name, building.size)">
+    <ion-item *ngIf="isMod() && !isBuilt(building.name, building.size)">
       <button ion-button
               color="primary"
               *ngFor="let slot of slots(building.size)"
