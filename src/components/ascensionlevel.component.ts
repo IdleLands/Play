@@ -6,16 +6,21 @@ import { Component, Input } from '@angular/core';
   styles:[`
     :host .ascension-container {
       position: relative;
+      width: 32px;
+      margin-right: 10px;
+      margin-left: 10px;
     }
     
     :host .ascension-level {
-      position: absolute;
-      left: 0;
-      height: 100%;
-      width: 1.25rem;
-      margin: 3px 0 3px 0;
       font-size: 60%;
       text-align: center;
+    }
+    
+    :host .ascension-level, :host .ascension-container ion-icon {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate3d(-50%, -50%, 0);
     }
   `],
   template: `
