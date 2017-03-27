@@ -63,8 +63,13 @@ export class Primus {
   saveChatLog() {
     const overLength = this.chatLog.length - 200;
     const overMessages = this.chatLog.slice(0, overLength);
+
+    let guildMessages = 0;
+
     const removeMessages = _.filter(overMessages, msg => {
-      return msg.hidden || !_.includes(msg.route, ':pm:');
+      const isGuildMessage = _.includes(msg.route, ':Guild:');
+      if(isGuildMessage) guildMessages++;
+      return msg.hidden || !_.includes(msg.route, ':pm:') || (isGuildMessage && guildMessages < 20);
     });
 
     this.chatLog = _.difference(this.chatLog, removeMessages);
