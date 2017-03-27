@@ -5,7 +5,7 @@
       <h2>
         <ascension-level [level]="message.ascensionLevel"></ascension-level>
         <ion-icon *ngIf="message.isMod" name="star"></ion-icon>
-        <span *ngIf="message.guildTag">[{{ message.guildTag }}]</span>
+        <span *ngIf="message.guildTag" class="guild-tag">[{{ message.guildTag }}]</span>
         <span>{{ message.playerName }}</span><span *ngIf="message.title">, the {{ message.title }}</span>
         <small>{{ message.timestamp | amTimeAgo }}</small>
         <small *ngIf="player.isMod">({{ message.shard }}~{{ message.ip }})</small>
@@ -24,7 +24,7 @@
           <ion-icon *ngIf="message.isMod" name="star"></ion-icon>
           <ascension-level [level]="message.ascensionLevel"></ascension-level>
           <strong>
-            <span *ngIf="message.guildTag">[{{ message.guildTag }}]</span>
+            <span *ngIf="message.guildTag" class="guild-tag">[{{ message.guildTag }}]</span>
             <span>{{ message.playerName }}</span><span *ngIf="message.title">, the {{ message.title }}</span>
           </strong>
           ]
