@@ -28,10 +28,8 @@
     <ion-list-header no-margin><strong>{{ building.name }} [{{ building.size }}] (Level {{ guildbuildings.buildings.levels[building.name] || 0 }})</strong></ion-list-header>
     <ion-item>{{ building.desc }}</ion-item>
 
-    <ion-item *ngFor="let prop of building.properties">
-      <ion-row>
+    <ion-item *ngFor="let prop of building.properties" [hidden]="!isBuilt(building.name, building.size)">
 
-      </ion-row>
       <ion-label stacked>{{ prop.name }}</ion-label>
       <ion-input [(ngModel)]="guildbuildings.buildings.properties[building.name + '-' + prop.name]"
                  [placeholder]="'Enter ' + prop.name + '...'"
