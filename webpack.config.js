@@ -51,12 +51,12 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.woff$|\.woff2$|\.eot$|\.ttf$|\.svg$/,
-        loader: 'file-loader'
-      },
-      {
         test: /\.css$/,
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.woff$|\.woff2$|\.eot$|\.ttf$|\.svg$/,
+        loader: 'url-loader'
       }
     ]
   },
