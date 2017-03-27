@@ -48,12 +48,12 @@
           <ion-item-divider>Players ({{ chatUsers.length }} online)</ion-item-divider>
         </ion-list>
 
-        <ion-list [virtualScroll]="chatUsers" approxItemHeight="63px" bufferRatio="3" class="virtual-list">
+        <ion-list class="virtual-list">
 
           <button ion-item
                   color="primary"
                   class="chat-user item-less-margin"
-                  *virtualItem="let user"
+                  *ngFor="let user of chatUsers"
                   (click)="user.name !== player.name && messageUser(user)"
                   (press)="player.isMod && openGMCommands(user, $event)"
                   (contextmenu)="player.isMod && openGMCommands(user, $event)">
