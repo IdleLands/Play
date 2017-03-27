@@ -59,7 +59,7 @@ export class GuildMembersPage extends PlayComponent implements OnInit, OnDestroy
   }
 
   canKick(member) {
-    return member.unacceptedInvite || this.guild.$me.rank <= 3 && this.guild.$me.rank < member.rank;
+    return this.guild.$me.rank <= 3 && (member.unacceptedInvite || this.guild.$me.rank < member.rank);
   }
 
   kick(member) {
