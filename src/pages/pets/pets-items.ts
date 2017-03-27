@@ -48,12 +48,12 @@ export class PetsItemsPage extends PlayComponent {
       this.currentItemId = item.id;
       this.pets.open();
     } },
-    { name: 'Equip Item (Pet)',
+    { name: 'Compare Item (Pet)',
       disable: (item) => item._calcScore > this.petactive.statCache.itemFindRange,
       disableReason: 'Pet max score too low',
       callback: (item) => this.primus.equipItemOnPet(item.id)
     },
-    { name: 'Equip Item (Player)',
+    { name: 'Compare Item (Player)',
       disable: (item) => item._calcScore > this.player.statCache.itemFindRange && !item._wasEquipped,
       disableReason: 'Player max score too low',
       callback: (item) => {
