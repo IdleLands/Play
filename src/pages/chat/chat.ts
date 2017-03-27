@@ -84,9 +84,10 @@ export class ChatPage extends PlayComponent implements OnInit, OnDestroy {
     super.setPlayer(player);
 
     const guildChannel = _.find(this.channels, ch => _.includes(ch.route, 'chat:channel:Guild:'));
+    const me = _.find(this.chatUsers, { name: player.name });
 
-    if(player.guildName && !guildChannel) {
-      this.tryToAddChannel({ name: 'Guild Chat', route: `chat:channel:Guild:${player.guildName}` });
+    if(me && player.guildName && !guildChannel) {
+      this.tryToAddChannel({ name: `[${me.guildTag}] Guild Chat`, route: `chat:channel:Guild:${player.guildName}` });
 
     } else if(!player.guildName && guildChannel) {
       this.channels = _.without(this.channels, guildChannel);
