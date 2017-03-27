@@ -6,13 +6,6 @@ import { Player } from '../models';
 
 @Component({
   selector: 'player-card',
-  styles: [`
-    :host round-progress {
-      position: absolute;
-      left: 1rem;
-      top: 4rem;
-    }
-  `],
   template: `
   <ion-grid>
     <ion-row>

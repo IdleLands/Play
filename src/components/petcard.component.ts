@@ -6,13 +6,6 @@ import { PetActive } from '../models';
 
 @Component({
   selector: 'pet-card',
-  styles: [`
-    :host round-progress {
-      position: absolute;
-      left: 1rem;
-      top: 2rem;
-    }
-  `],
   template: `
   <ion-grid>
     <ion-row>
