@@ -35,7 +35,7 @@ export class BattlePage extends PlayComponent implements OnInit, OnDestroy {
     const battleName = this.navParams.get('battleName');
     this.battle$ = this.appState.battle.subscribe(battle => this.battle = battle);
     this.pet$ = this.appState.petactive.subscribe(pet => this.petName = pet.name);
-
+    this.battle.messageData = [ { data: null, message: 'Loading' } ];
     this.primus.loadBattle(battleName);
   }
 
