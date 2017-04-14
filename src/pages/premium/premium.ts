@@ -16,6 +16,10 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
 
   public ilpGoldMargins = [50, 500, 1000, 2500];
 
+  private customMultipliers = {
+    salvage: 10
+  };
+
   premium$: any;
   premium: Premium = new Premium();
 
@@ -72,7 +76,12 @@ export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
   }
 
   festivalBonus(festivalBonuses) {
-    return _.map(_.keys(festivalBonuses), key => `${key.toUpperCase()} +${(festivalBonuses[key] * 100).toFixed(0)}`);
+    return _.map(_.keys(festivalBonuses), key => {
+      let multiplier = this.customMultipliers[key];
+      if(!multiplier) multiplier = 100;
+
+      return `${key.toUpperCase()} +${(festivalBonuses[key] * multiplier).toFixed(0)}`;
+    });
   }
 
   setPremium(premium) {
