@@ -9,12 +9,12 @@ import { Player } from '../models';
   template: `
   <ion-grid>
     <ion-row>
-      <ion-col width-20 class="true-center">
+      <ion-col col-3 class="true-center">
         <round-progress class="xp-circle" [radius]="25" [stroke]="5" [current]="player._xp.__current" [max]="player._xp.maximum"></round-progress>
         <gendervatar [gender]="player.gender"></gendervatar>
       </ion-col>
      
-      <ion-col width-80>
+      <ion-col col-9>
         <div>
           <h1>{{ player.nameEdit || player.name }}</h1>
           <h2 *ngIf="player.title">The {{ player.title }}</h2>

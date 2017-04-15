@@ -54,7 +54,7 @@
           <ion-card-header>Attributes</ion-card-header>
           <ion-card-content>
             <ion-row wrap>
-              <ion-col width-50 *ngFor="let stat of stats" class="size-150">
+              <ion-col col-6 *ngFor="let stat of stats" class="size-150">
                 <stat [stat]="stat" [value]="player.statCache[stat]" [showColor]="true"></stat>
               </ion-col>
             </ion-row>

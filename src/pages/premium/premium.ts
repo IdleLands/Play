@@ -1,13 +1,16 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 
 import { AppState, Primus, Theme } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
 import { Premium, Festival } from '../../models';
 
+@IonicPage({
+  segment: 'premium'
+})
 @Component({
   selector: 'page-premium',
   templateUrl: 'premium.html'

@@ -1,13 +1,17 @@
 // import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy, Pipe, PipeTransform } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 import { AppState, Primus } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
 import { Battle } from '../../models';
 
+@IonicPage({
+  segment: 'battle/:battleName',
+  defaultHistory: ['overview']
+})
 @Component({
   selector: 'page-battle',
   templateUrl: 'battle.html'
@@ -50,7 +54,6 @@ export class BattlePage extends PlayComponent implements OnInit, OnDestroy {
   battleHeader(item) {
     if(!item.data) return null;
     return item.data;
-
   }
 
 }

@@ -13,21 +13,6 @@ import { AppState, Primus, Auth } from '../services';
 
 import Tinycon from 'tinycon';
 
-import {
-  HomePage,
-  OverviewPage,
-  EquipmentPage,
-  AchievementsPage,
-  CollectiblesPage,
-  StatisticsPage,
-  ChatPage,
-  MapPage,
-  PetsPage,
-  PremiumPage,
-  SettingsPage,
-  GuildPage
-} from '../pages';
-
 declare var COMMITHASH: string;
 
 @Component({
@@ -42,7 +27,7 @@ export class MyApp {
   theme: string;
   showSideMenu: boolean;
 
-  rootPage: any = HomePage;
+  rootPage: any = 'HomePage';
 
   activePage: string;
   activePageData: string;
@@ -67,17 +52,17 @@ export class MyApp {
   }
 
   pages: Array<{title: string, icon: string, component: any, extraContent?: Function, showBadge?: Function, badge?: Function}> = [
-    { title: 'Overview',      icon: 'body',       component: OverviewPage, showBadge: () => this.choices > 0, badge: () => `${this.choices} Choices` },
-    { title: 'Pets',          icon: 'nutrition',  component: PetsPage, showBadge: () => this.petItems, badge: () => `${this.petItems} Items` },
-    { title: 'Chat',          icon: 'chatboxes',  component: ChatPage, showBadge: () => this.latestMessages > 0, badge: () => `${this.latestMessages} Messages` },
-    { title: 'Guild',         icon: 'people',     component: GuildPage },
-    { title: 'Map',           icon: 'globe',      component: MapPage },
-    { title: 'Equipment',     icon: 'shirt',      component: EquipmentPage },
-    { title: 'Achievements',  icon: 'ribbon',     component: AchievementsPage },
-    { title: 'Collectibles',  icon: 'magnet',     component: CollectiblesPage },
-    { title: 'Statistics',    icon: 'analytics',  component: StatisticsPage },
-    { title: 'Premium',       icon: 'cash',       component: PremiumPage },
-    { title: 'Settings',      icon: 'cog',        component: SettingsPage }
+    { title: 'Overview',      icon: 'body',       component: 'OverviewPage', showBadge: () => this.choices > 0, badge: () => `${this.choices} Choices` },
+    { title: 'Pets',          icon: 'nutrition',  component: 'PetsPage', showBadge: () => this.petItems, badge: () => `${this.petItems} Items` },
+    { title: 'Chat',          icon: 'chatboxes',  component: 'ChatPage', showBadge: () => this.latestMessages > 0, badge: () => `${this.latestMessages} Messages` },
+    { title: 'Guild',         icon: 'people',     component: 'GuildPage' },
+    { title: 'Map',           icon: 'globe',      component: 'MapPage' },
+    { title: 'Equipment',     icon: 'shirt',      component: 'EquipmentPage' },
+    { title: 'Achievements',  icon: 'ribbon',     component: 'AchievementsPage' },
+    { title: 'Collectibles',  icon: 'magnet',     component: 'CollectiblesPage' },
+    { title: 'Statistics',    icon: 'analytics',  component: 'StatisticsPage' },
+    { title: 'Premium',       icon: 'cash',       component: 'PremiumPage' },
+    { title: 'Settings',      icon: 'cog',        component: 'SettingsPage' }
   ];
 
   constructor(
@@ -264,7 +249,7 @@ export class MyApp {
     this.auth.logout()
       .then(() => {
         this.primus.disconnectSocket();
-        this.nav.setRoot(HomePage);
+        this.nav.setRoot('HomePage');
       })
       .catch(() => {});
   }

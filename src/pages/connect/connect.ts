@@ -1,30 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { LocalStorageService } from 'ng2-webstorage';
 
 import * as _ from 'lodash';
 
 import { Observable } from 'rxjs';
 
-import {
-  OverviewPage,
-  EquipmentPage,
-  AchievementsPage,
-  CollectiblesPage,
-  StatisticsPage,
-  ChatPage,
-  MapPage,
-  PetsPage,
-  PremiumPage,
-  SettingsPage,
-  BattlePage,
-  CreatePage,
-  HomePage
-} from '../';
 import { AppState, Primus } from '../../services';
 
 import * as messages from './messages.json';
 
+@IonicPage({
+  segment: 'connect'
+})
 @Component({
   selector: 'page-connect',
   templateUrl: 'connect.html'
@@ -89,23 +77,24 @@ export class ConnectPage implements OnInit, OnDestroy {
 
   handleLoggedInAndStatus() {
     if(!this.storage.retrieve('profile')) {
-      this.navCtrl.setRoot(HomePage);
+      this.navCtrl.setRoot('HomePage');
       return;
     }
 
     // can't be defined anywhere else or pages won't be instantiated
     const backrefPages = {
-      OverviewPage,
-      EquipmentPage,
-      AchievementsPage,
-      CollectiblesPage,
-      StatisticsPage,
-      ChatPage,
-      MapPage,
-      PetsPage,
-      PremiumPage,
-      SettingsPage,
-      BattlePage
+      OverviewPage: 'OverviewPage',
+      EquipmentPage: 'EquipmentPage',
+      AchievementsPage: 'AchievementsPage',
+      CollectiblesPage: 'CollectiblesPage',
+      StatisticsPage: 'StatisticsPage',
+      ChatPage: 'ChatPage',
+      MapPage: 'MapPage',
+      PetsPage: 'PetsPage',
+      PremiumPage: 'PremiumPage',
+      SettingsPage: 'SettingsPage',
+      BattlePage: 'BattlePage',
+      GuildPage: 'GuildPage'
     };
 
     if(_.isUndefined(this.loggedIn)
@@ -114,7 +103,7 @@ export class ConnectPage implements OnInit, OnDestroy {
     || !this.isOnline) return;
 
     if(!this.hasCharacter) {
-      this.navCtrl.push(CreatePage);
+      this.navCtrl.push('CreatePage');
     } else if(this.loggedIn) {
       const ref = this.navParams.get('fromPage') || 'OverviewPage';
       this.navCtrl.setRoot(backrefPages[ref]);

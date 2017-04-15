@@ -1,11 +1,14 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit } from '@angular/core';
-import { AlertController, NavController } from 'ionic-angular';
+import { IonicPage, AlertController, NavController } from 'ionic-angular';
 import { Primus, Theme } from '../../services';
 
 import { OverviewPage } from '../../pages';
 
+@IonicPage({
+  segment: 'create'
+})
 @Component({
   selector: 'page-create',
   templateUrl: 'create.html'

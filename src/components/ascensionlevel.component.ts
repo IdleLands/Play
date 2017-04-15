@@ -7,25 +7,29 @@ import { Component, Input } from '@angular/core';
     :host .ascension-container {
       position: relative;
       width: 32px;
-      margin-right: 10px;
+      
       margin-left: 10px;
+      margin-right: 14px;
     }
     
     :host .ascension-level {
       font-size: 60%;
       text-align: center;
+      width: 18px;
     }
     
-    :host .ascension-level, :host .ascension-container ion-icon {
+    :host .ascension-level {
       position: absolute;
       left: 50%;
       top: 50%;
       transform: translate3d(-50%, -50%, 0);
+      
+      border-width: 2px;
+      border-style: dotted;
     }
   `],
   template: `
     <span class="ascension-container" *ngIf="level > 0">
-      <ion-icon name="qr-scanner"></ion-icon>
       <span class="ascension-level">{{ level }}</span>
     </span>
   `

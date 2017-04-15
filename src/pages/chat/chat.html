@@ -58,11 +58,11 @@
                   (press)="player.isMod && openGMCommands(user, $event)"
                   (contextmenu)="player.isMod && openGMCommands(user, $event)">
             <ion-row no-padding>
-              <ion-col no-padding width-20 class="true-center">
+              <ion-col no-padding col-3 class="true-center">
                 <gendervatar [gender]="user.gender" scale="1.5"></gendervatar>
               </ion-col>
 
-              <ion-col no-padding width-80>
+              <ion-col no-padding col-9>
                 <h3>
                   <ascension-level [level]="user.ascensionLevel"></ascension-level>
                   <ion-icon *ngIf="user.isMod" name="star"></ion-icon>

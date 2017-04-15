@@ -11,7 +11,7 @@ import { Item } from '../models';
   selector: 'item',
   template: `
     <ion-row margin-bottom>
-      <ion-col width-20 text-center no-padding>
+      <ion-col col-3 text-center no-padding>
         <div class="class-{{ item.itemClass }}">{{ item.type }}</div>
         <button ion-button icon-only outline color="primary" small 
                 *ngIf="buttons && buttons.length > 0 && item.name !== 'nothing'" 

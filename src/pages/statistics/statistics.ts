@@ -1,13 +1,16 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
 import { AppState, Primus } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
 import { Statistics } from '../../models';
 
+@IonicPage({
+  segment: 'statistics'
+})
 @Component({
   selector: 'page-statistics',
   templateUrl: 'statistics.html'

@@ -9,12 +9,12 @@ import { PetActive } from '../models';
   template: `
   <ion-grid>
     <ion-row>
-      <ion-col width-20 class="true-center">
+      <ion-col col-3 class="true-center">
         <round-progress class="xp-circle" [radius]="25" [stroke]="5" [current]="pet._xp.__current" [max]="pet._xp.maximum"></round-progress>
         <gendervatar [gender]="pet.gender"></gendervatar>
       </ion-col>
      
-      <ion-col width-80>
+      <ion-col col-9>
         <div>
           <h1>{{ pet.name }}</h1>
         </div>

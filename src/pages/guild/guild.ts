@@ -1,6 +1,6 @@
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
 import { LocalStorageService } from 'ng2-webstorage';
 
@@ -14,6 +14,9 @@ import { GuildManagePage } from './guild-manage';
 
 import { Guild } from '../../models';
 
+@IonicPage({
+  segment: 'guild'
+})
 @Component({
   selector: 'page-guild',
   templateUrl: 'guild.html'

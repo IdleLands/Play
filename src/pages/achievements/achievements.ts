@@ -2,7 +2,7 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ModalController, ViewController, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, ModalController, ViewController, NavController, NavParams } from 'ionic-angular';
 
 import { LocalStorageService } from 'ng2-webstorage';
 
@@ -11,6 +11,9 @@ import { PlayComponent } from '../../components/play.component';
 
 import { Achievement } from '../../models';
 
+@IonicPage({
+  segment: 'achievements'
+})
 @Component({
   selector: 'page-achievements',
   templateUrl: 'achievements.html'

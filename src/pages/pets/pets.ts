@@ -1,6 +1,6 @@
 
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
 import { AppState, Primus } from '../../services';
 import { PlayComponent } from '../../components/play.component';
@@ -10,6 +10,9 @@ import { PetsOverviewPage } from './pets-overview';
 
 import { LocalStorageService } from 'ng2-webstorage';
 
+@IonicPage({
+  segment: 'pets'
+})
 @Component({
   selector: 'page-pets',
   templateUrl: 'pets.html'

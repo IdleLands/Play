@@ -1,11 +1,14 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
 import { AppState, Primus } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
+@IonicPage({
+  segment: 'equipment'
+})
 @Component({
   selector: 'page-equipment',
   templateUrl: 'equipment.html'

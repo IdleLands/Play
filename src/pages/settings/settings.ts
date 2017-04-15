@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
 import { LocalStorage } from 'ng2-webstorage';
 
@@ -12,6 +12,9 @@ import { Personalities } from '../../models';
 
 declare var VERSION: string;
 
+@IonicPage({
+  segment: 'settings'
+})
 @Component({
   selector: 'page-settings',
   templateUrl: 'settings.html'

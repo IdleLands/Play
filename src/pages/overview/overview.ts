@@ -1,15 +1,16 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { NavController, AlertController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, AlertController, Platform } from 'ionic-angular';
 
 import { AppState, Primus, ItemCompare, ItemInfo, Theme } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
-import { BattlePage } from '../';
-
 import { AdventureLog, Shop } from '../../models';
 
+@IonicPage({
+  segment: 'overview'
+})
 @Component({
   selector: 'page-overview',
   templateUrl: 'overview.html'
@@ -144,7 +145,7 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
   }
 
   viewBattle(id) {
-    this.navCtrl.push(BattlePage, { battleName: id });
+    this.navCtrl.push('BattlePage', { battleName: id });
   }
 
   leaveParty() {

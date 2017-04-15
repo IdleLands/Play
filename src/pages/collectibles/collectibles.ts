@@ -1,13 +1,16 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
 import { AppState, Primus } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
 import { Collectible, Collectibles } from '../../models';
 
+@IonicPage({
+  segment: 'collectibles'
+})
 @Component({
   selector: 'page-collectibles',
   templateUrl: 'collectibles.html'

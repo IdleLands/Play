@@ -1,7 +1,7 @@
 import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
-import { NavController, MenuController, ViewController, AlertController, NavParams, PopoverController } from 'ionic-angular';
+import { IonicPage, NavController, MenuController, ViewController, AlertController, NavParams, PopoverController } from 'ionic-angular';
 
 import { LocalStorage } from 'ng2-webstorage';
 
@@ -10,6 +10,9 @@ import { PlayComponent } from '../../components/play.component';
 
 import { ChatUser, ChatMessage } from '../../models';
 
+@IonicPage({
+  segment: 'chat'
+})
 @Component({
   selector: 'page-chat',
   templateUrl: 'chat.html'

@@ -1,13 +1,16 @@
 // import * as _ from 'lodash';
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { NavController, PopoverController, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, PopoverController, ViewController } from 'ionic-angular';
 
 import { AppState, Primus, Theme } from '../../services';
 import { PlayComponent } from '../../components/play.component';
 
 import { ChatUser, Personalities } from '../../models';
 
+@IonicPage({
+  segment: 'map'
+})
 @Component({
   selector: 'page-map',
   templateUrl: 'map.html'
