@@ -93,7 +93,7 @@
                 <p>Ends {{ festival.endDate | amTimeAgo }}</p>
                 <small *ngFor="let bonus of festivalBonus(festival.bonuses)">{{ bonus }}% </small>
 
-                <button ion-button item-right clear icon-only color="danger" (click)="cancelFestival(festival)" *ngIf="isMod && !festival.uncloseable">
+                <button ion-button item-right clear icon-only color="danger" (click)="cancelFestival(festival)" *ngIf="player.isMod && !festival.uncloseable">
                   <ion-icon name="close"></ion-icon>
                 </button>
               </ion-item>
