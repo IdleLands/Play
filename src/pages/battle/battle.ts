@@ -60,6 +60,7 @@ export class BattlePage extends PlayComponent implements OnInit, OnDestroy {
 })
 export class HighlightPipe implements PipeTransform {
   transform(message: string, checkString: string): string {
+    message = message.trim();
     if(!message) return '';
     return message.replace(new RegExp(`(${checkString})`, 'gi'), '<span class="highlighted-text">$1</span>');
   }
