@@ -1,17 +1,17 @@
 webpackJsonp([0],{
 
-/***/ 1320:
+/***/ 1323:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chat__ = __webpack_require__(1340);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(38);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chat__ = __webpack_require__(747);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(29);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_moment__ = __webpack_require__(745);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_moment__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(744);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__chatwindow_component__ = __webpack_require__(1341);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__chatwindow_component__ = __webpack_require__(1342);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatPageModule", function() { return ChatPageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -32,8 +32,8 @@ var ChatPageModule = (function () {
 }());
 ChatPageModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-        declarations: [__WEBPACK_IMPORTED_MODULE_1__chat__["a" /* ChatPage */], __WEBPACK_IMPORTED_MODULE_5__chatwindow_component__["a" /* ChatWindowComponent */], __WEBPACK_IMPORTED_MODULE_5__chatwindow_component__["b" /* CurrentChannelPipe */], __WEBPACK_IMPORTED_MODULE_5__chatwindow_component__["c" /* LinkifyPipe */]],
-        imports: [__WEBPACK_IMPORTED_MODULE_3_angular2_moment__["MomentModule"], __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* GlobalComponentsModule */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_1__chat__["a" /* ChatPage */])],
+        declarations: [__WEBPACK_IMPORTED_MODULE_1__chat__["b" /* ChatPage */], __WEBPACK_IMPORTED_MODULE_5__chatwindow_component__["a" /* ChatWindowComponent */], __WEBPACK_IMPORTED_MODULE_5__chatwindow_component__["b" /* CurrentChannelPipe */], __WEBPACK_IMPORTED_MODULE_5__chatwindow_component__["c" /* LinkifyPipe */]],
+        imports: [__WEBPACK_IMPORTED_MODULE_3_angular2_moment__["MomentModule"], __WEBPACK_IMPORTED_MODULE_4__components_components_module__["a" /* GlobalComponentsModule */], __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_1__chat__["b" /* ChatPage */])],
     })
 ], ChatPageModule);
 
@@ -41,7 +41,7 @@ ChatPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1334:
+/***/ 1337:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63,7 +63,7 @@ function inherits(parent, child) {
 
 /***/ }),
 
-/***/ 1335:
+/***/ 1338:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72,9 +72,9 @@ function inherits(parent, child) {
 exports.__esModule = true;
 exports.AMPERSAND = exports.CLOSEPAREN = exports.CLOSEANGLEBRACKET = exports.CLOSEBRACKET = exports.CLOSEBRACE = exports.OPENPAREN = exports.OPENANGLEBRACKET = exports.OPENBRACKET = exports.OPENBRACE = exports.WS = exports.TLD = exports.SYM = exports.UNDERSCORE = exports.SLASH = exports.MAILTO = exports.PROTOCOL = exports.QUERY = exports.POUND = exports.PLUS = exports.NUM = exports.NL = exports.LOCALHOST = exports.PUNCTUATION = exports.DOT = exports.COLON = exports.AT = exports.DOMAIN = exports.Base = undefined;
 
-var _createTokenClass = __webpack_require__(1337);
+var _createTokenClass = __webpack_require__(1340);
 
-var _class = __webpack_require__(1334);
+var _class = __webpack_require__(1337);
 
 /******************************************************************************
 	Text Tokens
@@ -274,7 +274,7 @@ exports.AMPERSAND = AMPERSAND;
 
 /***/ }),
 
-/***/ 1336:
+/***/ 1339:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -283,7 +283,7 @@ exports.AMPERSAND = AMPERSAND;
 exports.__esModule = true;
 exports.stateify = exports.TokenState = exports.CharacterState = undefined;
 
-var _class = __webpack_require__(1334);
+var _class = __webpack_require__(1337);
 
 function createStateClass() {
 	return function (tClass) {
@@ -522,7 +522,7 @@ exports.stateify = stateify;
 
 /***/ }),
 
-/***/ 1337:
+/***/ 1340:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -541,422 +541,17 @@ exports.createTokenClass = createTokenClass;
 
 /***/ }),
 
-/***/ 1340:
+/***/ 1342:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(47);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ng2_webstorage__ = __webpack_require__(79);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_play_component__ = __webpack_require__(78);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatPage; });
-/* unused harmony export GMCommandsPopover */
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-
-var ChatPage = (function (_super) {
-    __extends(ChatPage, _super);
-    function ChatPage(appState, primus, navCtrl, menuCtrl, popCtrl, theme) {
-        var _this = _super.call(this, appState, primus, navCtrl) || this;
-        _this.appState = appState;
-        _this.primus = primus;
-        _this.navCtrl = navCtrl;
-        _this.menuCtrl = menuCtrl;
-        _this.popCtrl = popCtrl;
-        _this.theme = theme;
-        _this.chatUsers = [];
-        _this.missedMessagesHash = {};
-        _this.missedMessagesCount = 0;
-        _this.channels = [
-            { name: 'General', route: 'chat:channel:General' }
-        ];
-        return _this;
-    }
-    ChatPage.prototype.toggleChatMenu = function () {
-        this.missedMessagesCount = 0;
-        this.menuCtrl.toggle('right');
-    };
-    ChatPage.prototype.ngOnInit = function () {
-        var _this = this;
-        _super.prototype.ngOnInit.call(this);
-        if (!this.activeChannel)
-            this.activeChannel = this.channels[0];
-        this.chatUsers$ = this.appState.chatUsers.subscribe(function (data) { return _this.chatUsers = __WEBPACK_IMPORTED_MODULE_0_lodash__["sortBy"](data, function (p) { return p.name.toLowerCase(); }); });
-        this.onlineStatus$ = this.appState.onlineStatus.subscribe(function (data) { return _this.onlineStatus = data; });
-        this.primus.requestGuild();
-        this.timeoutId = setInterval(function () {
-            if (document.hidden)
-                return;
-            _this.lastMessageSeen = Date.now();
-        }, 1000);
-    };
-    ChatPage.prototype.ngOnDestroy = function () {
-        _super.prototype.ngOnDestroy.call(this);
-        this.chatUsers$.unsubscribe();
-        this.onlineStatus$.unsubscribe();
-        clearInterval(this.timeoutId);
-    };
-    ChatPage.prototype.setPlayer = function (player) {
-        _super.prototype.setPlayer.call(this, player);
-        var guildChannel = __WEBPACK_IMPORTED_MODULE_0_lodash__["find"](this.channels, function (ch) { return __WEBPACK_IMPORTED_MODULE_0_lodash__["includes"](ch.route, 'chat:channel:Guild:'); });
-        var me = __WEBPACK_IMPORTED_MODULE_0_lodash__["find"](this.chatUsers, { name: player.name });
-        if (guildChannel && guildChannel.route !== "chat:channel:Guild:" + player.guildName) {
-            this.channels = __WEBPACK_IMPORTED_MODULE_0_lodash__["without"](this.channels, guildChannel);
-        }
-        if (me && player.guildName && !guildChannel) {
-            this.tryToAddChannel({ name: "[" + me.guildTag + "] Guild Chat", route: "chat:channel:Guild:" + player.guildName });
-        }
-        else if (!player.guildName && guildChannel) {
-            this.channels = __WEBPACK_IMPORTED_MODULE_0_lodash__["without"](this.channels, guildChannel);
-        }
-    };
-    Object.defineProperty(ChatPage.prototype, "shouldShowChatUsers", {
-        get: function () {
-            return this.chatPageContent._elementRef.nativeElement.offsetWidth > 768;
-        },
-        enumerable: true,
-        configurable: true
-    });
-    ChatPage.prototype.removeChannel = function (channel) {
-        this.channels = __WEBPACK_IMPORTED_MODULE_0_lodash__["reject"](this.channels, function (chan) { return chan.route === channel.route; });
-        this.switchChannel(this.channels[0]);
-    };
-    ChatPage.prototype.channelName = function (channel) {
-        if (__WEBPACK_IMPORTED_MODULE_0_lodash__["includes"](channel.route, ':pm:'))
-            return this.getOtherPersonFromRoute(channel.route);
-        return channel.name;
-    };
-    ChatPage.prototype.getOtherPersonFromRoute = function (route) {
-        var _this = this;
-        return __WEBPACK_IMPORTED_MODULE_0_lodash__["reject"](route.split(':')[2].split('|'), function (p) { return p === _this.player.name; })[0];
-    };
-    ChatPage.prototype.closeMenu = function () {
-        this.menuCtrl.close('chat');
-    };
-    ChatPage.prototype.isChannelActive = function (channel) {
-        return channel.route === this.activeChannel.route;
-    };
-    ChatPage.prototype.tryToAddChannel = function (channelObject) {
-        if (!__WEBPACK_IMPORTED_MODULE_0_lodash__["find"](this.channels, { route: channelObject.route })) {
-            this.channels.push(channelObject);
-        }
-    };
-    ChatPage.prototype.incrementMissedMessages = function (route) {
-        if (!this.missedMessagesHash[route])
-            this.missedMessagesHash[route] = 0;
-        this.missedMessagesHash[route]++;
-    };
-    ChatPage.prototype.channelReceivedMessage = function (message) {
-        var channel = { route: message.route, name: message.channel };
-        this.tryToAddChannel(channel);
-        var isPm = __WEBPACK_IMPORTED_MODULE_0_lodash__["includes"](message.route, ':pm:');
-        var isActive = this.isChannelActive(channel);
-        if (!isActive
-            && !message.hidden
-            && !message.seen
-            && (this.player.name && message.playerName !== this.player.name)) {
-            this.incrementMissedMessages(message.route);
-            if (isPm) {
-                this.missedMessagesCount++;
-            }
-        }
-        if (isActive) {
-            message.seen = true;
-        }
-    };
-    ChatPage.prototype.switchChannel = function (channel) {
-        if (this.isChannelActive(channel))
-            return;
-        this.activeChannel = channel;
-        this.missedMessagesCount -= this.missedMessagesHash[channel.route] || 0;
-        this.missedMessagesHash[channel.route] = 0;
-        this.closeMenu();
-    };
-    ChatPage.prototype.messageUser = function (user) {
-        if (this.onlineStatus !== 'online') {
-            this.primus._handleNotification({ message: 'You are not currently connected! ' });
-            return;
-        }
-        var routeNameOrder = [this.player.name, user.name].sort().join('|');
-        var channelObj = { name: routeNameOrder, route: "channel:pm:" + routeNameOrder };
-        this.tryToAddChannel(channelObj);
-        this.switchChannel(channelObj);
-        this.closeMenu();
-    };
-    ChatPage.prototype.openGMCommands = function (player, $event) {
-        $event.preventDefault();
-        this.popCtrl
-            .create(GMCommandsPopover, { player: player }, { cssClass: this.theme.currentTheme })
-            .present({ ev: $event });
-    };
-    return ChatPage;
-}(__WEBPACK_IMPORTED_MODULE_5__components_play_component__["a" /* PlayComponent */]));
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_3_ng2_webstorage__["b" /* LocalStorage */])(),
-    __metadata("design:type", Number)
-], ChatPage.prototype, "lastMessageSeen", void 0);
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewChild"])('chatPageContent'),
-    __metadata("design:type", Object)
-], ChatPage.prototype, "chatPageContent", void 0);
-ChatPage = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicPage */])({
-        segment: 'chat'
-    }),
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'page-chat',template:/*ion-inline-start:"/Users/seiyria/GitHub/Play/src/pages/chat/chat.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>\n      <button ion-button icon-only menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      IdleLands Chat - {{ player.nameEdit || player.name }} ({{ activeChannel.name }})\n    </ion-title>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="toggleChatMenu()" class="chat-toggle">\n        <ion-icon name="contacts"></ion-icon>\n        <ion-badge color="danger" *ngIf="missedMessagesCount > 0" class="messages-badge">{{ missedMessagesCount }}</ion-badge>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="no-scroll" #chatPageContent>\n\n  <ion-split-pane [when]="shouldShowChatUsers" side="right">\n\n    <div class="chat-container" #chatPage main>\n      <chat-window [channel]="activeChannel" [player]="player" (channelUpdate)="channelReceivedMessage($event)" (removeChannel)="removeChannel($event)"></chat-window>\n    </div>\n\n    <ion-menu [content]="chatPage" side="right" id="chat" type="overlay">\n      <ion-header>\n        <ion-toolbar color="primary">\n          <ion-title>Channels & Users</ion-title>\n        </ion-toolbar>\n      </ion-header>\n\n      <ion-content>\n        <ion-list no-margin>\n          <ion-item-divider>Channels</ion-item-divider>\n          <button ion-item color="primary" *ngFor="let channel of channels" (click)="switchChannel(channel)" [disabled]="activeChannel.name === channel.name">\n            <ion-row no-padding>\n              <ion-col col-10>{{ channelName(channel) }}</ion-col>\n              <ion-col col-2>\n                <ion-badge color="secondary" *ngIf="missedMessagesHash[channel.route] > 0">{{ missedMessagesHash[channel.route] }}</ion-badge>\n              </ion-col>\n            </ion-row>\n          </button>\n\n          <ion-item-divider>Players ({{ chatUsers.length }} online)</ion-item-divider>\n        </ion-list>\n\n        <ion-list class="virtual-list">\n\n          <button ion-item\n                  color="primary"\n                  class="chat-user item-less-margin"\n                  *ngFor="let user of chatUsers"\n                  (click)="user.name !== player.name && messageUser(user)"\n                  (press)="player.isMod && openGMCommands(user, $event)"\n                  (contextmenu)="player.isMod && openGMCommands(user, $event)">\n            <ion-row no-padding>\n              <ion-col no-padding col-3 class="true-center">\n                <gendervatar [gender]="user.gender" scale="1.5"></gendervatar>\n              </ion-col>\n\n              <ion-col no-padding col-9>\n                <h3>\n                  <ascension-level [level]="user.ascensionLevel"></ascension-level>\n                  <ion-icon *ngIf="user.isMod" name="star"></ion-icon>\n                  <ion-icon *ngIf="user.isMuted" name="close-circle"></ion-icon>\n                  <span>{{ user.nameEdit || user.name }}<span *ngIf="user.title">, the {{ user.title }}</span></span>\n                </h3>\n                <p [class.hideme]="!user.guildName" class="guild-tag">{{ user.guildName }} [{{ user.guildTag }}]</p>\n              <p *ngIf="player.isMod">{{ user.$shard }}~{{ user.$currentIp }}</p>\n                <p>Level {{ user.level }} {{ user.professionName }}</p>\n              </ion-col>\n            </ion-row>\n          </button>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n\n  </ion-split-pane>\n\n</ion-content>\n'/*ion-inline-end:"/Users/seiyria/GitHub/Play/src/pages/chat/chat.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__services__["a" /* AppState */],
-        __WEBPACK_IMPORTED_MODULE_4__services__["c" /* Primus */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["n" /* MenuController */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["m" /* PopoverController */],
-        __WEBPACK_IMPORTED_MODULE_4__services__["e" /* Theme */]])
-], ChatPage);
-
-var GMCommandsPopover = (function () {
-    function GMCommandsPopover(viewCtrl, alertCtrl, navParams, appState, primus, theme) {
-        this.viewCtrl = viewCtrl;
-        this.alertCtrl = alertCtrl;
-        this.navParams = navParams;
-        this.appState = appState;
-        this.primus = primus;
-        this.theme = theme;
-    }
-    GMCommandsPopover.prototype.ngOnInit = function () {
-        var _this = this;
-        this.player = this.navParams.get('player');
-        this.gm$ = this.appState.gmdata.subscribe(function (data) {
-            _this.gm = data;
-        });
-        this.teleports.selectOptions = { cssClass: this.theme.currentTheme };
-        this.achievements.selectOptions = { cssClass: this.theme.currentTheme };
-        this.events.selectOptions = { cssClass: this.theme.currentTheme };
-    };
-    GMCommandsPopover.prototype.ngOnDestroy = function () {
-        this.gm$.unsubscribe();
-    };
-    GMCommandsPopover.prototype.dismiss = function () {
-        this.viewCtrl.dismiss();
-    };
-    GMCommandsPopover.prototype.toggleMute = function () {
-        this.primus.mute(this.player.name);
-        this.dismiss();
-    };
-    GMCommandsPopover.prototype.ban = function () {
-        var _this = this;
-        this.alertCtrl.create({
-            cssClass: this.theme.currentTheme,
-            title: "Ban " + this.player.name + "?",
-            message: 'This is really annoying to revert!',
-            buttons: [
-                { text: 'Cancel' },
-                { text: 'Yes, Ban Player', handler: function () {
-                        _this.primus.ban(_this.player.name);
-                        _this.dismiss();
-                    } }
-            ]
-        }).present();
-    };
-    GMCommandsPopover.prototype.pardon = function () {
-        this.primus.pardon(this.player.name);
-        this.dismiss();
-    };
-    GMCommandsPopover.prototype.toggleMod = function () {
-        this.primus.toggleModerator(this.player.name);
-        this.dismiss();
-    };
-    GMCommandsPopover.prototype.name = function () {
-        var _this = this;
-        this.alertCtrl.create({
-            cssClass: this.theme.currentTheme,
-            title: "Change " + this.player.name + "'s Name",
-            message: 'Enter a new name for this player.',
-            inputs: [
-                { type: 'text', name: 'newName', placeholder: 'New name', value: this.player.name }
-            ],
-            buttons: [
-                { text: 'Cancel' },
-                { text: 'Rename Player', handler: function (data) {
-                        _this.primus.rename(_this.player.name, data.newName);
-                        _this.dismiss();
-                    } }
-            ]
-        }).present();
-    };
-    GMCommandsPopover.prototype.level = function () {
-        var _this = this;
-        this.alertCtrl.create({
-            cssClass: this.theme.currentTheme,
-            title: "Change " + this.player.name + "'s Level",
-            message: 'Enter a new level for this player.',
-            inputs: [
-                { type: 'number', name: 'newLevel', placeholder: 'New level', value: this.player.level }
-            ],
-            buttons: [
-                { text: 'Cancel' },
-                { text: 'Relevel Player', handler: function (data) {
-                        _this.primus.relevel(_this.player.name, data.newLevel);
-                        _this.dismiss();
-                    } }
-            ]
-        }).present();
-    };
-    GMCommandsPopover.prototype._chooseTeleport = function (data) {
-        this.primus.teleport(this.player.name, { toLoc: data });
-    };
-    GMCommandsPopover.prototype.teleport = function () {
-        this.teleports.open();
-    };
-    GMCommandsPopover.prototype.statistics = function () {
-        var _this = this;
-        this.alertCtrl.create({
-            cssClass: this.theme.currentTheme,
-            title: "Change " + this.player.name + "'s Statistics",
-            message: 'Enter a stat and a value.',
-            inputs: [
-                { type: 'string', name: 'stat', placeholder: 'Statistic' },
-                { type: 'number', name: 'value', placeholder: 'Value' }
-            ],
-            buttons: [
-                { text: 'Cancel' },
-                { text: 'Restat Player', handler: function (data) {
-                        _this.primus.restat(_this.player.name, data.stat, +data.value);
-                        _this.dismiss();
-                    } }
-            ]
-        }).present();
-    };
-    GMCommandsPopover.prototype._chooseAchievement = function (data) {
-        this.primus.toggleAchievement(this.player.name, data);
-    };
-    GMCommandsPopover.prototype.toggleAchievement = function () {
-        this.achievements.open();
-    };
-    GMCommandsPopover.prototype._chooseEvent = function (data) {
-        this.primus.event(this.player.name, data);
-    };
-    GMCommandsPopover.prototype.event = function () {
-        this.events.open({ selectOptions: { cssClass: this.theme.currentTheme } });
-    };
-    GMCommandsPopover.prototype.item = function () {
-        var _this = this;
-        this.alertCtrl.create({
-            cssClass: this.theme.currentTheme,
-            title: "Give " + this.player.name + " and Item",
-            message: 'Enter the item text here. Don\'t forget the type!',
-            inputs: [
-                { type: 'text', name: 'item', placeholder: '"Item Name" type=mainhand dex=1' }
-            ],
-            buttons: [
-                { text: 'Cancel' },
-                { text: 'Give Item', handler: function (data) {
-                        _this.primus.giveItem(_this.player.name, data.item);
-                        _this.dismiss();
-                    } }
-            ]
-        }).present();
-    };
-    GMCommandsPopover.prototype.gold = function () {
-        var _this = this;
-        this.alertCtrl.create({
-            cssClass: this.theme.currentTheme,
-            title: "Give " + this.player.name + " Gold",
-            inputs: [
-                { type: 'number', name: 'bonusGold', placeholder: 'Gold bonus' }
-            ],
-            buttons: [
-                { text: 'Cancel' },
-                { text: 'Give Gold', handler: function (data) {
-                        _this.primus.giveGold(_this.player.name, data.bonusGold);
-                        _this.dismiss();
-                    } }
-            ]
-        }).present();
-    };
-    GMCommandsPopover.prototype.ilp = function () {
-        var _this = this;
-        this.alertCtrl.create({
-            cssClass: this.theme.currentTheme,
-            title: "Give " + this.player.name + " ILP",
-            inputs: [
-                { type: 'number', name: 'bonusIlp', placeholder: 'ILP bonus' }
-            ],
-            buttons: [
-                { text: 'Cancel' },
-                { text: 'Give ILP', handler: function (data) {
-                        _this.primus.giveILP(_this.player.name, data.bonusIlp);
-                        _this.dismiss();
-                    } }
-            ]
-        }).present();
-    };
-    return GMCommandsPopover;
-}());
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewChild"])('teleports'),
-    __metadata("design:type", Object)
-], GMCommandsPopover.prototype, "teleports", void 0);
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewChild"])('achievements'),
-    __metadata("design:type", Object)
-], GMCommandsPopover.prototype, "achievements", void 0);
-__decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["ViewChild"])('events'),
-    __metadata("design:type", Object)
-], GMCommandsPopover.prototype, "events", void 0);
-GMCommandsPopover = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        template: "\n    <ion-list>\n      <ion-item>{{ player.nameEdit || player.name }}</ion-item>\n      <ion-row>\n        <ion-col no-padding>\n          <button ion-item detail-none (click)=\"toggleMute()\">{{ player.isMuted ? 'Unmute' : 'Mute' }}</button>\n        </ion-col>\n        <ion-col no-padding>\n          <button ion-item detail-none (click)=\"ban()\">Ban</button>\n        </ion-col>\n        <ion-col no-padding>\n          <button ion-item detail-none (click)=\"pardon()\">Pardon</button>\n        </ion-col>\n      </ion-row>\n      \n      <button ion-item (click)=\"toggleMod()\">{{ player.isMod ? 'Take' : 'Make' }} Moderator</button>\n      \n      <button ion-item (click)=\"teleport()\">Teleport To...</button>\n      \n      <button ion-item (click)=\"toggleAchievement()\">Toggle Achievement</button>\n      \n      <button ion-item (click)=\"statistics()\">Set Statistic</button>\n      \n      <ion-row>\n        <ion-col no-padding>\n          <button ion-item detail-none (click)=\"name()\">Name</button>\n        </ion-col>\n        <ion-col no-padding>\n          <button ion-item detail-none (click)=\"level()\">Level</button>\n        </ion-col>\n      </ion-row>\n      \n      <ion-row>\n        <ion-col no-padding>\n          <button ion-item detail-none (click)=\"event()\">Event</button>\n        </ion-col>\n        <ion-col no-padding>\n          <button ion-item detail-none (click)=\"item()\">Item</button>\n        </ion-col>\n      </ion-row>\n      \n      <ion-row>\n        <ion-col no-padding>\n          <button ion-item detail-none (click)=\"gold()\">Gold</button>\n        </ion-col>\n        <ion-col no-padding>\n          <button ion-item detail-none (click)=\"ilp()\">ILP</button>\n        </ion-col>\n      </ion-row>\n      \n      <ion-item class=\"hidden\">\n        <ion-label>Teleport Location</ion-label>\n        <ion-select #teleports (ionChange)=\"_chooseTeleport($event)\">\n          <ion-option *ngFor=\"let teleport of gm.teleNames\">{{ teleport }}</ion-option>\n        </ion-select>\n      </ion-item>\n      \n      <ion-item class=\"hidden\">\n        <ion-label>Permanent Achievements</ion-label>\n        <ion-select #achievements (ionChange)=\"_chooseAchievement($event)\">\n          <ion-option *ngFor=\"let achievement of gm.permAchs\" [value]=\"achievement.property\">{{ achievement.name }}</ion-option>\n        </ion-select>\n      </ion-item>\n      \n      <ion-item class=\"hidden\">\n        <ion-label>Events</ion-label>\n        <ion-select #events (ionChange)=\"_chooseEvent($event)\">\n          <ion-option *ngFor=\"let event of gm.allEvents\">{{ event }}</ion-option>\n        </ion-select>\n      </ion-item>\n    </ion-list>\n  "
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["j" /* ViewController */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* AlertController */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["k" /* NavParams */],
-        __WEBPACK_IMPORTED_MODULE_4__services__["a" /* AppState */],
-        __WEBPACK_IMPORTED_MODULE_4__services__["c" /* Primus */],
-        __WEBPACK_IMPORTED_MODULE_4__services__["e" /* Theme */]])
-], GMCommandsPopover);
-
-//# sourceMappingURL=chat.js.map
-
-/***/ }),
-
-/***/ 1341:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_webstorage__ = __webpack_require__(79);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_webstorage__ = __webpack_require__(64);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_linkifyjs_string__ = __webpack_require__(1365);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_linkifyjs_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_linkifyjs_string__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services__ = __webpack_require__(22);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models__ = __webpack_require__(91);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatWindowComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CurrentChannelPipe; });
@@ -1296,7 +891,7 @@ exports.default = linkifyStr;
 exports.__esModule = true;
 exports.tokenize = exports.test = exports.scanner = exports.parser = exports.options = exports.inherits = exports.find = undefined;
 
-var _class = __webpack_require__(1334);
+var _class = __webpack_require__(1337);
 
 var _options = __webpack_require__(1364);
 
@@ -1388,9 +983,9 @@ exports.tokenize = tokenize;
 exports.__esModule = true;
 exports.start = exports.run = exports.TOKENS = exports.State = undefined;
 
-var _state = __webpack_require__(1336);
+var _state = __webpack_require__(1339);
 
-var _text = __webpack_require__(1335);
+var _text = __webpack_require__(1338);
 
 var TEXT_TOKENS = _interopRequireWildcard(_text);
 
@@ -1684,9 +1279,9 @@ exports.start = S_START;
 exports.__esModule = true;
 exports.start = exports.run = exports.TOKENS = exports.State = undefined;
 
-var _state = __webpack_require__(1336);
+var _state = __webpack_require__(1339);
 
-var _text = __webpack_require__(1335);
+var _text = __webpack_require__(1338);
 
 var TOKENS = _interopRequireWildcard(_text);
 
@@ -1872,11 +1467,11 @@ exports.start = start;
 exports.__esModule = true;
 exports.URL = exports.TEXT = exports.NL = exports.EMAIL = exports.MAILTOEMAIL = exports.Base = undefined;
 
-var _createTokenClass = __webpack_require__(1337);
+var _createTokenClass = __webpack_require__(1340);
 
-var _class = __webpack_require__(1334);
+var _class = __webpack_require__(1337);
 
-var _text = __webpack_require__(1335);
+var _text = __webpack_require__(1338);
 
 /******************************************************************************
 	Multi-Tokens

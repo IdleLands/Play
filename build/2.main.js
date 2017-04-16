@@ -1,15 +1,15 @@
 webpackJsonp([2],{
 
-/***/ 1333:
+/***/ 1330:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__statistics__ = __webpack_require__(1357);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__statistics_tree_component__ = __webpack_require__(1356);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(38);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SettingsPageModule", function() { return SettingsPageModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__map__ = __webpack_require__(752);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__map_renderer_component__ = __webpack_require__(1350);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(29);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "MapPageModule", function() { return MapPageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -20,28 +20,320 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
-var SettingsPageModule = (function () {
-    function SettingsPageModule() {
+var MapPageModule = (function () {
+    function MapPageModule() {
     }
-    return SettingsPageModule;
+    return MapPageModule;
 }());
-SettingsPageModule = __decorate([
+MapPageModule = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
-        declarations: [__WEBPACK_IMPORTED_MODULE_1__statistics__["a" /* StatisticsPage */], __WEBPACK_IMPORTED_MODULE_2__statistics_tree_component__["a" /* StatisticsTreeComponent */]],
-        imports: [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_1__statistics__["a" /* StatisticsPage */])],
+        declarations: [__WEBPACK_IMPORTED_MODULE_1__map__["b" /* MapPage */], __WEBPACK_IMPORTED_MODULE_2__map_renderer_component__["a" /* MapRendererComponent */]],
+        imports: [__WEBPACK_IMPORTED_MODULE_3_ionic_angular__["b" /* IonicPageModule */].forChild(__WEBPACK_IMPORTED_MODULE_1__map__["b" /* MapPage */])],
     })
-], SettingsPageModule);
+], MapPageModule);
 
-//# sourceMappingURL=statistics.module.js.map
+//# sourceMappingURL=map.module.js.map
 
 /***/ }),
 
-/***/ 1356:
+/***/ 1349:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__services_primus_service__ = __webpack_require__(755);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_moment__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Game; });
+
+
+
+var GameText = (function () {
+    function GameText() {
+    }
+    GameText.hoverText = function (phaser) {
+        if (!phaser)
+            return '';
+        var x = Math.floor((phaser.camera.x + phaser.input.x) / 16);
+        var y = Math.floor((phaser.camera.y + phaser.input.y) / 16);
+        return "Hovering " + x + ", " + y;
+    };
+    GameText.playerText = function (player) {
+        return "Currently in " + player.map + " (" + player.mapRegion + ") @ " + player.x + ", " + player.y;
+    };
+    GameText.otherPlayerText = function (otherPlayer) {
+        var base = [
+            "Player: " + (otherPlayer.nameEdit || otherPlayer.name),
+            "Level " + (otherPlayer.level || otherPlayer._level.__current) + " " + otherPlayer.professionName
+        ];
+        if (otherPlayer.guildName) {
+            base.push("Guild: " + otherPlayer.guildName + " [" + otherPlayer.guildTag + "]");
+        }
+        return base.join('<br>');
+    };
+    GameText.itemText = function (item, collectibleHash, bossTimers) {
+        if (collectibleHash === void 0) { collectibleHash = {}; }
+        if (bossTimers === void 0) { bossTimers = {}; }
+        var string = '';
+        var nameKey = item.teleportMap ? 'teleportMap' : 'name';
+        if (item.realtype) {
+            var nameValue = item[nameKey];
+            string += "" + item.realtype + (nameValue ? ': ' + nameValue : '');
+            if (item.realtype === 'Collectible' && collectibleHash[item[nameKey]]) {
+                string = string + " (Owned)";
+            }
+            if (item.realtype === 'Boss' && bossTimers[item[nameKey]]) {
+                var aliveOrDead = Date.now() > bossTimers[item[nameKey]] ? '(Alive)' : "(Dead; respawns " + __WEBPACK_IMPORTED_MODULE_2_moment__(bossTimers[item[nameKey]]).fromNow() + ")";
+                string = string + " " + aliveOrDead;
+            }
+            string += '<br>';
+        }
+        if (item.flavorText) {
+            string += "\"" + item.flavorText + "\"";
+            string += '<br>';
+        }
+        var baseRequirements = [
+            { key: 'Achievement' },
+            { key: 'Boss', display: 'Boss Kill' },
+            { key: 'Class' },
+            { key: 'Collectible' },
+            { key: 'Holiday' },
+            { key: 'Region', display: 'Region Visited' },
+            { key: 'Map', display: 'Map Visited' },
+            { key: 'Ascension', display: 'Ascension Level' }
+        ];
+        var requirements = __WEBPACK_IMPORTED_MODULE_0_lodash__["compact"](__WEBPACK_IMPORTED_MODULE_0_lodash__["map"](baseRequirements, function (_a) {
+            var key = _a.key, display = _a.display;
+            var req = item["require" + key];
+            if (!req)
+                return null;
+            return (display || key) + ": " + req;
+        }));
+        if (requirements.length > 0) {
+            requirements.unshift('------------------------');
+            requirements.unshift('Requirements');
+            string += requirements.join('<br>');
+        }
+        return string;
+    };
+    return GameText;
+}());
+var Game = (function () {
+    function Game(player, updateText) {
+        this.otherPlayerHash = {};
+        this.afterText = '';
+        this.setPlayer(player);
+        this.updateText = updateText;
+        this.needsMapUpdate = false;
+    }
+    Object.defineProperty(Game.prototype, "baseUrl", {
+        get: function () {
+            return __WEBPACK_IMPORTED_MODULE_1__services_primus_service__["b" /* settings */].protocol + "://" + __WEBPACK_IMPORTED_MODULE_1__services_primus_service__["b" /* settings */].hostname + ":" + __WEBPACK_IMPORTED_MODULE_1__services_primus_service__["b" /* settings */].port;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Game.prototype.setPlayer = function (player) {
+        this.player = player;
+        if (this.player.map !== this.map) {
+            var restart = false;
+            if (!this.map)
+                restart = true;
+            this.setMap(this.player.map, this.player.mapPath);
+            if (restart && this.phaser) {
+                this.phaser.state.restart();
+            }
+        }
+    };
+    Game.prototype.setCollectibleHash = function (hash) {
+        this.collectibleHash = hash;
+    };
+    Game.prototype.setMap = function (map, mapPath) {
+        this.map = map;
+        this.mapPath = mapPath;
+        this.needsMapUpdate = true;
+    };
+    Game.prototype.setOtherPlayers = function (otherPlayers) {
+        var _this = this;
+        var drawPlayers = __WEBPACK_IMPORTED_MODULE_0_lodash__["filter"](otherPlayers, function (player) { return player.map === _this.map || player.name === _this.player.name; });
+        this.otherPlayers = drawPlayers;
+    };
+    Game.prototype.setBossTimers = function (bossTimers) {
+        this.bossTimers = bossTimers;
+    };
+    Game.prototype.updateOtherPlayers = function () {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_0_lodash__["each"](this.otherPlayers, function (otherPlayer) {
+            var prevSprite = _this.otherPlayerHash[otherPlayer.name];
+            if (!prevSprite) {
+                if (_this.map !== otherPlayer.map)
+                    return;
+                var newSprite = _this.createSpritePlayer(otherPlayer);
+                _this.otherPlayerHash[otherPlayer.name] = newSprite;
+            }
+            else {
+                if (otherPlayer.map !== _this.map) {
+                    prevSprite.destroy();
+                    delete _this.otherPlayerHash[otherPlayer.name];
+                    return;
+                }
+                prevSprite.x = otherPlayer.x * 16;
+                prevSprite.y = otherPlayer.y * 16;
+                if (prevSprite.gender !== otherPlayer.gender) {
+                    prevSprite.gender = otherPlayer.gender;
+                    prevSprite.frame = _this.getGenderById(otherPlayer.gender);
+                }
+            }
+        });
+    };
+    Game.prototype.getGenderById = function (gender) {
+        switch (gender) {
+            case 'male': return 12;
+            case 'female': return 13;
+            case 'not a bear': return 72;
+            case 'glowcloud': return 62;
+            case 'astronomical entity': return 73;
+            case 'boss monster': return 25;
+            case 'blue': return 11;
+            default: return 14;
+        }
+    };
+    Game.prototype.createSpritePlayer = function (player) {
+        var _this = this;
+        var spriteGender = this.getGenderById(player.gender);
+        var sprite = this.phaser.add.sprite(player.x * 16, player.y * 16, 'interactables', spriteGender);
+        sprite.gender = player.gender;
+        sprite.inputEnabled = true;
+        sprite.events.onInputOver.add(function () {
+            _this.setAfterText(GameText.otherPlayerText(player));
+        });
+        sprite.events.onInputOut.add(function () {
+            _this.setAfterText('');
+        });
+        return sprite;
+    };
+    Game.prototype.createPropertiesForObject = function (object) {
+        if (!object.properties)
+            object.properties = {};
+        if (!object.type)
+            return;
+        object.properties = {
+            realtype: object.type,
+            teleportX: parseInt(object.properties.destx || 0),
+            teleportY: parseInt(object.properties.desty || 0),
+            teleportMap: object.properties.map,
+            teleportLocation: object.properties.toLoc,
+            flavorText: object.properties.flavorText,
+            requireBoss: object.properties.requireBoss,
+            requireCollectible: object.properties.requireCollectible,
+            requireAchievement: object.properties.requireAchievement,
+            requireClass: object.properties.requireClass,
+            requireRegion: object.properties.requireRegion,
+            requireMap: object.properties.requireMap,
+            requireHoliday: object.properties.requireHoliday,
+            requireAscension: object.properties.requireAscension
+        };
+    };
+    Game.prototype.createObjectDataForMap = function (map) {
+        var _this = this;
+        if (!map || !map.data.layers[2])
+            return;
+        __WEBPACK_IMPORTED_MODULE_0_lodash__["each"](map.data.layers[2].objects, function (object) {
+            _this.createPropertiesForObject(object);
+        });
+    };
+    Game.prototype.setAfterText = function (text) {
+        if (text === void 0) { text = ''; }
+        this.afterText = text;
+    };
+    Game.prototype.displayText = function () {
+        var hoverText = GameText.hoverText(this.phaser);
+        var playerText = GameText.playerText(this.player);
+        this.updateText(playerText + "<br><br>" + hoverText + "<br><br>" + this.afterText);
+    };
+    Game.prototype.attachEventsToObjects = function () {
+        var _this = this;
+        __WEBPACK_IMPORTED_MODULE_0_lodash__["each"](this.objectGroup.children, function (object) {
+            object.inputEnabled = true;
+            object.events.onInputOver.add(function () {
+                _this.setAfterText(GameText.itemText(object, _this.collectibleHash, _this.bossTimers));
+            });
+            object.events.onInputOut.add(function () {
+                _this.setAfterText('');
+            });
+        });
+    };
+    Game.prototype.createPhaserMap = function () {
+        var cacheMap = this.phaser.cache.getTilemapData(this.map);
+        this.createObjectDataForMap(cacheMap);
+        this.phaser.cache.removeTilemap(this.map);
+        this.phaser.load.tilemap(this.map, null, cacheMap.data, window.Phaser.Tilemap.TILED_JSON);
+        var map = this.phaser.add.tilemap(this.map);
+        if (!map)
+            return;
+        map.addTilesetImage('tiles', 'tiles');
+        var terrain = map.createLayer('Terrain');
+        terrain.resizeWorld();
+        map.createLayer('Blocking');
+        this.objectGroup = this.phaser.add.group();
+        for (var i = 1; i <= 100; i++) {
+            map.createFromObjects('Interactables', i, 'interactables', i - 1, true, false, this.objectGroup);
+        }
+        this.attachEventsToObjects();
+        this.spritePlayer = this.createSpritePlayer(this.player);
+        this.phaser.camera.follow(this.spritePlayer);
+    };
+    Game.prototype.preload = function () {
+        if (!this.map || !this.mapPath)
+            return;
+        this.phaser.stage.disableVisibilityChange = true;
+        this.phaser.load.image('tiles', this.baseUrl + "/maps/img/tiles.png", 16, 16);
+        this.phaser.load.spritesheet('interactables', this.baseUrl + "/maps/img/tiles.png", 16, 16);
+        this.phaser.load.tilemap(this.map, this.baseUrl + "/maps/world-maps/" + this.mapPath, null, window.Phaser.Tilemap.TILED_JSON);
+    };
+    Game.prototype.create = function () {
+        if (!this.map || !this.mapPath)
+            return;
+        this.createPhaserMap();
+    };
+    Game.prototype.render = function () {
+        if (!this.spritePlayer)
+            return;
+        this.phaser.debug.spriteBounds(this.spritePlayer, '#000', false);
+    };
+    Game.prototype.update = function () {
+        if (this.needsMapUpdate) {
+            this.needsMapUpdate = false;
+            this.setAfterText('');
+            this.phaser.state.restart();
+        }
+        if (!this.spritePlayer)
+            return;
+        this.spritePlayer.x = this.player.x * 16;
+        this.spritePlayer.y = this.player.y * 16;
+        if (this.spritePlayer.gender !== this.player.gender) {
+            this.spritePlayer.gender = this.player.gender;
+            this.spritePlayer.frame = this.getGenderById(this.player.gender);
+        }
+        this.displayText();
+        this.updateOtherPlayers();
+    };
+    return Game;
+}());
+
+//# sourceMappingURL=game.js.map
+
+/***/ }),
+
+/***/ 1350:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatisticsTreeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__models__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__game__ = __webpack_require__(1349);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MapRendererComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -52,141 +344,74 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var StatisticsTreeComponent = (function () {
-    function StatisticsTreeComponent() {
-        this.treeData = [];
+
+
+var MapRendererComponent = (function () {
+    function MapRendererComponent() {
+        this.player = new __WEBPACK_IMPORTED_MODULE_1__models__["c" /* Player */]();
+        this.collectibleHash = {};
+        this.otherPlayers = [];
+        this.bossTimers = {};
+        this.textUpdate = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
     }
-    return StatisticsTreeComponent;
+    MapRendererComponent.prototype.initGame = function () {
+        var _this = this;
+        var element = document.getElementById('map');
+        this.game = new __WEBPACK_IMPORTED_MODULE_2__game__["a" /* Game */](this.player, function (t) { return _this.textUpdate.emit(t); });
+        this.phaser = new window.Phaser.Game(element.clientWidth, window.innerHeight - 56, window.Phaser.CANVAS, 'map', this.game);
+        this.game.phaser = this.phaser;
+    };
+    MapRendererComponent.prototype.ngOnDestroy = function () {
+        if (this.phaser) {
+            this.phaser.destroy();
+        }
+        var elements = document.getElementsByTagName('canvas');
+        while (elements[0])
+            elements[0].parentNode.removeChild(elements[0]);
+    };
+    MapRendererComponent.prototype.ngOnChanges = function () {
+        if (!this.player || !this.player.mapPath)
+            return;
+        if (!this.game) {
+            this.initGame();
+            return;
+        }
+        this.game.setPlayer(this.player);
+        this.game.setCollectibleHash(this.collectibleHash);
+        this.game.setOtherPlayers(this.otherPlayers);
+        this.game.setBossTimers(this.bossTimers);
+    };
+    return MapRendererComponent;
 }());
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-    __metadata("design:type", Object)
-], StatisticsTreeComponent.prototype, "treeData", void 0);
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__models__["c" /* Player */])
+], MapRendererComponent.prototype, "player", void 0);
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-    __metadata("design:type", Boolean)
-], StatisticsTreeComponent.prototype, "isFirst", void 0);
-StatisticsTreeComponent = __decorate([
+    __metadata("design:type", Object)
+], MapRendererComponent.prototype, "collectibleHash", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], MapRendererComponent.prototype, "otherPlayers", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
+    __metadata("design:type", Object)
+], MapRendererComponent.prototype, "bossTimers", void 0);
+__decorate([
+    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"])(),
+    __metadata("design:type", Object)
+], MapRendererComponent.prototype, "textUpdate", void 0);
+MapRendererComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'statistics-tree',
-        styles: ["\n    :host ul {\n      list-style-type: none;\n    }\n    \n    :host ul:not(.is-first) {\n      margin-left: -20px;\n    }\n    \n    :host ul.is-first {\n      padding-left: 0;\n    }\n  "],
-        template: "\n    <ul [class.is-first]=\"isFirst\">\n      <li *ngFor=\"let node of treeData\">\n        <strong>{{ node.name }}</strong> {{ node.val | number }}\n        <statistics-tree [treeData]=\"node.children\"></statistics-tree>\n      </li>\n    </ul>\n  "
+        selector: 'map-renderer',
+        styles: ["\n    :host img {\n      display: none;\n    }\n  "],
+        template: "\n    <div id=\"map\"></div>\n  "
     })
-], StatisticsTreeComponent);
+], MapRendererComponent);
 
-//# sourceMappingURL=statistics-tree.component.js.map
-
-/***/ }),
-
-/***/ 1357:
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(62);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(38);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_play_component__ = __webpack_require__(78);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatisticsPage; });
-var __extends = (this && this.__extends) || (function () {
-    var extendStatics = Object.setPrototypeOf ||
-        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
-        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
-    return function (d, b) {
-        extendStatics(d, b);
-        function __() { this.constructor = d; }
-        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
-    };
-})();
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-
-
-
-
-
-var StatisticsPage = (function (_super) {
-    __extends(StatisticsPage, _super);
-    function StatisticsPage(appState, primus, navCtrl) {
-        var _this = _super.call(this, appState, primus, navCtrl) || this;
-        _this.appState = appState;
-        _this.primus = primus;
-        _this.navCtrl = navCtrl;
-        _this.ignoreRecurseKeys = ['BossKills', 'Maps', 'Regions'];
-        return _this;
-    }
-    StatisticsPage.prototype.ngOnInit = function () {
-        var _this = this;
-        _super.prototype.ngOnInit.call(this);
-        this.statistics$ = this.appState.statistics.subscribe(function (data) {
-            _this.setStatistics(data);
-        });
-        this.primus.requestStatistics();
-    };
-    StatisticsPage.prototype.ngOnDestroy = function () {
-        _super.prototype.ngOnDestroy.call(this);
-        this.statistics$.unsubscribe();
-    };
-    StatisticsPage.prototype.setStatistics = function (data) {
-        var _this = this;
-        var BossKills = __WEBPACK_IMPORTED_MODULE_0_lodash__["get"](data, 'Character.BossKills', {});
-        var Maps = __WEBPACK_IMPORTED_MODULE_0_lodash__["get"](data, 'Character.Maps', {});
-        var Regions = __WEBPACK_IMPORTED_MODULE_0_lodash__["get"](data, 'Character.Regions', {});
-        data.BossKills = BossKills;
-        data.Maps = Maps;
-        data.Regions = Regions;
-        var recurse = function (obj, isRoot) {
-            if (isRoot === void 0) { isRoot = false; }
-            return __WEBPACK_IMPORTED_MODULE_0_lodash__["map"](obj, function (val, key) {
-                var baseObj = {};
-                if (!isRoot && __WEBPACK_IMPORTED_MODULE_0_lodash__["includes"](_this.ignoreRecurseKeys, key))
-                    return {};
-                baseObj.name = key;
-                if (__WEBPACK_IMPORTED_MODULE_0_lodash__["isObject"](val)) {
-                    baseObj.children = recurse(val);
-                }
-                else {
-                    baseObj.val = val;
-                }
-                return baseObj;
-            });
-        };
-        var sortAll = function (data) {
-            __WEBPACK_IMPORTED_MODULE_0_lodash__["each"](data, function (obj) {
-                if (!obj.children)
-                    return;
-                obj.children = sortAll(obj.children);
-            });
-            return __WEBPACK_IMPORTED_MODULE_0_lodash__["sortBy"](data, 'name');
-        };
-        this.statistics = __WEBPACK_IMPORTED_MODULE_0_lodash__["reduce"](__WEBPACK_IMPORTED_MODULE_0_lodash__["reject"](sortAll(recurse(data, true)), function (item) { return item.val; }), function (prev, item) {
-            prev[item.name] = item;
-            return prev;
-        }, {});
-    };
-    return StatisticsPage;
-}(__WEBPACK_IMPORTED_MODULE_4__components_play_component__["a" /* PlayComponent */]));
-StatisticsPage = __decorate([
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["e" /* IonicPage */])({
-        segment: 'statistics'
-    }),
-    __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'page-statistics',template:/*ion-inline-start:"/Users/seiyria/GitHub/Play/src/pages/statistics/statistics.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>IdleLands Statistics - {{ player.nameEdit || player.name }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-row>\n\n    <ion-col col-12 col-sm>\n      <ion-card *ngIf="statistics.Game">\n        <ion-card-header>Game</ion-card-header>\n        <ion-card-content>\n          <statistics-tree [treeData]="statistics.Game.children" [isFirst]="true"></statistics-tree>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card *ngIf="statistics.Character">\n        <ion-card-header>Character</ion-card-header>\n        <ion-card-content>\n          <statistics-tree [treeData]="statistics.Character.children" [isFirst]="true"></statistics-tree>\n        </ion-card-content>\n      </ion-card>\n    </ion-col>\n\n    <ion-col col-12 col-sm>\n      <ion-card *ngIf="statistics.Regions">\n        <ion-card-header>Regions</ion-card-header>\n        <ion-card-content>\n          <statistics-tree [treeData]="statistics.Regions.children" [isFirst]="true"></statistics-tree>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card *ngIf="statistics.Maps">\n        <ion-card-header>Maps</ion-card-header>\n        <ion-card-content>\n          <statistics-tree [treeData]="statistics.Maps.children" [isFirst]="true"></statistics-tree>\n        </ion-card-content>\n      </ion-card>\n    </ion-col>\n\n    <ion-col col-12 col-sm>\n      <ion-card *ngIf="statistics.BossKills">\n        <ion-card-header>Boss Kills</ion-card-header>\n        <ion-card-content>\n          <statistics-tree [treeData]="statistics.BossKills.children" [isFirst]="true"></statistics-tree>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card *ngIf="statistics.Combat">\n        <ion-card-header>Combat</ion-card-header>\n        <ion-card-content>\n          <statistics-tree [treeData]="statistics.Combat.children" [isFirst]="true"></statistics-tree>\n        </ion-card-content>\n      </ion-card>\n    </ion-col>\n\n  </ion-row>\n\n</ion-content>'/*ion-inline-end:"/Users/seiyria/GitHub/Play/src/pages/statistics/statistics.html"*/
-    }),
-    __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services__["a" /* AppState */],
-        __WEBPACK_IMPORTED_MODULE_3__services__["c" /* Primus */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["f" /* NavController */]])
-], StatisticsPage);
-
-//# sourceMappingURL=statistics.js.map
+//# sourceMappingURL=map-renderer.component.js.map
 
 /***/ })
 
