@@ -10,6 +10,12 @@ import { AchievementIconComponent } from './achievementicon.component';
 import { GendervatarComponent } from './gendervatar.component';
 import { AscensionLevelComponent } from './ascensionlevel.component';
 
+import { AchievementModal } from '../pages/achievements/achievements';
+
+import { GMCommandsPopover } from '../pages/chat/chat';
+
+import { PersonalityPopover } from '../pages/map/map';
+
 import { ItemCompareModal } from '../services';
 
 import { NgModule } from '@angular/core';
@@ -37,14 +43,20 @@ export class ComponentsModule {}
     AscensionLevelComponent,
     AchievementIconComponent,
 
-    ItemCompareModal
+    ItemCompareModal,
+    AchievementModal,
+    GMCommandsPopover,
+    PersonalityPopover
   ],
   imports: [
     IonicModule,
     CommonModule
   ],
   entryComponents: [
-    ItemCompareModal
+    ItemCompareModal,
+    AchievementModal,
+    GMCommandsPopover,
+    PersonalityPopover
   ],
   exports: [
     IonicModule,
