@@ -4,8 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, AlertController, NavController } from 'ionic-angular';
 import { Primus, Theme } from '../../services';
 
-import { OverviewPage } from '../../pages';
-
 @IonicPage({
   segment: 'create'
 })
@@ -55,7 +53,7 @@ export class CreatePage implements OnInit {
           handler: () => {
             this.primus.register(this.character)
               .then(() => {
-                this.navCtrl.setRoot(OverviewPage);
+                this.navCtrl.setRoot('OverviewPage');
               })
               .catch(e => console.error(e));
           }
