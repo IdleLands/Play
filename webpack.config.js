@@ -47,7 +47,8 @@ module.exports = {
       },
       {
         test: /\.ts$/,
-        loader: process.env.IONIC_WEBPACK_LOADER
+        loader: process.env.IONIC_WEBPACK_LOADER,
+        exclude: /node_modules/
       },
       {
         test: /\.js$/,
