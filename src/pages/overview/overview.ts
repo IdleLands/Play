@@ -134,7 +134,7 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
       { text: 'Pet',        color: 'secondary',  callback: () => this.makeChoice(choice.id, 'Pet') },
       { text: 'Close',      color: 'light',      callback: () => {} }
     ];
-    if(choice.choices.indexOf("Pet") < 0) buttons.splice(2,1);
+    if(choice.choices.indexOf('Pet') < 0) buttons.splice(2, 1);
 
     this.icomp.compare(playerItem, choiceItem, buttons).then(button => {
       if(!button) return;
