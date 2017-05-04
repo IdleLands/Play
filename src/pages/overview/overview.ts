@@ -29,9 +29,6 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
   party$: any;
   public party: any;
   
-  public petactive$: any;
-  public petactive: any;
-
   @ViewChild('choiceSlides') public choiceSlides;
 
   shopButtons = [
@@ -79,22 +76,16 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
     this.party$ = this.appState.party.subscribe(data => {
       this.party = data;
     });
-    
-    this.petactive$ = this.appState.petactive.subscribe(data => {
-      this.petactive = data;
-    });
 
     this.primus.requestEquipment();
     this.primus.requestParty();
     this.primus.requestShop();
-    this.primus.requestPets();
   }
 
   ngOnDestroy() {
     this.adventureLog$.unsubscribe();
     this.party$.unsubscribe();
     this.shop$.unsubscribe();
-    this.petactive$.unsubscribe();
   }
 
   get equipment() {
@@ -143,7 +134,7 @@ export class OverviewPage extends PlayComponent implements OnInit, OnDestroy {
       { text: 'Pet',        color: 'secondary',  callback: () => this.makeChoice(choice.id, 'Pet') },
       { text: 'Close',      color: 'light',      callback: () => {} }
     ];
-    if(!this.petactive.name) buttons.splice(2,1);
+    if(choice.choices.indexOf("Pet") < 0) buttons.splice(2,1);
 
     this.icomp.compare(playerItem, choiceItem, buttons).then(button => {
       if(!button) return;
