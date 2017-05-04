@@ -174,8 +174,11 @@ var OverviewPage = (function (_super) {
         var buttons = [
             { text: 'Equip', color: 'primary', callback: function () { return _this.makeChoice(choice.id, 'Yes'); } },
             { text: 'Discard', color: 'danger', callback: function () { return _this.makeChoice(choice.id, 'No'); } },
+            { text: 'Pet', color: 'secondary', callback: function () { return _this.makeChoice(choice.id, 'Pet'); } },
             { text: 'Close', color: 'light', callback: function () { } }
         ];
+        if (choice.choices.indexOf('Pet') < 0)
+            buttons.splice(2, 1);
         this.icomp.compare(playerItem, choiceItem, buttons).then(function (button) {
             if (!button)
                 return;
