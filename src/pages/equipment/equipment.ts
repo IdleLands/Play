@@ -54,12 +54,13 @@ export class EquipmentPage extends PlayComponent implements OnInit, OnDestroy {
 
     _.each(this.equipment, item => {
       const keys = _.reject(_.keys(item), key => {
-        return !_.isNumber(item[key]) || key === 'foundAt';
+        return !_.isNumber(item[key]) || key === 'foundAt' || key.includes('Req');
       });
 
       _.each(keys, key => {
         if(!totalItem[key]) totalItem[key] = 0;
         totalItem[key] += item[key];
+        if (totalItem[key] === 0) delete totalItem[key];
       });
     });
 
