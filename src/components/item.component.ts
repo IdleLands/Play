@@ -42,6 +42,9 @@ import { Item } from '../models';
             {{ extraStats(item) }}
           </ion-col>
         </ion-row>
+        <ion-row padding-left>
+            <em>{{ itemRequirements(item) }}</em>
+        </ion-row>
       </ion-col>
     </ion-row>
   `
@@ -69,6 +72,10 @@ export class ItemComponent implements OnInit {
 
   public extraStats(item: Item) {
     return ItemInfo.getSpecialStatString(item);
+  }
+
+  public itemRequirements(item: Item) {
+    return ItemInfo.getItemRequirementsString(item);
   }
 
   public openItemPopover($event) {
