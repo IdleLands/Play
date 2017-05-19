@@ -43,8 +43,12 @@ import { Theme } from './theme.service';
       </ion-col>
     </ion-row>
     
+    <ion-row>
+      <ion-col>{{ itemStatString(currentItem) }}</ion-col>
+    </ion-row>
+
     <ion-row margin-bottom>
-      <ion-col>{{ itemStatString(currentItem) }}</ion-col>  
+      <ion-col><em>{{ itemRequirementsString(currentItem) }}</em></ion-col>
     </ion-row>
     
     <ion-row margin-bottom>
@@ -79,7 +83,11 @@ import { Theme } from './theme.service';
     </ion-row>
     
     <ion-row>
-      <ion-col>{{ itemStatString(newItem) }}</ion-col>  
+      <ion-col>{{ itemStatString(newItem) }}</ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col><em>{{ itemRequirementsString(newItem) }}</em></ion-col>
     </ion-row>
     
     <ion-row>
@@ -119,6 +127,10 @@ export class ItemCompareModal implements OnInit {
 
   itemStatString(item): string {
     return ItemInfo.getSpecialStatString(item);
+  }
+
+  itemRequirementsString(item): string {
+    return ItemInfo.getItemRequirementsString(item);
   }
 
   itemPercent(item): number {
