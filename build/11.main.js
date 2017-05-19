@@ -102,12 +102,14 @@ var EquipmentPage = (function (_super) {
         };
         __WEBPACK_IMPORTED_MODULE_0_lodash__["each"](this.equipment, function (item) {
             var keys = __WEBPACK_IMPORTED_MODULE_0_lodash__["reject"](__WEBPACK_IMPORTED_MODULE_0_lodash__["keys"](item), function (key) {
-                return !__WEBPACK_IMPORTED_MODULE_0_lodash__["isNumber"](item[key]) || key === 'foundAt';
+                return !__WEBPACK_IMPORTED_MODULE_0_lodash__["isNumber"](item[key]) || key === 'foundAt' || key.includes('Req');
             });
             __WEBPACK_IMPORTED_MODULE_0_lodash__["each"](keys, function (key) {
                 if (!totalItem[key])
                     totalItem[key] = 0;
                 totalItem[key] += item[key];
+                if (totalItem[key] === 0)
+                    delete totalItem[key];
             });
         });
         return totalItem;

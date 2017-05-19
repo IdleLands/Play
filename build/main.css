@@ -39776,6 +39776,10 @@ ion-list {
   transform: translate3d(-50%, -50%, 0);
 }
 
+em {
+  white-space: pre;
+}
+
 page-achievements .achievement-card {
   position: relative;
   z-index: 10;
