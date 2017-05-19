@@ -53,7 +53,7 @@ export class ItemInfo {
       return 'Collectible Required:  ' + _(req).trimStart('cReq').replace(/_/g, ' ') + ((val > 1) ? ' x' + val : '');
     }
     else if (req.startsWith('s')) {
-      return 'Statistic Required:  ' + _(req).trimStart('sReq').split('*').join('.').replace(/_/g, ' ') + ' ' + val;
+      return 'Statistic Required:  ' + _(req).trimStart('sReq').split('*').join('.').replace(/_/g, ' ') + ' (' + val + ')';
     }
   }
 }
