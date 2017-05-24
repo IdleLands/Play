@@ -1,89 +1,14 @@
 
 <ion-content padding>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-card>
-          <ion-card-header no-padding padding-left padding-top padding-right>
-            <ion-row no-padding>
-              <ion-col no-padding class="vertical-center">
-                <span>Pets</span>
-                <ion-note padding-left>Swipe or use arrow keys to navigate</ion-note>
-              </ion-col>
+  <div *ngIf="!hasPet" class="max-space">
+    <div class="true-center max-space background-text">
+      <p>You have no active pet.</p>
+    </div>
+  </div>
 
-              <ion-col no-padding text-right>
-                <button no-margin ion-button small color="primary" (click)="hidePets = !hidePets">Toggle</button>
-                <button ion-button small icon-only color="primary" (click)="petSlides.slidePrev()" *ngIf="petbasic.length > 3">
-                  <ion-icon name="arrow-back"></ion-icon>
-                </button>
-                <button ion-button small icon-only color="primary" (click)="petSlides.slideNext()" *ngIf="petbasic.length > 3">
-                  <ion-icon name="arrow-forward"></ion-icon>
-                </button>
-              </ion-col>
-            </ion-row>
 
-          </ion-card-header>
-
-          <ion-card-content no-padding *ngIf="!hidePets">
-
-            <ion-slides [class.hidden]="petbasic.length > 0">
-              <ion-slide>
-                <ion-card class="pet-card">
-                  <ion-card-content>
-                    <h1>You don't have any pets right now. Check back later!</h1>
-                  </ion-card-content>
-                </ion-card>
-              </ion-slide>
-            </ion-slides>
-
-            <ion-slides [class.hidden]="petbasic.length === 0" [slidesPerView]="numSlides" #petSlides>
-              <ion-slide *ngFor="let petOption of petbasic">
-                <ion-card class="pet-card">
-
-                  <ion-card-header *ngIf="!petOption.bought">
-                    {{ petOption.name }}
-                  </ion-card-header>
-
-                  <ion-card-header *ngIf="petOption.bought">
-                    {{ petOption.petName }}
-                  </ion-card-header>
-
-                  <ion-card-content *ngIf="!petOption.bought">
-                    <div>Cost: {{ petbuy[petOption.name].cost | number }} Gold</div>
-                    <p>{{ petbuy[petOption.name].description }}</p>
-                  </ion-card-content>
-
-                  <ion-card-content *ngIf="petOption.bought">
-                    <div>{{ petOption.name }}</div>
-                    <p>Level {{ petOption.level }} {{ petOption.profession }}</p>
-                  </ion-card-content>
-
-                  <ion-row>
-                    <ion-col *ngIf="petOption.bought">
-                      <button ion-button clear small color="primary" (click)="makeActive(petOption.name)" [disabled]="petactive.$petId === petOption.name">
-                        Make Active
-                      </button>
-                    </ion-col>
-                    <ion-col *ngIf="petOption.bought && premium.consumables.renameTagPet > 0">
-                      <button ion-button clear small color="primary" (click)="renamePet(petOption.name, petOption.petName)">
-                        Rename
-                      </button>
-                    </ion-col>
-                    <ion-col *ngIf="!petOption.bought">
-                      <button ion-button clear small color="primary" (click)="buyPet(petOption.name)" [disabled]="player.gold < petbuy[petOption.name].cost">
-                        Buy Pet
-                      </button>
-                    </ion-col>
-                  </ion-row>
-                </ion-card>
-              </ion-slide>
-            </ion-slides>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-
-    <ion-row wrap *ngIf="hasPet">
+  <ion-grid *ngIf="hasPet">
+    <ion-row wrap>
       <ion-col col-12 col-md>
         <ion-card>
           <ion-card-header>Vitals</ion-card-header>

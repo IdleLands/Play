@@ -28,6 +28,7 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
 
   petactive$: any;
   petactive: PetActive = new PetActive();
+  hasPet: boolean;
 
   petbuy$: any;
   petbuy: PetBuy = {};
@@ -96,10 +97,6 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
     this.premium$.unsubscribe();
   }
 
-  get hasPet() {
-    return this.petactive && this.petactive.name;
-  }
-
   get numSlides() {
     return this.platform.is('ios') || this.platform.is('android') ? 1 : 3;
   }
@@ -108,26 +105,8 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
     this.primus.togglePetSmart(smart);
   }
 
-  renamePet(petType, currentName) {
-    this.alertCtrl.create({
-      cssClass: this.theme.currentTheme,
-      title: 'Rename Pet',
-      message: `What would you like to call your pet ${petType}?`,
-      inputs: [{
-        name: 'name',
-        placeholder: 'Pet Name',
-        value: currentName
-      }],
-      buttons: [
-        { text: 'Cancel' },
-        { text: 'Rename', handler: data => {
-          this.primus.renamePet(petType, data.name);
-        } }
-      ]
-    }).present()
-  }
-
   setPetActive(petactive) {
+    this.hasPet = !!petactive.name
     this.petactive = petactive;
     this.petEquipment = _.flatten(_.values(petactive.equipment));
   }
@@ -149,28 +128,6 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
       .concat(['Monster'])
       .uniq()
       .value();
-  }
-
-  buyPet(petType) {
-    this.alertCtrl.create({
-      cssClass: this.theme.currentTheme,
-      title: 'Adopt Pet',
-      message: `What would you like to call your pet ${petType}?`,
-      inputs: [{
-        name: 'name',
-        placeholder: 'Pet Name'
-      }],
-      buttons: [
-        { text: 'Cancel' },
-        { text: 'Buy', handler: data => {
-          this.primus.buyPet(petType, data.name);
-        } }
-      ]
-    }).present()
-  }
-
-  makeActive(petType) {
-    this.primus.makePetActive(petType);
   }
 
   changeAttr(newAttr) {
