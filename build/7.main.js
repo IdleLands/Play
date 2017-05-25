@@ -1,14 +1,14 @@
 webpackJsonp([7],{
 
-/***/ 1332:
+/***/ 1286:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pets__ = __webpack_require__(1352);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_components_module__ = __webpack_require__(744);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__pets__ = __webpack_require__(1306);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_components_module__ = __webpack_require__(697);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(28);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PetsPageModule", function() { return PetsPageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -36,20 +36,20 @@ PetsPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1352:
+/***/ 1306:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services__ = __webpack_require__(21);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_play_component__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pets_items__ = __webpack_require__(753);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pets_overview__ = __webpack_require__(754);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models__ = __webpack_require__(91);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_webstorage__ = __webpack_require__(64);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pets_items__ = __webpack_require__(706);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__pets_overview__ = __webpack_require__(707);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_webstorage__ = __webpack_require__(61);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PetsPage; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -109,6 +109,8 @@ var PetsPage = (function (_super) {
         this.premium$ = this.appState.premium.subscribe(function (data) { return _this.premium = data; });
         var tab = this.storage.retrieve('currentPetTab');
         this.defaultTab = tab;
+        this.menuCtrl.enable(false, 'chat');
+        this.menuCtrl.enable(true, 'pets');
     };
     PetsPage.prototype.ngOnDestroy = function () {
         _super.prototype.ngOnDestroy.call(this);
@@ -192,7 +194,7 @@ PetsPage = __decorate([
         segment: 'pets'
     }),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'page-pets',template:/*ion-inline-start:"/Users/seiyria/GitHub/Play/src/pages/pets/pets.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>\n      <button ion-button icon-only menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      IdleLands Pets - {{ player.nameEdit || player.name }}\n    </ion-title>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="togglePetMenu()" class="pet-toggle">\n        <ion-icon name="paw"></ion-icon>\n        <!-- <ion-badge color="danger" *ngIf="missedMessagesCount > 0" class="messages-badge">{{ missedMessagesCount }}</ion-badge> -->\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="no-scroll" #petPageContent>\n  <ion-split-pane [when]="shouldShowPetMenu" side="right">\n\n    <ion-content #petPage class="no-scroll">\n      <ion-toolbar *ngIf="hasPet" color="primary">\n        <ion-title class="pet-title">\n          {{ petactive.name }}, Level {{ petactive._level.__current }} {{ petactive.professionName }}\n        </ion-title>\n      </ion-toolbar>\n\n      <ion-tabs #tabs tabsLayout="icon-left" (ionChange)="changeTab($event)" [selectedIndex]="defaultTab">\n        <ion-tab tabTitle="Overview" tabUrlPath=\'overview\' tabIcon="leaf" [root]="overviewRoot"></ion-tab>\n        <ion-tab tabTitle="Items" tabUrlPath=\'items\' tabIcon="color-wand" [tabBadge]="inventoryBadge" [enabled]="hasPet" [root]="itemsRoot"></ion-tab>\n      </ion-tabs>\n    </ion-content>\n\n    <ion-menu [content]="petPage" side="right" id="pets" type="overlay">\n      <ion-header>\n        <ion-toolbar color="primary">\n          <ion-title>Pets</ion-title>\n        </ion-toolbar>\n      </ion-header>\n\n      <ion-content>\n        <ion-list no-margin>\n\n          <ion-card class="pet-card" *ngIf="petbasic.length < 1">\n            <ion-card-content>\n              <h1>You don\'t have any pets right now. Check back later!</h1>\n            </ion-card-content>\n          </ion-card>\n\n          <ion-card class="pet-card" *ngFor="let petOption of petbasic">\n\n            <ion-card-header>\n              {{ petOption.bought ? petOption.petName : petOption.name }}\n            </ion-card-header>\n\n            <ion-card-content *ngIf="!petOption.bought">\n              <div>Cost: {{ petbuy[petOption.name].cost | number }} Gold</div>\n              <p>{{ petbuy[petOption.name].description }}</p>\n            </ion-card-content>\n\n            <ion-card-content *ngIf="petOption.bought">\n              <div>{{ petOption.name }}</div>\n              <p>Level {{ petOption.level }} {{ petOption.profession }}</p>\n            </ion-card-content>\n\n            <ion-row>\n              <ion-col *ngIf="petOption.bought">\n                <button ion-button clear small color="primary" (click)="makeActive(petOption.name)" [disabled]="petactive.$petId === petOption.name">\n                  Make Active\n                </button>\n              </ion-col>\n              <ion-col *ngIf="petOption.bought && premium.consumables.renameTagPet > 0">\n                <button ion-button clear small color="primary" (click)="renamePet(petOption.name, petOption.petName)">\n                  Rename\n                </button>\n              </ion-col>\n              <ion-col *ngIf="!petOption.bought">\n                <button ion-button clear small color="primary" (click)="buyPet(petOption.name)" [disabled]="player.gold < petbuy[petOption.name].cost">\n                  Buy Pet\n                </button>\n              </ion-col>\n            </ion-row>\n          </ion-card>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n\n  </ion-split-pane>\n</ion-content>\n'/*ion-inline-end:"/Users/seiyria/GitHub/Play/src/pages/pets/pets.html"*/
+        selector: 'page-pets',template:/*ion-inline-start:"/Users/seiyria/GitHub/Play/src/pages/pets/pets.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>\n      <button ion-button icon-only menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      IdleLands Pets - {{ player.nameEdit || player.name }}\n    </ion-title>\n\n    <ion-buttons end>\n      <button ion-button icon-only (click)="togglePetMenu()" class="pet-toggle">\n        <ion-icon name="paw"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="no-scroll" #petPageContent>\n  <ion-split-pane [when]="shouldShowPetMenu" side="right">\n\n    <ion-content #petPage class="no-scroll">\n      <ion-toolbar *ngIf="hasPet" color="primary">\n        <ion-title class="pet-title">\n          {{ petactive.name }}, Level {{ petactive._level.__current }} {{ petactive.professionName }}\n        </ion-title>\n      </ion-toolbar>\n\n      <ion-tabs #tabs tabsLayout="icon-left" (ionChange)="changeTab($event)" [selectedIndex]="defaultTab">\n        <ion-tab tabTitle="Overview" tabUrlPath=\'overview\' tabIcon="leaf" [root]="overviewRoot"></ion-tab>\n        <ion-tab tabTitle="Items" tabUrlPath=\'items\' tabIcon="color-wand" [tabBadge]="inventoryBadge" [enabled]="hasPet" [root]="itemsRoot"></ion-tab>\n      </ion-tabs>\n    </ion-content>\n\n    <ion-menu [content]="petPage" side="right" id="pets" type="overlay">\n      <ion-header>\n        <ion-toolbar color="primary">\n          <ion-title>Pets</ion-title>\n        </ion-toolbar>\n      </ion-header>\n\n      <ion-content>\n        <ion-list no-margin>\n\n          <ion-card class="pet-card" *ngIf="petbasic.length < 1">\n            <ion-card-content>\n              <h1>You don\'t have any pets right now. Check back later!</h1>\n            </ion-card-content>\n          </ion-card>\n\n          <ion-card class="pet-card" *ngFor="let petOption of petbasic">\n\n            <ion-card-header>\n              {{ petOption.bought ? petOption.petName : petOption.name }}\n            </ion-card-header>\n\n            <ion-card-content *ngIf="!petOption.bought">\n              <div>Cost: {{ petbuy[petOption.name].cost | number }} Gold</div>\n              <p>{{ petbuy[petOption.name].description }}</p>\n            </ion-card-content>\n\n            <ion-card-content *ngIf="petOption.bought">\n              <div>{{ petOption.name }}</div>\n              <p>Level {{ petOption.level }} {{ petOption.profession }}</p>\n            </ion-card-content>\n\n            <ion-row>\n              <ion-col *ngIf="petOption.bought">\n                <button ion-button clear small color="primary" (click)="makeActive(petOption.name)" [disabled]="petactive.$petId === petOption.name">\n                  {{ petactive.$petId === petOption.name ? \'Active\' : \'Make Active\' }}\n                </button>\n              </ion-col>\n              <ion-col *ngIf="petOption.bought && premium.consumables.renameTagPet > 0">\n                <button ion-button clear small color="primary" (click)="renamePet(petOption.name, petOption.petName)">\n                  Rename\n                </button>\n              </ion-col>\n              <ion-col *ngIf="!petOption.bought">\n                <button ion-button clear small color="primary" (click)="buyPet(petOption.name)" [disabled]="player.gold < petbuy[petOption.name].cost">\n                  Buy Pet\n                </button>\n              </ion-col>\n            </ion-row>\n          </ion-card>\n        </ion-list>\n      </ion-content>\n    </ion-menu>\n\n  </ion-split-pane>\n</ion-content>\n'/*ion-inline-end:"/Users/seiyria/GitHub/Play/src/pages/pets/pets.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services__["a" /* AppState */],
         __WEBPACK_IMPORTED_MODULE_3__services__["c" /* Primus */],

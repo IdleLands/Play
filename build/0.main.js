@@ -1,17 +1,17 @@
 webpackJsonp([0],{
 
-/***/ 1323:
+/***/ 1277:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chat__ = __webpack_require__(747);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(29);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_moment__ = __webpack_require__(745);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chat__ = __webpack_require__(700);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_moment__ = __webpack_require__(698);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(744);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__chatwindow_component__ = __webpack_require__(1342);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(697);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__chatwindow_component__ = __webpack_require__(1296);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatPageModule", function() { return ChatPageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -41,7 +41,7 @@ ChatPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1337:
+/***/ 1291:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63,7 +63,7 @@ function inherits(parent, child) {
 
 /***/ }),
 
-/***/ 1338:
+/***/ 1292:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72,9 +72,9 @@ function inherits(parent, child) {
 exports.__esModule = true;
 exports.AMPERSAND = exports.CLOSEPAREN = exports.CLOSEANGLEBRACKET = exports.CLOSEBRACKET = exports.CLOSEBRACE = exports.OPENPAREN = exports.OPENANGLEBRACKET = exports.OPENBRACKET = exports.OPENBRACE = exports.WS = exports.TLD = exports.SYM = exports.UNDERSCORE = exports.SLASH = exports.MAILTO = exports.PROTOCOL = exports.QUERY = exports.POUND = exports.PLUS = exports.NUM = exports.NL = exports.LOCALHOST = exports.PUNCTUATION = exports.DOT = exports.COLON = exports.AT = exports.DOMAIN = exports.Base = undefined;
 
-var _createTokenClass = __webpack_require__(1340);
+var _createTokenClass = __webpack_require__(1294);
 
-var _class = __webpack_require__(1337);
+var _class = __webpack_require__(1291);
 
 /******************************************************************************
 	Text Tokens
@@ -274,7 +274,7 @@ exports.AMPERSAND = AMPERSAND;
 
 /***/ }),
 
-/***/ 1339:
+/***/ 1293:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -283,7 +283,7 @@ exports.AMPERSAND = AMPERSAND;
 exports.__esModule = true;
 exports.stateify = exports.TokenState = exports.CharacterState = undefined;
 
-var _class = __webpack_require__(1337);
+var _class = __webpack_require__(1291);
 
 function createStateClass() {
 	return function (tClass) {
@@ -522,7 +522,7 @@ exports.stateify = stateify;
 
 /***/ }),
 
-/***/ 1340:
+/***/ 1294:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -541,18 +541,18 @@ exports.createTokenClass = createTokenClass;
 
 /***/ }),
 
-/***/ 1342:
+/***/ 1296:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(47);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_webstorage__ = __webpack_require__(64);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_linkifyjs_string__ = __webpack_require__(1365);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_webstorage__ = __webpack_require__(61);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_linkifyjs_string__ = __webpack_require__(1319);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_linkifyjs_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_linkifyjs_string__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services__ = __webpack_require__(22);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models__ = __webpack_require__(91);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models__ = __webpack_require__(88);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatWindowComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CurrentChannelPipe; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LinkifyPipe; });
@@ -781,7 +781,7 @@ LinkifyPipe = __decorate([
 
 /***/ }),
 
-/***/ 1359:
+/***/ 1313:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -789,7 +789,7 @@ LinkifyPipe = __decorate([
 
 exports.__esModule = true;
 
-var _linkify = __webpack_require__(1360);
+var _linkify = __webpack_require__(1314);
 
 var linkify = _interopRequireWildcard(_linkify);
 
@@ -882,7 +882,7 @@ exports.default = linkifyStr;
 
 /***/ }),
 
-/***/ 1360:
+/***/ 1314:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -891,17 +891,17 @@ exports.default = linkifyStr;
 exports.__esModule = true;
 exports.tokenize = exports.test = exports.scanner = exports.parser = exports.options = exports.inherits = exports.find = undefined;
 
-var _class = __webpack_require__(1337);
+var _class = __webpack_require__(1291);
 
-var _options = __webpack_require__(1364);
+var _options = __webpack_require__(1318);
 
 var options = _interopRequireWildcard(_options);
 
-var _scanner = __webpack_require__(1362);
+var _scanner = __webpack_require__(1316);
 
 var scanner = _interopRequireWildcard(_scanner);
 
-var _parser = __webpack_require__(1361);
+var _parser = __webpack_require__(1315);
 
 var parser = _interopRequireWildcard(_parser);
 
@@ -974,7 +974,7 @@ exports.tokenize = tokenize;
 
 /***/ }),
 
-/***/ 1361:
+/***/ 1315:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -983,13 +983,13 @@ exports.tokenize = tokenize;
 exports.__esModule = true;
 exports.start = exports.run = exports.TOKENS = exports.State = undefined;
 
-var _state = __webpack_require__(1339);
+var _state = __webpack_require__(1293);
 
-var _text = __webpack_require__(1338);
+var _text = __webpack_require__(1292);
 
 var TEXT_TOKENS = _interopRequireWildcard(_text);
 
-var _multi = __webpack_require__(1363);
+var _multi = __webpack_require__(1317);
 
 var MULTI_TOKENS = _interopRequireWildcard(_multi);
 
@@ -1270,7 +1270,7 @@ exports.start = S_START;
 
 /***/ }),
 
-/***/ 1362:
+/***/ 1316:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1279,9 +1279,9 @@ exports.start = S_START;
 exports.__esModule = true;
 exports.start = exports.run = exports.TOKENS = exports.State = undefined;
 
-var _state = __webpack_require__(1339);
+var _state = __webpack_require__(1293);
 
-var _text = __webpack_require__(1338);
+var _text = __webpack_require__(1292);
 
 var TOKENS = _interopRequireWildcard(_text);
 
@@ -1458,7 +1458,7 @@ exports.start = start;
 
 /***/ }),
 
-/***/ 1363:
+/***/ 1317:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1467,11 +1467,11 @@ exports.start = start;
 exports.__esModule = true;
 exports.URL = exports.TEXT = exports.NL = exports.EMAIL = exports.MAILTOEMAIL = exports.Base = undefined;
 
-var _createTokenClass = __webpack_require__(1340);
+var _createTokenClass = __webpack_require__(1294);
 
-var _class = __webpack_require__(1337);
+var _class = __webpack_require__(1291);
 
-var _text = __webpack_require__(1338);
+var _text = __webpack_require__(1292);
 
 /******************************************************************************
 	Multi-Tokens
@@ -1670,7 +1670,7 @@ exports.URL = URL;
 
 /***/ }),
 
-/***/ 1364:
+/***/ 1318:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1804,10 +1804,10 @@ function typeToTarget(href, type) {
 
 /***/ }),
 
-/***/ 1365:
+/***/ 1319:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(1359).default;
+module.exports = __webpack_require__(1313).default;
 
 
 /***/ })
