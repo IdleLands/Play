@@ -72,6 +72,9 @@ export class ChatPage extends PlayComponent implements OnInit, OnDestroy {
       if(document.hidden) return;
       this.lastMessageSeen = Date.now();
     }, 1000);
+
+    this.menuCtrl.enable(true, 'chat');
+    this.menuCtrl.enable(false, 'pets');
   }
 
   ngOnDestroy() {

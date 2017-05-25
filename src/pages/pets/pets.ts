@@ -68,6 +68,9 @@ export class PetsPage extends PlayComponent {
 
     const tab = this.storage.retrieve('currentPetTab');
     this.defaultTab = tab;
+
+    this.menuCtrl.enable(false, 'chat');
+    this.menuCtrl.enable(true, 'pets');
   }
 
   ngOnDestroy() {
