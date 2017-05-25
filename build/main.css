@@ -3975,6 +3975,10 @@ ion-icon {
   border-left: 1px solid #ccc;
 }
 
+.theme-amoled .pet-title .toolbar-title {
+  color: #ccc;
+}
+
 .theme-blackwhite.modal .scroll-content {
   background-color: #fff;
 }
@@ -4237,6 +4241,10 @@ ion-icon {
 
 .theme-dark .reversed-split-pane ion-menu {
   border-left: 1px solid #ccc;
+}
+
+.theme-dark .pet-title .toolbar-title {
+  color: #ccc;
 }
 
 .theme-default.modal .scroll-content {
@@ -4726,6 +4734,10 @@ ion-icon {
 
 .theme-hacker .reversed-split-pane ion-menu {
   border-left: 1px solid #20c20e;
+}
+
+.theme-hacker .pet-title .toolbar-title {
+  color: #f4f4f4;
 }
 
 .theme-majestic.modal .scroll-content {
@@ -39961,6 +39973,10 @@ page-pets-overview .pet-card ion-card-content {
 
 page-pets-overview .upgrade-card ion-card-content {
   min-height: 110px;
+}
+
+page-pets-overview > ion-content > .scroll-content, page-pets-items > ion-content > .scroll-content {
+  margin-top: 56px;
 }
 
 .pet-title {
