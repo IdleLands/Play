@@ -69,7 +69,7 @@
             <ion-row>
               <ion-col *ngIf="petOption.bought">
                 <button ion-button clear small color="primary" (click)="makeActive(petOption.name)" [disabled]="petactive.$petId === petOption.name">
-                  Make Active
+                  {{ petactive.$petId === petOption.name ? 'Active' : 'Make Active' }}
                 </button>
               </ion-col>
               <ion-col *ngIf="petOption.bought && premium.consumables.renameTagPet > 0">
