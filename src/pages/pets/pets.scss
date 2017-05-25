@@ -12,6 +12,12 @@ page-pets-overview {
   }
 }
 
+page-pets-overview, page-pets-items {
+  & > ion-content > .scroll-content {
+    margin-top: 56px;
+  }
+}
+
 .pet-title {
   padding: 10px;
 }

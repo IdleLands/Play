@@ -182,4 +182,8 @@ $gray-fg: #ccc;
   .reversed-split-pane ion-menu {
     border-left: 1px solid $gray-fg;
   }
+
+  .pet-title .toolbar-title {
+    color: $gray-fg;
+  }
 }

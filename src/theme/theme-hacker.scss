@@ -184,4 +184,8 @@ $green-fg: #20c20e;
   .reversed-split-pane ion-menu {
     border-left: 1px solid $green-fg;
   }
+
+  .pet-title .toolbar-title {
+    color: $new-light;
+  }
 }

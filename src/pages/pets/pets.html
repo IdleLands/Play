@@ -21,19 +21,17 @@
 <ion-content class="no-scroll" #petPageContent>
   <ion-split-pane [when]="shouldShowPetMenu" side="right">
 
-    <ion-content #petPage>
-      <ion-header *ngIf="hasPet">
+    <ion-content #petPage class="no-scroll">
+      <ion-toolbar *ngIf="hasPet" color="primary">
         <ion-title class="pet-title">
           {{ petactive.name }}, Level {{ petactive._level.__current }} {{ petactive.professionName }}
         </ion-title>
-      </ion-header>
+      </ion-toolbar>
 
-      <ion-content>
-        <ion-tabs #tabs tabsLayout="icon-left" (ionChange)="changeTab($event)" [selectedIndex]="defaultTab">
-          <ion-tab tabTitle="Overview" tabUrlPath='overview' tabIcon="leaf" [root]="overviewRoot"></ion-tab>
-          <ion-tab tabTitle="Items" tabUrlPath='items' tabIcon="color-wand" [tabBadge]="inventoryBadge" [enabled]="hasPet" [root]="itemsRoot"></ion-tab>
-        </ion-tabs>
-      </ion-content>
+      <ion-tabs #tabs tabsLayout="icon-left" (ionChange)="changeTab($event)" [selectedIndex]="defaultTab">
+        <ion-tab tabTitle="Overview" tabUrlPath='overview' tabIcon="leaf" [root]="overviewRoot"></ion-tab>
+        <ion-tab tabTitle="Items" tabUrlPath='items' tabIcon="color-wand" [tabBadge]="inventoryBadge" [enabled]="hasPet" [root]="itemsRoot"></ion-tab>
+      </ion-tabs>
     </ion-content>
 
     <ion-menu [content]="petPage" side="right" id="pets" type="overlay">
