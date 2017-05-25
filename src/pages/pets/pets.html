@@ -7,13 +7,88 @@
       </button>
       IdleLands Pets - {{ player.nameEdit || player.name }}
     </ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="togglePetMenu()" class="pet-toggle">
+        <ion-icon name="paw"></ion-icon>
+        <!-- <ion-badge color="danger" *ngIf="missedMessagesCount > 0" class="messages-badge">{{ missedMessagesCount }}</ion-badge> -->
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content class="no-scroll">
-  <ion-tabs #tabs tabsLayout="icon-left" (ionChange)="changeTab($event)" [selectedIndex]="defaultTab">
-    <ion-tab tabTitle="Overview" tabUrlPath='overview' tabIcon="leaf" [root]="overviewRoot"></ion-tab>
-    <ion-tab tabTitle="Items" tabUrlPath='items' tabIcon="color-wand" [tabBadge]="inventoryBadge" [enabled]="hasPet" [root]="itemsRoot"></ion-tab>
-  </ion-tabs>
+<ion-content class="no-scroll" #petPageContent>
+  <ion-split-pane [when]="shouldShowPetMenu" side="right">
+
+    <ion-content #petPage>
+      <ion-header *ngIf="hasPet">
+        <ion-title class="pet-title">
+          {{ petactive.name }}, Level {{ petactive._level.__current }} {{ petactive.professionName }}
+        </ion-title>
+      </ion-header>
+
+      <ion-content>
+        <ion-tabs #tabs tabsLayout="icon-left" (ionChange)="changeTab($event)" [selectedIndex]="defaultTab">
+          <ion-tab tabTitle="Overview" tabUrlPath='overview' tabIcon="leaf" [root]="overviewRoot"></ion-tab>
+          <ion-tab tabTitle="Items" tabUrlPath='items' tabIcon="color-wand" [tabBadge]="inventoryBadge" [enabled]="hasPet" [root]="itemsRoot"></ion-tab>
+        </ion-tabs>
+      </ion-content>
+    </ion-content>
+
+    <ion-menu [content]="petPage" side="right" id="pets" type="overlay">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Pets</ion-title>
+        </ion-toolbar>
+      </ion-header>
+
+      <ion-content>
+        <ion-list no-margin>
+
+          <ion-card class="pet-card" *ngIf="petbasic.length < 1">
+            <ion-card-content>
+              <h1>You don't have any pets right now. Check back later!</h1>
+            </ion-card-content>
+          </ion-card>
+
+          <ion-card class="pet-card" *ngFor="let petOption of petbasic">
+
+            <ion-card-header>
+              {{ petOption.bought ? petOption.petName : petOption.name }}
+            </ion-card-header>
+
+            <ion-card-content *ngIf="!petOption.bought">
+              <div>Cost: {{ petbuy[petOption.name].cost | number }} Gold</div>
+              <p>{{ petbuy[petOption.name].description }}</p>
+            </ion-card-content>
+
+            <ion-card-content *ngIf="petOption.bought">
+              <div>{{ petOption.name }}</div>
+              <p>Level {{ petOption.level }} {{ petOption.profession }}</p>
+            </ion-card-content>
+
+            <ion-row>
+              <ion-col *ngIf="petOption.bought">
+                <button ion-button clear small color="primary" (click)="makeActive(petOption.name)" [disabled]="petactive.$petId === petOption.name">
+                  Make Active
+                </button>
+              </ion-col>
+              <ion-col *ngIf="petOption.bought && premium.consumables.renameTagPet > 0">
+                <button ion-button clear small color="primary" (click)="renamePet(petOption.name, petOption.petName)">
+                  Rename
+                </button>
+              </ion-col>
+              <ion-col *ngIf="!petOption.bought">
+                <button ion-button clear small color="primary" (click)="buyPet(petOption.name)" [disabled]="player.gold < petbuy[petOption.name].cost">
+                  Buy Pet
+                </button>
+              </ion-col>
+            </ion-row>
+          </ion-card>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+
+  </ion-split-pane>
 </ion-content>
