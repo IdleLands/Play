@@ -230,7 +230,7 @@ OverviewPage = __decorate([
         __WEBPACK_IMPORTED_MODULE_3__services__["d" /* ItemCompare */],
         __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["g" /* AlertController */],
         __WEBPACK_IMPORTED_MODULE_3__services__["e" /* Theme */],
-        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["h" /* Platform */]])
+        __WEBPACK_IMPORTED_MODULE_2_ionic_angular__["i" /* Platform */]])
 ], OverviewPage);
 
 //# sourceMappingURL=overview.js.map

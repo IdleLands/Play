@@ -95,7 +95,7 @@ var SettingsPage = (function (_super) {
     }
     Object.defineProperty(SettingsPage.prototype, "version", {
         get: function () {
-            return "v0.11.0-42-ga2c4433";
+            return "v0.11.0-46-g01a948a";
         },
         enumerable: true,
         configurable: true

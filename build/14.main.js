@@ -81,7 +81,7 @@ var BattlePage = (function (_super) {
         _this.primus = primus;
         _this.navCtrl = navCtrl;
         _this.navParams = navParams;
-        _this.battle = new __WEBPACK_IMPORTED_MODULE_4__models__["l" /* Battle */]();
+        _this.battle = new __WEBPACK_IMPORTED_MODULE_4__models__["m" /* Battle */]();
         return _this;
     }
     BattlePage.prototype.ngOnInit = function () {
@@ -95,7 +95,7 @@ var BattlePage = (function (_super) {
     };
     BattlePage.prototype.ngOnDestroy = function () {
         _super.prototype.ngOnDestroy.call(this);
-        this.appState.battle.next(new __WEBPACK_IMPORTED_MODULE_4__models__["l" /* Battle */]());
+        this.appState.battle.next(new __WEBPACK_IMPORTED_MODULE_4__models__["m" /* Battle */]());
         this.battle$.unsubscribe();
         this.pet$.unsubscribe();
     };
@@ -117,7 +117,7 @@ BattlePage = __decorate([
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services__["a" /* AppState */],
         __WEBPACK_IMPORTED_MODULE_2__services__["c" /* Primus */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */]])
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */]])
 ], BattlePage);
 
 var HighlightPipe = (function () {

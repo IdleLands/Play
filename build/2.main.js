@@ -348,7 +348,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 var MapRendererComponent = (function () {
     function MapRendererComponent() {
-        this.player = new __WEBPACK_IMPORTED_MODULE_1__models__["c" /* Player */]();
+        this.player = new __WEBPACK_IMPORTED_MODULE_1__models__["d" /* Player */]();
         this.collectibleHash = {};
         this.otherPlayers = [];
         this.bossTimers = {};
@@ -385,7 +385,7 @@ var MapRendererComponent = (function () {
 }());
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__models__["c" /* Player */])
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1__models__["d" /* Player */])
 ], MapRendererComponent.prototype, "player", void 0);
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"])(),

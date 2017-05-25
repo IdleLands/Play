@@ -39962,3 +39962,7 @@ page-pets-overview .pet-card ion-card-content {
 page-pets-overview .upgrade-card ion-card-content {
   min-height: 110px;
 }
+
+.pet-title {
+  padding: 10px;
+}

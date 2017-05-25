@@ -150,7 +150,7 @@ ConnectPage = __decorate([
         selector: 'page-connect',template:/*ion-inline-start:"/Users/seiyria/GitHub/Play/src/pages/connect/connect.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Connecting to Server...</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-grid>\n\n    <ion-row>\n      <ion-col>\n        <div class="connecting-container">\n          <div>Connecting to Server...</div>\n          <div>{{ currentMessage }}...</div>\n          <br>\n          <div *ngIf="_isTakingForever">\n            <div>Hmmm... this is taking a while.</div>\n            <div><button ion-button outline color="primary" (click)="refresh()">Shall we try this again?</button></div>\n          </div>\n        </div>\n      </ion-col>\n    </ion-row>\n\n    <ion-row padding>\n      <ion-col col-md-6 col-xs-12 offset-md-3>\n        <reddit-news></reddit-news>\n      </ion-col>\n    </ion-row>\n\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/seiyria/GitHub/Play/src/pages/connect/connect.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
-        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["k" /* NavParams */],
+        __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
         __WEBPACK_IMPORTED_MODULE_5__services__["a" /* AppState */],
         __WEBPACK_IMPORTED_MODULE_5__services__["c" /* Primus */],
         __WEBPACK_IMPORTED_MODULE_2_ng2_webstorage__["c" /* LocalStorageService */]])

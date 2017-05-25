@@ -577,7 +577,7 @@ var ChatWindowComponent = (function () {
         this.appState = appState;
         this.primus = primus;
         this.storage = storage;
-        this.player = new __WEBPACK_IMPORTED_MODULE_5__models__["c" /* Player */]();
+        this.player = new __WEBPACK_IMPORTED_MODULE_5__models__["d" /* Player */]();
         this.channelUpdate = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
         this.removeChannel = new __WEBPACK_IMPORTED_MODULE_1__angular_core__["EventEmitter"]();
         this.baseHeight = 200;
@@ -713,7 +713,7 @@ __decorate([
 ], ChatWindowComponent.prototype, "channel", void 0);
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Input"])(),
-    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_5__models__["c" /* Player */])
+    __metadata("design:type", __WEBPACK_IMPORTED_MODULE_5__models__["d" /* Player */])
 ], ChatWindowComponent.prototype, "player", void 0);
 __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Output"])(),
