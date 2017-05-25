@@ -101,6 +101,7 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
       .flattenDeep()
       .filter(reward => reward.type === 'title')
       .map('title')
+      .sortBy()
       .value();
   }
 
