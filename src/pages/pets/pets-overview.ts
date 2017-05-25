@@ -97,10 +97,6 @@ export class PetsOverviewPage extends PlayComponent implements OnInit, OnDestroy
     this.premium$.unsubscribe();
   }
 
-  get numSlides() {
-    return this.platform.is('ios') || this.platform.is('android') ? 1 : 3;
-  }
-
   toggleSmart(smart) {
     this.primus.togglePetSmart(smart);
   }
