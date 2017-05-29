@@ -48,7 +48,7 @@ ConnectPageModule = __decorate([
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(116);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__messages_json__ = __webpack_require__(1312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__messages_json__ = __webpack_require__(1319);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__messages_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__messages_json__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConnectPage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -160,7 +160,7 @@ ConnectPage = __decorate([
 
 /***/ }),
 
-/***/ 1312:
+/***/ 1319:
 /***/ (function(module, exports) {
 
 module.exports = [

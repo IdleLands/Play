@@ -88,7 +88,9 @@ var BattlePage = (function (_super) {
         var _this = this;
         _super.prototype.ngOnInit.call(this);
         var battleName = this.navParams.get('battleName');
-        this.battle$ = this.appState.battle.subscribe(function (battle) { return _this.battle = battle; });
+        this.battle$ = this.appState.battle.subscribe(function (battle) {
+            _this.battle = _this.restructureBattle(battle);
+        });
         this.pet$ = this.appState.petactive.subscribe(function (pet) { return _this.petName = pet.name; });
         this.battle.messageData = [{ data: null, message: 'Loading' }];
         this.primus.loadBattle(battleName);
@@ -104,15 +106,38 @@ var BattlePage = (function (_super) {
             return null;
         return item.data;
     };
+    BattlePage.prototype.restructureBattle = function (battle) {
+        if (!battle || !battle.messageData) {
+            return battle;
+        }
+        battle.rounds = [];
+        var round = -1;
+        var currentRound;
+        battle.messageData.forEach(function (i) {
+            if (i.data || !currentRound) {
+                round += 1;
+                battle.rounds[round] = {
+                    data: i.data || battle.initialParties,
+                    messages: [],
+                    header: i.message
+                };
+                currentRound = battle.rounds[round].messages;
+            }
+            else {
+                currentRound.push(i.message);
+            }
+        });
+        return battle;
+    };
     return BattlePage;
 }(__WEBPACK_IMPORTED_MODULE_3__components_play_component__["a" /* PlayComponent */]));
 BattlePage = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* IonicPage */])({
         segment: 'battle/:battleName',
-        defaultHistory: ['overview']
+        defaultHistory: ['OverviewPage']
     }),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-battle',template:/*ion-inline-start:"/Users/seiyria/GitHub/Play/src/pages/battle/battle.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Battle Log</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-grid>\n    <ion-row>\n      <ion-col text-center>\n        <h1>{{ battle.name || \'Loading...\' }}</h1>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col text-center>\n        <ion-note>{{ battle.happenedAt | amTimeAgo }}</ion-note>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col>\n        <ion-list [virtualScroll]="battle.messageData" approxItemHeight="50px" bufferRatio="30" [headerFn]="battleHeader">\n\n          <ion-item-divider *virtualHeader="let header">\n            <ion-row *ngFor="let party of header">\n              <ion-card>\n                <ion-card-header>{{ party.name }}</ion-card-header>\n                <ion-card-content no-padding>\n                  <ion-row no-padding wrap>\n                    <ion-col no-padding col-12 col-md-6 *ngFor="let member of party.players">\n                      <ion-card>\n                        <ion-card-header>{{ member.name }} (Level {{ member.level }} {{ member.profession }})</ion-card-header>\n                        <ion-card-content>\n                          <span>HP: {{ member.hp.__current | number }}/{{ member.hp.maximum | number }}</span>,\n                          <span>MP: {{ member.mp.__current | number }}/{{ member.mp.maximum | number }}</span>\n                          <span *ngIf="member.special && member.special.name">, {{ member.special.name }}: {{ member.special.__current | number }}/{{ member.special.maximum | number }}</span>\n                        </ion-card-content>\n                      </ion-card>\n                    </ion-col>\n                  </ion-row>\n                </ion-card-content>\n              </ion-card>\n            </ion-row>\n          </ion-item-divider>\n\n          <ion-item text-wrap *virtualItem="let message">\n            <h3 [innerHTML]="message.message | highlight:player.name | highlight:petName"></h3>\n\n            <div *ngIf="message.data && false">\n            </div>\n          </ion-item>\n        </ion-list>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/seiyria/GitHub/Play/src/pages/battle/battle.html"*/
+        selector: 'page-battle',template:/*ion-inline-start:"/Users/seiyria/GitHub/Play/src/pages/battle/battle.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Battle Log</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding id="battle-report">\n\n  <ion-grid>\n    <ion-row>\n      <ion-col text-center>\n        <h1>{{ battle.name || \'Loading...\' }}</h1>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col text-center>\n        <ion-note>{{ battle.happenedAt | amTimeAgo }}</ion-note>\n      </ion-col>\n    </ion-row>\n\n    <ion-row>\n      <ion-col>\n        <ion-list [virtualScroll]="battle.rounds" approxItemHeight="50px" bufferRatio="30">\n\n          <ion-item *virtualItem="let round" class="round">\n            <ion-card>\n              <ion-card-header>{{ round.header }}</ion-card-header>\n              <ion-card-content no-padding>\n                <ion-row>\n                  <ion-col col-6>\n                    <ion-card>\n                      <ion-card-content>\n                        <ion-list>\n                          <ion-item *ngFor="let message of round.messages">\n                            <h3 [innerHTML]="message | highlight:player.name | highlight:petName"></h3>\n                          </ion-item>\n                        </ion-list>\n                        <!-- <h3 *ngFor="let message of round.messages" [innerHTML]="message | highlight:player.name | highlight:petName"></h3> -->\n                      </ion-card-content>\n                    </ion-card>\n                  </ion-col>\n                  <ion-col col-6>\n                    <ion-row *ngFor="let party of round.data">\n                      <ion-card>\n                        <ion-card-header>{{ party.name }}</ion-card-header>\n                        <ion-card-content no-padding>\n                          <ion-row no-padding wrap *ngFor="let member of party.players">\n                            <ion-card>\n                              <ion-card-header>{{ member.name }} (Level {{ member.level }} {{ member.profession }})</ion-card-header>\n                              <ion-card-content>\n                                <span>HP: {{ member.hp.__current | number }}/{{ member.hp.maximum | number }}</span>,\n                                <span>MP: {{ member.mp.__current | number }}/{{ member.mp.maximum | number }}</span>\n                                <span *ngIf="member.special && member.special.name">, {{ member.special.name }}: {{ member.special.__current | number }}/{{ member.special.maximum | number }}</span>\n                              </ion-card-content>\n                            </ion-card>\n                          </ion-row>\n                        </ion-card-content>\n                      </ion-card>\n                    </ion-row>\n                  </ion-col>\n                </ion-row>\n              </ion-card-content>\n            </ion-card>\n          </ion-item>\n        </ion-list>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/seiyria/GitHub/Play/src/pages/battle/battle.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__services__["a" /* AppState */],
         __WEBPACK_IMPORTED_MODULE_2__services__["c" /* Primus */],
@@ -125,7 +150,9 @@ var HighlightPipe = (function () {
     }
     HighlightPipe.prototype.transform = function (message, checkString) {
         message = message.trim();
-        if (!message || !checkString)
+        if (!checkString)
+            return message;
+        if (!message)
             return '';
         return message.replace(new RegExp("(" + checkString + ")", 'gi'), '<span class="highlighted-text">$1</span>');
     };

@@ -42951,6 +42951,14 @@ page-achievements .achievement-card ion-card-content {
   min-height: 100px;
 }
 
+#battle-report .round ion-card-header {
+  white-space: normal;
+}
+
+#battle-report .round ion-label {
+  white-space: normal;
+}
+
 page-chat .chat-container {
   width: 100%;
   height: 100%;
