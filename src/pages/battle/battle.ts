@@ -10,7 +10,7 @@ import { Battle } from '../../models';
 
 @IonicPage({
   segment: 'battle/:battleName',
-  defaultHistory: ['overview']
+  defaultHistory: ['OverviewPage']
 })
 @Component({
   selector: 'page-battle',
@@ -37,7 +37,9 @@ export class BattlePage extends PlayComponent implements OnInit, OnDestroy {
     super.ngOnInit();
 
     const battleName = this.navParams.get('battleName');
-    this.battle$ = this.appState.battle.subscribe(battle => this.battle = battle);
+    this.battle$ = this.appState.battle.subscribe(battle => {
+      this.battle = this.restructureBattle(battle);
+    });
     this.pet$ = this.appState.petactive.subscribe(pet => this.petName = pet.name);
     this.battle.messageData = [ { data: null, message: 'Loading' } ];
     this.primus.loadBattle(battleName);
@@ -56,6 +58,32 @@ export class BattlePage extends PlayComponent implements OnInit, OnDestroy {
     return item.data;
   }
 
+  restructureBattle(battle) {
+    if (!battle || !battle.messageData) {
+      return battle
+    }
+
+    battle.rounds = [];
+
+    let round = -1;
+    let currentRound;
+    battle.messageData.forEach((i) => {
+      if (i.data || !currentRound) {
+        round += 1;
+        battle.rounds[round] = {
+          data: i.data || battle.initialParties,
+          messages: [],
+          header: i.message
+        };
+        currentRound = battle.rounds[round].messages
+      } else {
+        currentRound.push(i.message)
+      }
+    })
+
+    return battle;
+  }
+
 }
 
 @Pipe({
@@ -64,7 +92,8 @@ export class BattlePage extends PlayComponent implements OnInit, OnDestroy {
 export class HighlightPipe implements PipeTransform {
   transform(message: string, checkString: string): string {
     message = message.trim();
-    if(!message || !checkString) return '';
+    if(!checkString) return message;
+    if(!message) return '';
     return message.replace(new RegExp(`(${checkString})`, 'gi'), '<span class="highlighted-text">$1</span>');
   }
 }
