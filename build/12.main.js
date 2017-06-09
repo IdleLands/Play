@@ -1,13 +1,13 @@
 webpackJsonp([12],{
 
-/***/ 1280:
+/***/ 1282:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__create__ = __webpack_require__(1299);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__create__ = __webpack_require__(1301);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(29);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CreatePageModule", function() { return CreatePageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -34,15 +34,15 @@ CreatePageModule = __decorate([
 
 /***/ }),
 
-/***/ 1299:
+/***/ 1301:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services__ = __webpack_require__(22);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CreatePage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -109,7 +109,7 @@ CreatePage = __decorate([
         segment: 'create'
     }),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'page-create',template:/*ion-inline-start:"/Users/seiyria/GitHub/Play/src/pages/create/create.html"*/'\n<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Create Character</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n  <ion-list>\n    <ion-item-divider>Character Name</ion-item-divider>\n\n    <ion-item>\n      <ion-input [(ngModel)]="character.name" placeholder="Character Name" type="text" maxlength="20" minlength="0"></ion-input>\n    </ion-item>\n\n  </ion-list>\n\n  <ion-list radio-group [(ngModel)]="character.professionName">\n    <ion-item-divider>Character Class</ion-item-divider>\n    <ion-item *ngFor="let class of baseClasses">\n      <ion-label>\n        <h3>{{ class.name }}</h3>\n        <p>{{ class.desc }}</p>\n      </ion-label>\n      <ion-radio [value]="class.name"></ion-radio>\n    </ion-item>\n  </ion-list>\n\n  <ion-list radio-group [(ngModel)]="character.gender">\n    <ion-item-divider>Character Gender</ion-item-divider>\n    <ion-item *ngFor="let gender of baseGenders">\n      <ion-label>\n        <h3>{{ gender.name }}</h3>\n      </ion-label>\n      <ion-radio [value]="gender.value"></ion-radio>\n    </ion-item>\n  </ion-list>\n\n  <ion-list>\n    <button text-center\n            ion-item\n            block\n            color="primary"\n            [disabled]="!character.name || !character.gender || !character.professionName"\n            (click)="doRegister()">\n      Create Character\n    </button>\n  </ion-list>\n</ion-content>\n'/*ion-inline-end:"/Users/seiyria/GitHub/Play/src/pages/create/create.html"*/
+        selector: 'page-create',template:/*ion-inline-start:"c:\IdleLandsREAL\Play\src\pages\create\create.html"*/'\n\n<ion-header>\n\n\n\n  <ion-navbar color="primary">\n\n    <ion-title>Create Character</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n  <ion-list>\n\n    <ion-item-divider>Character Name</ion-item-divider>\n\n\n\n    <ion-item>\n\n      <ion-input [(ngModel)]="character.name" placeholder="Character Name" type="text" maxlength="20" minlength="0"></ion-input>\n\n    </ion-item>\n\n\n\n  </ion-list>\n\n\n\n  <ion-list radio-group [(ngModel)]="character.professionName">\n\n    <ion-item-divider>Character Class</ion-item-divider>\n\n    <ion-item *ngFor="let class of baseClasses">\n\n      <ion-label>\n\n        <h3>{{ class.name }}</h3>\n\n        <p>{{ class.desc }}</p>\n\n      </ion-label>\n\n      <ion-radio [value]="class.name"></ion-radio>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n  <ion-list radio-group [(ngModel)]="character.gender">\n\n    <ion-item-divider>Character Gender</ion-item-divider>\n\n    <ion-item *ngFor="let gender of baseGenders">\n\n      <ion-label>\n\n        <h3>{{ gender.name }}</h3>\n\n      </ion-label>\n\n      <ion-radio [value]="gender.value"></ion-radio>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n  <ion-list>\n\n    <button text-center\n\n            ion-item\n\n            block\n\n            color="primary"\n\n            [disabled]="!character.name || !character.gender || !character.professionName"\n\n            (click)="doRegister()">\n\n      Create Character\n\n    </button>\n\n  </ion-list>\n\n</ion-content>\n\n'/*ion-inline-end:"c:\IdleLandsREAL\Play\src\pages\create\create.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services__["c" /* Primus */],
         __WEBPACK_IMPORTED_MODULE_3__services__["e" /* Theme */],

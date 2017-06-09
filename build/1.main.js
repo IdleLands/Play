@@ -1,14 +1,14 @@
 webpackJsonp([1],{
 
-/***/ 1290:
+/***/ 1292:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__statistics__ = __webpack_require__(1311);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__statistics_tree_component__ = __webpack_require__(1310);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__statistics__ = __webpack_require__(1313);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__statistics_tree_component__ = __webpack_require__(1312);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_ionic_angular__ = __webpack_require__(29);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SettingsPageModule", function() { return SettingsPageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -36,7 +36,7 @@ SettingsPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1310:
+/***/ 1312:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -78,16 +78,16 @@ StatisticsTreeComponent = __decorate([
 
 /***/ }),
 
-/***/ 1311:
+/***/ 1313:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_play_component__ = __webpack_require__(51);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_play_component__ = __webpack_require__(52);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return StatisticsPage; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -179,7 +179,7 @@ StatisticsPage = __decorate([
         segment: 'statistics'
     }),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'page-statistics',template:/*ion-inline-start:"/Users/seiyria/GitHub/Play/src/pages/statistics/statistics.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>IdleLands Statistics - {{ player.nameEdit || player.name }}</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-row>\n\n    <ion-col col-12 col-sm>\n      <ion-card *ngIf="statistics.Game">\n        <ion-card-header>Game</ion-card-header>\n        <ion-card-content>\n          <statistics-tree [treeData]="statistics.Game.children" [isFirst]="true"></statistics-tree>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card *ngIf="statistics.Character">\n        <ion-card-header>Character</ion-card-header>\n        <ion-card-content>\n          <statistics-tree [treeData]="statistics.Character.children" [isFirst]="true"></statistics-tree>\n        </ion-card-content>\n      </ion-card>\n    </ion-col>\n\n    <ion-col col-12 col-sm>\n      <ion-card *ngIf="statistics.Regions">\n        <ion-card-header>Regions</ion-card-header>\n        <ion-card-content>\n          <statistics-tree [treeData]="statistics.Regions.children" [isFirst]="true"></statistics-tree>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card *ngIf="statistics.Maps">\n        <ion-card-header>Maps</ion-card-header>\n        <ion-card-content>\n          <statistics-tree [treeData]="statistics.Maps.children" [isFirst]="true"></statistics-tree>\n        </ion-card-content>\n      </ion-card>\n    </ion-col>\n\n    <ion-col col-12 col-sm>\n      <ion-card *ngIf="statistics.BossKills">\n        <ion-card-header>Boss Kills</ion-card-header>\n        <ion-card-content>\n          <statistics-tree [treeData]="statistics.BossKills.children" [isFirst]="true"></statistics-tree>\n        </ion-card-content>\n      </ion-card>\n\n      <ion-card *ngIf="statistics.Combat">\n        <ion-card-header>Combat</ion-card-header>\n        <ion-card-content>\n          <statistics-tree [treeData]="statistics.Combat.children" [isFirst]="true"></statistics-tree>\n        </ion-card-content>\n      </ion-card>\n    </ion-col>\n\n  </ion-row>\n\n</ion-content>'/*ion-inline-end:"/Users/seiyria/GitHub/Play/src/pages/statistics/statistics.html"*/
+        selector: 'page-statistics',template:/*ion-inline-start:"c:\IdleLandsREAL\Play\src\pages\statistics\statistics.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="primary">\n\n    <ion-title>IdleLands Statistics - {{ player.nameEdit || player.name }}</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-row>\n\n\n\n    <ion-col col-12 col-sm>\n\n      <ion-card *ngIf="statistics.Game">\n\n        <ion-card-header>Game</ion-card-header>\n\n        <ion-card-content>\n\n          <statistics-tree [treeData]="statistics.Game.children" [isFirst]="true"></statistics-tree>\n\n        </ion-card-content>\n\n      </ion-card>\n\n\n\n      <ion-card *ngIf="statistics.Character">\n\n        <ion-card-header>Character</ion-card-header>\n\n        <ion-card-content>\n\n          <statistics-tree [treeData]="statistics.Character.children" [isFirst]="true"></statistics-tree>\n\n        </ion-card-content>\n\n      </ion-card>\n\n    </ion-col>\n\n\n\n    <ion-col col-12 col-sm>\n\n      <ion-card *ngIf="statistics.Regions">\n\n        <ion-card-header>Regions</ion-card-header>\n\n        <ion-card-content>\n\n          <statistics-tree [treeData]="statistics.Regions.children" [isFirst]="true"></statistics-tree>\n\n        </ion-card-content>\n\n      </ion-card>\n\n\n\n      <ion-card *ngIf="statistics.Maps">\n\n        <ion-card-header>Maps</ion-card-header>\n\n        <ion-card-content>\n\n          <statistics-tree [treeData]="statistics.Maps.children" [isFirst]="true"></statistics-tree>\n\n        </ion-card-content>\n\n      </ion-card>\n\n    </ion-col>\n\n\n\n    <ion-col col-12 col-sm>\n\n      <ion-card *ngIf="statistics.BossKills">\n\n        <ion-card-header>Boss Kills</ion-card-header>\n\n        <ion-card-content>\n\n          <statistics-tree [treeData]="statistics.BossKills.children" [isFirst]="true"></statistics-tree>\n\n        </ion-card-content>\n\n      </ion-card>\n\n\n\n      <ion-card *ngIf="statistics.Combat">\n\n        <ion-card-header>Combat</ion-card-header>\n\n        <ion-card-content>\n\n          <statistics-tree [treeData]="statistics.Combat.children" [isFirst]="true"></statistics-tree>\n\n        </ion-card-content>\n\n      </ion-card>\n\n    </ion-col>\n\n\n\n  </ion-row>\n\n\n\n</ion-content>'/*ion-inline-end:"c:\IdleLandsREAL\Play\src\pages\statistics\statistics.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services__["a" /* AppState */],
         __WEBPACK_IMPORTED_MODULE_3__services__["c" /* Primus */],

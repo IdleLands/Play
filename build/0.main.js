@@ -1,17 +1,17 @@
 webpackJsonp([0],{
 
-/***/ 1277:
+/***/ 1279:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chat__ = __webpack_require__(700);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_moment__ = __webpack_require__(698);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__chat__ = __webpack_require__(702);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_moment__ = __webpack_require__(700);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angular2_moment___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_angular2_moment__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(697);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__chatwindow_component__ = __webpack_require__(1296);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(699);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__chatwindow_component__ = __webpack_require__(1298);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatPageModule", function() { return ChatPageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -41,7 +41,7 @@ ChatPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1291:
+/***/ 1293:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -63,7 +63,7 @@ function inherits(parent, child) {
 
 /***/ }),
 
-/***/ 1292:
+/***/ 1294:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -72,9 +72,9 @@ function inherits(parent, child) {
 exports.__esModule = true;
 exports.AMPERSAND = exports.CLOSEPAREN = exports.CLOSEANGLEBRACKET = exports.CLOSEBRACKET = exports.CLOSEBRACE = exports.OPENPAREN = exports.OPENANGLEBRACKET = exports.OPENBRACKET = exports.OPENBRACE = exports.WS = exports.TLD = exports.SYM = exports.UNDERSCORE = exports.SLASH = exports.MAILTO = exports.PROTOCOL = exports.QUERY = exports.POUND = exports.PLUS = exports.NUM = exports.NL = exports.LOCALHOST = exports.PUNCTUATION = exports.DOT = exports.COLON = exports.AT = exports.DOMAIN = exports.Base = undefined;
 
-var _createTokenClass = __webpack_require__(1294);
+var _createTokenClass = __webpack_require__(1296);
 
-var _class = __webpack_require__(1291);
+var _class = __webpack_require__(1293);
 
 /******************************************************************************
 	Text Tokens
@@ -274,7 +274,7 @@ exports.AMPERSAND = AMPERSAND;
 
 /***/ }),
 
-/***/ 1293:
+/***/ 1295:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -283,7 +283,7 @@ exports.AMPERSAND = AMPERSAND;
 exports.__esModule = true;
 exports.stateify = exports.TokenState = exports.CharacterState = undefined;
 
-var _class = __webpack_require__(1291);
+var _class = __webpack_require__(1293);
 
 function createStateClass() {
 	return function (tClass) {
@@ -522,7 +522,7 @@ exports.stateify = stateify;
 
 /***/ }),
 
-/***/ 1294:
+/***/ 1296:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -541,18 +541,18 @@ exports.createTokenClass = createTokenClass;
 
 /***/ }),
 
-/***/ 1296:
+/***/ 1298:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_lodash__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_webstorage__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_linkifyjs_string__ = __webpack_require__(1318);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_webstorage__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_linkifyjs_string__ = __webpack_require__(1320);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_linkifyjs_string___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_linkifyjs_string__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models__ = __webpack_require__(88);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__services__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__models__ = __webpack_require__(89);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ChatWindowComponent; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return CurrentChannelPipe; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return LinkifyPipe; });
@@ -737,7 +737,7 @@ __decorate([
 ], ChatWindowComponent.prototype, "currentMessage", void 0);
 ChatWindowComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__angular_core__["Component"])({
-        selector: 'chat-window',template:/*ion-inline-start:"/Users/seiyria/GitHub/Play/src/pages/chat/chatwindow.html"*/'\n<div class="output-window" #outputWindow>\n  <ion-list no-margin *ngIf="!isCompressedChat">\n    <ion-item class="chat-message-container" text-wrap *ngFor="let message of chatLog | currentChannel:channel.route">\n      <h2>\n        <ascension-level [level]="message.ascensionLevel"></ascension-level>\n        <ion-icon *ngIf="message.isMod" name="star"></ion-icon>\n        <span *ngIf="message.guildTag" class="guild-tag">[{{ message.guildTag }}]</span>\n        <span>{{ message.playerName }}</span><span *ngIf="message.title">, the {{ message.title }}</span>\n        <small>{{ message.timestamp | amTimeAgo }}</small>\n        <small *ngIf="player.isMod">({{ message.shard }}~{{ message.ip }})</small>\n      </h2>\n      <p class="chat-message" [innerHTML]="message.text | linkify"></p>\n    </ion-item>\n  </ion-list>\n\n  <ion-list no-margin *ngIf="isCompressedChat">\n    <ion-item class="chat-message-container compressed" text-wrap *ngFor="let message of chatLog | currentChannel:channel.route">\n      <p class="chat-message">\n        <small margin-right>{{ message.timestamp | date:\'medium\' }}</small>\n        <small *ngIf="player.isMod">({{ message.shard }}~{{ message.ip }})</small>\n        <span>\n          [\n          <ion-icon *ngIf="message.isMod" name="star"></ion-icon>\n          <ascension-level [level]="message.ascensionLevel"></ascension-level>\n          <strong>\n            <span *ngIf="message.guildTag" class="guild-tag">[{{ message.guildTag }}]</span>\n            <span>{{ message.playerName }}</span><span *ngIf="message.title">, the {{ message.title }}</span>\n          </strong>\n          ]\n        </span>\n        <span class="chat-message" [innerHTML]="message.text | linkify"></span>\n      </p>\n    </ion-item>\n  </ion-list>\n\n  <button ion-button icon-left color="secondary" class="scroll-button" *ngIf="showScrollButton" (click)="scrollToBottom()">\n    <ion-icon name="arrow-round-down"></ion-icon>\n    Scroll to Bottom\n  </button>\n</div>\n\n<div class="input-window">\n  <form (ngSubmit)="sendMessage()">\n    <ion-row no-padding>\n      <ion-input [ngModelOptions]="{standalone: true}"\n                 [(ngModel)]="currentMessage"\n                 type="text"\n                 #typeHere\n                 autofocus\n                 clearInput="true"\n                 [placeholder]="\'Send message to \' + channelName(channel)"></ion-input>\n\n      <button ion-button\n              icon-left\n              color="primary"\n              big\n              class="send-button"\n              [disabled]="!currentMessage || !isOnline"\n              (click)="sendMessage()">\n        <ion-icon name="send"></ion-icon>\n        Send\n      </button>\n\n      <button ion-button\n              icon-only\n              color="danger"\n              big\n              class="send-button"\n              *ngIf="canClose(channel)"\n              (click)="doChannelRemove(channel)">\n        <ion-icon name="close"></ion-icon>\n      </button>\n\n    </ion-row>\n  </form>\n</div>'/*ion-inline-end:"/Users/seiyria/GitHub/Play/src/pages/chat/chatwindow.html"*/
+        selector: 'chat-window',template:/*ion-inline-start:"c:\IdleLandsREAL\Play\src\pages\chat\chatwindow.html"*/'\n\n<div class="output-window" #outputWindow>\n\n  <ion-list no-margin *ngIf="!isCompressedChat">\n\n    <ion-item class="chat-message-container" text-wrap *ngFor="let message of chatLog | currentChannel:channel.route">\n\n      <h2>\n\n        <ascension-level [level]="message.ascensionLevel"></ascension-level>\n\n        <ion-icon *ngIf="message.isMod" name="star"></ion-icon>\n\n        <span *ngIf="message.guildTag" class="guild-tag">[{{ message.guildTag }}]</span>\n\n        <span>{{ message.playerName }}</span><span *ngIf="message.title">, the {{ message.title }}</span>\n\n        <small>{{ message.timestamp | amTimeAgo }}</small>\n\n        <small *ngIf="player.isMod">({{ message.shard }}~{{ message.ip }})</small>\n\n      </h2>\n\n      <p class="chat-message" [innerHTML]="message.text | linkify"></p>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n  <ion-list no-margin *ngIf="isCompressedChat">\n\n    <ion-item class="chat-message-container compressed" text-wrap *ngFor="let message of chatLog | currentChannel:channel.route">\n\n      <p class="chat-message">\n\n        <small margin-right>{{ message.timestamp | date:\'medium\' }}</small>\n\n        <small *ngIf="player.isMod">({{ message.shard }}~{{ message.ip }})</small>\n\n        <span>\n\n          [\n\n          <ion-icon *ngIf="message.isMod" name="star"></ion-icon>\n\n          <ascension-level [level]="message.ascensionLevel"></ascension-level>\n\n          <strong>\n\n            <span *ngIf="message.guildTag" class="guild-tag">[{{ message.guildTag }}]</span>\n\n            <span>{{ message.playerName }}</span><span *ngIf="message.title">, the {{ message.title }}</span>\n\n          </strong>\n\n          ]\n\n        </span>\n\n        <span class="chat-message" [innerHTML]="message.text | linkify"></span>\n\n      </p>\n\n    </ion-item>\n\n  </ion-list>\n\n\n\n  <button ion-button icon-left color="secondary" class="scroll-button" *ngIf="showScrollButton" (click)="scrollToBottom()">\n\n    <ion-icon name="arrow-round-down"></ion-icon>\n\n    Scroll to Bottom\n\n  </button>\n\n</div>\n\n\n\n<div class="input-window">\n\n  <form (ngSubmit)="sendMessage()">\n\n    <ion-row no-padding>\n\n      <ion-input [ngModelOptions]="{standalone: true}"\n\n                 [(ngModel)]="currentMessage"\n\n                 type="text"\n\n                 #typeHere\n\n                 autofocus\n\n                 clearInput="true"\n\n                 [placeholder]="\'Send message to \' + channelName(channel)"></ion-input>\n\n\n\n      <button ion-button\n\n              icon-left\n\n              color="primary"\n\n              big\n\n              class="send-button"\n\n              [disabled]="!currentMessage || !isOnline"\n\n              (click)="sendMessage()">\n\n        <ion-icon name="send"></ion-icon>\n\n        Send\n\n      </button>\n\n\n\n      <button ion-button\n\n              icon-only\n\n              color="danger"\n\n              big\n\n              class="send-button"\n\n              *ngIf="canClose(channel)"\n\n              (click)="doChannelRemove(channel)">\n\n        <ion-icon name="close"></ion-icon>\n\n      </button>\n\n\n\n    </ion-row>\n\n  </form>\n\n</div>'/*ion-inline-end:"c:\IdleLandsREAL\Play\src\pages\chat\chatwindow.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_4__services__["a" /* AppState */],
         __WEBPACK_IMPORTED_MODULE_4__services__["c" /* Primus */],
@@ -781,7 +781,7 @@ LinkifyPipe = __decorate([
 
 /***/ }),
 
-/***/ 1312:
+/***/ 1314:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -789,7 +789,7 @@ LinkifyPipe = __decorate([
 
 exports.__esModule = true;
 
-var _linkify = __webpack_require__(1313);
+var _linkify = __webpack_require__(1315);
 
 var linkify = _interopRequireWildcard(_linkify);
 
@@ -882,7 +882,7 @@ exports.default = linkifyStr;
 
 /***/ }),
 
-/***/ 1313:
+/***/ 1315:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -891,17 +891,17 @@ exports.default = linkifyStr;
 exports.__esModule = true;
 exports.tokenize = exports.test = exports.scanner = exports.parser = exports.options = exports.inherits = exports.find = undefined;
 
-var _class = __webpack_require__(1291);
+var _class = __webpack_require__(1293);
 
-var _options = __webpack_require__(1317);
+var _options = __webpack_require__(1319);
 
 var options = _interopRequireWildcard(_options);
 
-var _scanner = __webpack_require__(1315);
+var _scanner = __webpack_require__(1317);
 
 var scanner = _interopRequireWildcard(_scanner);
 
-var _parser = __webpack_require__(1314);
+var _parser = __webpack_require__(1316);
 
 var parser = _interopRequireWildcard(_parser);
 
@@ -974,7 +974,7 @@ exports.tokenize = tokenize;
 
 /***/ }),
 
-/***/ 1314:
+/***/ 1316:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -983,13 +983,13 @@ exports.tokenize = tokenize;
 exports.__esModule = true;
 exports.start = exports.run = exports.TOKENS = exports.State = undefined;
 
-var _state = __webpack_require__(1293);
+var _state = __webpack_require__(1295);
 
-var _text = __webpack_require__(1292);
+var _text = __webpack_require__(1294);
 
 var TEXT_TOKENS = _interopRequireWildcard(_text);
 
-var _multi = __webpack_require__(1316);
+var _multi = __webpack_require__(1318);
 
 var MULTI_TOKENS = _interopRequireWildcard(_multi);
 
@@ -1270,7 +1270,7 @@ exports.start = S_START;
 
 /***/ }),
 
-/***/ 1315:
+/***/ 1317:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1279,9 +1279,9 @@ exports.start = S_START;
 exports.__esModule = true;
 exports.start = exports.run = exports.TOKENS = exports.State = undefined;
 
-var _state = __webpack_require__(1293);
+var _state = __webpack_require__(1295);
 
-var _text = __webpack_require__(1292);
+var _text = __webpack_require__(1294);
 
 var TOKENS = _interopRequireWildcard(_text);
 
@@ -1458,7 +1458,7 @@ exports.start = start;
 
 /***/ }),
 
-/***/ 1316:
+/***/ 1318:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1467,11 +1467,11 @@ exports.start = start;
 exports.__esModule = true;
 exports.URL = exports.TEXT = exports.NL = exports.EMAIL = exports.MAILTOEMAIL = exports.Base = undefined;
 
-var _createTokenClass = __webpack_require__(1294);
+var _createTokenClass = __webpack_require__(1296);
 
-var _class = __webpack_require__(1291);
+var _class = __webpack_require__(1293);
 
-var _text = __webpack_require__(1292);
+var _text = __webpack_require__(1294);
 
 /******************************************************************************
 	Multi-Tokens
@@ -1670,7 +1670,7 @@ exports.URL = URL;
 
 /***/ }),
 
-/***/ 1317:
+/***/ 1319:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1804,10 +1804,10 @@ function typeToTarget(href, type) {
 
 /***/ }),
 
-/***/ 1318:
+/***/ 1320:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(1312).default;
+module.exports = __webpack_require__(1314).default;
 
 
 /***/ })

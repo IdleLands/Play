@@ -1,13 +1,13 @@
 webpackJsonp([10],{
 
-/***/ 1282:
+/***/ 1284:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__guild__ = __webpack_require__(1301);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__guild__ = __webpack_require__(1303);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(29);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GuildPageModule", function() { return GuildPageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -34,19 +34,19 @@ GuildPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1301:
+/***/ 1303:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_webstorage__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_play_component__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__guild_overview__ = __webpack_require__(704);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__guild_buildings__ = __webpack_require__(701);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__guild_members__ = __webpack_require__(703);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__guild_manage__ = __webpack_require__(702);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_webstorage__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__services__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_play_component__ = __webpack_require__(52);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__guild_overview__ = __webpack_require__(706);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__guild_buildings__ = __webpack_require__(703);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__guild_members__ = __webpack_require__(705);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__guild_manage__ = __webpack_require__(704);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GuildPage; });
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
@@ -121,7 +121,7 @@ GuildPage = __decorate([
         segment: 'guild'
     }),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-guild',template:/*ion-inline-start:"/Users/seiyria/GitHub/Play/src/pages/guild/guild.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>\n      <button ion-button icon-only menuToggle>\n        <ion-icon name="menu"></ion-icon>\n      </button>\n      IdleLands Guild - {{ guild.name || player.nameEdit || player.name }} <span *ngIf="guild.tag">[{{ guild.tag }}]</span>\n    </ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n<ion-content class="no-scroll">\n  <ion-tabs #tabs tabsLayout="icon-left" (ionChange)="changeTab($event)" [selectedIndex]="defaultTab">\n\n    <ion-tab tabTitle="Overview" tabUrlPath=\'overview\' tabIcon="cube" [root]="overviewRoot"></ion-tab>\n\n    <ion-tab tabTitle="Members"\n             tabUrlPath=\'members\'\n             tabIcon="people"\n             [tabBadge]="memberBadge"\n             [enabled]="!guild.$noGuild && !player.guildInvite"\n             [root]="membersRoot"></ion-tab>\n\n    <ion-tab tabTitle="Buildings"\n             tabUrlPath=\'buildings\'\n             tabIcon="home"\n             [enabled]="!guild.$noGuild && !player.guildInvite"\n             [root]="buildingsRoot"></ion-tab>\n\n    <ion-tab tabTitle="Manage"\n             tabUrlPath=\'manage\'\n             tabIcon="cog"\n             [enabled]="!guild.$noGuild && !player.guildInvite && guild.$me && guild.$me.rank <= 3"\n             [root]="manageRoot"></ion-tab>\n  </ion-tabs>\n</ion-content>'/*ion-inline-end:"/Users/seiyria/GitHub/Play/src/pages/guild/guild.html"*/
+        selector: 'page-guild',template:/*ion-inline-start:"c:\IdleLandsREAL\Play\src\pages\guild\guild.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="primary">\n\n    <ion-title>\n\n      <button ion-button icon-only menuToggle>\n\n        <ion-icon name="menu"></ion-icon>\n\n      </button>\n\n      IdleLands Guild - {{ guild.name || player.nameEdit || player.name }} <span *ngIf="guild.tag">[{{ guild.tag }}]</span>\n\n    </ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n<ion-content class="no-scroll">\n\n  <ion-tabs #tabs tabsLayout="icon-left" (ionChange)="changeTab($event)" [selectedIndex]="defaultTab">\n\n\n\n    <ion-tab tabTitle="Overview" tabUrlPath=\'overview\' tabIcon="cube" [root]="overviewRoot"></ion-tab>\n\n\n\n    <ion-tab tabTitle="Members"\n\n             tabUrlPath=\'members\'\n\n             tabIcon="people"\n\n             [tabBadge]="memberBadge"\n\n             [enabled]="!guild.$noGuild && !player.guildInvite"\n\n             [root]="membersRoot"></ion-tab>\n\n\n\n    <ion-tab tabTitle="Buildings"\n\n             tabUrlPath=\'buildings\'\n\n             tabIcon="home"\n\n             [enabled]="!guild.$noGuild && !player.guildInvite"\n\n             [root]="buildingsRoot"></ion-tab>\n\n\n\n    <ion-tab tabTitle="Manage"\n\n             tabUrlPath=\'manage\'\n\n             tabIcon="cog"\n\n             [enabled]="!guild.$noGuild && !player.guildInvite && guild.$me && guild.$me.rank <= 3"\n\n             [root]="manageRoot"></ion-tab>\n\n  </ion-tabs>\n\n</ion-content>'/*ion-inline-end:"c:\IdleLandsREAL\Play\src\pages\guild\guild.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_3__services__["a" /* AppState */],
         __WEBPACK_IMPORTED_MODULE_3__services__["c" /* Primus */],

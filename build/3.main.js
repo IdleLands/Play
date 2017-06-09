@@ -1,14 +1,14 @@
 webpackJsonp([3],{
 
-/***/ 1279:
+/***/ 1281:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__connect__ = __webpack_require__(1298);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(697);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__connect__ = __webpack_require__(1300);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_components_module__ = __webpack_require__(699);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ConnectPageModule", function() { return ConnectPageModule; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -36,19 +36,19 @@ ConnectPageModule = __decorate([
 
 /***/ }),
 
-/***/ 1298:
+/***/ 1300:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(28);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_webstorage__ = __webpack_require__(61);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(29);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ng2_webstorage__ = __webpack_require__(62);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash__ = __webpack_require__(46);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_lodash___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_lodash__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(116);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs__ = __webpack_require__(117);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services__ = __webpack_require__(21);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__messages_json__ = __webpack_require__(1319);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__services__ = __webpack_require__(22);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__messages_json__ = __webpack_require__(1321);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__messages_json___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__messages_json__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ConnectPage; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -147,7 +147,7 @@ ConnectPage = __decorate([
         segment: 'connect'
     }),
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
-        selector: 'page-connect',template:/*ion-inline-start:"/Users/seiyria/GitHub/Play/src/pages/connect/connect.html"*/'<ion-header>\n\n  <ion-navbar color="primary">\n    <ion-title>Connecting to Server...</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n\n  <ion-grid>\n\n    <ion-row>\n      <ion-col>\n        <div class="connecting-container">\n          <div>Connecting to Server...</div>\n          <div>{{ currentMessage }}...</div>\n          <br>\n          <div *ngIf="_isTakingForever">\n            <div>Hmmm... this is taking a while.</div>\n            <div><button ion-button outline color="primary" (click)="refresh()">Shall we try this again?</button></div>\n          </div>\n        </div>\n      </ion-col>\n    </ion-row>\n\n    <ion-row padding>\n      <ion-col col-md-6 col-xs-12 offset-md-3>\n        <reddit-news></reddit-news>\n      </ion-col>\n    </ion-row>\n\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/Users/seiyria/GitHub/Play/src/pages/connect/connect.html"*/
+        selector: 'page-connect',template:/*ion-inline-start:"c:\IdleLandsREAL\Play\src\pages\connect\connect.html"*/'<ion-header>\n\n\n\n  <ion-navbar color="primary">\n\n    <ion-title>Connecting to Server...</ion-title>\n\n  </ion-navbar>\n\n\n\n</ion-header>\n\n\n\n\n\n<ion-content padding>\n\n\n\n  <ion-grid>\n\n\n\n    <ion-row>\n\n      <ion-col>\n\n        <div class="connecting-container">\n\n          <div>Connecting to Server...</div>\n\n          <div>{{ currentMessage }}...</div>\n\n          <br>\n\n          <div *ngIf="_isTakingForever">\n\n            <div>Hmmm... this is taking a while.</div>\n\n            <div><button ion-button outline color="primary" (click)="refresh()">Shall we try this again?</button></div>\n\n          </div>\n\n        </div>\n\n      </ion-col>\n\n    </ion-row>\n\n\n\n    <ion-row padding>\n\n      <ion-col col-md-6 col-xs-12 offset-md-3>\n\n        <reddit-news></reddit-news>\n\n      </ion-col>\n\n    </ion-row>\n\n\n\n  </ion-grid>\n\n</ion-content>\n\n'/*ion-inline-end:"c:\IdleLandsREAL\Play\src\pages\connect\connect.html"*/
     }),
     __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */],
         __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["l" /* NavParams */],
@@ -160,7 +160,7 @@ ConnectPage = __decorate([
 
 /***/ }),
 
-/***/ 1319:
+/***/ 1321:
 /***/ (function(module, exports) {
 
 module.exports = [
