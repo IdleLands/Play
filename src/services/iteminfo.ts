@@ -50,7 +50,7 @@ export class ItemInfo {
       return 'Achievement Required:  ' + _(req).trimStart().replace('aReq', '').replace(/_/g, ' ') + ((val > 1) ? ' tier ' + val : '');
     }
     else if (req.startsWith('c')) {
-      return 'Collectible Required:  ' + _(req).trimStart().replace('cReq', '').replace(/_/g, ' ') + ((val > 1) ? ' x' + val : '');
+      return `Collectible Required:  ${_(req).trimStart().replace('cReq', '').replace(/_/g, ' ')} (x${val})`;
     }
     else if (req.startsWith('s')) {
       return 'Statistic Required:  ' + _(req).trimStart().replace('sReq', '').split('*').join('.').replace(/_/g, ' ') + ' (' + val + ')';
