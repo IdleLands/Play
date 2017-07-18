@@ -141,6 +141,9 @@ export class AchievementModal implements OnInit {
       } else if(reward.type === 'personality') {
         this.rewards.push({ type: 'Personality', value: reward.personality });
 
+      } else if(reward.type === 'gender') {
+        this.rewards.push({ type: 'Gender', value: reward.gender });
+
       }
     });
   }
