@@ -76,7 +76,7 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
   }
 
   get genders() {
-    return this.baseGenders.concat(this.achievementGenders);
+    return this.baseGenders;
   }
 
   ngOnInit() {
@@ -88,7 +88,6 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
     this.genders$ = this.appState.genders.subscribe(data => this.baseGenders = data);
     this.achievements$ = this.appState.achievements.subscribe(data => {
       this.parseTitles(data);
-      this.parseGenders(data);
     });
 
     this.primus.requestPersonalities();
@@ -109,16 +108,6 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
       .flattenDeep()
       .filter(reward => reward.type === 'title')
       .map('title')
-      .sortBy()
-      .value();
-  }
-
-  parseGenders(achievements) {
-    this.achievementGenders = _(achievements)
-      .map('rewards')
-      .flattenDeep()
-      .filter(reward => reward.type === 'gender')
-      .map('gender')
       .sortBy()
       .value();
   }
