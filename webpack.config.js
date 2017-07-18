@@ -2,6 +2,8 @@ var path = require('path');
 var webpack = require('webpack');
 var ionicWebpackFactory = require(process.env.IONIC_WEBPACK_FACTORY);
 
+var ModuleConcatPlugin = require('webpack/lib/optimize/ModuleConcatenationPlugin');
+
 var GitRevisionPlugin = require('git-revision-webpack-plugin');
 var gitRevisionPlugin = new GitRevisionPlugin();
 
@@ -13,12 +15,18 @@ const p2 = path.join(phaserDir, 'build/custom/p2.js');
 const env = process.env.NODE_ENV === 'production' ? 'prod' : 'dev';
 const envVars = require(`./config/${env}.json`);
 
+var prodPlugins = [];
+if (process.env.IONIC_ENV === 'prod') {
+  prodPlugins.push(ionicWebpackFactory.getCommonChunksPlugin());
+  prodPlugins.push(new ModuleConcatPlugin());
+}
+
 module.exports = {
   entry: process.env.IONIC_APP_ENTRY_POINT,
   output: {
     path: '{{BUILD}}',
     publicPath: 'build/',
-    filename: process.env.IONIC_OUTPUT_JS_FILE_NAME,
+    filename: '[name].js',
     devtoolModuleFilenameTemplate: ionicWebpackFactory.getSourceMapperFunction(),
   },
   devtool: process.env.IONIC_SOURCE_MAP_TYPE,
@@ -72,7 +80,7 @@ module.exports = {
       COMMITHASH: JSON.stringify(gitRevisionPlugin.commithash()),
       AUTH0_CLIENT_ID: JSON.stringify(envVars.AUTH0_CLIENT_ID)
     })
-  ],
+  ].concat(prodPlugins),
 
   // Some libraries import Node modules but don't use them in the browser.
   // Tell Webpack to provide empty mocks for them so importing them works.
