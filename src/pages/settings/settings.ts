@@ -25,7 +25,8 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
   personalities: Personalities;
 
   genders$: any;
-  genders: string[] = [];
+  baseGenders: string[] = [];
+  achievementGenders: string[] = [];
 
   achievements$: any;
   titles: string[] = [];
@@ -74,14 +75,21 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
     ];
   }
 
+  get genders() {
+    return this.baseGenders.concat(this.achievementGenders);
+  }
+
   ngOnInit() {
     super.ngOnInit();
 
     if(!this.theme) this.theme = 'default';
 
     this.personalities$ = this.appState.personalities.subscribe(data => this.personalities = data);
-    this.genders$ = this.appState.genders.subscribe(data => this.genders = data);
-    this.achievements$ = this.appState.achievements.subscribe(data => this.parseTitles(data));
+    this.genders$ = this.appState.genders.subscribe(data => this.baseGenders = data);
+    this.achievements$ = this.appState.achievements.subscribe(data => {
+      this.parseTitles(data);
+      this.parseGenders(data);
+    });
 
     this.primus.requestPersonalities();
     this.primus.requestAchievements();
@@ -101,6 +109,16 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
       .flattenDeep()
       .filter(reward => reward.type === 'title')
       .map('title')
+      .sortBy()
+      .value();
+  }
+
+  parseGenders(achievements) {
+    this.achievementGenders = _(achievements)
+      .map('rewards')
+      .flattenDeep()
+      .filter(reward => reward.type === 'gender')
+      .map('gender')
       .sortBy()
       .value();
   }
