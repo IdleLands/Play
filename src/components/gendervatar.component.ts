@@ -46,7 +46,7 @@ const genderPositions = {
   'Archer-green':         { x: 6,   y: 12 },
   'Archer-gold':          { x: 7,   y: 12 },
 
-  'Pirate-blue':          { x: 8,   y: 13 },
+  'Pirate-blue':          { x: 8,   y: 12 },
   'Pirate-red':           { x: 0,   y: 13 },
   'Pirate-green':         { x: 1,   y: 13 },
   'Pirate-gold':          { x: 2,   y: 13 },
@@ -56,35 +56,35 @@ const genderPositions = {
   'Monster-green':        { x: 5,   y: 13 },
   'Monster-gold':         { x: 6,   y: 13 },
 
-  'MagicalMonster-blue':  { x: 7,   y: 14 },
-  'MagicalMonster-red':   { x: 8,   y: 14 },
-  'MagicalMonster-green': { x: 0,   y: 15 },
-  'MagicalMonster-gold':  { x: 1,   y: 15 },
+  'MagicalMonster-blue':  { x: 7,   y: 13 },
+  'MagicalMonster-red':   { x: 8,   y: 13 },
+  'MagicalMonster-green': { x: 0,   y: 14 },
+  'MagicalMonster-gold':  { x: 1,   y: 14 },
 
-  'Barbarian-blue':       { x: 2,   y: 15 },
-  'Barbarian-red':        { x: 3,   y: 15 },
-  'Barbarian-green':      { x: 4,   y: 15 },
-  'Barbarian-gold':       { x: 5,   y: 15 },
+  'Barbarian-blue':       { x: 2,   y: 14 },
+  'Barbarian-red':        { x: 3,   y: 14 },
+  'Barbarian-green':      { x: 4,   y: 14 },
+  'Barbarian-gold':       { x: 5,   y: 14 },
 
-  'Bard-blue':            { x: 6,   y: 15 },
-  'Bard-red':             { x: 7,   y: 15 },
-  'Bard-green':           { x: 8,   y: 16 },
-  'Bard-gold':            { x: 0,   y: 17 },
+  'Bard-blue':            { x: 6,   y: 14 },
+  'Bard-red':             { x: 7,   y: 14 },
+  'Bard-green':           { x: 8,   y: 14 },
+  'Bard-gold':            { x: 0,   y: 15 },
 
-  'SandwichArtist-blue':  { x: 1,   y: 17 },
-  'SandwichArtist-red':   { x: 2,   y: 17 },
-  'SandwichArtist-green': { x: 3,   y: 17 },
-  'SandwichArtist-gold':  { x: 4,   y: 17 },
+  'SandwichArtist-blue':  { x: 1,   y: 15 },
+  'SandwichArtist-red':   { x: 2,   y: 15 },
+  'SandwichArtist-green': { x: 3,   y: 15 },
+  'SandwichArtist-gold':  { x: 4,   y: 15 },
 
-  'Necromancer-blue':     { x: 5,   y: 17 },
-  'Necromancer-red':      { x: 6,   y: 17 },
-  'Necromancer-green':    { x: 7,   y: 17 },
-  'Necromancer-gold':     { x: 8,   y: 17 },
+  'Necromancer-blue':     { x: 5,   y: 15 },
+  'Necromancer-red':      { x: 6,   y: 15 },
+  'Necromancer-green':    { x: 7,   y: 15 },
+  'Necromancer-gold':     { x: 8,   y: 15 },
 
-  'Bitomancer-blue':      { x: 0,   y: 18 },
-  'Bitomancer-red':       { x: 1,   y: 18 },
-  'Bitomancer-green':     { x: 2,   y: 18 },
-  'Bitomancer-gold':      { x: 3,   y: 18 }
+  'Bitomancer-blue':      { x: 0,   y: 16 },
+  'Bitomancer-red':       { x: 1,   y: 16 },
+  'Bitomancer-green':     { x: 2,   y: 16 },
+  'Bitomancer-gold':      { x: 3,   y: 16 }
 
 };
 
