@@ -51,15 +51,15 @@ const genderPositions = {
   'Pirate-green':         { x: 1,   y: 13 },
   'Pirate-gold':          { x: 2,   y: 13 },
 
-  'Monster-blue':         { x: 3,   y: 13 },
-  'Monster-red':          { x: 4,   y: 13 },
-  'Monster-green':        { x: 5,   y: 13 },
-  'Monster-gold':         { x: 6,   y: 13 },
+  'MagicalMonster-blue':  { x: 3,   y: 13 },
+  'MagicalMonster-red':   { x: 4,   y: 13 },
+  'MagicalMonster-green': { x: 5,   y: 13 },
+  'MagicalMonster-gold':  { x: 6,   y: 13 },
 
-  'MagicalMonster-blue':  { x: 7,   y: 13 },
-  'MagicalMonster-red':   { x: 8,   y: 13 },
-  'MagicalMonster-green': { x: 0,   y: 14 },
-  'MagicalMonster-gold':  { x: 1,   y: 14 },
+  'Monster-blue':         { x: 7,   y: 13 },
+  'Monster-red':          { x: 8,   y: 13 },
+  'Monster-green':        { x: 0,   y: 14 },
+  'Monster-gold':         { x: 1,   y: 14 },
 
   'Barbarian-blue':       { x: 2,   y: 14 },
   'Barbarian-red':        { x: 3,   y: 14 },
