@@ -429,7 +429,7 @@ export class GMCommandsPopover implements OnInit, OnDestroy {
   item() {
     this.alertCtrl.create({
       cssClass: this.theme.currentTheme,
-      title: `Give ${this.player.name} and Item`,
+      title: `Give ${this.player.name} an Item`,
       message: 'Enter the item text here. Don\'t forget the type!',
       inputs: [
         { type: 'text', name: 'item', placeholder: '"Item Name" type=mainhand dex=1' }
