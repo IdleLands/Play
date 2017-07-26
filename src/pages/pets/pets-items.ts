@@ -48,7 +48,7 @@ export class PetsItemsPage extends PlayComponent {
       this.currentItemId = item.id;
       this.pets.open();
     } },
-    { name: 'Compare Item (Pet)',
+    { name: 'Equip Item (Pet)',
       disable: (item) => item._calcScore > this.petactive.statCache.itemFindRange,
       disableReason: 'Pet max score too low',
       callback: (item) => this.primus.equipItemOnPet(item.id)
