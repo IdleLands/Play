@@ -34,6 +34,8 @@ $new-light: map-get($colors, light);
     color: $new-primary;
   }
 
+
+
   .item-md-extradata {
     p {
       color: $new-light;
@@ -63,7 +65,7 @@ $new-light: map-get($colors, light);
     background: $new-primary !important;
   }
 
-  .bar-button-solid-md-primary, .button-md-primary, .badge-md {
+  .bar-button-solid-md-primary, .item-md-primary, .button-md-primary, .badge-md {
     background-color: lighten($new-primary, 10%) !important;
   }
 
@@ -118,6 +120,10 @@ $new-light: map-get($colors, light);
 
     .chat-message {
       color: $new-light;
+
+      a {
+        color: $new-light !important;
+      }
     }
 
     .item-inner {
