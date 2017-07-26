@@ -30,7 +30,7 @@
             <ion-item>
               <ion-label stacked>Title</ion-label>
               <ion-select [(ngModel)]="player.title" [selectOptions]="{ cssClass: 'theme-' + theme }" (ionChange)="changeTitle($event)">
-                <ion-option value="">None</ion-option>
+                <ion-option value="none" default selected>None</ion-option>
                 <ion-option *ngFor="let title of titles">{{ title }}</ion-option>
               </ion-select>
             </ion-item>
