@@ -37,6 +37,10 @@
 
             <ion-item-divider>Personalities</ion-item-divider>
 
+            <ion-item *ngIf="!personalities || !personalities.earned">
+              You have not earned any personalities.
+            </ion-item>
+
             <ion-item text-wrap *ngFor="let personality of personalities.earned">
               <ion-label>
                 <h2>{{ personality.name }}</h2>
