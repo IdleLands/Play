@@ -60,12 +60,6 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
     super(appState, primus, navCtrl);
   }
 
-  setPlayer(player) {
-    super.setPlayer(player);
-
-    if(!player.title) player.title = 'none';
-  }
-
   get version() {
     return VERSION;
   }
