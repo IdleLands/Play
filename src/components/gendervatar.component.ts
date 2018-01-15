@@ -84,7 +84,11 @@ const genderPositions = {
   'Bitomancer-blue':      { x: 0,   y: 16 },
   'Bitomancer-red':       { x: 1,   y: 16 },
   'Bitomancer-green':     { x: 2,   y: 16 },
-  'Bitomancer-gold':      { x: 3,   y: 16 }
+  'Bitomancer-gold':      { x: 3,   y: 16 },
+  
+  'Boss-green':           { x: 5,   y: 16 },
+  'Boss-blue':            { x: 6,   y: 16 },
+  'Boss-gold':            { x: 7,   y: 16 },
 
 };
 

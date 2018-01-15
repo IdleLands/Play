@@ -252,6 +252,9 @@ export class Game {
       case 'Bitomancer-red':        return 145;
       case 'Bitomancer-green':      return 146;
       case 'Bitomancer-gold':       return 147;
+      case 'Boss-green':            return 149;
+      case 'Boss-blue':             return 150;
+      case 'Boss-gold':             return 151;
 
       default:                      return 14;
     }
