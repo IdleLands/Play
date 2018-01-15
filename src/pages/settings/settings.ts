@@ -70,8 +70,10 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
       { name: 'Sedgwick', reason: 'Development, Donation, Art' },
       { name: 'Yngvildr', reason: 'Development' },
       { name: 'Therealtahu', reason: 'Support, Development, Stability' },
+      { name: 'Ascended', reason: 'Content, Development, Donation' },
       { name: 'Anexes', reason: 'Development' },
-      { name: 'Ascended', reason: 'Content, Development, Donation' }
+      { name: 'Kookie', reason: 'Development' },
+      { name: 'Juke Dragh', reason: 'Support, Content' }
     ];
   }
 
