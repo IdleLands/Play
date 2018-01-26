@@ -86,9 +86,15 @@ const genderPositions = {
   'Bitomancer-green':     { x: 2,   y: 16 },
   'Bitomancer-gold':      { x: 3,   y: 16 },
   
-  'Boss-green':           { x: 5,   y: 16 },
-  'Boss-blue':            { x: 6,   y: 16 },
-  'Boss-gold':            { x: 7,   y: 16 },
+  'green boss monster':   { x: 5,   y: 16 },
+  'blue boss monster':    { x: 6,   y: 16 },
+  'gold boss monster':    { x: 7,   y: 16 },
+  
+  'veteran male':         { x: 8,   y: 16 },
+  'veteran female':       { x: 0,   y: 17 },
+  
+  'angry bear':           { x: 1,   y: 17 },
+  'mighty glowcloud':     { x: 2,   y: 17 },
 
 };
 
