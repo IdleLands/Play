@@ -43,7 +43,8 @@ $itemcolors: (
   basic:      gray,
   guardian:   blue,
   pro:        purple,
-  godly:      black
+  godly:      black,
+  omega:      red
 );
 
 @each $class, $color in $itemcolors {

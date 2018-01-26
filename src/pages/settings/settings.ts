@@ -67,11 +67,13 @@ export class SettingsPage extends PlayComponent implements OnInit, OnDestroy {
   get thanks() {
     return [
       { name: 'Darkblizer', reason: 'Art' },
-      { name: 'Sedgwick', reason: 'Donation, Maps' },
+      { name: 'Sedgwick', reason: 'Development, Donation, Art' },
       { name: 'Yngvildr', reason: 'Development' },
       { name: 'Therealtahu', reason: 'Support, Development, Stability' },
+      { name: 'Ascended', reason: 'Content, Development, Donation' },
       { name: 'Anexes', reason: 'Development' },
-      { name: 'Ascended', reason: 'Content, Development, Donation' }
+      { name: 'Kookie', reason: 'Development' },
+      { name: 'Juke Dragh', reason: 'Support, Content' }
     ];
   }
 
