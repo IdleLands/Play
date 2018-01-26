@@ -252,9 +252,13 @@ export class Game {
       case 'Bitomancer-red':        return 145;
       case 'Bitomancer-green':      return 146;
       case 'Bitomancer-gold':       return 147;
-      case 'Boss-green':            return 149;
-      case 'Boss-blue':             return 150;
-      case 'Boss-gold':             return 151;
+      case 'green boss monster':    return 149;
+      case 'blue boss monster':     return 150;
+      case 'gold boss mosnter':     return 151;
+      case 'veteran male':          return 152;
+      case 'veteran female':        return 153;
+      case 'angry bear':            return 154;
+      case 'mighty glowcloud':      return 155;
 
       default:                      return 14;
     }
