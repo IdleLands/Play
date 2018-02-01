@@ -349,7 +349,7 @@ export class Game {
 
     this.objectGroup = this.phaser.add.group();
 
-    for(let i = 1; i <= 100; i++) {
+    for(let i = 1; i <= 300; i++) {
       map.createFromObjects('Interactables', i, 'interactables', i-1, true, false, this.objectGroup);
     }
     this.attachEventsToObjects();
