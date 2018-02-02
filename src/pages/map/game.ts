@@ -254,7 +254,7 @@ export class Game {
       case 'Bitomancer-gold':       return 147;
       case 'green boss monster':    return 149;
       case 'blue boss monster':     return 150;
-      case 'gold boss mosnter':     return 151;
+      case 'gold boss monster':     return 151;
       case 'veteran male':          return 152;
       case 'veteran female':        return 153;
       case 'angry bear':            return 154;
