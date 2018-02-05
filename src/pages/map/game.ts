@@ -259,6 +259,7 @@ export class Game {
       case 'veteran female':        return 153;
       case 'angry bear':            return 154;
       case 'mighty glowcloud':      return 155;
+      case 'soap':                  return 156;        
 
       default:                      return 14;
     }

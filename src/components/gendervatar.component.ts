@@ -9,6 +9,7 @@ const genderPositions = {
   glowcloud:              { x: 8,   y: 6 },
   'not a bear':           { x: 0,   y: 8 },
   'astronomical entity':  { x: 1,   y: 8 },
+  soap:                   { x: 3,   y: 17},
   'boss monster':         { x: 7,   y: 2 },
 
   'Fighter-blue':         { x: 7,   y: 9 },
