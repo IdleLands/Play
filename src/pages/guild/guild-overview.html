@@ -11,7 +11,7 @@
     <div class="true-center max-space background-text">
       You do not have a guild.
       <span *ngIf="player.gold >= 100000000">Would you like to create one for 100,000,000 gold?</span>
-      <span *ngIf="player.gold < 100000000">You need 100,000,000 gold to create a guild.</span>
+      <span *ngIf="player.gold < 100000000">You need 100,000,000 gold to create a guild. You can also join a guild! Just ask in chat or directly ask a guild moderator or leader.</span>
       <br>
 
       <button ion-button color="primary" [disabled]="player.gold < 100000000" (click)="createGuild()">Create Guild</button>
