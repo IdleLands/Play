@@ -68,6 +68,9 @@
     "typescript": "2.2.1",
     "url-loader": "^0.5.8"
   },
+  "engines": {
+    "npm": ">= 5.0.0"
+  },
   "config": {
     "ionic_webpack": "./webpack.config.js"
   }
