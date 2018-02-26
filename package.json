@@ -22,7 +22,7 @@
     "postrelease": "npm run deploy:pages"
   },
   "dependencies": {
-    "@angular/animations": "^4.1.2",
+    "@angular/animations": "4.1.2",
     "@angular/common": "4.1.2",
     "@angular/compiler": "4.1.2",
     "@angular/compiler-cli": "4.1.2",
@@ -67,6 +67,9 @@
     "style-loader": "^0.13.2",
     "typescript": "2.2.1",
     "url-loader": "^0.5.8"
+  },
+  "engines": {
+    "npm": ">= 5.0.0"
   },
   "config": {
     "ionic_webpack": "./webpack.config.js"
