@@ -118,6 +118,8 @@ export class Auth {
       if(!refreshToken) {
         return reject(new Error('No refresh token in storage'));
       }
+
+      resolve();
     });
   }
 }
