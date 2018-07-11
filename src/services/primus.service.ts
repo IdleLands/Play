@@ -15,7 +15,7 @@ import { AppState, Auth, Logger } from './';
 import { AdventureLog, ChatMessage } from '../models';
 
 export const settings = _.includes(window.location.hostname, 'idle.land') ?
-  { port: 80, protocol: 'https', hostname: 'game.idle.land' } :
+  { port: 443, protocol: 'https', hostname: 'game.idle.land' } :
   { port: 8080, protocol: 'http', hostname: window.location.hostname };
 
 @Injectable()
