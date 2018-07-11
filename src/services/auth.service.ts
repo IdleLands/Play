@@ -118,17 +118,6 @@ export class Auth {
       if(!refreshToken) {
         return reject(new Error('No refresh token in storage'));
       }
-
-      const auth0 = new (<any>window).Auth0({ clientID: AUTH0_CLIENT_ID, domain: DOMAIN, responseType: 'token' });
-
-      auth0.refreshToken(refreshToken, (err, authData) => {
-        if(err) {
-          return reject(err);
-        }
-
-        this.storage.store('idToken', authData.id_token);
-        resolve();
-      });
     });
   }
 }
