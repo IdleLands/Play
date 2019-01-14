@@ -17,7 +17,7 @@ import { Premium, Festival } from '../../models';
 })
 export class PremiumPage extends PlayComponent implements OnInit, OnDestroy {
 
-  public ilpGoldMargins = [50, 500, 1000, 2500, 50000];
+  public ilpGoldMargins = [50, 500, 1000, 2500, 50000, 250000, 500000];
 
   private customMultipliers = {
     salvage: 10
